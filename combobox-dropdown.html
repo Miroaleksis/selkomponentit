@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown – Combobox – Selko Digital HTML Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- Logo-kuva tulee tähän -->
+      <div class="logo-name">
+        <span class="title">Selko Digital</span>
+        <span class="subtitle">HTML Library</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+    <div class="breadcrumb-inner">
+      <ol class="breadcrumb-trail">
+        <li><a href="index.html">Home</a></li>
+        <li aria-hidden="true" class="breadcrumb-sep">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </li>
+        <li><a href="combobox.html">Combobox</a></li>
+        <li aria-hidden="true" class="breadcrumb-sep">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </li>
+        <li><span aria-current="page">Dropdown</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <div class="component-inner">
+
+    <aside class="component-aside">
+      <div class="on-this-page">
+        <h2>On This Page</h2>
+        <ol class="on-this-page-links">
+          <li><a href="#accessibility-features">Accessibility Features</a></li>
+          <li><a href="#example">Example</a></li>
+          <li><a href="#code-snippet">Code Snippet</a></li>
+        </ol>
+      </div>
+    </aside>
+
+    <main class="component-content">
+
+      <div class="component-description">
+        <h1>Dropdown</h1>
+        <p>A dropdown combobox is an input widget that, when activated, displays a popup listbox containing predefined options. The user can select one option from the list. It does not allow freeform text entry — see Dropdown with search for that variant.</p>
+      </div>
+
+      <section id="accessibility-features" class="component-section">
+        <h2>Accessibility Features</h2>
+        <ul class="feature-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Opens and closes with <span class="kbd">Space</span>, <span class="kbd">Enter</span>, and arrow keys</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Options are navigable with <span class="kbd">↑</span> and <span class="kbd">↓</span> arrow keys</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Pressing <span class="kbd">Escape</span> closes the dropdown and returns focus to the trigger</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>The expanded/collapsed state is conveyed with <span class="code">aria-expanded</span> attribute</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>The widget role is conveyed with <span class="code">role="combobox"</span> on the trigger element</span>
+          </li>
+        </ul>
+      </section>
+
+      <section id="example" class="component-section">
+        <h2>Example</h2>
+        <div class="example-container">
+          <!-- Komponenttiesimerkki tulee tähän -->
+        </div>
+      </section>
+
+      <section id="code-snippet" class="component-section">
+        <h2>Code Snippet</h2>
+        <div class="code-editor">
+          <div class="code-toolbar" role="tablist">
+            <div class="code-tabs">
+              <button class="code-tab active" role="tab" aria-selected="true" aria-controls="panel-html" id="tab-html" tabindex="0">HTML</button>
+              <button class="code-tab" role="tab" aria-selected="false" aria-controls="panel-css" id="tab-css" tabindex="-1">CSS</button>
+              <button class="code-tab" role="tab" aria-selected="false" aria-controls="panel-js" id="tab-js" tabindex="-1">Javascript</button>
+            </div>
+            <div class="code-actions">
+              <button class="copy-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                </svg>
+                <span aria-live="polite">Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="panel-html" role="tabpanel" aria-labelledby="tab-html" class="code-panel">
+<pre><code>&lt;div class="combobox"&gt;
+  &lt;button
+    id="combobox-trigger"
+    role="combobox"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-controls="combobox-listbox"
+  &gt;
+    &lt;span id="combobox-label"&gt;Select an option&lt;/span&gt;
+    &lt;span aria-hidden="true"&gt;▼&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul
+    id="combobox-listbox"
+    role="listbox"
+    aria-labelledby="combobox-label"
+    hidden
+  &gt;
+    &lt;li role="option" aria-selected="false"&gt;Option 1&lt;/li&gt;
+    &lt;li role="option" aria-selected="false"&gt;Option 2&lt;/li&gt;
+    &lt;li role="option" aria-selected="false"&gt;Option 3&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div id="panel-css" role="tabpanel" aria-labelledby="tab-css" class="code-panel" hidden>
+<pre><code>.combobox {
+  position: relative;
+  display: inline-block;
+}
+
+#combobox-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: white;
+  border: 2px solid #3f3f3f;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#combobox-listbox {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 100%;
+  background: white;
+  border: 2px solid #3f3f3f;
+  border-radius: 4px;
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  z-index: 100;
+}
+
+#combobox-listbox li {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+#combobox-listbox li:hover,
+#combobox-listbox li[aria-selected="true"] {
+  background: #f3f3f3;
+}</code></pre>
+          </div>
+
+          <div id="panel-js" role="tabpanel" aria-labelledby="tab-js" class="code-panel" hidden>
+<pre><code>const trigger = document.getElementById('combobox-trigger');
+const listbox = document.getElementById('combobox-listbox');
+const options = listbox.querySelectorAll('[role="option"]');
+let activeIndex = -1;
+
+trigger.addEventListener('click', toggleDropdown);
+
+trigger.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    openDropdown();
+    focusOption(0);
+  }
+});
+
+listbox.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    focusOption(Math.min(activeIndex + 1, options.length - 1));
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    focusOption(Math.max(activeIndex - 1, 0));
+  } else if (e.key === 'Enter') {
+    selectOption(options[activeIndex]);
+  } else if (e.key === 'Escape') {
+    closeDropdown();
+  }
+});
+
+options.forEach((option) => {
+  option.addEventListener('click', () => selectOption(option));
+});
+
+function toggleDropdown() {
+  if (listbox.hidden) openDropdown(); else closeDropdown();
+}
+
+function openDropdown() {
+  listbox.hidden = false;
+  trigger.setAttribute('aria-expanded', 'true');
+}
+
+function closeDropdown() {
+  listbox.hidden = true;
+  trigger.setAttribute('aria-expanded', 'false');
+  activeIndex = -1;
+  trigger.focus();
+}
+
+function focusOption(index) {
+  if (activeIndex >= 0) options[activeIndex].removeAttribute('tabindex');
+  activeIndex = index;
+  options[index].setAttribute('tabindex', '0');
+  options[index].focus();
+}
+
+function selectOption(option) {
+  options.forEach(o => o.setAttribute('aria-selected', 'false'));
+  option.setAttribute('aria-selected', 'true');
+  document.getElementById('combobox-label').textContent = option.textContent;
+  closeDropdown();
+}</code></pre>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script>
+    // Render code snippet into example container
+    (function renderExample() {
+      const htmlCode = document.querySelector('#panel-html code');
+      const cssCode  = document.querySelector('#panel-css code');
+      const jsCode   = document.querySelector('#panel-js code');
+      const example  = document.querySelector('.example-container');
+      if (!example || !htmlCode) return;
+
+      example.innerHTML = htmlCode.textContent;
+
+      if (cssCode && cssCode.textContent.trim()) {
+        const style = document.createElement('style');
+        style.textContent = cssCode.textContent;
+        document.head.appendChild(style);
+      }
+
+      if (jsCode && jsCode.textContent.trim()) {
+        const script = document.createElement('script');
+        script.textContent = jsCode.textContent;
+        document.body.appendChild(script);
+      }
+    })();
+
+    // Code editor tab switching
+    const tabList = document.querySelector('[role="tablist"]');
+    const tabButtons = Array.from(tabList.querySelectorAll('[role="tab"]'));
+
+    function activateTab(tab) {
+      tabButtons.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+        t.setAttribute('tabindex', '-1');
+      });
+      document.querySelectorAll('.code-panel').forEach(p => { p.hidden = true; });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      tab.setAttribute('tabindex', '0');
+      tab.focus();
+      document.getElementById(tab.getAttribute('aria-controls')).hidden = false;
+    }
+
+    tabButtons.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', (e) => {
+        let newIndex;
+        if (e.key === 'ArrowRight') {
+          newIndex = (index + 1) % tabButtons.length;
+        } else if (e.key === 'ArrowLeft') {
+          newIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+        } else if (e.key === 'Home') {
+          newIndex = 0;
+        } else if (e.key === 'End') {
+          newIndex = tabButtons.length - 1;
+        } else {
+          return;
+        }
+        e.preventDefault();
+        activateTab(tabButtons[newIndex]);
+      });
+    });
+
+    // Copy button
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      const label = btn.querySelector('[aria-live]');
+      btn.addEventListener('click', () => {
+        const editor = btn.closest('.code-editor');
+        const activePanel = editor.querySelector('.code-panel:not([hidden])');
+        if (!activePanel) return;
+        navigator.clipboard.writeText(activePanel.querySelector('code').textContent)
+          .then(() => {
+            if (label) {
+              label.textContent = 'Copied';
+              setTimeout(() => { label.textContent = 'Copy'; }, 2000);
+            }
+          })
+          .catch(() => {});
+      });
+    });
+  </script>
+
+</body>
+</html>
