@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialog – Selko Digital HTML Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <site-header></site-header>
+
+  <breadcrumb-bar></breadcrumb-bar>
+
+  <div class="page-inner">
+
+    <on-this-page></on-this-page>
+
+    <main class="page-content">
+
+      <div class="page-description">
+        <h1>Dialog</h1>
+        <p>A dialog is a window overlaid on the page that interrupts the user's flow to request input or display important information.</p>
+        <p>Dialogs can be used to confirm destructive actions, request information needed to continue a task, or display content that requires immediate attention. They are less suitable for non-urgent information that could be shown inline, since they interrupt the user's flow.</p>
+        <p>The recommended implementation is the native <span class="code">&lt;dialog&gt;</span> element with the <span class="code">showModal()</span> method, which provides focus management, the Escape key shortcut and a backdrop without additional JavaScript.</p>
+      </div>
+
+      <section class="component-section">
+        <h2>Accessibility Features</h2>
+        <div class="feature-list-legend" aria-hidden="true">
+          <span class="required">= Required</span>
+          <span class="recommended">= Recommended</span>
+        </div>
+        <ul class="feature-list">
+          <li aria-description="Required">The <span class="code">&lt;dialog&gt;</span> element conveys the modal role to screen readers automatically</li>
+          <li aria-description="Required"><span class="code">aria-labelledby</span> links the dialog to its heading so screen readers announce its purpose</li>
+          <li aria-description="Required">Focus moves into the dialog on open and returns to the trigger on close. Focus is trapped inside the dialog while it is open.</li>
+          <li aria-description="Required">The <span class="kbd">Esc</span> key closes the dialog</li>
+          <li aria-description="Recommended">The close button uses <span class="code">aria-labelledby</span> to reference both itself and the dialog title, so screen readers announce which dialog is being closed</li>
+          <li aria-description="Recommended"><span class="code">aria-haspopup="dialog"</span> conveyes the button opens a dialog</li>
+        </ul>
+      </section>
+
+      <section class="component-section">
+        <h2>Example</h2>
+        <div class="example-container" data-prefix="a"></div>
+      </section>
+
+      <section class="component-section">
+        <h2>Code Snippet</h2>
+        <code-editor prefix="a" tabs="html,css,js"></code-editor>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="text/plain" id="snippet-a-html">
+<button id="open-dialog" aria-haspopup="dialog">Open dialog</button>
+<dialog aria-labelledby="dialog-title">
+  <button id="close-dialog" aria-labelledby="close-dialog dialog-title">Close</button>
+  <h3 id="dialog-title">Example dialog</h3>
+  <p>Dialog content goes here.</p>
+</dialog>
+  </script>
+
+  <script type="text/plain" id="snippet-a-css">
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+  color: dimgray;
+  border: 1.5px solid;
+  border-radius: 4px;
+}
+
+dialog[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: center;
+  justify-self: center;
+  padding: 24px;
+  width: 400px;
+  max-width: calc(100% - 32px);
+  border: 1.5px solid lightgray;
+  border-radius: 8px;
+  color: dimgray;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#close-dialog {
+  align-self: flex-end;
+  width: fit-content;
+}
+  </script>
+
+  <script type="text/plain" id="snippet-a-js">
+const dialog = document.querySelector('dialog');
+
+document.getElementById('open-dialog').addEventListener('click', () => {
+  dialog.showModal();
+});
+
+document.getElementById('close-dialog').addEventListener('click', () => {
+  dialog.close();
+});
+  </script>
+
+  <script src="common.js"></script>
+  <script src="component-page.js"></script>
+
+</body>
+</html>
+</content>

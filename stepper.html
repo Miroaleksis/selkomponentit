@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stepper – Selko Digital HTML Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <site-header></site-header>
+
+  <breadcrumb-bar></breadcrumb-bar>
+
+  <div class="page-inner">
+
+    <on-this-page></on-this-page>
+
+    <main class="page-content">
+
+      <div class="page-description">
+        <h1>Stepper</h1>
+        <p>A stepper guides users through a multi-step process by displaying all steps and indicating progress.</p>
+        <p>Steppers can be used when a task is divided into a fixed sequence of distinct steps that benefit from being shown as a whole, such as a multi-step form, checkout flow, or onboarding wizard. They are less suitable for short tasks of one or two steps, or branching processes where the next step depends on previous answers.</p>
+      </div>
+
+      <section class="component-section">
+        <h2>Accessibility Features</h2>
+        <div class="feature-list-legend" aria-hidden="true">
+          <span class="required">= Required</span>
+          <span class="recommended">= Recommended</span>
+        </div>
+        <ul class="feature-list">
+          <li aria-description="Required">Wrapped in a <span class="code">&lt;nav&gt;</span> landmark with <span class="code">aria-label</span> to identify the progress region</li>
+          <li aria-description="Required">Uses an ordered list (<span class="code">&lt;ol&gt;</span>) to convey the sequence and total number of steps to screen readers</li>
+          <li aria-description="Required">The current step's button is marked with <span class="code">aria-current="step"</span></li>
+          <li aria-description="Required">Upcoming step buttons use the <span class="code">disabled</span> attribute, so screen readers and keyboard users know they cannot yet be navigated to</li>
+          <li aria-description="Required">Use <span class="code">&lt;button&gt;</span> when the stepper navigates dynamically without a page reload; use <span class="code">&lt;a&gt;</span> when each step has its own URL</li>
+          <li aria-description="Recommended">An <span class="code">aria-live="polite"</span> region announces the current step's label when it changes, so screen reader users hear the update without losing focus</li>
+          <li aria-description="Recommended">Step state (completed, current, upcoming) is conveyed through icon, font weight and disabled state — not by colour alone</li>
+        </ul>
+      </section>
+
+      <section class="component-section">
+        <h2>Example</h2>
+        <div class="example-container" data-prefix="a"></div>
+      </section>
+
+      <section class="component-section">
+        <h2>Code Snippet</h2>
+        <code-editor prefix="a" tabs="html,css,js"></code-editor>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="text/plain" id="snippet-a-html">
+<div class="stepper-container">
+    <nav aria-label="Form progress">
+      <ol class="stepper">
+        <li><button aria-current="step"><span class="step-indicator">1</span> Account details</button></li>
+        <li><button disabled><span class="step-indicator">2</span> Personal information</button></li>
+        <li><button disabled><span class="step-indicator">3</span> Payment</button></li>
+        <li><button disabled><span class="step-indicator">4</span> Confirmation</button></li>
+      </ol>
+    </nav>
+    <div class="stepper-navigation">
+      <div aria-live="polite" id="step-description">Step 1: Account details</div>
+      <div class="stepper-buttons">
+        <button id="prev-step">Previous</button>
+        <button id="next-step">Next</button>
+      </div>
+    </div>
+</div>
+  </script>
+
+  <script type="text/plain" id="snippet-a-css">
+
+.stepper-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepper {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  max-width: 600px;
+  color: dimgray;
+  margin-bottom: 24px;
+}
+
+.stepper li {
+  flex: 1;
+  position: relative;
+}
+
+.stepper li:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  right: 50%;
+  width: 100%;
+  height: 2px;
+  background: lightgray;
+  z-index: 0;
+}
+
+.stepper li:has(button:not([aria-current]):not(:disabled))::after,
+.stepper li:has(button[aria-current])::after {
+  background: dimgray;
+}
+
+.stepper li button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  width: 100%;
+}
+
+.stepper li button:disabled {
+  cursor: default;
+}
+
+.stepper li button[aria-current] {
+  font-weight: bold;
+  cursor: default;
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: lightgray;
+  color: dimgray;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+.stepper li button:not([aria-current]):not(:disabled) .step-indicator {
+  background: dimgray;
+  color: whitesmoke;
+}
+
+.stepper li button[aria-current] .step-indicator {
+  background: whitesmoke;
+  border: 1.5px solid dimgray;
+}
+
+.stepper-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.stepper-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+#step-description {
+  margin-right: auto;
+}
+
+.stepper-navigation button {
+  font: inherit;
+  color: dimgray;
+  background: none;
+  border: 1.5px solid;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.stepper-navigation button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+@media (max-width: 560px) {
+  .stepper {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .stepper li {
+    text-align: left;
+  }
+
+  .stepper li button {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .stepper li:not(:first-child)::after {
+    top: -32px;
+    left: 15px;
+    right: auto;
+    width: 2px;
+    height: 32px;
+  }
+}
+  </script>
+
+  <script type="text/plain" id="snippet-a-js">
+const stepButtons = Array.from(document.querySelectorAll('.stepper button'));
+const prevBtn = document.getElementById('prev-step');
+const nextBtn = document.getElementById('next-step');
+const stepDescription = document.getElementById('step-description');
+let currentStep = 0;
+
+function goToStep(step) {
+  currentStep = step;
+  stepButtons.forEach((btn, i) => {
+    const indicator = btn.querySelector('.step-indicator');
+    if (i < currentStep) {
+      btn.removeAttribute('aria-current');
+      btn.disabled = false;
+      indicator.textContent = '✓';
+    } else if (i === currentStep) {
+      btn.setAttribute('aria-current', 'step');
+      btn.disabled = false;
+      indicator.textContent = String(i + 1);
+    } else {
+      btn.removeAttribute('aria-current');
+      btn.disabled = true;
+      indicator.textContent = String(i + 1);
+    }
+  });
+  prevBtn.disabled = currentStep === 0;
+  nextBtn.disabled = currentStep === stepButtons.length - 1;
+
+  const label = stepButtons[currentStep].lastChild.textContent.trim();
+  stepDescription.textContent = 'Step ' + (currentStep + 1) + ': ' + label;
+}
+
+stepButtons.forEach((btn, i) => {
+  btn.addEventListener('click', () => goToStep(i));
+});
+
+prevBtn.addEventListener('click', () => goToStep(currentStep - 1));
+nextBtn.addEventListener('click', () => goToStep(currentStep + 1));
+  </script>
+
+  <script src="common.js"></script>
+  <script src="component-page.js"></script>
+
+</body>
+</html>

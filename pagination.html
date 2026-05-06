@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagination – Selko Digital HTML Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <site-header></site-header>
+
+  <breadcrumb-bar></breadcrumb-bar>
+
+  <div class="page-inner">
+
+    <on-this-page></on-this-page>
+
+    <main class="page-content">
+
+      <div class="page-description">
+        <h1>Pagination</h1>
+        <p>Pagination allows users to navigate between pages of content, one page at a time.</p>
+        <p>Pagination can be used when a long list or set of results is divided into discrete pages, especially when users benefit from a clear sense of how much content is available and the ability to jump to specific pages. Infinite scroll or "load more" patterns may be more appropriate when the content is open-ended or browsed casually.</p>
+      </div>
+
+      <section class="component-section">
+        <h2>Accessibility Features</h2>
+        <div class="feature-list-legend" aria-hidden="true">
+          <span class="required">= Required</span>
+          <span class="recommended">= Recommended</span>
+        </div>
+        <ul class="feature-list">
+          <li aria-description="Required">Wrapped in a <span class="code">&lt;nav&gt;</span> landmark with <span class="code">aria-label="Pagination"</span> to identify the navigation region</li>
+          <li aria-description="Required"><span class="code">aria-current="page"</span> marks the currently active page for screen readers</li>
+          <li aria-description="Required">The <span class="code">disabled</span> attribute on the Previous and Next buttons prevents interaction when no further navigation is possible</li>
+          <li aria-description="Required">Use <span class="code">&lt;button&gt;</span> when pagination updates content dynamically without a page reload; use <span class="code">&lt;a&gt;</span> when each page has its own URL</li>
+          <li aria-description="Recommended">Uses an ordered list (<span class="code">&lt;ol&gt;</span>) to communicate the total number of pages to screen readers</li>
+          <li aria-description="Recommended">A <span class="code">role="status"</span> element above the pagination announces the current page to screen readers when updated dynamically</li>
+        </ul>
+      </section>
+
+      <section class="component-section">
+        <h2>Example</h2>
+        <div class="example-container" data-prefix="a"></div>
+      </section>
+
+      <section class="component-section">
+        <h2>Code Snippet</h2>
+        <code-editor prefix="a" tabs="html,css,js"></code-editor>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="text/plain" id="snippet-a-html">
+<div class="pagination-wrapper">
+  <p role="status">Page 1 of 5</p>
+  <nav aria-label="Pagination">
+    <ol class="pagination">
+      <li><button aria-label="Previous page" disabled>◀</button></li>
+      <li><button aria-label="Page 1" aria-current="page">1</button></li>
+      <li><button aria-label="Page 2">2</button></li>
+      <li><button aria-label="Page 3">3</button></li>
+      <li><button aria-label="Page 4">4</button></li>
+      <li><button aria-label="Page 5">5</button></li>
+      <li><button aria-label="Next page">▶</button></li>
+    </ol>
+  </nav>
+</div>
+  </script>
+
+  <script type="text/plain" id="snippet-a-css">
+.pagination-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: dimgray;
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0;
+}
+
+.pagination button {
+  display: flex;
+  color: inherit;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button[aria-current="page"] {
+  background: dimgray;
+  color: whitesmoke;
+  font-weight: bold;
+  border: inherit;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+  </script>
+
+  <script type="text/plain" id="snippet-a-js">
+const status = document.querySelector('[role="status"]');
+const prevBtn = document.querySelector('[aria-label="Previous page"]');
+const nextBtn = document.querySelector('[aria-label="Next page"]');
+const pageButtons = Array.from(document.querySelectorAll('.pagination button:not([aria-label="Previous page"]):not([aria-label="Next page"])'));
+const totalPages = pageButtons.length;
+let currentPage = 1;
+
+function goToPage(page) {
+  currentPage = page;
+  pageButtons.forEach((btn, i) => {
+    if (i + 1 === currentPage) {
+      btn.setAttribute('aria-current', 'page');
+    } else {
+      btn.removeAttribute('aria-current');
+    }
+  });
+  prevBtn.disabled = currentPage === 1;
+  nextBtn.disabled = currentPage === totalPages;
+  status.textContent = 'Page ' + currentPage + ' of ' + totalPages;
+}
+
+pageButtons.forEach((btn, i) => {
+  btn.addEventListener('click', () => goToPage(i + 1));
+});
+prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+  </script>
+
+  <script src="common.js"></script>
+  <script src="component-page.js"></script>
+
+</body>
+</html>

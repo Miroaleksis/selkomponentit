@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breadcrumb – Selko Digital HTML Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <site-header></site-header>
+
+  <breadcrumb-bar></breadcrumb-bar>
+
+  <div class="page-inner">
+
+    <on-this-page></on-this-page>
+
+    <main class="page-content">
+
+      <div class="page-description">
+        <h1>Breadcrumb</h1>
+        <p>A breadcrumb trail consists of a list of links to the parent pages of the current page in hierarchical order. It helps users understand their location within a site and navigate back to previous levels.</p>
+        <p>Breadcrumbs can be used on sites with deep, hierarchical structures where users may arrive at a page via search or external links. They are less useful on flat sites where the main navigation already covers all pages.</p>
+      </div>
+
+      <section class="component-section">
+        <h2>Accessibility Features</h2>
+        <div class="feature-list-legend" aria-hidden="true">
+          <span class="required">= Required</span>
+          <span class="recommended">= Recommended</span>
+        </div>
+        <ul class="feature-list">
+          <li aria-description="Required">Wrapped in a <span class="code">&lt;nav&gt;</span> landmark with <span class="code">aria-label="Breadcrumb"</span> to identify the navigation region</li>
+          <li aria-description="Required">The current page is marked with <span class="code">aria-current="page"</span> on the last item</li>
+          <li aria-description="Recommended">Uses an ordered list (<span class="code">&lt;ol&gt;</span>) to convey the hierarchical structure to screen readers</li>
+          <li aria-description="Recommended">Separators are purely decorative and hidden from screen readers with <span class="code">content: '…' / ''</span></li>
+        </ul>
+      </section>
+
+      <section class="component-section">
+        <h2>Example</h2>
+        <div class="example-container" data-prefix="a"></div>
+      </section>
+      
+      <section class="component-section">
+        <h2>Code Snippet</h2>
+        <code-editor prefix="a" tabs="html,css"></code-editor>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="text/plain" id="snippet-a-html">
+<nav aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Parent Page</a></li>
+    <li aria-current="page">Current Page</li>
+  </ol>
+</nav>
+  </script>
+
+  <script type="text/plain" id="snippet-a-css">
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  color: dimgray;
+  background: whitesmoke;
+  border: 1.5px solid lightgray;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: '/' / '';
+  margin: 0 8px;
+  color: dimgray;
+}
+
+.breadcrumb a {
+  color: midnightblue;
+  text-decoration: underline;
+}
+  </script>
+
+  <script src="common.js"></script>
+  <script src="component-page.js"></script>
+
+</body>
+</html>

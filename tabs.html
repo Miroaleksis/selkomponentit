@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs – Selko Digital HTML Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <site-header></site-header>
+
+  <breadcrumb-bar></breadcrumb-bar>
+
+  <div class="page-inner">
+
+    <on-this-page></on-this-page>
+
+    <main class="page-content">
+
+      <div class="page-description">
+        <h1>Tabs</h1>
+        <p>Tabs organise content into multiple panels, of which only one is visible at a time. Users switch between panels by selecting the corresponding tab.</p>
+        <p>Tabs can be used when content can be grouped into clearly named, parallel categories that the user does not need to view at the same time. They are less suitable when the content sections need to be compared, scanned together, or printed as a whole.</p>
+      </div>
+
+      <section class="component-section">
+        <h2>Accessibility Features</h2>
+        <div class="feature-list-legend" aria-hidden="true">
+          <span class="required">= Required</span>
+          <span class="recommended">= Recommended</span>
+        </div>
+        <ul class="feature-list">
+          <li aria-description="Required">Tabs are grouped in a <span class="code">role="tablist"</span> element with an <span class="code">aria-label</span> that describes the tab group</li>
+          <li aria-description="Required">Each tab has <span class="code">role="tab"</span> and <span class="code">aria-selected="true/false"</span> to convey its role and state to screen readers and is linked to its corresponding panel via <span class="code">aria-controls</span></li>
+          <li aria-description="Required">Each panel has <span class="code">role="tabpanel"</span> and is labelled by its corresponding tab with <span class="code">aria-labelledby</span></li>
+          <li aria-description="Required">Only the selected tab is in the tab order, all others have <span class="code">tabindex="-1"</span></li>
+          <li aria-description="Required">The <span class="kbd">←</span> and <span class="kbd">→</span> arrow keys move focus between tabs. The tabs can either be activated automatically or manually pressing the <span class="kbd">Enter</span> or <span class="kbd">Space</span> key.</li>
+          <li aria-description="Required">Inactive panels are hidden from both view and assistive technology with the <span class="code">hidden</span> attribute</li>
+        </ul>
+      </section>
+
+      <section class="component-section">
+        <h2>Tabs with Automatic Activation</h2>
+        <h3>Example</h3>
+        <div class="example-container" data-prefix="a"></div>
+        <h3>Code Snippet</h3>
+        <code-editor prefix="a" tabs="html,css,js"></code-editor>
+      </section>
+
+      <section class="component-section">
+        <h2>Tabs with Manual Activation</h2>
+        <h3>Example</h3>
+        <div class="example-container" data-prefix="b"></div>
+        <h3>Code Snippet</h3>
+        <code-editor prefix="b" tabs="html,css,js"></code-editor>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="text/plain" id="snippet-a-html">
+<div class="tabs">
+  <div role="tablist" aria-label="Example tabs">
+    <button role="tab" id="tab-1" aria-selected="true" aria-controls="panel-1">Tab 1</button>
+    <button role="tab" id="tab-2" aria-selected="false" aria-controls="panel-2" tabindex="-1">Tab 2</button>
+    <button role="tab" id="tab-3" aria-selected="false" aria-controls="panel-3" tabindex="-1">Tab 3</button>
+  </div>
+  <div role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+    <p>Content for Tab 1.</p>
+  </div>
+  <div role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+    <p>Content for Tab 2.</p>
+  </div>
+  <div role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+    <p>Content for Tab 3.</p>
+  </div>
+</div>
+  </script>
+
+  <script type="text/plain" id="snippet-a-css">
+.tabs {
+  color: dimgray;
+}
+
+[role="tablist"] {
+  display: flex;
+  gap: 8px;
+}
+
+[role="tab"] {
+  display: flex;
+  color: whitesmoke;
+  background: dimgray;
+  border: 0;
+  border-bottom: 1.5px solid lightgray;
+  border-radius:  8px 8px 0 0;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  margin-bottom: -1.5px; 
+}
+
+[role="tab"][aria-selected="true"] {
+  color: inherit;
+  background: whitesmoke;
+  border: 1.5px solid lightgray;
+  border-bottom: 1.5px solid whitesmoke;
+  font-weight: bold;
+}
+
+[role="tabpanel"] {
+  padding: 16px;
+  background: whitesmoke;
+  border: 1.5px solid lightgray;
+  border-radius: 0 0 8px 8px;
+}
+  </script>
+
+  <script type="text/plain" id="snippet-a-js">
+const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+const panels = document.querySelectorAll('[role="tabpanel"]');
+
+function activateTab(tab) {
+  tabs.forEach(t => {
+    t.setAttribute('aria-selected', 'false');
+    t.setAttribute('tabindex', '-1');
+  });
+  panels.forEach(p => { p.hidden = true; });
+  tab.setAttribute('aria-selected', 'true');
+  tab.setAttribute('tabindex', '0');
+  tab.focus();
+  document.getElementById(tab.getAttribute('aria-controls')).hidden = false;
+}
+
+tabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => activateTab(tab));
+  tab.addEventListener('keydown', (e) => {
+    let newIndex;
+    if (e.key === 'ArrowRight') newIndex = (index + 1) % tabs.length;
+    else if (e.key === 'ArrowLeft') newIndex = (index - 1 + tabs.length) % tabs.length;
+    else if (e.key === 'Home') newIndex = 0;
+    else if (e.key === 'End') newIndex = tabs.length - 1;
+    else return;
+    e.preventDefault();
+    activateTab(tabs[newIndex]);
+  });
+});
+  </script>
+
+  <script type="text/plain" id="snippet-b-html">
+<div class="tabs">
+  <div role="tablist" aria-label="Example tabs">
+    <button role="tab" id="tab-1" aria-selected="true" aria-controls="panel-1">Tab 1</button>
+    <button role="tab" id="tab-2" aria-selected="false" aria-controls="panel-2" tabindex="-1">Tab 2</button>
+    <button role="tab" id="tab-3" aria-selected="false" aria-controls="panel-3" tabindex="-1">Tab 3</button>
+  </div>
+  <div role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+    <p>Content for Tab 1.</p>
+  </div>
+  <div role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+    <p>Content for Tab 2.</p>
+  </div>
+  <div role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+    <p>Content for Tab 3.</p>
+  </div>
+</div>
+  </script>
+
+  <script type="text/plain" id="snippet-b-css">
+.tabs {
+  color: dimgray;
+}
+
+[role="tablist"] {
+  display: flex;
+  gap: 8px;
+}
+
+[role="tab"] {
+  display: flex;
+  color: whitesmoke;
+  background: dimgray;
+  border: 0;
+  border-bottom: 1.5px solid lightgray;
+  border-radius:  8px 8px 0 0;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  margin-bottom: -1.5px; 
+}
+
+[role="tab"][aria-selected="true"] {
+  color: inherit;
+  background: whitesmoke;
+  border: 1.5px solid lightgray;
+  border-bottom: 1.5px solid whitesmoke;
+  font-weight: bold;
+}
+
+[role="tabpanel"] {
+  padding: 16px;
+  background: whitesmoke;
+  border: 1.5px solid lightgray;
+  border-radius: 0 0 8px 8px;
+}
+  </script>
+
+  <script type="text/plain" id="snippet-b-js">
+const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+const panels = document.querySelectorAll('[role="tabpanel"]');
+
+function activateTab(tab) {
+  tabs.forEach(t => {
+    t.setAttribute('aria-selected', 'false');
+    t.setAttribute('tabindex', '-1');
+  });
+  panels.forEach(p => { p.hidden = true; });
+  tab.setAttribute('aria-selected', 'true');
+  tab.setAttribute('tabindex', '0');
+  document.getElementById(tab.getAttribute('aria-controls')).hidden = false;
+}
+
+function moveFocus(tab) {
+  tabs.forEach(t => t.setAttribute('tabindex', '-1'));
+  tab.setAttribute('tabindex', '0');
+  tab.focus();
+}
+
+tabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => activateTab(tab));
+  tab.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      activateTab(tab);
+      return;
+    }
+    let newIndex;
+    if (e.key === 'ArrowRight') newIndex = (index + 1) % tabs.length;
+    else if (e.key === 'ArrowLeft') newIndex = (index - 1 + tabs.length) % tabs.length;
+    else if (e.key === 'Home') newIndex = 0;
+    else if (e.key === 'End') newIndex = tabs.length - 1;
+    else return;
+    e.preventDefault();
+    moveFocus(tabs[newIndex]);
+  });
+});
+  </script>
+
+  <script src="common.js"></script>
+  <script src="component-page.js"></script>
+
+</body>
+</html>

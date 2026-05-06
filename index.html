@@ -8,71 +8,219 @@
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <!-- Logo-kuva tulee tähän -->
-      <div class="logo-name">
-        <span class="title">Selko Digital</span>
-        <span class="subtitle">HTML Library</span>
-      </div>
-    </div>
-  </header>
+  <site-header></site-header>
 
   <main class="landing-main">
-    <h1 class="page-title">Accessible HTML Components</h1>
+    <h1>Accessible HTML Components</h1>
+
+    <div class="filter-bar" role="group" aria-label="Filter by category">
+      <button class="tag-filter button" data-filter="all" aria-pressed="true">All</button>
+      <button class="tag-filter button tag--navigation" data-filter="navigation" aria-pressed="false">Navigation</button>
+      <button class="tag-filter button tag--function" data-filter="function" aria-pressed="false">Function/Input</button>
+      <button class="tag-filter button tag--presentation" data-filter="presentation" aria-pressed="false">Presentation</button>
+      <button class="tag-filter button tag--notification" data-filter="notification" aria-pressed="false">Notification</button>
+    </div>
 
     <div class="cards-grid">
 
       <!-- Combobox -->
-      <a href="combobox.html" class="component-card">
-        <div class="card-preview">
-          <!-- Komponenttikuva tulee tähän -->
+      <div class="component-card">
+        <div class="component-card-preview">
+          <img src="images/Combobox.svg" alt="">
         </div>
         <div class="card-content">
           <div class="card-heading">
-            <h2>Combobox</h2>
-            <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
+            <h2><a href="combobox.html">Combobox</a></h2>
           </div>
-          <p class="card-description">A combobox is an input widget that has an associated popup list of options.</p>
+          <p>A combobox is an input widget that has an associated popup list of options.</p>
+          <div class="tags">
+            <span class="tag tag--function">Function/Input</span>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- Accordion -->
-      <a href="#" class="component-card">
-        <div class="card-preview">
-          <!-- Komponenttikuva tulee tähän -->
+      <div class="component-card">
+        <div class="component-card-preview">
+          <img src="images/Accordions.svg" alt="">
         </div>
         <div class="card-content">
           <div class="card-heading">
-            <h2>Accordion</h2>
-            <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
+            <h2><a href="accordion.html">Accordion</a></h2>
           </div>
-          <p class="card-description">An accordion is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content.</p>
+          <p>An accordion allows users to expand and collapse sections of content as needed.</p>
+          <div class="tags">
+            <span class="tag tag--presentation">Presentation</span>
+          </div>
         </div>
-      </a>
+      </div>
+
+      <!-- Dialog -->
+      <div class="component-card">
+        <div class="component-card-preview">
+          <img src="images/Dialog.svg" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-heading">
+            <h2><a href="dialog.html">Dialog</a></h2>
+          </div>
+          <p>A dialog is a window overlaid on the page that interrupts the user's flow to request input or display important information.</p>
+          <div class="tags">
+            <span class="tag tag--notification">Notification</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="component-card">
+        <div class="component-card-preview">
+          <img src="images/Card.svg" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-heading">
+            <h2><a href="card.html">Card</a></h2>
+          </div>
+          <p>A card is a contained unit that groups related information and actions about a single subject.</p>
+          <div class="tags">
+            <span class="tag tag--presentation">Presentation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Group -->
+      <div class="component-card">
+        <div class="component-card-preview">
+          <img src="images/Input-group.svg" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-heading">
+            <h2><a href="input-group.html">Input Group</a></h2>
+          </div>
+          <p>An input group is a set of related form controls grouped together under a shared label.</p>
+          <div class="tags">
+            <span class="tag tag--function">Function/Input</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="component-card">
+        <div class="component-card-preview">
+          <img src="images/Tabs.svg" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-heading">
+            <h2><a href="tabs.html">Tabs</a></h2>
+          </div>
+          <p>Tabs organise content into multiple panels, of which only one is visible at a time.</p>
+          <div class="tags">
+            <span class="tag tag--navigation">Navigation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel -->
+      <div class="component-card">
+        <div class="component-card-preview">
+          <img src="images/Carousel.svg" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-heading">
+            <h2><a href="carousel.html">Carousel</a></h2>
+          </div>
+          <p>A carousel cycles through a sequence of content panels, displaying one at a time.</p>
+          <div class="tags">
+            <span class="tag tag--presentation">Presentation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stepper -->
+      <div class="component-card">
+        <div class="component-card-preview">
+          <img src="images/Stepper.svg" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-heading">
+            <h2><a href="stepper.html">Stepper</a></h2>
+          </div>
+          <p>A stepper guides users through a multi-step process by displaying all steps and indicating progress.</p>
+          <div class="tags">
+            <span class="tag tag--navigation">Navigation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="component-card">
+        <div class="component-card-preview">
+          <img src="images/Pagination.svg" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-heading">
+            <h2><a href="pagination.html">Pagination</a></h2>
+          </div>
+          <p>Pagination allows users to navigate between pages of content, one page at a time.</p>
+          <div class="tags">
+            <span class="tag tag--navigation">Navigation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tooltip -->
+      <div class="component-card">
+        <div class="component-card-preview">
+          <img src="images/Tooltip.svg" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-heading">
+            <h2><a href="tooltip.html">Tooltip</a></h2>
+          </div>
+          <p>A tooltip is a short text label that provides supplementary information about an element.</p>
+          <div class="tags">
+            <span class="tag tag--notification">Notification</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu -->
+      <div class="component-card">
+        <div class="component-card-preview">
+          <img src="images/Menu.svg" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-heading">
+            <h2><a href="menu.html">Menu</a></h2>
+          </div>
+          <p>A navigation menu lists the main sections of a website and lets users move between them.</p>
+          <div class="tags">
+            <span class="tag tag--navigation">Navigation</span>
+          </div>
+        </div>
+      </div>
 
       <!-- Breadcrumb -->
-      <a href="#" class="component-card">
-        <div class="card-preview">
-          <!-- Komponenttikuva tulee tähän -->
+      <div class="component-card">
+        <div class="component-card-preview">
+          <img src="images/Breadcrumbs.svg" alt="">
         </div>
         <div class="card-content">
           <div class="card-heading">
-            <h2>Breadcrumb</h2>
-            <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
+            <h2><a href="breadcrumb.html">Breadcrumb</a></h2>
           </div>
-          <p class="card-description">A breadcrumb trail consists of a list of links to the parent pages of the current page in hierarchical order.</p>
+          <p>A breadcrumb trail consists of a list of links to the parent pages of the current page in hierarchical order.</p>
+          <div class="tags">
+            <span class="tag tag--navigation">Navigation</span>
+          </div>
         </div>
-      </a>
+      </div>
 
     </div>
+
   </main>
+
+  <script src="common.js"></script>
+  <script src="filter.js"></script>
 
 </body>
 </html>

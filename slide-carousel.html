@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="breadcrumb-parent" content="carousel.html|Carousel">
+  <title>Slide Carousel – Selko Digital HTML Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <site-header></site-header>
+
+  <breadcrumb-bar></breadcrumb-bar>
+
+  <div class="page-inner">
+
+    <on-this-page></on-this-page>
+
+    <main class="page-content">
+
+      <div class="page-description">
+        <h1>Slide Carousel</h1>
+        <p>A slide carousel cycles through a sequence of content panels, displaying one at a time. Users navigate between slides using previous and next buttons or indicator dots.</p>
+        <p>Slide carousels can be used when one area of the page must showcase several related but independent items, such as featured products, testimonials, or images of a single object from different angles. They are less suitable for primary content, since slides that are not currently visible are easily overlooked.</p>
+      </div>
+
+      <section class="component-section">
+        <h2>Accessibility Features</h2>
+        <div class="feature-list-legend" aria-hidden="true">
+          <span class="required">= Required</span>
+          <span class="recommended">= Recommended</span>
+        </div>
+        <ul class="feature-list">
+          <li aria-description="Required">The carousel is wrapped in <span class="code">role="region"</span> with <span class="code">aria-roledescription="carousel"</span> and an <span class="code">aria-label</span>, so screen readers announce its purpose</li>
+          <li aria-description="Required">Each slide uses <span class="code">role="group"</span> with <span class="code">aria-roledescription="slide"</span> and <span class="code">aria-label="Slide N of M"</span> to communicate its position</li>
+          <li aria-description="Required">Inactive slides use <span class="code">aria-hidden="true"</span> and <span class="code">inert</span>, so they are removed from both the accessibility tree and the focus order</li>
+          <li aria-description="Required">Indicator buttons have <span class="code">aria-label="Slide N"</span> so their purpose is announced to screen readers</li>
+          <li aria-description="Required">The active indicator is marked with <span class="code">aria-current="true"</span></li>
+          <li aria-description="Recommended">The slides container has <span class="code">aria-live="polite"</span>, so screen readers announce the new slide's content when the user navigates without losing focus</li>
+          <li aria-description="Recommended">Auto-rotating carousels should provide a pause control, since automatic motion can interrupt the user and is difficult to follow with assistive technology</li>
+        </ul>
+      </section>
+
+      <section class="component-section">
+        <h2>Example</h2>
+        <div class="example-container" data-prefix="a"></div>
+      </section>
+
+      <section class="component-section">
+        <h2>Code Snippet</h2>
+        <code-editor prefix="a" tabs="html,css,js"></code-editor>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="text/plain" id="snippet-a-html">
+<div role="region" aria-roledescription="carousel" aria-label="Slide carousel" class="carousel">
+  <div class="carousel-controls">
+    <button aria-label="Previous slide">◀</button>
+    <ol class="carousel-indicators">
+      <li><button aria-label="Slide 1" aria-current="true"></button></li>
+      <li><button aria-label="Slide 2"></button></li>
+      <li><button aria-label="Slide 3"></button></li>
+    </ol>
+    <button aria-label="Next slide">▶</button>
+  </div>
+  <div class="carousel-slides" aria-live="polite">
+    <div role="group" aria-roledescription="slide" aria-label="Slide 1 of 3" class="carousel-slide">
+      <h3>Slide 1</h3>
+      <p>Content for the first slide.</p>
+    </div>
+    <div role="group" aria-roledescription="slide" aria-label="Slide 2 of 3" class="carousel-slide" aria-hidden="true" inert>
+      <h3>Slide 2</h3>
+      <p>Content for the second slide.</p>
+    </div>
+    <div role="group" aria-roledescription="slide" aria-label="Slide 3 of 3" class="carousel-slide" aria-hidden="true" inert>
+      <h3>Slide 3</h3>
+      <p>Content for the third slide.</p>
+    </div>
+  </div>
+</div>
+  </script>
+
+  <script type="text/plain" id="snippet-a-css">
+.carousel {
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid lightgray;
+  border-radius: 8px;
+  overflow: hidden;
+  color: dimgray;
+}
+
+.carousel-controls {
+  order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 16px;
+  border-top: 1.5px solid lightgray;
+}
+
+.carousel-slides {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  padding: 24px;
+  background: whitesmoke;
+}
+
+.carousel-slide h3 {
+  margin: 0 0 8px;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.carousel-controls > button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 1.5px solid;
+  border-radius: 4px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.carousel-controls > button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.carousel-indicators {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+}
+
+.carousel-indicators button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  color: inherit;
+  border: 1.5px solid;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.carousel-indicators button[aria-current="true"] {
+  background: dimgray;
+}
+  </script>
+
+  <script type="text/plain" id="snippet-a-js">
+const slidesContainer = document.querySelector('.carousel-slides');
+const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+const indicators = Array.from(document.querySelectorAll('.carousel-indicators button'));
+const prevBtn = document.querySelector('[aria-label="Previous slide"]');
+const nextBtn = document.querySelector('[aria-label="Next slide"]');
+let currentSlide = 0;
+
+function goToSlide(index) {
+  currentSlide = index;
+  slidesContainer.style.transform = 'translateX(-' + (index * 100) + '%)';
+  slides.forEach((slide, i) => {
+    if (i === index) {
+      slide.removeAttribute('aria-hidden');
+      slide.removeAttribute('inert');
+    } else {
+      slide.setAttribute('aria-hidden', 'true');
+      slide.setAttribute('inert', '');
+    }
+  });
+  indicators.forEach((btn, i) => {
+    if (i === index) {
+      btn.setAttribute('aria-current', 'true');
+    } else {
+      btn.removeAttribute('aria-current');
+    }
+  });
+}
+
+indicators.forEach((btn, i) => {
+  btn.addEventListener('click', () => goToSlide(i));
+});
+prevBtn.addEventListener('click', () => goToSlide((currentSlide - 1 + slides.length) % slides.length));
+nextBtn.addEventListener('click', () => goToSlide((currentSlide + 1) % slides.length));
+  </script>
+
+  <script src="common.js"></script>
+  <script src="component-page.js"></script>
+
+</body>
+</html>

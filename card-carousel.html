@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="breadcrumb-parent" content="carousel.html|Carousel">
+  <title>Card Carousel – Selko Digital HTML Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <site-header></site-header>
+
+  <breadcrumb-bar></breadcrumb-bar>
+
+  <div class="page-inner">
+
+    <on-this-page></on-this-page>
+
+    <main class="page-content">
+
+      <div class="page-description">
+        <h1>Card Carousel</h1>
+        <p>A card carousel displays several cards side by side and scrolls horizontally as the user moves focus between them.</p>
+        <p>Card carousels can be used when several similar items can be browsed at a glance, such as articles, products, or related content. They are less suitable when each item needs the user's full attention or when the items are not easily comparable.</p>
+      </div>
+
+      <section class="component-section">
+        <h2>Accessibility Features</h2>
+        <div class="feature-list-legend" aria-hidden="true">
+          <span class="required">= Required</span>
+          <span class="recommended">= Recommended</span>
+        </div>
+        <ul class="feature-list">
+          <li aria-description="Required">The carousel is wrapped in <span class="code">role="region"</span> with <span class="code">aria-roledescription="carousel"</span> and an <span class="code">aria-label</span>, so screen readers announce its purpose</li>
+          <li aria-description="Required">Cards include focusable interactive elements (links or buttons), so keyboard and screen reader users can reach every card with <span class="kbd">Tab</span></li>
+          <li aria-description="Required">The browser scrolls the focused card into view automatically when an off-screen card receives focus — no JavaScript is needed for this behaviour</li>
+          <li aria-description="Recommended">A skip link before the carousel lets keyboard users bypass all cards and jump directly to the content that follows</li>
+          <li aria-description="Recommended"><span class="code">scroll-snap-type</span> aligns cards to a consistent position after scrolling</li>
+        </ul>
+      </section>
+
+      <section class="component-section">
+        <h2>Example</h2>
+        <div class="example-container" data-prefix="a"></div>
+      </section>
+
+      <section class="component-section">
+        <h2>Code Snippet</h2>
+        <code-editor prefix="a" tabs="html,css"></code-editor>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="text/plain" id="snippet-a-html">  
+<div role="region" aria-roledescription="carousel" aria-label="Card carousel" class="card-carousel">
+  <a href="#code-snippet" class="skip-carousel">Skip carousel</a>
+  <ol class="card-carousel-list">
+    <li>
+      <div class="carousel-card">
+        <div class="carousel-card-image"></div>
+        <a href="#">Article 1</a>
+      </div>
+    </li>
+    <li>
+      <div class="carousel-card">
+        <div class="carousel-card-image"></div>
+        <a href="#">Article 2</a>
+      </div>
+    </li>
+    <li>
+      <div class="carousel-card">
+        <div class="carousel-card-image"></div>
+        <a href="#">Article 3</a>
+      </div>
+    </li>
+    <li>
+      <div class="carousel-card">
+        <div class="carousel-card-image"></div>
+        <a href="#">Article 4</a>
+      </div>
+    </li>
+    <li>
+      <div class="carousel-card">
+        <div class="carousel-card-image"></div>
+        <a href="#">Article 5</a>
+      </div>
+    </li>
+  </ol>
+</div>
+  </script>
+
+  <script type="text/plain" id="snippet-a-css">
+.card-carousel {
+  position: relative;
+  color: dimgray;
+}
+
+.skip-carousel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 8px 16px;
+  background: whitesmoke;
+  border: 1.5px solid;
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.skip-carousel:not(:focus) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.card-carousel-list {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  padding-bottom: 24px;
+  margin: 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: dimgray rgb(0 0 0 / 0);
+}
+
+.card-carousel-list li {
+  flex: 0 0 200px;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 560px) {
+  .card-carousel-list li {
+    flex: 0 0 100%;
+  }
+}
+.carousel-card {
+  width: 100%;
+  background: whitesmoke;
+  border: 1.5px solid lightgray;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.carousel-card-image {
+  height: 120px;
+  background: lightgray;
+}
+
+.carousel-card a {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.carousel-card a::after {
+  content: "▶";
+}
+  </script>
+
+  <script src="common.js"></script>
+  <script src="component-page.js"></script>
+
+</body>
+</html>
