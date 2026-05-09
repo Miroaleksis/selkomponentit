@@ -1,14 +1,14 @@
-<svg width="260" height="32" viewBox="0 0 260 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0 8C0 3.58172 3.58172 0 8 0H76V32H8C3.58172 32 0 28.4183 0 24V8Z" fill="#D3D3D3"/>
-<line x1="16" y1="15" x2="68" y2="15" stroke="#696969" stroke-width="2"/>
-<path d="M92 16L76 32L76 -6.99382e-07L92 16Z" fill="#D3D3D3"/>
-<path d="M84 0L100 1.90798e-07L100 16L84 0Z" fill="#D3D3D3"/>
-<path d="M100 16V32L84 32L100 16Z" fill="#D3D3D3"/>
-<rect width="60" height="32" transform="translate(100)" fill="#D3D3D3"/>
-<line x1="108" y1="15" x2="152" y2="15" stroke="#696969" stroke-width="2"/>
-<path d="M176 16L160 32L160 -6.99382e-07L176 16Z" fill="#D3D3D3"/>
-<path d="M168 0L184 1.90798e-07L184 16L168 0Z" fill="#696969"/>
-<path d="M184 16V32L168 32L184 16Z" fill="#696969"/>
-<path d="M184 0H252C256.418 0 260 3.58172 260 8V24C260 28.4183 256.418 32 252 32H184V0Z" fill="#696969"/>
-<line x1="192" y1="15" x2="244" y2="15" stroke="#D3D3D3" stroke-width="2"/>
+<svg width="260" height="34" viewBox="0 0 260 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 8C0 3.58172 3.58172 0 8 0H76V34H8C3.58172 34 0 30.4183 0 26V8Z" fill="#D3D3D3"/>
+<rect width="52" height="2" transform="translate(16 16)" fill="#696969"/>
+<path d="M92 17L76 34L76 -6.99382e-07L92 17Z" fill="#D3D3D3"/>
+<path d="M84 0L100 1.90798e-07L100 17L84 0Z" fill="#D3D3D3"/>
+<path d="M100 17V34L84 34L100 17Z" fill="#D3D3D3"/>
+<rect width="60" height="34" transform="translate(100)" fill="#D3D3D3"/>
+<rect width="44" height="2" transform="translate(108 16)" fill="#696969"/>
+<path d="M176 17L160 34L160 -6.99382e-07L176 17Z" fill="#D3D3D3"/>
+<path d="M168 0L184 1.90798e-07L184 17L168 0Z" fill="#696969"/>
+<path d="M184 17V34L168 34L184 17Z" fill="#696969"/>
+<path d="M184 0H252C256.418 0 260 3.58172 260 8V26C260 30.4183 256.418 34 252 34H184V0Z" fill="#696969"/>
+<rect width="52" height="2" transform="translate(192 16)" fill="#D3D3D3"/>
 </svg>

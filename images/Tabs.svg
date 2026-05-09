@@ -1,9 +1,9 @@
-<svg width="260" height="104" viewBox="0 0 260 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="260" height="110" viewBox="0 0 260 110" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 8C0 3.58172 3.58172 0 8 0H68C72.4183 0 76 3.58172 76 8V24H0V8Z" fill="#D3D3D3"/>
 <path d="M92 12C92 7.58172 95.5817 4 100 4H160C164.418 4 168 7.58172 168 12V24H92V12Z" fill="#696969"/>
 <path d="M184 12C184 7.58172 187.582 4 192 4H252C256.418 4 260 7.58172 260 12V24H184V12Z" fill="#696969"/>
-<path d="M0 24H260V96C260 100.418 256.418 104 252 104H8C3.58172 104 0 100.418 0 96V24Z" fill="#D3D3D3"/>
-<line x1="16" y1="47" x2="163" y2="47" stroke="#696969" stroke-width="2"/>
-<line x1="16" y1="63" x2="93" y2="63" stroke="#696969" stroke-width="2"/>
-<line x1="16" y1="79" x2="125" y2="79" stroke="#696969" stroke-width="2"/>
+<path d="M0 24H260V102C260 106.418 256.418 110 252 110H8C3.58172 110 0 106.418 0 102V24Z" fill="#D3D3D3"/>
+<rect width="148" height="2" transform="translate(16 48)" fill="#696969"/>
+<rect width="76" height="2" transform="translate(16 66)" fill="#696969"/>
+<rect width="104" height="2" transform="translate(16 84)" fill="#696969"/>
 </svg>

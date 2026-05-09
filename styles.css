@@ -230,9 +230,9 @@ h3 {
 }
 
 .tag-filter[aria-pressed="true"] {
-  background: var(--black);
+  background: var(--dark-gray);
   color: var(--white);
-  border-color: var(--black);
+  border-color: var(--dark-gray);
 }
 
 .tags {
@@ -311,8 +311,8 @@ h3 {
   width: 100%;
 }
 
-.variant-card-preview {
-  width: calc(100% - 128px);
+variant-card-preview {
+  width: 240px;
 }
 
 .component-card-preview img,
@@ -329,7 +329,7 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: calc(100% - 48px);
+  width: 100%;
 }
 
 .component-card .card-content {
@@ -514,10 +514,11 @@ code-editor {
   min-width: 0;
   overflow: hidden;
   margin-bottom: 16px;
+  background-color: var(--black);
 }
 
 .code-toolbar {
-  background-color: var(--black);
+  background-color: rgb(0, 0, 0, 0.1);
   display: flex;
   align-items: stretch;
   border-radius: 16px 16px 0 0;
@@ -555,7 +556,6 @@ code-editor {
 }
 
 .code-panel {
-  background-color: #2d2d2d;
   padding: 24px;
   overflow-x: auto;
   border-radius: 0 0 16px 16px;

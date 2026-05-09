@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Input – Input Field – Selko Digital HTML Library</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="breadcrumb-parent" content="input-field.html|Input Field">
+</head>
+<body>
+
+  <site-header></site-header>
+
+  <breadcrumb-bar></breadcrumb-bar>
+
+  <div class="page-inner">
+
+    <on-this-page></on-this-page>
+
+    <main class="page-content">
+
+      <div class="page-description">
+        <h1>Text Input</h1>
+        <p>A text input is a single-line form control that allows users to enter freeform text, such as a name, email address or search query.</p>
+        <p>The native <span class="code">&lt;input&gt;</span> element should always be used, as it provides built-in keyboard support, screen reader announcements and mobile keyboard optimisation. The <span class="code">type</span> attribute should reflect the expected input — for example <span class="code">type="email"</span> or <span class="code">type="search"</span> — to trigger the appropriate virtual keyboard on mobile devices.</p>
+      </div>
+
+      <section class="component-section">
+        <h2>Accessibility Features</h2>
+        <div class="feature-list-legend" aria-hidden="true">
+          <span class="required">= Required</span>
+          <span class="recommended">= Recommended</span>
+        </div>
+        <ul class="feature-list">
+          <li aria-description="Required">Every input must have a visible <span class="code">&lt;label&gt;</span> associated via nesting or matching <span class="code">for</span> and <span class="code">id</span> attributes</li>
+          <li aria-description="Required">The help texts, error messages and prefixes/suffixes must be associated with the input using the <span class="code">aria-describedby</span> attribute</li>
+          <li aria-description="Required">Use <span class="code">autocomplete</span> to help users fill in common fields such as name, email and address</li>
+          <li aria-description="Required">Placeholder text must not be used as a substitute for a label — it disappears on input and has low contrast by default</li>
+          <li aria-description="Recommended">The required state should be incicated clearly with a text. If a symbol like an asterisk (*) is used, it should be explained at the top of the form.</li>
+        </ul>
+      </section>
+
+      <section class="component-section">
+        <h2>Example</h2>
+        <div class="example-container" data-prefix="a"></div>
+      </section>
+
+      <section class="component-section">
+        <h2>Code Snippet</h2>
+        <code-editor prefix="a" tabs="html,css"></code-editor>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="text/plain" id="snippet-a-html">
+<div class="input-wrapper">
+  <label for="website-field">Website (Required)</label>
+  <div class="input-area">
+    <span id="subdomain" class="input-prefix" aria-hidden="true">www.</span>
+    <input type="text" id="website-field" placeholder="yourwebsite.com" autocomplete="url" aria-describedby="website-hint subdomain" required>
+  </div>
+  <span id="website-hint" class="help-text">Enter your website name without the subdomain</span>
+</div>
+  </script>
+
+  <script type="text/plain" id="snippet-a-css">
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: dimgray;
+}
+
+label {
+  font-weight: 600;
+}
+
+.input-area {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+input {
+  display: inline-flex;
+  padding: 8px;
+  background: whitesmoke;
+  border: 1.5px solid;
+  border-radius: 4px;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  min-width: 0;
+}
+
+.input-prefix {
+  display: inline-flex;
+  padding: 8px 0 8px 0;
+  user-select: none;
+}
+
+.help-text {
+  font-size: 14px;
+}
+
+input::placeholder {
+  color: gray;
+  font-style: italic;
+}
+  </script>
+
+  <script src="common.js"></script>
+  <script src="component-page.js"></script>
+
+</body>
+</html>
