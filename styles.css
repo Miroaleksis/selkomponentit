@@ -4,6 +4,7 @@
   --black: #3f3f3f;
   --dark-gray: dimgray;
   --semi-gray: #8e8e8e;
+  --medium-gray: #B3B3B3;
   --gray: lightgray;
   --light-gray: #ebebeb;
   --extra-light-gray: whitesmoke;
@@ -199,7 +200,7 @@ h3 {
   font-family: inherit;
   font-size: inherit;
   background: none;
-  border: 1.5px solid var(--semi-gray);
+  border: 1.5px solid var(--medium-gray);
   color: inherit;
   padding: 8px 16px;
   border-radius: 8px;

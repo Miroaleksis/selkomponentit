@@ -3,7 +3,7 @@
 <path d="M92 12C92 7.58172 95.5817 4 100 4H160C164.418 4 168 7.58172 168 12V24H92V12Z" fill="#696969"/>
 <path d="M184 12C184 7.58172 187.582 4 192 4H252C256.418 4 260 7.58172 260 12V24H184V12Z" fill="#696969"/>
 <path d="M0 24H260V102C260 106.418 256.418 110 252 110H8C3.58172 110 0 106.418 0 102V24Z" fill="#D3D3D3"/>
-<rect width="148" height="2" transform="translate(16 48)" fill="#696969"/>
-<rect width="76" height="2" transform="translate(16 66)" fill="#696969"/>
-<rect width="104" height="2" transform="translate(16 84)" fill="#696969"/>
+<rect width="148" height="2" transform="translate(16 48)" fill="#B3B3B3"/>
+<rect width="58" height="2" transform="translate(16 66)" fill="#B3B3B3"/>
+<rect width="104" height="2" transform="translate(16 84)" fill="#B3B3B3"/>
 </svg>

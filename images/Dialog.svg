@@ -1,9 +1,9 @@
 <svg width="276" height="131" viewBox="0 0 276 131" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="276" height="131" rx="8" fill="#D3D3D3"/>
 <path d="M41.2 86.5L37.4 80.1L30.2 78.5L30.9 71.1L26 65.5L30.9 59.9L30.2 52.5L37.4 50.9L41.2 44.5L48 47.4L54.8 44.5L58.6 50.9L65.8 52.5L65.1 59.9L70 65.5L65.1 71.1L65.8 78.5L58.6 80.1L54.8 86.5L48 83.6L41.2 86.5ZM49.426 74.924C49.8087 74.5427 50 74.068 50 73.5C50 72.932 49.808 72.4573 49.424 72.076C49.04 71.6947 48.5653 71.5027 48 71.5C47.4347 71.4973 46.96 71.6893 46.576 72.076C46.192 72.4627 46 72.9373 46 73.5C46 74.0627 46.192 74.538 46.576 74.926C46.96 75.314 47.4347 75.5053 48 75.5C48.5653 75.4947 49.0407 75.3027 49.426 74.924ZM46 67.5H50V55.5H46V67.5Z" fill="#696969"/>
-<rect width="148" height="2" transform="translate(104 24)" fill="#696969"/>
-<rect width="76" height="2" transform="translate(104 42)" fill="#696969"/>
-<rect width="104" height="2" transform="translate(104 60)" fill="#696969"/>
-<rect x="104" y="86" width="70" height="21" rx="8" fill="#696969"/>
-<rect x="183" y="87" width="68" height="19" rx="7" stroke="#696969" stroke-width="2"/>
+<rect width="148" height="2" transform="translate(104 24)" fill="#B3B3B3"/>
+<rect width="58" height="2" transform="translate(104 42)" fill="#B3B3B3"/>
+<rect width="104" height="2" transform="translate(104 60)" fill="#B3B3B3"/>
+<rect x="104" y="86" width="70" height="20" rx="8" fill="#696969"/>
+<rect x="182" y="86" width="70" height="21" rx="8" fill="#B3B3B3"/>
 </svg>
