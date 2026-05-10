@@ -6,9 +6,9 @@
 <rect width="261" height="32" transform="translate(0 40)" fill="#696969"/>
 <path d="M235 58L241 52L247 58L245.6 59.4L241 54.8L236.4 59.4L235 58Z" fill="#D3D3D3"/>
 <rect width="261" height="70" transform="translate(0 72)" fill="#D3D3D3"/>
-<rect width="148" height="2" transform="translate(16 88)" fill="#B3B3B3"/>
-<rect width="58" height="2" transform="translate(16 106)" fill="#B3B3B3"/>
-<rect width="104" height="2" transform="translate(16 124)" fill="#B3B3B3"/>
+<rect width="148" height="2" transform="translate(16 88)" fill="#A9A9A9"/>
+<rect width="58" height="2" transform="translate(16 106)" fill="#A9A9A9"/>
+<rect width="104" height="2" transform="translate(16 124)" fill="#A9A9A9"/>
 </g>
 <defs>
 <clipPath id="clip0_2051_415">

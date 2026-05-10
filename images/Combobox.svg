@@ -3,11 +3,11 @@
 <rect width="220" height="32" fill="#696969"/>
 <path d="M194 18L200 12L206 18L204.6 19.4L200 14.8L195.4 19.4L194 18Z" fill="#D3D3D3"/>
 <path d="M0 32H220V144C220 148.418 216.418 152 212 152H8.00001C3.58173 152 0 148.418 0 144V32Z" fill="#D3D3D3"/>
-<rect width="188" height="2" transform="translate(16 46)" fill="#B3B3B3"/>
-<rect width="188" height="2" transform="translate(16 76)" fill="#B3B3B3"/>
-<rect width="220" height="30" transform="translate(0 92)" fill="#B3B3B3"/>
+<rect width="188" height="2" transform="translate(16 46)" fill="#A9A9A9"/>
+<rect width="188" height="2" transform="translate(16 76)" fill="#A9A9A9"/>
+<rect width="220" height="30" transform="translate(0 92)" fill="#A9A9A9"/>
 <rect width="188" height="2" transform="translate(16 106)" fill="#D3D3D3"/>
-<rect width="188" height="2" transform="translate(16 136)" fill="#B3B3B3"/>
+<rect width="188" height="2" transform="translate(16 136)" fill="#A9A9A9"/>
 </g>
 <defs>
 <clipPath id="clip0_2051_387">

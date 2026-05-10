@@ -31,11 +31,12 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">Each page must have exactly one <span class="code">&lt;main&gt;</span> element</li>
-          <li aria-description="Required">When the same landmark type appears more than once — for example two <span class="code">&lt;nav&gt;</span> elements — each must have a unique accessible name via <span class="code">aria-label</span> or <span class="code">aria-labelledby</span></li>
-          <li aria-description="Required">A <span class="code">&lt;section&gt;</span> element only becomes a landmark region when it has an accessible name; without one it is treated as a generic container</li>
-          <li aria-description="Recommended">All visible content should be contained within a landmark region so nothing is left outside the landmark structure</li>
-          <li aria-description="Recommended">Use as few landmarks as needed to describe the page structure — excessive landmarks reduce their usefulness for screen reader navigation</li>
+          <li aria-description="Recommended"><span class="code">&lt;header&gt;</span> defines the banner region and typically contains the site name and global navigation</li>
+          <li aria-description="Recommended"><span class="code">&lt;nav&gt;</span> defines a navigation landmark. When multiple <span class="code">&lt;nav&gt;</span> elements are present, each should have a unique accessible name via <span class="code">aria-label</span> or <span class="code">aria-labelledby</span>.</li>
+          <li aria-description="Recommended"><span class="code">&lt;main&gt;</span> defines the primary content of the page. Each page should have only one <span class="code">&lt;main&gt;</span> element.</li>
+          <li aria-description="Recommended"><span class="code">&lt;aside&gt;</span> defines complementary content that supports but is not essential to the main content</li>
+          <li aria-description="Recommended"><span class="code">&lt;footer&gt;</span> defines the contentinfo region and typically contains copyright information and secondary links</li>
+          <li aria-description="Recommended"><span class="code">&lt;section&gt;</span> becomes a region landmark only when it has an accessible name via <span class="code">aria-label</span> or <span class="code">aria-labelledby</span>. Without a name it is treated as a generic container.</li>
         </ul>
       </section>
 
@@ -71,14 +72,15 @@
   </header>
   <div class="page-body">
     <main>
-      <h1>Page title</h1>
+      <h4>Page title</h4>
       <p>Main content area.</p>
     </main>
     <aside aria-label="Related links">
-      <h2>Related</h2>
+      <h4>Related</h4>
       <ul>
         <li><a href="#">Article 1</a></li>
         <li><a href="#">Article 2</a></li>
+        <li><a href="#">Article 3</a></li>
       </ul>
     </aside>
   </div>
@@ -97,18 +99,24 @@
   color: dimgray;
 }
 
-header, footer {
-  background: #e0e0e0;
-  border-radius: 6px;
-  padding: 10px 14px;
+header, footer, aside {
+  background: whitesmoke;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding: 16px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+}
+
+aside {
+  flex-direction: column;
+  gap: 16px;
+  width: 140px;
 }
 
 .logo {
   font-weight: 600;
-  color: dimgray;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -118,8 +126,7 @@ nav {
 }
 
 nav a, aside a {
-  color: dimgray;
-  text-decoration: underline;
+  color: inherit;
 }
 
 .page-body {
@@ -129,26 +136,8 @@ nav a, aside a {
 
 main {
   flex: 1;
-  background: #ebebeb;
   border-radius: 6px;
   padding: 14px;
-}
-
-main h1 {
-  font-size: 16px;
-  margin-bottom: 6px;
-}
-
-aside {
-  width: 140px;
-  background: #e0e0e0;
-  border-radius: 6px;
-  padding: 14px;
-}
-
-aside h2 {
-  font-size: 13px;
-  margin-bottom: 8px;
 }
 
 aside ul {
@@ -164,10 +153,10 @@ footer {
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-<section aria-label="Latest news">
-  <h2>Latest news</h2>
+<section aria-labelledby="news-heading">
+  <h3 id="news-heading">Latest news</h3>
   <article>
-    <h3>Article title</h3>
+    <h4>Article title</h4>
     <p>Article summary goes here. Without the aria-label above, this section would not be exposed as a landmark region to screen readers.</p>
   </article>
 </section>
@@ -182,25 +171,14 @@ section {
   color: dimgray;
 }
 
-section h2 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #3f3f3f;
-  padding-bottom: 8px;
-  border-bottom: 1.5px solid lightgray;
-}
-
 article {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-}
-
-article h3 {
-  font-size: 15px;
-  font-weight: 600;
-  font-style: normal;
-  color: #3f3f3f;
+  padding: 16px;
+  border-radius: 8px;
+  gap: 8px;
+  background: whitesmoke;
+  border: 1.5px solid lightgray;
 }
   </script>
 
