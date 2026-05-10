@@ -4,16 +4,35 @@ class SiteHeader extends HTMLElement {
     this.innerHTML = `
       <header class="site-header">
         <div class="header-inner">
-          <div class="site-logo">
-            <img src="images/Selko-mark-white.svg" alt="">
+          <a href="index.html" class="site-logo">
+            <img src="images/Selko-mark-white.svg" alt="Selko Digital HTML Library – Home">
             <div class="logo-name">
               <span class="title">Selko Digital</span>
               <span class="subtitle">HTML Library</span>
             </div>
-          </div>
+          </a>
+          <button class="nav-toggle" aria-label="Main menu" aria-expanded="false" aria-controls="site-nav"></button>
+          <nav id="site-nav" class="site-nav" aria-label="Main menu">
+            <a href="index.html">Components</a>
+            <a href="info.html">Info</a>
+          </nav>
         </div>
       </header>
     `;
+
+    const path = window.location.pathname;
+    this.querySelectorAll('.site-nav a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (path.endsWith(href) || (href === 'index.html' && (path.endsWith('/') || path === '/'))) {
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+
+    const toggle = this.querySelector('.nav-toggle');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+    });
   }
 }
 customElements.define('site-header', SiteHeader);
@@ -152,7 +171,7 @@ class BreadcrumbBar extends HTMLElement {
       return li;
     }
 
-    trail.appendChild(createItem('Home', 'index.html'));
+    trail.appendChild(createItem('Components', 'index.html'));
 
     if (parentMeta) {
       const [url, label] = parentMeta.content.split('|');

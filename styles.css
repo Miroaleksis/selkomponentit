@@ -141,6 +141,10 @@ h3 {
   margin-top: 8px;
 }
 
+a {
+  color: var(--blue);
+}
+
 /* ── Header ─────────────────────────────── */
 
 .site-header {
@@ -150,9 +154,9 @@ h3 {
 .site-header .header-inner {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 16px 48px;
+  padding: 0 48px;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
 }
 
 .site-logo {
@@ -160,6 +164,8 @@ h3 {
   align-items: center;
   gap: 4px;
   margin-left: -8px;
+  text-decoration: none;
+  padding: 8px 0;
 }
 
 .site-logo img {
@@ -174,12 +180,70 @@ h3 {
 }
 
 .site-header .logo-name .title {
-  font-size: 20px;
   font-weight: 700;
 }
 
 .site-header .logo-name .subtitle {
-  font-weight: 400;
+  font-size: 14px;
+}
+
+.nav-toggle {
+  display: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-toggle::before {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  content: 'menu' / '';
+  color: var(--white);
+  font-size: 24px;
+}
+
+.nav-toggle[aria-expanded="true"]::before {
+  content: 'close' / '';
+}
+
+.site-nav {
+  display: flex;
+}
+
+.site-nav a {
+  color: var(--white);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  text-underline-offset: 4px;
+  padding: 8px 16px;
+}
+
+.site-nav a:hover {
+  text-decoration: underline;
+  background: var(--dark-gray);
+}
+
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+  background: var(--dark-gray);
+}
+
+/* ── Info page ───────────────────────────── */
+
+.info-steps {
+  padding-left: 1.2em;
 }
 
 /* ── Main ────────────────────────────────── */
@@ -660,6 +724,40 @@ on-this-page {
 }
 
 @media (max-width: 560px) {
+  .site-header .header-inner {
+    flex-wrap: wrap;
+    padding: 0 24px;
+    position: relative;
+  }
+
+  .site-logo {
+    padding: 12px 0;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    border-top: 1.5px solid var(--dark-gray);
+  }
+
+  .site-nav a {
+    padding: 12px 0;
+  }
+
+  .site-nav a:hover,
+  .site-nav a[aria-current="page"] {
+    background: none;
+  }
+
+  .nav-toggle[aria-expanded="true"] ~ .site-nav {
+    display: flex;
+  }
+
   .copy-btn [aria-live] {
     position: absolute;
     width: 1px;
@@ -673,10 +771,6 @@ on-this-page {
   .landing-main {
     padding: 64px 24px 48px;
     gap: 40px;
-  }
-
-  .site-header .header-inner {
-    padding: 16px 24px;
   }
 
   .landing-main h1,
