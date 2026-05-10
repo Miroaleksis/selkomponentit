@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table – Selko Digital HTML Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <site-header></site-header>
+
+  <breadcrumb-bar></breadcrumb-bar>
+
+  <div class="page-inner">
+
+    <on-this-page></on-this-page>
+
+    <main class="page-content">
+
+      <div class="page-description">
+        <h1>Table</h1>
+        <p>A table organises data into rows and columns, making it easy to scan and compare information. Tables should only be used for tabular data — not for layout purposes.</p>
+        <p>Interactive tables extend the basic structure with sorting and expandable rows, allowing users to control how data is presented and revealed.</p>
+      </div>
+
+      <section class="component-section">
+        <h2>Accessibility Features</h2>
+        <div class="feature-list-legend" aria-hidden="true">
+          <span class="required">= Required</span>
+          <span class="recommended">= Recommended</span>
+        </div>
+        <ul class="feature-list">
+          <li aria-description="Required"><span class="code">&lt;caption&gt;</span> provides a visible title for the table and is announced by screen readers before the table content</li>
+          <li aria-description="Required"><span class="code">scope="col"</span> on <span class="code">&lt;th&gt;</span> elements identifies them as column headers</li>
+          <li aria-description="Required"><span class="code">aria-sort="ascending|descending|none"</span> on a sortable column header communicates the current sort direction to screen readers</li>
+          <li aria-description="Required">Sort controls use a <span class="code">&lt;button&gt;</span> inside <span class="code">&lt;th&gt;</span> so they are reachable by keyboard</li>
+          <li aria-description="Required"><span class="code">aria-expanded</span> and <span class="code">aria-controls</span> on expand buttons communicate the state and target of the detail row</li>
+          <li aria-description="Recommended">Sort direction icons are decorative and hidden from assistive technology — the <span class="code">aria-sort</span> attribute conveys the same information</li>
+        </ul>
+      </section>
+
+      <section class="component-section">
+        <h2>Sortable Table</h2>
+        <h3>Example</h3>
+        <div class="example-container" data-prefix="a"></div>
+        <h3>Code Snippet</h3>
+        <code-editor prefix="a" tabs="html,css,js"></code-editor>
+      </section>
+
+      <section class="component-section">
+        <h2>Expandable Rows</h2>
+        <h3>Example</h3>
+        <div class="example-container" data-prefix="b"></div>
+        <h3>Code Snippet</h3>
+        <code-editor prefix="b" tabs="html,css,js"></code-editor>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="text/plain" id="snippet-a-html">
+<table>
+  <caption>Products</caption>
+  <thead>
+    <tr>
+      <th scope="col" aria-sort="none">
+        <button type="button">Name</button>
+      </th>
+      <th scope="col" aria-sort="none">
+        <button type="button">Category</button>
+      </th>
+      <th scope="col" aria-sort="none">
+        <button type="button">Price (€)</button>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Ergonomic Chair</td><td>Furniture</td><td>450</td></tr>
+    <tr><td>Standing Desk</td><td>Furniture</td><td>890</td></tr>
+    <tr><td>Monitor 4K</td><td>Electronics</td><td>620</td></tr>
+    <tr><td>Wireless Keyboard</td><td>Electronics</td><td>129</td></tr>
+    <tr><td>Cable Organiser</td><td>Accessories</td><td>24</td></tr>
+  </tbody>
+</table>
+  </script>
+
+  <script type="text/plain" id="snippet-a-css">
+table {
+  width: 100%;
+  color: dimgray;
+  background: whitesmoke;
+}
+
+caption {
+  background: dimgray;
+  color: whitesmoke;
+  text-align: left;
+  font-weight: bold;
+}
+
+table, th, td {
+  border-collapse: collapse;
+  border: 1.5px solid lightgray;
+}
+
+caption, td, th button {
+  padding: 8px 16px;
+}
+
+th {
+  background: lightgray;
+}
+
+th button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: bold;
+  width: -webkit-fill-available;
+  border-style: none;
+  color: inherit;
+  background: none;
+}
+
+th[aria-sort="ascending"] button,
+th[aria-sort="descending"] button {
+  background: rgb(0 0 0 / 0.1);
+}
+
+th[aria-sort] button::after {
+  content: '⬍' / '';
+}
+
+th[aria-sort="ascending"] button::after  { content: '⬆' / '';}
+th[aria-sort="descending"] button::after { content: '⬇' / '';}
+  </script>
+
+  <script type="text/plain" id="snippet-a-js">
+const table = document.querySelector('table');
+const headers = table.querySelectorAll('th[aria-sort]');
+
+headers.forEach(th => {
+  th.querySelector('button').addEventListener('click', () => {
+    const col = [...th.parentElement.children].indexOf(th);
+    const asc = th.getAttribute('aria-sort') !== 'ascending';
+
+    headers.forEach(h => h.setAttribute('aria-sort', 'none'));
+    th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+
+    const tbody = table.querySelector('tbody');
+    const rows = [...tbody.querySelectorAll('tr')];
+
+    rows.sort((a, b) => {
+      const aVal = a.cells[col].textContent.trim();
+      const bVal = b.cells[col].textContent.trim();
+      const isNum = !isNaN(aVal) && !isNaN(bVal);
+      return asc
+        ? isNum ? aVal - bVal : aVal.localeCompare(bVal)
+        : isNum ? bVal - aVal : bVal.localeCompare(aVal);
+    });
+
+    rows.forEach(row => tbody.appendChild(row));
+  });
+});
+  </script>
+
+  <script type="text/plain" id="snippet-b-html">
+<table>
+  <caption>Task list</caption>
+  <thead>
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="task-homework">Homework</td>
+      <td>In progress</td>
+      <td><button type="button" aria-expanded="false" aria-labelledby="task-homework">▼</button></td>
+    </tr>
+    <tr class="detail-row">
+      <td>Biology essay</td>
+      <td>Done</td>
+      <td></td>
+    </tr>
+    <tr class="detail-row">
+      <td>Maths exercises</td>
+      <td>In progress</td>
+      <td></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td id="task-chores">Chores</td>
+      <td>Pending</td>
+      <td><button type="button" aria-expanded="false" aria-labelledby="task-chores">▼</button></td>
+    </tr>
+    <tr class="detail-row">
+      <td>Vacuum living room</td>
+      <td>Pending</td>
+      <td></td>
+    </tr>
+    <tr class="detail-row">
+      <td>Take out trash</td>
+      <td>Pending</td>
+      <td></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td id="task-project-work">Project work</td>
+      <td>Done</td>
+      <td><button type="button" aria-expanded="false" aria-labelledby="task-project-work">▼</button></td>
+    </tr>
+    <tr class="detail-row">
+      <td>Draft outline</td>
+      <td>Done</td>
+      <td></td>
+    </tr>
+    <tr class="detail-row">
+      <td>Write introduction</td>
+      <td>Done</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+  </script>
+
+  <script type="text/plain" id="snippet-b-css">
+table {
+  width: 100%;
+  color: dimgray;
+  background: whitesmoke;
+  table-layout: fixed;
+}
+
+caption {
+  background: dimgray;
+  color: whitesmoke;
+  text-align: left;
+  font-weight: bold;
+}
+
+table, th, td {
+  border-collapse: collapse;
+  border: 1.5px solid lightgray;
+  text-align: left;
+}
+
+caption, th, td {
+  padding: 8px 16px;
+}
+
+th:last-child, td:last-child {
+  padding: 0;
+  width: 40px;
+}
+
+td button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 0;
+  cursor: pointer;
+  color: inherit;
+  background: none;
+  font: inherit;
+  transition: transform 0.2s ease;
+  border: none;
+}
+
+th {
+  background: lightgray;
+}
+
+.detail-row {
+  display: none;
+}
+
+.detail-row td:first-child {
+  padding-left: 32px;
+}
+
+tr:has(button[aria-expanded="true"]) ~ .detail-row {
+  display: table-row;
+}
+
+button[aria-expanded="true"] {
+  transform: rotate(180deg);
+}
+  </script>
+
+  <script type="text/plain" id="snippet-b-js">
+document.querySelectorAll('button[aria-expanded]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+  });
+});
+  </script>
+
+  <script src="common.js"></script>
+  <script src="component-page.js"></script>
+
+</body>
+</html>
