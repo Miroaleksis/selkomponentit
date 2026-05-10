@@ -311,6 +311,12 @@
               <td><span class="code">page</span> / <span class="code">step</span> / <span class="code">date</span> / <span class="code">true</span></td>
               <td>Indicates the current item within a set, such as the active page in a navigation or the current step in a stepper.</td>
             </tr>
+            <tr>
+              <td><span class="code">aria-invalid</span></td>
+              <td><span class="code">:invalid</span></td>
+              <td><span class="code">true</span> / <span class="code">false</span> / <span class="code">grammar</span> / <span class="code">spelling</span></td>
+              <td>Indicates that the value of a form field does not meet the expected format or requirements. Required when using <span class="code">aria-errormessage</span>.</td>
+            </tr>
           </tbody>
         </table>
         </div>
@@ -396,6 +402,18 @@
             <tr>
               <td><span class="code">aria-owns</span></td>
               <td>References elements that are logically owned by the current element but are not its DOM children.</td>
+            </tr>
+            <tr>
+              <td><span class="code">aria-errormessage</span></td>
+              <td>References the <span class="code">id</span> of an element that contains an error message for the current element. Only relevant when <span class="code">aria-invalid</span> is set.</td>
+            </tr>
+            <tr>
+              <td><span class="code">aria-details</span></td>
+              <td>References the <span class="code">id</span> of an element that provides additional information about the current element, beyond what <span class="code">aria-describedby</span> offers.</td>
+            </tr>
+            <tr>
+              <td><span class="code">aria-activedescendant</span></td>
+              <td>References the <span class="code">id</span> of the currently active descendant element within a composite widget such as a listbox or combobox, without moving DOM focus away from the container.</td>
             </tr>
           </tbody>
         </table>

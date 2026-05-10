@@ -236,7 +236,12 @@ a {
   background: var(--dark-gray);
 }
 
-/* ── Info page ───────────────────────────── */
+/* ── About page ──────────────────────────── */
+
+.about-illustration {
+  width: 360px;
+  flex-shrink: 0;
+}
 
 .info-steps {
   padding-left: 1.2em;
@@ -303,7 +308,6 @@ a {
   font-feature-settings: 'liga';
   -webkit-font-feature-settings: 'liga';
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-  font-size: 16px;
   text-transform: none;
   letter-spacing: normal;
 }
@@ -569,6 +573,7 @@ variant-card-preview {
   display: flex;
   gap: 64px;
   align-items: flex-start;
+  position: relative;
 }
 
 .page-content {
@@ -846,11 +851,16 @@ on-this-page {
     flex-direction: column;
   }
 
+  .about-illustration {
+    order: -1;
+    width: 100%;
+    max-width: 320px;
+  }
+
 }
 
 @media (max-width: 560px) {
   .site-header .header-inner {
-    flex-wrap: wrap;
     padding: 0 24px;
     position: relative;
   }

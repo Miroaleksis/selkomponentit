@@ -5,10 +5,10 @@ class SiteHeader extends HTMLElement {
       <header class="site-header">
         <div class="header-inner">
           <a href="index.html" class="site-logo">
-            <img src="images/Selko-mark-white.svg" alt="Selko Digital HTML Library – Home">
+            <img src="images/Selko-mark-white.svg" alt="">
             <div class="logo-name">
               <span class="title">Selko Digital</span>
-              <span class="subtitle">HTML Library</span>
+              <span class="subtitle">Accessible HTML Library</span>
             </div>
           </a>
           <button class="nav-toggle" aria-label="Main menu" aria-expanded="false" aria-controls="site-nav"></button>
