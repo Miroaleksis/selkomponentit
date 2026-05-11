@@ -31,6 +31,7 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
+          <li aria-description="Recommended">A skip link is the first focusable element on the page and lets keyboard users jump directly to the main content, bypassing repeated navigation</li>
           <li aria-description="Recommended"><span class="code">&lt;header&gt;</span> defines the banner region and typically contains the site name and global navigation</li>
           <li aria-description="Recommended"><span class="code">&lt;nav&gt;</span> defines a navigation landmark. When multiple <span class="code">&lt;nav&gt;</span> elements are present, each should have a unique accessible name via <span class="code">aria-label</span> or <span class="code">aria-labelledby</span>.</li>
           <li aria-description="Recommended"><span class="code">&lt;main&gt;</span> defines the primary content of the page. Each page should have only one <span class="code">&lt;main&gt;</span> element.</li>
@@ -62,6 +63,7 @@
 
   <script type="text/plain" id="snippet-a-html">
 <div class="page-demo">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <header>
     <a href="#" class="logo">Site logo</a>
     <nav aria-label="Main navigation">
@@ -71,7 +73,7 @@
     </nav>
   </header>
   <div class="page-body">
-    <main>
+    <main id="main-content">
       <h4>Page title</h4>
       <p>Main content area.</p>
     </main>
@@ -97,6 +99,22 @@
   gap: 4px;
   font-size: 13px;
   color: dimgray;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: white;
+  color: dimgray;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 0;
 }
 
 header, footer, aside {

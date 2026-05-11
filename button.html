@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button – Selko Digital HTML Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <site-header></site-header>
+
+  <breadcrumb-bar></breadcrumb-bar>
+
+  <div class="page-inner">
+
+    <on-this-page></on-this-page>
+
+    <main class="page-content">
+
+      <div class="page-description">
+        <h1>Button</h1>
+        <p>A button triggers an action when activated. A toggle button extends this by maintaining a pressed state, communicating whether a setting is currently active or inactive.</p>
+      </div>
+
+      <section class="component-section">
+        <h2>Accessibility Features</h2>
+        <div class="feature-list-legend" aria-hidden="true">
+          <span class="required">= Required</span>
+          <span class="recommended">= Recommended</span>
+        </div>
+        <ul class="feature-list">
+          <li aria-description="Required"><span class="code">type="button"</span> prevents accidental form submission when the button is inside a form element</li>
+          <li aria-description="Required">Button text or <span class="code">aria-label</span> must clearly describe the action the button performs</li>
+          <li aria-description="Required"><span class="code">aria-pressed</span> communicates the current toggle state to assistive technology</li>
+          <li aria-description="Recommended">The visual appearance reflects the <span class="code">aria-pressed</span> value so sighted users see the same state as screen reader users hear</li>
+        </ul>
+      </section>
+
+      <section class="component-section">
+        <h2>Button</h2>
+        <h3>Example</h3>
+        <div class="example-container" data-prefix="a"></div>
+        <h3>Code Snippet</h3>
+        <code-editor prefix="a" tabs="html,css"></code-editor>
+      </section>
+
+      <section class="component-section">
+        <h2>Toggle Button</h2>
+        <h3>Example</h3>
+        <div class="example-container" data-prefix="b"></div>
+        <h3>Code Snippet</h3>
+        <code-editor prefix="b" tabs="html,css,js"></code-editor>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="text/plain" id="snippet-a-html">
+<button type="button" class="btn">Save changes</button>
+  </script>
+
+  <script type="text/plain" id="snippet-a-css">
+.btn {
+  padding: 8px 20px;
+  font: inherit;
+  cursor: pointer;
+  border: 1.5px solid dimgray;
+  border-radius: 4px;
+  background: none;
+  color: dimgray;
+}
+
+.btn:hover {
+  background: dimgray;
+  color: white;
+}
+  </script>
+
+  <script type="text/plain" id="snippet-b-html">
+<button type="button" class="play-btn" aria-pressed="false">Play</button>
+  </script>
+
+  <script type="text/plain" id="snippet-b-css">
+.play-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  font: inherit;
+  cursor: pointer;
+  border: 1.5px solid dimgray;
+  border-radius: 4px;
+  background: none;
+  color: dimgray;
+}
+
+.play-btn::before {
+  content: '▶';
+}
+
+.play-btn[aria-pressed="true"] {
+  background: dimgray;
+  color: white;
+}
+
+.play-btn[aria-pressed="true"]::before {
+  content: '⏸';
+}
+  </script>
+
+  <script type="text/plain" id="snippet-b-js">
+const btn = document.querySelector('.play-btn');
+
+btn.addEventListener('click', function () {
+  const pressed = this.getAttribute('aria-pressed') === 'true';
+  this.setAttribute('aria-pressed', String(!pressed));
+  this.textContent = pressed ? 'Play' : 'Pause';
+});
+  </script>
+
+  <script src="common.js"></script>
+  <script src="component-page.js"></script>
+
+</body>
+</html>

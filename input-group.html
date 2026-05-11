@@ -20,8 +20,7 @@
 
       <div class="page-description">
         <h1>Input Group</h1>
-        <p>An input group is a set of related form controls grouped together under a shared label. Common examples are radio button groups and checkbox groups.</p>
-        <p>Input groups can be used whenever multiple form controls share a common purpose or label, such as choosing one option from a list or selecting multiple options from a set.</p>
+        <p>An input group is a set of related form controls grouped together under a shared label. A typical use case is a group of checkboxes where users can select multiple options from a set, such as filtering by category.</p>
         <p>The recommended implementation is the native <span class="code">&lt;fieldset&gt;</span> and <span class="code">&lt;legend&gt;</span> elements, which group the controls semantically and provide the group label to assistive technology automatically.</p>
       </div>
 
@@ -34,12 +33,13 @@
         <ul class="feature-list">
           <li aria-description="Required"><span class="code">&lt;fieldset&gt;</span> groups the related inputs together semantically, and <span class="code">&lt;legend&gt;</span> provides a label for the entire group</li>
           <li aria-description="Required">Each input must have an associated individual <span class="code">&lt;label&gt;</span>, linked by nesting or via matching <span class="code">for</span> and <span class="code">id</span> attributes.</li>
-          <li aria-description="Required">Inputs are marked as part of the same group using a shared <span class="code">name</span> attribute</li>
+          <li aria-description="Recommended">Inputs that belong to the same group share a <span class="code">name</span> attribute</li>
+          <li aria-description="Recommended"><span class="code">&lt;form&gt;</span> wraps related fieldsets into a single semantic container. When given an accessible name via <span class="code">aria-label</span> or <span class="code">aria-labelledby</span>, it is exposed as a form landmark that assistive technology users can navigate to directly</li>
         </ul>
       </section>
 
       <section class="component-section">
-        <h2>Radio Group</h2>
+        <h2>Filter Group</h2>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
@@ -47,7 +47,7 @@
       </section>
 
       <section class="component-section">
-        <h2>Checkbox Group</h2>
+        <h2>Registration Form</h2>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>
@@ -59,87 +59,156 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<fieldset>
-  <legend>Choose an option</legend>
-      <label>
-        <input type="radio" name="radio-group" value="1">
-        <span>Option 1</span>
-      </label>
-      <label>
-        <input type="radio" name="radio-group" value="2">
-        <span>Option 2</span>
-      </label>
-      <label>
-        <input type="radio" name="radio-group" value="3">
-        <span>Option 3</span>
-      </label>
-  </div>
+<fieldset class="filter-group">
+  <legend>Category</legend>
+  <label class="filter-option">
+    <input type="checkbox" name="category" value="electronics">
+    Electronics
+  </label>
+  <label class="filter-option">
+    <input type="checkbox" name="category" value="clothing" checked>
+    Clothing
+  </label>
+  <label class="filter-option">
+    <input type="checkbox" name="category" value="furniture">
+    Furniture
+  </label>
+  <label class="filter-option">
+    <input type="checkbox" name="category" value="books">
+    Books
+  </label>
 </fieldset>
   </script>
 
   <script type="text/plain" id="snippet-a-css">
-fieldset {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  color: dimgray;
+.filter-group {
   border: 1.5px solid lightgray;
   border-radius: 4px;
   padding: 16px;
-  max-width: 320px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 legend {
   font-weight: bold;
-  padding: 0 4px;
+  margin-bottom: 8px;
 }
 
-label {
+.filter-option {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.filter-option input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: dimgray;
+  flex-shrink: 0;
 }
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-<fieldset>
-  <legend>Choose one or more options</legend>
-      <label>
-        <input type="checkbox" name="checkbox-group" value="1">
-        <span>Option 1</span>
-      </label>
-      <label>
-        <input type="checkbox" name="checkbox-group" value="2">
-        <span>Option 2</span>
-      </label>
-      <label>
-        <input type="checkbox" name="checkbox-group" value="3">
-        <span>Option 3</span>
-      </label>
-</fieldset>
+<form class="registration-form">
+  <fieldset class="form-group">
+    <legend>Account details</legend>
+    <label class="form-field">
+      Name
+      <input type="text" name="name" autocomplete="name">
+    </label>
+    <label class="form-field">
+      Email
+      <input type="email" name="email" autocomplete="email">
+    </label>
+  </fieldset>
+  <fieldset class="form-group">
+    <legend>Email preferences</legend>
+    <label class="form-option">
+      <input type="checkbox" name="preferences" value="news">
+      News and updates
+    </label>
+    <label class="form-option">
+      <input type="checkbox" name="preferences" value="tips">
+      Tips and tutorials
+    </label>
+    <label class="form-option">
+      <input type="checkbox" name="preferences" value="offers">
+      Special offers
+    </label>
+    <label class="form-option">
+      <input type="checkbox" name="preferences" value="events">
+      Event invitations
+    </label>
+  </fieldset>
+  <button type="submit">Create account</button>
+</form>
   </script>
 
   <script type="text/plain" id="snippet-b-css">
-fieldset {
+.registration-form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  color: dimgray;
+  gap: 24px;
+  max-width: 320px;
+}
+
+.form-group {
   border: 1.5px solid lightgray;
   border-radius: 4px;
   padding: 16px;
-  max-width: 320px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 legend {
   font-weight: bold;
-  padding: 0 4px;
+  margin-bottom: 4px;
 }
 
-label {
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-field input {
+  border: 1.5px solid dimgray;
+  background: whitesmoke;
+  border-radius: 4px;
+  padding: 8px;
+  font: inherit;
+}
+
+.form-option {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.form-option input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: dimgray;
+  flex-shrink: 0;
+}
+
+button[type="submit"] {
+  align-self: flex-start;
+  padding: 8px 20px;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 1.5px solid;
+  border-radius: 8px;
+  background: none;
 }
   </script>
 
