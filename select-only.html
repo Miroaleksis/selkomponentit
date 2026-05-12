@@ -21,9 +21,8 @@
 
       <div class="page-description">
         <h1>Select-Only</h1>
-        <p>A Select-Only combobox is an input widget that, when activated, displays a popup listbox containing predefined options. The user can select one option from the list. It does not allow freeform text entry — see Dropdown with Search for that variant.</p>
+        <p>A Select-Only combobox is an input widget that, when activated, displays a dropdown list of predefined options. The user can select one option from the list. It does not allow freeform text entry.</p>
         <p>Select-only comboboxes can be used whenever the user picks one option from a known, limited set of values, such as a country, sort order or category.</p>
-        <p>The recommended implementation is the native <span class="code">&lt;select&gt;</span> element, which provides keyboard support, screen reader announcements and platform-native rendering for free. A custom implementation may be necessary when the visual design cannot be achieved with the native element, since <span class="code">&lt;select&gt;</span> styling is limited across browsers.</p>
       </div>
 
       <section class="component-section">
@@ -36,14 +35,13 @@
           <li aria-description="Required">Expands and collapses with <span class="kbd">Space</span> and <span class="kbd">Enter</span></li>
           <li aria-description="Required">Options are navigable with <span class="kbd">↑</span> and <span class="kbd">↓</span> arrow keys</li>
           <li aria-description="Required">Pressing <span class="kbd">Esc</span> closes the dropdown and returns focus to the trigger</li>
-          <li aria-description="Required">The expanded/collapsed state is conveyed with <span class="code">aria-expanded</span> attribute</li>
-          <li aria-description="Required">The widget role is conveyed with <span class="code">role="combobox"</span> on the trigger element</li>
           <li aria-description="Recommended"><span class="kbd">Home</span> and <span class="kbd">End</span> move focus to the first and last option</li>
         </ul>
       </section>
 
       <section class="component-section">
         <h2>Select Element</h2>
+        <p>The native <span class="code">&lt;select&gt;</span> element provides keyboard support, screen reader announcements and platform-native rendering for free. Its styling is limited across browsers.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
@@ -85,6 +83,7 @@ select {
 
       <section class="component-section">
         <h2>Custom Select-Only</h2>
+        <p>A custom implementation may be necessary when the visual design cannot be achieved with the native <span class="code">&lt;select&gt;</span> element. It requires explicit ARIA to communicate widget semantics: <span class="code">role="combobox"</span> on the trigger element identifies the widget, and <span class="code">aria-expanded</span> communicates the expanded or collapsed state to screen readers.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>

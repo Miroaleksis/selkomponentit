@@ -33,13 +33,13 @@
         </div>
         <ul class="feature-list">
           <li aria-description="Required">Expands and collapses with <span class="kbd">Space</span> and <span class="kbd">Enter</span></li>
-          <li aria-description="Required">The expanded/collapsed state is conveyed with <span class="code">aria-expanded</span> attribute</li>
-          <li aria-description="Recommended">Content panels use <span class="code">role="region"</span> and are labelled by their trigger button</li>
+          <li aria-description="Required">The expanded/collapsed state must be communicated programmatically so screen readers can announce whether a panel is expanded or collapsed</li>
         </ul>
       </section>
 
       <section class="component-section">
         <h2>Details Element</h2>
+        <p>The native <span class="code">&lt;details&gt;</span> and <span class="code">&lt;summary&gt;</span> elements handle expand/collapse behaviour and communicate state to screen readers automatically, without JavaScript or additional ARIA attributes.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
@@ -91,6 +91,7 @@ details[open] summary::after {
 
       <section class="component-section">
         <h2>Custom Accordion</h2>
+        <p>A custom accordion requires <span class="code">aria-expanded</span> on the trigger button to communicate the expanded or collapsed state to screen readers. The content panel can use <span class="code">role="region"</span> with <span class="code">aria-labelledby</span> pointing to the trigger to expose it as a named landmark. JavaScript is needed to toggle the attribute when the user activates the trigger.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>

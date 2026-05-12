@@ -33,28 +33,22 @@
         <ul class="feature-list">
           <li aria-description="Recommended">A skip link is the first focusable element on the page and lets keyboard users jump directly to the main content, bypassing repeated navigation</li>
           <li aria-description="Recommended"><span class="code">&lt;header&gt;</span> defines the banner region and typically contains the site name and global navigation</li>
-          <li aria-description="Recommended"><span class="code">&lt;nav&gt;</span> defines a navigation landmark. When multiple <span class="code">&lt;nav&gt;</span> elements are present, each should have a unique accessible name via <span class="code">aria-label</span> or <span class="code">aria-labelledby</span>.</li>
-          <li aria-description="Recommended"><span class="code">&lt;main&gt;</span> defines the primary content of the page. Each page should have only one <span class="code">&lt;main&gt;</span> element.</li>
+          <li aria-description="Recommended"><span class="code">&lt;nav&gt;</span> defines a navigation landmark. When multiple <span class="code">&lt;nav&gt;</span> elements are present, each should have a unique accessible name via <span class="code">aria-label</span> or <span class="code">aria-labelledby</span></li>
+          <li aria-description="Recommended"><span class="code">&lt;main&gt;</span> defines the primary content of the page. Each page should have only one <span class="code">&lt;main&gt;</span> element</li>
           <li aria-description="Recommended"><span class="code">&lt;aside&gt;</span> defines complementary content that supports but is not essential to the main content</li>
           <li aria-description="Recommended"><span class="code">&lt;footer&gt;</span> defines the contentinfo region and typically contains copyright information and secondary links</li>
-          <li aria-description="Recommended"><span class="code">&lt;section&gt;</span> becomes a region landmark only when it has an accessible name via <span class="code">aria-label</span> or <span class="code">aria-labelledby</span>. Without a name it is treated as a generic container.</li>
+          <li aria-description="Recommended"><span class="code">&lt;section&gt;</span> becomes a region landmark only when it has an accessible name via <span class="code">aria-labelledby</span> referencing its heading. Without a name it is treated as a generic container</li>
         </ul>
       </section>
 
       <section class="component-section">
-        <h2>Page Structure</h2>
-        <h3>Example</h3>
+        <h2>Example</h2>
         <div class="example-container" data-prefix="a"></div>
-        <h3>Code Snippet</h3>
-        <code-editor prefix="a" tabs="html,css"></code-editor>
       </section>
 
       <section class="component-section">
-        <h2>Named Region</h2>
-        <h3>Example</h3>
-        <div class="example-container" data-prefix="b"></div>
-        <h3>Code Snippet</h3>
-        <code-editor prefix="b" tabs="html,css"></code-editor>
+        <h2>Code Snippet</h2>
+        <code-editor prefix="a" tabs="html,css"></code-editor>
       </section>
 
     </main>
@@ -74,8 +68,19 @@
   </header>
   <div class="page-body">
     <main id="main-content">
-      <h4>Page title</h4>
-      <p>Main content area.</p>
+      <h3>Main content</h3>
+      <section aria-labelledby="section-1-heading">
+        <h4 id="section-1-heading">Introduction</h4>
+        <p>Section content.</p>
+      </section>
+      <section aria-labelledby="section-2-heading">
+        <h4 id="section-2-heading">Details</h4>
+        <p>Section content.</p>
+      </section>
+      <section aria-labelledby="section-3-heading">
+        <h4 id="section-3-heading">Summary</h4>
+        <p>Section content.</p>
+      </section>
     </main>
     <aside aria-label="Related links">
       <h4>Related</h4>
@@ -94,6 +99,8 @@
 
   <script type="text/plain" id="snippet-a-css">
 .page-demo {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -154,8 +161,19 @@ nav a, aside a {
 
 main {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   border-radius: 6px;
-  padding: 14px;
+  padding: 10px;
+  margin: 0;
+}
+
+section {
+  border: 1px dashed gray;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 0;
 }
 
 aside ul {
@@ -167,36 +185,6 @@ aside ul {
 
 footer {
   justify-content: center;
-}
-  </script>
-
-  <script type="text/plain" id="snippet-b-html">
-<section aria-labelledby="news-heading">
-  <h3 id="news-heading">Latest news</h3>
-  <article>
-    <h4>Article title</h4>
-    <p>Article summary goes here. Without the aria-label above, this section would not be exposed as a landmark region to screen readers.</p>
-  </article>
-</section>
-  </script>
-
-  <script type="text/plain" id="snippet-b-css">
-section {
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  color: dimgray;
-}
-
-article {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  border-radius: 8px;
-  gap: 8px;
-  background: whitesmoke;
-  border: 1.5px solid lightgray;
 }
   </script>
 

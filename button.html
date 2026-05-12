@@ -20,7 +20,8 @@
 
       <div class="page-description">
         <h1>Button</h1>
-        <p>A button triggers an action when activated. A toggle button extends this by maintaining a pressed state, communicating whether a setting is currently active or inactive.</p>
+        <p>A button triggers an action when activated, such as submitting a form, opening a dialog or toggling a setting. Buttons can be momentary or stateful depending on their purpose.</p>
+        <p>Buttons and links are often confused but serve different purposes. A button performs an action on the current page. A link navigates the user to a new location. See the <a href="link.html">Link</a> page for more information.</p>
       </div>
 
       <section class="component-section">
@@ -32,13 +33,11 @@
         <ul class="feature-list">
           <li aria-description="Required"><span class="code">type="button"</span> prevents accidental form submission when the button is inside a form element</li>
           <li aria-description="Required">Button text or <span class="code">aria-label</span> must clearly describe the action the button performs</li>
-          <li aria-description="Required"><span class="code">aria-pressed</span> communicates the current toggle state to assistive technology</li>
-          <li aria-description="Recommended">The visual appearance reflects the <span class="code">aria-pressed</span> value so sighted users see the same state as screen reader users hear</li>
         </ul>
       </section>
 
       <section class="component-section">
-        <h2>Button</h2>
+        <h2>Regular Button</h2>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
@@ -47,6 +46,7 @@
 
       <section class="component-section">
         <h2>Toggle Button</h2>
+        <p>A toggle button is a button that maintains a pressed or unpressed state between activations, such as a play/pause control or a mute button. <span class="code">aria-pressed</span> communicates the current state to screen readers. The visual appearance should reflect the <span class="code">aria-pressed</span> value so sighted users see the same state that screen readers announce.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>

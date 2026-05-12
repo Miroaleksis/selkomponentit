@@ -20,7 +20,7 @@
 
       <div class="page-description">
         <h1>Link</h1>
-        <p>A link navigates the user to another location, either within the same page or to an external resource. Link text should clearly describe the destination without relying on surrounding context.</p>
+        <p>A link navigates the user to another location, either within the same page or to an external resource. Links and buttons are often confused but serve different purposes. A button performs an action on the current page, while a link navigates to a new location. See the <a href="button.html">Button</a> page for more information.</p>
       </div>
 
       <section class="component-section">
@@ -32,13 +32,12 @@
         <ul class="feature-list">
           <li aria-description="Required">Link text must describe the destination clearly enough to make sense when read out of context</li>
           <li aria-description="Required">Links that open in a new tab must inform users — either in the visible link text or via visually hidden text — to avoid disorientation</li>
-          <li aria-description="Recommended"><span class="code">rel="noopener noreferrer"</span> should be used with <span class="code">target="_blank"</span> to prevent the new page from accessing the opener window</li>
-          <li aria-description="Recommended">External links benefit from a visual indicator so sighted users also know the link opens outside the current site</li>
         </ul>
       </section>
 
       <section class="component-section">
         <h2>Inline Link</h2>
+        <p>An inline link is embedded within a sentence or paragraph. The linked text should be a meaningful phrase within the sentence, not generic text such as "click here" or "read more". Links must be distinguishable from surrounding text by more than color alone. An underline is the most reliable indicator.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
@@ -47,6 +46,7 @@
 
       <section class="component-section">
         <h2>External Link</h2>
+        <p>An external link opens a resource outside the current site, typically in a new tab. Users must be informed of this behavior via visible text or a visually hidden alternative. A visual indicator such as an arrow icon helps sighted users identify external links.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>
@@ -58,7 +58,7 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<p>Read more about <a href="#">accessible web design</a> and how it benefits all users.</p>
+<p>Read more about <a href="#">accessible web design</a> and how it ensures that digital content can be used by everyone, including people with visual, auditory, motor or cognitive disabilities.</p>
   </script>
 
   <script type="text/plain" id="snippet-a-css">
@@ -67,12 +67,12 @@ p {
 }
 
 a {
-  color: dimgray;
+  color: midnightblue;
 }
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-<a href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer" class="external-link">
+<a href="https://www.w3.org/WAI/" target="_blank" class="external-link">
   W3C Web Accessibility Initiative
   <span class="visually-hidden">, opens in new tab</span>
 </a>
@@ -80,7 +80,7 @@ a {
 
   <script type="text/plain" id="snippet-b-css">
 .external-link {
-  color: dimgray;
+  color: midnightblue;
 }
 
 .external-link::after {

@@ -31,27 +31,21 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required"><span class="code">role="tooltip"</span> on the tooltip element identifies it to assistive technologies</li>
-          <li aria-description="Required">Tooltip can be expanded by either hovering or focusing on the trigger element or by pressing <span class="kbd">Space</span> or <span class="kbd">Enter</span></li>
-          <li aria-description="Required">If the tooltip is expanded by pressing the toggle button, its state should be indicated using <span class="code">aria-expanded</span></li>
-          <li aria-description="Recommended">The tooltip can be dismissed with <span class="kbd">Esc</span> without moving hover or focus (WCAG 1.4.13)</li>
+          <li aria-description="Required"><span class="code">role="tooltip"</span> on the tooltip element identifies it to screen readers</li>
+          <li aria-description="Required"><span class="code">aria-expanded</span> on the trigger button communicates the expanded or collapsed state to screen readers</li>
+          <li aria-description="Recommended">Activating the tooltip through a dedicated toggle button is more reliable than hover- or focus-based activation, which can behave inconsistently on touchscreens</li>
+          <li aria-description="Recommended">The tooltip can be dismissed by pressing the button again, clicking outside, or pressing <span class="kbd">Esc</span> without moving focus</li>
         </ul>
       </section>
 
       <section class="component-section">
-        <h2>Focus and Hover Tooltip</h2>
-        <h3>Example</h3>
+        <h2>Example</h2>
         <div class="example-container" data-prefix="a"></div>
-        <h3>Code Snippet</h3>
-        <code-editor prefix="a" tabs="html,css,js"></code-editor>
       </section>
 
       <section class="component-section">
-        <h2>Toggle Tooltip</h2>
-        <h3>Example</h3>
-        <div class="example-container" data-prefix="b"></div>
-        <h3>Code Snippet</h3>
-        <code-editor prefix="b" tabs="html,css,js"></code-editor>
+        <h2>Code Snippet</h2>
+        <code-editor prefix="a" tabs="html,css,js"></code-editor>
       </section>
 
     </main>
@@ -59,107 +53,13 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<div class="tooltip-wrapper">
-  <button class="tooltip-btn" aria-label="Tooltip" aria-describedby="tooltip">?</button>
-  <div class="tooltip-content" id="tooltip" role="tooltip">This is the tooltip content. Expands when the user focuses or hovers on the tooltip button. Collapses when the hover or focus ends, or when Esc is pressed.</div>
-</div>
-  </script>
-
-  <script type="text/plain" id="snippet-a-css">
-.tooltip-wrapper {
-  position: relative;
-  color: dimgray;
-  width: max-content;
-}
-
-.tooltip-btn {
-  font-size: 16px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  color: inherit;
-  border: 1.5px solid;
-}
-
-.tooltip-content {
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: -8px;
-  background: whitesmoke;
-  padding: 16px;
-  border-radius: 8px;
-  border: 1.5px solid lightgray;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.tooltip-wrapper:hover,
-.tooltip-wrapper:focus-within {
-  width: auto;
-}
-
-.tooltip-wrapper:hover .tooltip-content,
-.tooltip-wrapper:focus-within .tooltip-content {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.tooltip-wrapper:hover .tooltip-content::before,
-.tooltip-wrapper:focus-within .tooltip-content::before {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 14px;
-  width: 10px;
-  height: 10px;
-  background: whitesmoke;
-  border-right: 1.5px solid lightgray;
-  border-bottom: 1.5px solid lightgray;
-  transform: rotate(45deg);
-}
-
-.tooltip-wrapper:hover .tooltip-content::after,
-.tooltip-wrapper:focus-within .tooltip-content::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  height: 8px;
-}
-  </script>
-
-  <script type="text/plain" id="snippet-a-js">
-document.querySelectorAll('.tooltip-wrapper').forEach(wrapper => {
-  const tooltip = wrapper.querySelector('.tooltip-content');
-
-  const reset = () => {
-    tooltip.style.opacity = '';
-    tooltip.style.pointerEvents = '';
-  };
-
-  wrapper.addEventListener('mouseleave', reset);
-  wrapper.addEventListener('focusout', reset);
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.tooltip-wrapper:hover .tooltip-content, .tooltip-wrapper:focus-within .tooltip-content').forEach(tooltip => {
-      tooltip.style.opacity = '0';
-      tooltip.style.pointerEvents = 'none';
-    });
-  }
-});
-  </script>
-
-  <script type="text/plain" id="snippet-b-html">
 <div class="toggletip-wrapper">
   <button class="toggletip-btn" aria-label="Tooltip" aria-expanded="false">?</button>
   <div class="toggletip-content" role="tooltip">This is the tooltip content. Expands when the button is pressed. Collapses when the button is pressed again, when the user clicks outside, or when Escape is pressed.</div>
 </div>
   </script>
 
-  <script type="text/plain" id="snippet-b-css">
+  <script type="text/plain" id="snippet-a-css">
 .toggletip-wrapper {
   position: relative;
   color: dimgray;
@@ -204,7 +104,7 @@ document.addEventListener('keydown', (e) => {
 }
   </script>
 
-  <script type="text/plain" id="snippet-b-js">
+  <script type="text/plain" id="snippet-a-js">
 const buttons = document.querySelectorAll('.toggletip-btn');
 
 function closeAll() {

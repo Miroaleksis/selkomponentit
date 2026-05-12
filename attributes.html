@@ -29,134 +29,119 @@
         <table class="attr-table attr-table--roles">
           <thead>
             <tr>
+              <th>Native</th>
               <th>Role</th>
-              <th>Native equivalent</th>
               <th>When to use</th>
             </tr>
           </thead>
-          <tbody class="attr-table-group group--function">
-            <tr>
-              <th colspan="3"><button class="attr-group-btn" aria-expanded="false">Function/Input</button></th>
-            </tr>
-            <tr>
-              <td><span class="code">button</span></td>
-              <td><span class="code">&lt;button&gt;</span></td>
-              <td>An interactive element that triggers an action. Use the native element instead of the role where possible.</td>
-            </tr>
-            <tr>
-              <td><span class="code">checkbox</span></td>
-              <td><span class="code">&lt;input type="checkbox"&gt;</span></td>
-              <td>A control with three possible states: checked, unchecked, or mixed. Use the native element instead of the role where possible.</td>
-            </tr>
-            <tr>
-              <td><span class="code">combobox</span></td>
-              <td>—</td>
-              <td>A text input paired with a popup listbox of suggested values.</td>
-            </tr>
-            <tr>
-              <td><span class="code">listbox</span></td>
-              <td><span class="code">&lt;select&gt;</span></td>
-              <td>A list of options from which the user can select one or more items.</td>
-            </tr>
-            <tr>
-              <td><span class="code">option</span></td>
-              <td><span class="code">&lt;option&gt;</span></td>
-              <td>A selectable item within a listbox or combobox popup.</td>
-            </tr>
-            <tr>
-              <td><span class="code">radio</span></td>
-              <td><span class="code">&lt;input type="radio"&gt;</span></td>
-              <td>A single option within a radiogroup. Use the native element instead of the role where possible.</td>
-            </tr>
-            <tr>
-              <td><span class="code">radiogroup</span></td>
-              <td><span class="code">&lt;fieldset&gt;</span></td>
-              <td>A group of radio buttons where only one can be selected at a time.</td>
-            </tr>
-            <tr>
-              <td><span class="code">slider</span></td>
-              <td><span class="code">&lt;input type="range"&gt;</span></td>
-              <td>An input for selecting a value within a range by dragging a thumb. Use the native element instead of the role where possible.</td>
-            </tr>
-            <tr>
-              <td><span class="code">spinbutton</span></td>
-              <td><span class="code">&lt;input type="number"&gt;</span></td>
-              <td>A numeric input that allows incrementing and decrementing a value with arrow buttons.</td>
-            </tr>
-            <tr>
-              <td><span class="code">switch</span></td>
-              <td>—</td>
-              <td>A toggle button representing an on/off state, similar to a checkbox but with binary semantics.</td>
-            </tr>
-          </tbody>
           <tbody class="attr-table-group group--navigation">
             <tr>
               <th colspan="3"><button class="attr-group-btn" aria-expanded="false">Navigation</button></th>
             </tr>
             <tr>
-              <td><span class="code">link</span></td>
               <td><span class="code">&lt;a&gt;</span></td>
+              <td><span class="code">link</span></td>
               <td>A navigable hyperlink. Use the native element instead of the role where possible.</td>
             </tr>
             <tr>
-              <td><span class="code">menu</span></td>
               <td>—</td>
+              <td><span class="code">menu</span></td>
               <td>A list of choices or commands, typically opened from a button.</td>
             </tr>
             <tr>
-              <td><span class="code">menuitem</span></td>
               <td>—</td>
+              <td><span class="code">menuitem</span></td>
               <td>An individual option or command within a menu.</td>
             </tr>
             <tr>
-              <td><span class="code">navigation</span></td>
               <td><span class="code">&lt;nav&gt;</span></td>
+              <td><span class="code">navigation</span></td>
               <td>A set of navigation links. Use the native element instead of the role where possible.</td>
             </tr>
             <tr>
-              <td><span class="code">tab</span></td>
               <td>—</td>
+              <td><span class="code">tab</span></td>
               <td>An interactive element in a tablist that controls the visibility of its associated tabpanel.</td>
             </tr>
             <tr>
-              <td><span class="code">tablist</span></td>
               <td>—</td>
+              <td><span class="code">tablist</span></td>
               <td>A container for a set of tab elements.</td>
             </tr>
             <tr>
-              <td><span class="code">tabpanel</span></td>
               <td>—</td>
+              <td><span class="code">tabpanel</span></td>
               <td>A content panel associated with a tab element.</td>
             </tr>
           </tbody>
-          <tbody class="attr-table-group group--notification">
+          <tbody class="attr-table-group group--function">
             <tr>
-              <th colspan="3"><button class="attr-group-btn" aria-expanded="false">Notification</button></th>
+              <th colspan="3"><button class="attr-group-btn" aria-expanded="false">Function/Input</button></th>
             </tr>
             <tr>
-              <td><span class="code">alert</span></td>
-              <td>—</td>
-              <td>An important, time-sensitive message that is announced immediately by screen readers.</td>
+              <td><span class="code">&lt;button&gt;</span></td>
+              <td><span class="code">button</span></td>
+              <td>An interactive element that triggers an action. Use the native element instead of the role where possible.</td>
             </tr>
             <tr>
-              <td><span class="code">alertdialog</span></td>
-              <td>—</td>
-              <td>A dialog containing an urgent message that requires immediate user attention. Unlike <span class="code">dialog</span>, screen readers interrupt the current flow and announce the content immediately.</td>
+              <td><span class="code">&lt;input type="checkbox"&gt;</span></td>
+              <td><span class="code">checkbox</span></td>
+              <td>A control with three possible states: checked, unchecked, or mixed. Use the native element instead of the role where possible.</td>
             </tr>
             <tr>
-              <td><span class="code">dialog</span></td>
               <td>—</td>
-              <td>A window overlaid on the page that requires user interaction before continuing.</td>
+              <td><span class="code">combobox</span></td>
+              <td>A text input paired with a popup listbox of suggested values.</td>
             </tr>
             <tr>
-              <td><span class="code">status</span></td>
-              <td>—</td>
-              <td>A live region for polite status updates that do not require immediate attention.</td>
+              <td><span class="code">&lt;select&gt;</span></td>
+              <td><span class="code">listbox</span></td>
+              <td>A list of options from which the user can select one or more items.</td>
             </tr>
             <tr>
-              <td><span class="code">tooltip</span></td>
+              <td><span class="code">&lt;option&gt;</span></td>
+              <td><span class="code">option</span></td>
+              <td>A selectable item within a listbox or combobox popup.</td>
+            </tr>
+            <tr>
+              <td><span class="code">&lt;input type="radio"&gt;</span></td>
+              <td><span class="code">radio</span></td>
+              <td>A single option within a radiogroup. Use the native element instead of the role where possible.</td>
+            </tr>
+            <tr>
+              <td><span class="code">&lt;fieldset&gt;</span></td>
+              <td><span class="code">radiogroup</span></td>
+              <td>A group of radio buttons where only one can be selected at a time.</td>
+            </tr>
+            <tr>
+              <td><span class="code">&lt;input type="range"&gt;</span></td>
+              <td><span class="code">slider</span></td>
+              <td>An input for selecting a value within a range by dragging a thumb. Use the native element instead of the role where possible.</td>
+            </tr>
+            <tr>
+              <td><span class="code">&lt;input type="number"&gt;</span></td>
+              <td><span class="code">spinbutton</span></td>
+              <td>A numeric input that allows incrementing and decrementing a value with arrow buttons.</td>
+            </tr>
+            <tr>
               <td>—</td>
-              <td>A short descriptive popup that appears on hover or focus of its associated element.</td>
+              <td><span class="code">switch</span></td>
+              <td>A toggle button representing an on/off state, similar to a checkbox but with binary semantics.</td>
+            </tr>
+            <tr>
+              <td><span class="code">&lt;input type="color"&gt;</span></td>
+              <td>—</td>
+              <td>A color picker that lets users select a color value. Has no ARIA equivalent.</td>
+            </tr>
+            <tr>
+              <td><span class="code">&lt;input type="date"&gt;</span></td>
+              <td>—</td>
+              <td>A date picker that lets users select a date. Has no ARIA equivalent.</td>
+            </tr>
+            <tr>
+              <td><span class="code">&lt;input type="file"&gt;</span></td>
+              <td>—</td>
+              <td>A file upload control that opens the system file dialog. Has no ARIA equivalent.</td>
             </tr>
           </tbody>
           <tbody class="attr-table-group group--structure">
@@ -164,84 +149,119 @@
               <th colspan="3"><button class="attr-group-btn" aria-expanded="false">Structure</button></th>
             </tr>
             <tr>
-              <td><span class="code">banner</span></td>
               <td><span class="code">&lt;header&gt;</span></td>
+              <td><span class="code">banner</span></td>
               <td>Site-level header region. Use the native element instead of the role where possible.</td>
             </tr>
             <tr>
-              <td><span class="code">cell</span></td>
               <td><span class="code">&lt;td&gt;</span></td>
+              <td><span class="code">cell</span></td>
               <td>A data cell within a table row.</td>
             </tr>
             <tr>
-              <td><span class="code">columnheader</span></td>
               <td><span class="code">&lt;th&gt;</span></td>
+              <td><span class="code">columnheader</span></td>
               <td>A header cell for a column in a table.</td>
             </tr>
             <tr>
-              <td><span class="code">complementary</span></td>
               <td><span class="code">&lt;aside&gt;</span></td>
+              <td><span class="code">complementary</span></td>
               <td>Supplementary content that supports but is not essential to the main content.</td>
             </tr>
             <tr>
-              <td><span class="code">contentinfo</span></td>
               <td><span class="code">&lt;footer&gt;</span></td>
+              <td><span class="code">contentinfo</span></td>
               <td>Site-level footer region containing copyright and secondary links.</td>
             </tr>
             <tr>
-              <td><span class="code">group</span></td>
               <td><span class="code">&lt;fieldset&gt;</span></td>
+              <td><span class="code">group</span></td>
               <td>A container that groups related elements, such as a set of radio buttons.</td>
             </tr>
             <tr>
-              <td><span class="code">list</span></td>
               <td><span class="code">&lt;ul&gt;</span>, <span class="code">&lt;ol&gt;</span></td>
+              <td><span class="code">list</span></td>
               <td>A list of items. Use the native element instead of the role where possible.</td>
             </tr>
             <tr>
-              <td><span class="code">listitem</span></td>
               <td><span class="code">&lt;li&gt;</span></td>
+              <td><span class="code">listitem</span></td>
               <td>A single item within a list. Use the native element instead of the role where possible.</td>
             </tr>
             <tr>
-              <td><span class="code">main</span></td>
               <td><span class="code">&lt;main&gt;</span></td>
+              <td><span class="code">main</span></td>
               <td>The primary content of the page. Each page should have only one main region.</td>
             </tr>
             <tr>
-              <td><span class="code">presentation</span> / <span class="code">none</span></td>
               <td>—</td>
+              <td><span class="code">presentation</span> / <span class="code">none</span></td>
               <td>Removes an element's native semantics from the accessibility tree. Used to suppress redundant roles on decorative or wrapper elements.</td>
             </tr>
             <tr>
-              <td><span class="code">progressbar</span></td>
               <td><span class="code">&lt;progress&gt;</span></td>
+              <td><span class="code">progressbar</span></td>
               <td>An element that displays the progress of a task, either determinate or indeterminate.</td>
             </tr>
             <tr>
-              <td><span class="code">region</span></td>
               <td><span class="code">&lt;section&gt;</span> (with accessible name)</td>
+              <td><span class="code">region</span></td>
               <td>A named section of a page. Only exposed as a landmark when it has an accessible name.</td>
             </tr>
             <tr>
-              <td><span class="code">row</span></td>
               <td><span class="code">&lt;tr&gt;</span></td>
+              <td><span class="code">row</span></td>
               <td>A row of cells within a table or grid.</td>
             </tr>
             <tr>
-              <td><span class="code">rowgroup</span></td>
               <td><span class="code">&lt;thead&gt;</span>, <span class="code">&lt;tbody&gt;</span>, <span class="code">&lt;tfoot&gt;</span></td>
+              <td><span class="code">rowgroup</span></td>
               <td>A group of rows within a table.</td>
             </tr>
             <tr>
-              <td><span class="code">rowheader</span></td>
               <td><span class="code">&lt;th scope="row"&gt;</span></td>
+              <td><span class="code">rowheader</span></td>
               <td>A header cell for a row in a table.</td>
             </tr>
             <tr>
-              <td><span class="code">table</span></td>
               <td><span class="code">&lt;table&gt;</span></td>
+              <td><span class="code">table</span></td>
               <td>A grid of data arranged in rows and columns. Use the native element instead of the role where possible.</td>
+            </tr>
+            <tr>
+              <td><span class="code">&lt;details&gt;</span> / <span class="code">&lt;summary&gt;</span></td>
+              <td>—</td>
+              <td>A native disclosure widget that shows and hides content without JavaScript. The <span class="code">&lt;summary&gt;</span> acts as the visible toggle. Has no ARIA equivalent.</td>
+            </tr>
+          </tbody>
+          <tbody class="attr-table-group group--notification">
+            <tr>
+              <th colspan="3"><button class="attr-group-btn" aria-expanded="false">Notification</button></th>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><span class="code">alert</span></td>
+              <td>An important, time-sensitive message that is announced immediately by screen readers.</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><span class="code">alertdialog</span></td>
+              <td>A dialog containing an urgent message that requires immediate user attention. Unlike <span class="code">dialog</span>, screen readers interrupt the current flow and announce the content immediately.</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><span class="code">dialog</span></td>
+              <td>A window overlaid on the page that requires user interaction before continuing.</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><span class="code">status</span></td>
+              <td>A live region for polite status updates that do not require immediate attention.</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><span class="code">tooltip</span></td>
+              <td>A short descriptive popup that appears on hover or focus of its associated element.</td>
             </tr>
           </tbody>
         </table>
@@ -254,58 +274,58 @@
         <table class="attr-table">
           <thead>
             <tr>
-              <th>Attribute</th>
-              <th>Native equivalent</th>
+              <th>Native</th>
+              <th>ARIA</th>
               <th>Values</th>
               <th>Description</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><span class="code">aria-checked</span></td>
               <td><span class="code">checked</span></td>
+              <td><span class="code">aria-checked</span></td>
               <td><span class="code">true</span> / <span class="code">false</span> / <span class="code">mixed</span></td>
               <td>Indicates the checked state of a checkbox, radio button or switch.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-current</span></td>
               <td>—</td>
+              <td><span class="code">aria-current</span></td>
               <td><span class="code">page</span> / <span class="code">step</span> / <span class="code">date</span> / <span class="code">true</span></td>
               <td>Indicates the current item within a set, such as the active page in a navigation or the current step in a stepper.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-disabled</span></td>
               <td><span class="code">disabled</span></td>
+              <td><span class="code">aria-disabled</span></td>
               <td><span class="code">true</span> / <span class="code">false</span></td>
               <td>Indicates that an element is visible but not currently interactive. The native <span class="code">disabled</span> attribute is stronger — it actually prevents interaction rather than only communicating it.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-expanded</span></td>
               <td>—</td>
+              <td><span class="code">aria-expanded</span></td>
               <td><span class="code">true</span> / <span class="code">false</span></td>
               <td>Indicates whether a collapsible element such as an accordion panel or dropdown is open or closed.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-hidden</span></td>
               <td><span class="code">hidden</span></td>
+              <td><span class="code">aria-hidden</span></td>
               <td><span class="code">true</span> / <span class="code">false</span></td>
               <td>Removes an element from the accessibility tree so assistive technologies ignore it. The native <span class="code">hidden</span> attribute also removes the element visually.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-invalid</span></td>
               <td><span class="code">:invalid</span></td>
+              <td><span class="code">aria-invalid</span></td>
               <td><span class="code">true</span> / <span class="code">false</span> / <span class="code">grammar</span> / <span class="code">spelling</span></td>
               <td>Indicates that the value of a form field does not meet the expected format or requirements. Required when using <span class="code">aria-errormessage</span>.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-pressed</span></td>
               <td>—</td>
+              <td><span class="code">aria-pressed</span></td>
               <td><span class="code">true</span> / <span class="code">false</span> / <span class="code">mixed</span></td>
               <td>Indicates the pressed state of a toggle button.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-selected</span></td>
               <td>—</td>
+              <td><span class="code">aria-selected</span></td>
               <td><span class="code">true</span> / <span class="code">false</span></td>
               <td>Indicates the currently selected item within a set such as a tab or option.</td>
             </tr>
@@ -320,56 +340,61 @@
         <table class="attr-table">
           <thead>
             <tr>
-              <th>Attribute</th>
-              <th>Native equivalent</th>
+              <th>Native</th>
+              <th>ARIA</th>
               <th>Description</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><span class="code">aria-atomic</span></td>
               <td>—</td>
+              <td><span class="code">aria-atomic</span></td>
               <td>When set to <span class="code">true</span>, instructs assistive technologies to announce the entire live region when any part of it changes, rather than only the changed portion.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-describedby</span></td>
               <td>—</td>
+              <td><span class="code">aria-describedby</span></td>
               <td>References the <span class="code">id</span> of an element that provides additional descriptive information about the current element.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-description</span></td>
               <td>—</td>
+              <td><span class="code">aria-description</span></td>
               <td>Provides an accessible description directly as a text string. Use when no visible description is present.<p class="attr-note attr-note--warning">Not yet supported in all browsers and assistive technologies. Use <span class="code">aria-describedby</span> for broader compatibility.</p></td>
             </tr>
             <tr>
-              <td><span class="code">aria-haspopup</span></td>
               <td>—</td>
+              <td><span class="code">aria-haspopup</span></td>
               <td>Indicates that interacting with the element will open a popup such as a listbox, menu or dialog.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-label</span></td>
               <td>—</td>
+              <td><span class="code">aria-label</span></td>
               <td>Provides an accessible name directly as a text string. Use when no visible label is present.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-labelledby</span></td>
               <td>—</td>
+              <td><span class="code">aria-labelledby</span></td>
               <td>References the <span class="code">id</span> of another element whose text serves as the accessible name for the current element.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-live</span></td>
               <td>—</td>
+              <td><span class="code">aria-live</span></td>
               <td>Defines a live region whose content changes are announced by screen readers. Common values are <span class="code">polite</span> (waits for user to be idle) and <span class="code">assertive</span> (announces immediately).</td>
             </tr>
             <tr>
-              <td><span class="code">aria-required</span></td>
               <td><span class="code">required</span></td>
+              <td><span class="code">aria-required</span></td>
               <td>Indicates that the field must be filled in before the form can be submitted. The native <span class="code">required</span> attribute is stronger — it also prevents form submission and triggers built-in browser validation.</td>
             </tr>
             <tr>
-              <td><span class="code">aria-roledescription</span></td>
               <td>—</td>
+              <td><span class="code">aria-roledescription</span></td>
               <td>Provides a human-readable description of the element's role, overriding the default role name announced by assistive technologies.</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><span class="code">aria-valuetext</span></td>
+              <td>Provides a human-readable text alternative for the current numeric value of a range widget, announced by screen readers instead of the raw number.</td>
             </tr>
           </tbody>
         </table>

@@ -35,21 +35,27 @@
           <li aria-description="Required">The carousel is wrapped in <span class="code">role="region"</span> with <span class="code">aria-roledescription="carousel"</span> and an <span class="code">aria-label</span>, so screen readers announce its purpose</li>
           <li aria-description="Required">Each slide uses <span class="code">role="group"</span> with <span class="code">aria-roledescription="slide"</span> and <span class="code">aria-label="Slide N of M"</span> to communicate its position</li>
           <li aria-description="Required">Inactive slides use <span class="code">aria-hidden="true"</span> and <span class="code">inert</span>, so they are removed from both the accessibility tree and the focus order</li>
-          <li aria-description="Required">Indicator buttons have <span class="code">aria-label="Slide N"</span> so their purpose is announced to screen readers</li>
-          <li aria-description="Required">The active indicator is marked with <span class="code">aria-current="true"</span></li>
-          <li aria-description="Recommended">The slides container has <span class="code">aria-live="polite"</span>, so screen readers announce the new slide's content when the user navigates without losing focus</li>
-          <li aria-description="Recommended">Auto-rotating carousels should provide a pause control, since automatic motion can interrupt the user and is difficult to follow with assistive technology</li>
+          <li aria-description="Recommended">The slides container uses <span class="code">aria-live="polite"</span> so screen readers announce each slide change, whether triggered by the user or automatically</li>
+          <li aria-description="Recommended">Auto-rotating carousels should provide a pause control, since automatic motion can interrupt the user and is difficult to follow with a screen reader</li>
         </ul>
       </section>
 
       <section class="component-section">
-        <h2>Example</h2>
+        <h2>Static Carousel</h2>
+        <p>A static carousel does not advance automatically. Users navigate between slides using the previous and next buttons or the indicator dots. Indicator buttons use <span class="code">aria-label="Slide N"</span> to announce their purpose, and the active indicator is marked with <span class="code">aria-current="true"</span>.</p>
+        <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
+        <h3>Code Snippet</h3>
+        <code-editor prefix="a" tabs="html,css,js"></code-editor>
       </section>
 
       <section class="component-section">
-        <h2>Code Snippet</h2>
-        <code-editor prefix="a" tabs="html,css,js"></code-editor>
+        <h2>Auto-rotating Carousel</h2>
+        <p>An auto-rotating carousel advances slides automatically at a set interval. A play/pause control lets users stop and resume the rotation. The slides container uses <span class="code">aria-live="polite"</span> so screen readers announce each slide change, whether triggered by the user or automatically.</p>
+        <h3>Example</h3>
+        <div class="example-container" data-prefix="b"></div>
+        <h3>Code Snippet</h3>
+        <code-editor prefix="b" tabs="html,css,js"></code-editor>
       </section>
 
     </main>
@@ -194,6 +200,129 @@ indicators.forEach((btn, i) => {
 });
 prevBtn.addEventListener('click', () => goToSlide((currentSlide - 1 + slides.length) % slides.length));
 nextBtn.addEventListener('click', () => goToSlide((currentSlide + 1) % slides.length));
+  </script>
+
+  <script type="text/plain" id="snippet-b-html">
+<div role="region" aria-roledescription="carousel" aria-label="Auto-rotating carousel" class="carousel">
+  <div class="carousel-controls">
+    <button aria-label="Previous slide">◀</button>
+    <button class="carousel-play" aria-label="Pause auto-rotation">⏸</button>
+    <button aria-label="Next slide">▶</button>
+  </div>
+  <div class="carousel-slides" aria-live="polite">
+    <div role="group" aria-roledescription="slide" aria-label="Slide 1 of 3" class="carousel-slide">
+      <h3>Slide 1</h3>
+      <p>Content for the first slide.</p>
+    </div>
+    <div role="group" aria-roledescription="slide" aria-label="Slide 2 of 3" class="carousel-slide" aria-hidden="true" inert>
+      <h3>Slide 2</h3>
+      <p>Content for the second slide.</p>
+    </div>
+    <div role="group" aria-roledescription="slide" aria-label="Slide 3 of 3" class="carousel-slide" aria-hidden="true" inert>
+      <h3>Slide 3</h3>
+      <p>Content for the third slide.</p>
+    </div>
+  </div>
+</div>
+  </script>
+
+  <script type="text/plain" id="snippet-b-css">
+.carousel {
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid lightgray;
+  border-radius: 8px;
+  overflow: hidden;
+  color: dimgray;
+}
+
+.carousel-controls {
+  order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 16px;
+  border-top: 1.5px solid lightgray;
+}
+
+.carousel-slides {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  padding: 24px;
+  background: whitesmoke;
+}
+
+.carousel-slide h3 {
+  margin: 0 0 8px;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.carousel-controls > button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 1.5px solid;
+  border-radius: 4px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.carousel-controls > button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.carousel-play {
+  width: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+  </script>
+
+  <script type="text/plain" id="snippet-b-js">
+const slidesContainer = document.querySelector('.carousel-slides');
+const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+const playBtn = document.querySelector('.carousel-play');
+const prevBtn = document.querySelector('[aria-label="Previous slide"]');
+const nextBtn = document.querySelector('[aria-label="Next slide"]');
+let currentSlide = 0;
+let isPlaying = true;
+let interval;
+
+function goToSlide(index) {
+  slides[currentSlide].setAttribute('aria-hidden', 'true');
+  slides[currentSlide].setAttribute('inert', '');
+  currentSlide = index;
+  slidesContainer.style.transform = 'translateX(-' + (index * 100) + '%)';
+  slides[currentSlide].removeAttribute('aria-hidden');
+  slides[currentSlide].removeAttribute('inert');
+}
+
+function setPlaying(playing) {
+  isPlaying = playing;
+  if (isPlaying) {
+    interval = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 3000);
+    playBtn.textContent = '⏸';
+    playBtn.setAttribute('aria-label', 'Pause auto-rotation');
+  } else {
+    clearInterval(interval);
+    playBtn.textContent = '▶';
+    playBtn.setAttribute('aria-label', 'Play auto-rotation');
+  }
+}
+
+playBtn.addEventListener('click', () => setPlaying(!isPlaying));
+prevBtn.addEventListener('click', () => goToSlide((currentSlide - 1 + slides.length) % slides.length));
+nextBtn.addEventListener('click', () => goToSlide((currentSlide + 1) % slides.length));
+
+setPlaying(true);
   </script>
 
   <script src="common.js"></script>

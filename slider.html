@@ -35,9 +35,8 @@
           <li aria-description="Required">The slider must have a visible <span class="code">&lt;label&gt;</span> associated via matching <span class="code">for</span> and <span class="code">id</span> attributes</li>
           <li aria-description="Required"><span class="code">min</span>, <span class="code">max</span> and <span class="code">step</span> attributes define the allowed range and increment</li>
           <li aria-description="Required"><span class="kbd">←</span> <span class="kbd">→</span> arrow keys decrease and increase the value by one step</li>
-          <li aria-description="Required">In a Multi-Thumb slider, each thumb must have its own label via <span class="code">aria-labelledby</span>, and both thumbs must be grouped with a <span class="code">&lt;fieldset&gt;</span> and <span class="code">&lt;legend&gt;</span></li>
           <li aria-description="Recommended">The current value is displayed visibly next to the slider and updates as the user moves the handle</li>
-          <li aria-description="Recommended"><span class="code">aria-valuetext</span> can be used to provide a human-readable label for the value when the raw number is not self-explanatory</li>
+
         </ul>
       </section>
 
@@ -51,6 +50,7 @@
 
       <section class="component-section">
         <h2>Multi-Thumb Slider</h2>
+        <p>A multi-thumb slider uses two handles to define a range, such as a minimum and maximum price. Each thumb must have its own <span class="code">&lt;label&gt;</span>, and both thumbs must be grouped with a <span class="code">&lt;fieldset&gt;</span> and <span class="code">&lt;legend&gt;</span>.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>

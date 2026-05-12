@@ -20,8 +20,8 @@
 
       <div class="page-description">
         <h1>Input Group</h1>
-        <p>An input group is a set of related form controls grouped together under a shared label. A typical use case is a group of checkboxes where users can select multiple options from a set, such as filtering by category.</p>
-        <p>The recommended implementation is the native <span class="code">&lt;fieldset&gt;</span> and <span class="code">&lt;legend&gt;</span> elements, which group the controls semantically and provide the group label to assistive technology automatically.</p>
+        <p>An input group is a set of related form controls grouped together under a shared label.</p>
+        <p>The recommended implementation is the native <span class="code">&lt;fieldset&gt;</span> and <span class="code">&lt;legend&gt;</span> elements, which group the controls semantically and provide the group label to screen readers automatically.</p>
       </div>
 
       <section class="component-section">
@@ -32,9 +32,9 @@
         </div>
         <ul class="feature-list">
           <li aria-description="Required"><span class="code">&lt;fieldset&gt;</span> groups the related inputs together semantically, and <span class="code">&lt;legend&gt;</span> provides a label for the entire group</li>
-          <li aria-description="Required">Each input must have an associated individual <span class="code">&lt;label&gt;</span>, linked by nesting or via matching <span class="code">for</span> and <span class="code">id</span> attributes.</li>
+          <li aria-description="Required">Each input must have an associated individual <span class="code">&lt;label&gt;</span>, linked by nesting or via matching <span class="code">for</span> and <span class="code">id</span> attributes</li>
           <li aria-description="Recommended">Inputs that belong to the same group share a <span class="code">name</span> attribute</li>
-          <li aria-description="Recommended"><span class="code">&lt;form&gt;</span> wraps related fieldsets into a single semantic container. When given an accessible name via <span class="code">aria-label</span> or <span class="code">aria-labelledby</span>, it is exposed as a form landmark that assistive technology users can navigate to directly</li>
+          <li aria-description="Recommended"><span class="code">&lt;form&gt;</span> wraps related fieldsets into a single semantic container. When given an accessible name via <span class="code">aria-label</span> or <span class="code">aria-labelledby</span>, it is exposed as a form landmark that screen reader users can navigate to directly</li>
         </ul>
       </section>
 
@@ -47,7 +47,8 @@
       </section>
 
       <section class="component-section">
-        <h2>Registration Form</h2>
+        <h2>Form</h2>
+        <p>A <span class="code">&lt;form&gt;</span> element wraps multiple fieldsets into a single semantic container. When given an accessible name, it becomes a form landmark that screen reader users can navigate to directly.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>
@@ -113,7 +114,7 @@ legend {
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-<form class="registration-form">
+<form class="form">
   <fieldset class="form-group">
     <legend>Account details</legend>
     <label class="form-field">
@@ -149,7 +150,7 @@ legend {
   </script>
 
   <script type="text/plain" id="snippet-b-css">
-.registration-form {
+.form {
   display: flex;
   flex-direction: column;
   gap: 24px;
