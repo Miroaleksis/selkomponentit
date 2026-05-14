@@ -61,29 +61,29 @@
   </div>
 
   <script type="text/plain" id="snippet-b-html">
-<label for="ms-trigger">Choose options</label>
-<div class="multiselect">
-  <button
-    id="ms-trigger"
-    role="combobox"
-    aria-haspopup="listbox"
-    aria-expanded="false"
-    aria-controls="ms-listbox"
-  >
-    Select options
-  </button>
-  <ul role="listbox" id="ms-listbox" aria-multiselectable="true" aria-label="Choose options">
-    <li role="option" aria-selected="false">Option 1</li>
-    <li role="option" aria-selected="false">Option 2</li>
-    <li role="option" aria-selected="false">Option 3</li>
-    <li role="option" aria-selected="false">Option 4</li>
-  </ul>
-</div>
+<label>
+  <span>Fruit</span>
+  <div class="multiselect">
+    <button role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="ms-listbox">
+      Select fruits
+    </button>
+    <ul role="listbox" id="ms-listbox" aria-multiselectable="true" aria-label="Fruit">
+      <li role="option" aria-selected="false">Apple</li>
+      <li role="option" aria-selected="false">Banana</li>
+      <li role="option" aria-selected="false">Cherry</li>
+      <li role="option" aria-selected="false">Date</li>
+      <li role="option" aria-selected="false">Elderberry</li>
+      <li role="option" aria-selected="false">Fig</li>
+    </ul>
+  </div>
+</label>
   </script>
 
   <script type="text/plain" id="snippet-b-css">
-.multiselect {
-  position: relative;
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   color: dimgray;
 }
 
@@ -175,6 +175,7 @@ const listbox = document.querySelector('[role="listbox"]');
 const options = [...document.querySelectorAll('[role="option"]')];
 let activeIndex = 0;
 let isOpen = false;
+let optionJustClicked = false;
 
 function setActive(index) {
   options[activeIndex].classList.remove('option-current');
@@ -215,6 +216,10 @@ function updateMenuState(open) {
 }
 
 trigger.addEventListener('click', () => {
+  if (optionJustClicked) {
+    optionJustClicked = false;
+    return;
+  }
   updateMenuState(!isOpen);
 });
 
@@ -251,6 +256,7 @@ trigger.addEventListener('keydown', (e) => {
 options.forEach((option, index) => {
   option.addEventListener('mousedown', e => e.preventDefault());
   option.addEventListener('click', () => {
+    optionJustClicked = true;
     setActive(index);
     toggleSelection(index);
   });
