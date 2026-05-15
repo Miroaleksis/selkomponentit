@@ -139,7 +139,17 @@ customElements.define('code-editor', CodeEditor);
         querySelectorAll: s  => shadow.querySelectorAll(s),
         getElementById:   id => shadow.querySelector('#' + id),
         createElement:    t  => document.createElement(t),
-        addEventListener: (...args) => document.addEventListener(...args),
+        addEventListener: (type, handler, options) => {
+          document.addEventListener(type, (e) => {
+            handler(new Proxy(e, {
+              get(target, prop) {
+                if (prop === 'target') return e.composedPath()[0] ?? e.target;
+                const val = target[prop];
+                return typeof val === 'function' ? val.bind(target) : val;
+              }
+            }));
+          }, options);
+        },
         body: shadow
       });
     }
