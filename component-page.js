@@ -114,8 +114,7 @@ customElements.define('code-editor', CodeEditor);
   });
 })();
 
-// Render code snippets into example containers
-// Each .example-container can have data-prefix="select" to use panel-select-html etc.
+// Render code snippets into example containers using Shadow DOM for CSS isolation
 (function renderExamples() {
   document.querySelectorAll('.example-container').forEach(container => {
     const p = container.dataset.prefix ? container.dataset.prefix + '-' : '';
@@ -124,25 +123,25 @@ customElements.define('code-editor', CodeEditor);
     const jsCode   = document.querySelector('#panel-' + p + 'js code');
     if (!htmlCode) return;
 
-    container.innerHTML = htmlCode.textContent;
+    const html = htmlCode.textContent;
+    const css  = cssCode ? cssCode.textContent.trim() : '';
+    const js   = jsCode  ? jsCode.textContent.trim()  : '';
 
-    if (cssCode && cssCode.textContent.trim()) {
-      const style = document.createElement('style');
-      style.textContent = `@scope (.example-container[data-prefix="${container.dataset.prefix}"]) { ${cssCode.textContent} }`;
-      document.head.appendChild(style);
-    }
+    const host = document.createElement('div');
+    container.appendChild(host);
 
-    if (jsCode && jsCode.textContent.trim()) {
-      const script = document.createElement('script');
-      script.textContent = `(function(document) { ${jsCode.textContent} })({
-  querySelector:    function(s)  { return document.querySelector('.example-container[data-prefix="${container.dataset.prefix}"] ' + s); },
-  querySelectorAll: function(s)  { return document.querySelectorAll('.example-container[data-prefix="${container.dataset.prefix}"] ' + s); },
-  getElementById:   function(id) { return document.querySelector('.example-container[data-prefix="${container.dataset.prefix}"] #' + id); },
-  createElement:    function(t)  { return document.createElement(t); },
-  addEventListener: function()   { return document.addEventListener.apply(document, arguments); },
-  body:             document.body
-});`;
-      document.body.appendChild(script);
+    const shadow = host.attachShadow({ mode: 'open' });
+    shadow.innerHTML = `<style>:host { all: initial; display: block; } ${css}</style>${html}`;
+
+    if (js) {
+      new Function('document', js)({
+        querySelector:    s  => shadow.querySelector(s),
+        querySelectorAll: s  => shadow.querySelectorAll(s),
+        getElementById:   id => shadow.querySelector('#' + id),
+        createElement:    t  => document.createElement(t),
+        addEventListener: (...args) => document.addEventListener(...args),
+        body: shadow
+      });
     }
   });
 })();
