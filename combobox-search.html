@@ -118,6 +118,7 @@ input[type="text"] {
   font-family: inherit;
   font-size: inherit;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 [role="listbox"] {
@@ -275,7 +276,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   <label>
     <span>Fruit</span>
     <div class="combobox-search-multi">
-      <span id="selection-count" class="selection-count visually-hidden" aria-live="polite">0 selected</span>
+      <output id="selection-count" class="selection-count visually-hidden">0 selected</output>
       <input type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-describedby="selection-count" aria-controls="csm-listbox">
       <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1">
         <li role="option" id="csm-opt-1" aria-selected="false">Apple</li>
@@ -327,6 +328,7 @@ input[type="text"] {
   font-family: inherit;
   font-size: inherit;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 [role="listbox"] {

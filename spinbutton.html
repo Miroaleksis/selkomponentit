@@ -60,7 +60,7 @@
     <input type="number" id="quantity" min="1" step="1" value="1">
     <button type="button" aria-label="Increase quantity">+</button>
   </div>
-  <span class="sr-only" aria-live="polite"></span>
+  <output class="visually-hidden"></output>
 </div>
   </script>
 
@@ -120,7 +120,7 @@ input[type="number"]::-webkit-outer-spin-button {
   cursor: default;
 }
 
-.sr-only {
+.visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -137,7 +137,7 @@ input[type="number"]::-webkit-outer-spin-button {
 document.querySelectorAll('.spinbutton-wrapper').forEach(wrapper => {
   const input = wrapper.querySelector('input');
   const [decrease, increase] = wrapper.querySelectorAll('button');
-  const liveRegion = wrapper.querySelector('.sr-only');
+  const liveRegion = wrapper.querySelector('.visually-hidden');
 
   function updateButtons() {
     decrease.disabled = Number(input.value) <= Number(input.min);

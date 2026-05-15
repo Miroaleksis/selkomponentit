@@ -29,6 +29,12 @@ class CodeEditor extends HTMLElement {
       <button class="button">Open in CodePen</button>
     `;
 
+    tabs.forEach(tab => {
+      const source = document.querySelector(`#snippet-${prefix}-${tab}`);
+      const panel  = this.querySelector(`#panel-${prefix}-${tab} code`);
+      if (source && panel) panel.textContent = source.textContent.trim();
+    });
+
     const editor = this.querySelector('.code-editor');
     const tabButtonEls = Array.from(this.querySelectorAll('[role="tab"]'));
 
@@ -104,28 +110,39 @@ class CodeEditor extends HTMLElement {
 }
 customElements.define('code-editor', CodeEditor);
 
-// Populate code panels from <script type="text/plain"> sources
-// Convention: id="snippet-{name}" → target #panel-{name} code
-(function populateCodePanels() {
-  document.querySelectorAll('script[type="text/plain"][id^="snippet-"]').forEach(source => {
-    const targetId = source.id.replace('snippet-', 'panel-');
-    const target = document.querySelector('#' + targetId + ' code');
-    if (target) target.textContent = source.textContent.trim();
-  });
-})();
+function makeShadowProxy(shadow) {
+  return {
+    querySelector:    s  => shadow.querySelector(s),
+    querySelectorAll: s  => shadow.querySelectorAll(s),
+    getElementById:   id => shadow.querySelector('#' + id),
+    createElement:    t  => document.createElement(t),
+    addEventListener: (type, handler, options) => {
+      document.addEventListener(type, (e) => {
+        handler(new Proxy(e, {
+          get(target, prop) {
+            if (prop === 'target') return e.composedPath()[0] ?? e.target;
+            const val = target[prop];
+            return typeof val === 'function' ? val.bind(target) : val;
+          }
+        }));
+      }, options);
+    },
+    body: shadow
+  };
+}
 
 // Render code snippets into example containers using Shadow DOM for CSS isolation
 (function renderExamples() {
   document.querySelectorAll('.example-container').forEach(container => {
     const p = container.dataset.prefix ? container.dataset.prefix + '-' : '';
-    const htmlCode = document.querySelector('#panel-' + p + 'html code');
-    const cssCode  = document.querySelector('#panel-' + p + 'css code');
-    const jsCode   = document.querySelector('#panel-' + p + 'js code');
-    if (!htmlCode) return;
+    const htmlSource = document.querySelector('#snippet-' + p + 'html');
+    const cssSource  = document.querySelector('#snippet-' + p + 'css');
+    const jsSource   = document.querySelector('#snippet-' + p + 'js');
+    if (!htmlSource) return;
 
-    const html = htmlCode.textContent;
-    const css  = cssCode ? cssCode.textContent.trim() : '';
-    const js   = jsCode  ? jsCode.textContent.trim()  : '';
+    const html = htmlSource.textContent.trim();
+    const css  = cssSource ? cssSource.textContent.trim() : '';
+    const js   = jsSource  ? jsSource.textContent.trim()  : '';
 
     const host = document.createElement('div');
     container.appendChild(host);
@@ -134,24 +151,7 @@ customElements.define('code-editor', CodeEditor);
     shadow.innerHTML = `<style>:host { all: initial; display: block; } ${css}</style>${html}`;
 
     if (js) {
-      new Function('document', js)({
-        querySelector:    s  => shadow.querySelector(s),
-        querySelectorAll: s  => shadow.querySelectorAll(s),
-        getElementById:   id => shadow.querySelector('#' + id),
-        createElement:    t  => document.createElement(t),
-        addEventListener: (type, handler, options) => {
-          document.addEventListener(type, (e) => {
-            handler(new Proxy(e, {
-              get(target, prop) {
-                if (prop === 'target') return e.composedPath()[0] ?? e.target;
-                const val = target[prop];
-                return typeof val === 'function' ? val.bind(target) : val;
-              }
-            }));
-          }, options);
-        },
-        body: shadow
-      });
+      new Function('document', js)(makeShadowProxy(shadow));
     }
   });
 })();
