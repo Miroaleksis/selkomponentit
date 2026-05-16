@@ -22,7 +22,7 @@
       <div class="page-description">
         <h1>Text Input</h1>
         <p>A text input is a single-line form control that allows users to enter freeform text, such as a name, email address or search query.</p>
-        <p>The native <span class="code">&lt;input&gt;</span> element should always be used, as it provides built-in keyboard support, screen reader announcements and mobile keyboard optimisation. The <span class="code">type</span> attribute should reflect the expected input — for example <span class="code">type="email"</span> or <span class="code">type="search"</span> — to trigger the appropriate virtual keyboard on mobile devices.</p>
+        <p>The native <code>&lt;input&gt;</code> element should always be used, as it provides built-in keyboard support, screen reader announcements and mobile keyboard optimisation. The <code>type</code> attribute should reflect the expected input — for example <code>type="email"</code> or <code>type="search"</code> — to trigger the appropriate virtual keyboard on mobile devices.</p>
       </div>
 
       <section class="component-section">
@@ -32,9 +32,9 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">Every input must have a visible <span class="code">&lt;label&gt;</span> associated via nesting or matching <span class="code">for</span> and <span class="code">id</span> attributes</li>
-          <li aria-description="Required">The help texts, error messages and prefixes/suffixes must be associated with the input using the <span class="code">aria-describedby</span> attribute</li>
-          <li aria-description="Required">Use <span class="code">autocomplete</span> to help users fill in common fields such as name, email and address</li>
+          <li aria-description="Required">Every input must have a visible <code>&lt;label&gt;</code> associated via nesting or matching <code>for</code> and <code>id</code> attributes</li>
+          <li aria-description="Required">The help texts, error messages and prefixes/suffixes must be associated with the input using the <code>aria-describedby</code> attribute</li>
+          <li aria-description="Required">Use <code>autocomplete</code> to help users fill in common fields such as name, email and address</li>
           <li aria-description="Required">Placeholder text must not be used as a substitute for a label. It disappears on input and has low contrast by default</li>
           <li aria-description="Recommended">The required state should be indicated clearly with text. If a symbol like an asterisk (*) is used, it should be explained at the top of the form</li>
         </ul>
@@ -70,6 +70,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
   color: dimgray;
 }
 

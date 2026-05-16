@@ -1,5 +1,5 @@
-const tagFilters = document.querySelectorAll('.tag-filter');
-const cards = document.querySelectorAll('.component-card');
+const tagFilters = document.querySelectorAll('.filter-bar button');
+const cards = document.querySelectorAll('.card');
 const allBtn = document.querySelector('[data-filter="all"]');
 
 tagFilters.forEach(btn => {

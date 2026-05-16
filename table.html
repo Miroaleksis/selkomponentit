@@ -31,16 +31,16 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required"><span class="code">&lt;caption&gt;</span> provides a visible title for the table and is announced by screen readers before the table content</li>
-          <li aria-description="Required">Header cells use <span class="code">&lt;th&gt;</span> and data cells use <span class="code">&lt;td&gt;</span>, allowing screen readers to associate each data cell with its corresponding header</li>
-          <li aria-description="Required"><span class="code">scope="col"</span> on <span class="code">&lt;th&gt;</span> elements identifies them as column headers</li>
-          <li aria-description="Recommended"><span class="code">&lt;thead&gt;</span> groups the header row and <span class="code">&lt;tbody&gt;</span> groups the data rows, helping screen readers understand the table structure</li>
+          <li aria-description="Required"><code>&lt;caption&gt;</code> provides a visible title for the table and is announced by screen readers before the table content</li>
+          <li aria-description="Required">Header cells use <code>&lt;th&gt;</code> and data cells use <code>&lt;td&gt;</code>, allowing screen readers to associate each data cell with its corresponding header</li>
+          <li aria-description="Required"><code>scope="col"</code> on <code>&lt;th&gt;</code> elements identifies them as column headers</li>
+          <li aria-description="Recommended"><code>&lt;thead&gt;</code> groups the header row and <code>&lt;tbody&gt;</code> groups the data rows, helping screen readers understand the table structure</li>
         </ul>
       </section>
 
       <section class="component-section">
         <h2>Sortable Table</h2>
-        <p>A sortable table lets users reorder rows by clicking column headers. <span class="code">aria-sort="ascending|descending|none"</span> on the header communicates the current sort direction to screen readers. Sort controls use a <span class="code">&lt;button&gt;</span> inside <span class="code">&lt;th&gt;</span> so they are reachable by keyboard.</p>
+        <p>A sortable table lets users reorder rows by clicking column headers. <code>aria-sort="ascending|descending|none"</code> on the header communicates the current sort direction to screen readers. Sort controls use a <code>&lt;button&gt;</code> inside <code>&lt;th&gt;</code> so they are reachable by keyboard.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
@@ -49,7 +49,7 @@
 
       <section class="component-section">
         <h2>Expandable Rows</h2>
-        <p>Expandable rows allow users to reveal additional detail for a table entry without leaving the page. Expanding must be triggered by a dedicated button whose accessible name clearly communicates which row's details it opens. In the example, <span class="code">aria-labelledby</span> references the row's main cell to provide this context. <span class="code">aria-expanded</span> and <span class="code">aria-controls</span> on the button communicate its state and target to screen readers.</p>
+        <p>Expandable rows allow users to reveal additional detail for a table entry without leaving the page. Expanding must be triggered by a dedicated button whose accessible name clearly communicates which row's details it opens. In the example, <code>aria-labelledby</code> references the row's main cell to provide this context. <code>aria-expanded</code> and <code>aria-controls</code> on the button communicate its state and target to screen readers.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>
@@ -89,6 +89,8 @@
   <script type="text/plain" id="snippet-a-css">
 table {
   width: 100%;
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
   color: dimgray;
   background: whitesmoke;
 }
@@ -236,6 +238,8 @@ headers.forEach(th => {
   <script type="text/plain" id="snippet-b-css">
 table {
   width: 100%;
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
   color: dimgray;
   background: whitesmoke;
   table-layout: fixed;

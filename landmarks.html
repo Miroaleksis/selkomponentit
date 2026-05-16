@@ -21,7 +21,7 @@
       <div class="page-description">
         <h1>Landmarks</h1>
         <p>Landmark regions are structural areas of a page defined by semantic HTML elements. Screen readers expose landmarks so users can jump directly to any section without navigating through all content first.</p>
-        <p>Native HTML elements such as <span class="code">&lt;header&gt;</span>, <span class="code">&lt;nav&gt;</span>, <span class="code">&lt;main&gt;</span>, <span class="code">&lt;aside&gt;</span> and <span class="code">&lt;footer&gt;</span> carry implicit landmark roles and should always be preferred over adding <span class="code">role</span> attributes to generic elements.</p>
+        <p>Native HTML elements such as <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code> and <code>&lt;footer&gt;</code> carry implicit landmark roles and should always be preferred over adding <code>role</code> attributes to generic elements.</p>
       </div>
 
       <section class="component-section">
@@ -32,12 +32,12 @@
         </div>
         <ul class="feature-list">
           <li aria-description="Recommended">A skip link is the first focusable element on the page and lets keyboard users jump directly to the main content, bypassing repeated navigation</li>
-          <li aria-description="Recommended"><span class="code">&lt;header&gt;</span> defines the banner region and typically contains the site name and global navigation</li>
-          <li aria-description="Recommended"><span class="code">&lt;nav&gt;</span> defines a navigation landmark. When multiple <span class="code">&lt;nav&gt;</span> elements are present, each should have a unique accessible name via <span class="code">aria-label</span> or <span class="code">aria-labelledby</span></li>
-          <li aria-description="Recommended"><span class="code">&lt;main&gt;</span> defines the primary content of the page. Each page should have only one <span class="code">&lt;main&gt;</span> element</li>
-          <li aria-description="Recommended"><span class="code">&lt;aside&gt;</span> defines complementary content that supports but is not essential to the main content</li>
-          <li aria-description="Recommended"><span class="code">&lt;footer&gt;</span> defines the contentinfo region and typically contains copyright information and secondary links</li>
-          <li aria-description="Recommended"><span class="code">&lt;section&gt;</span> becomes a region landmark only when it has an accessible name via <span class="code">aria-labelledby</span> referencing its heading. Without a name it is treated as a generic container</li>
+          <li aria-description="Recommended"><code>&lt;header&gt;</code> defines the banner region and typically contains the site name and global navigation</li>
+          <li aria-description="Recommended"><code>&lt;nav&gt;</code> defines a navigation landmark. When multiple <code>&lt;nav&gt;</code> elements are present, each should have a unique accessible name via <code>aria-label</code> or <code>aria-labelledby</code></li>
+          <li aria-description="Recommended"><code>&lt;main&gt;</code> defines the primary content of the page. Each page should have only one <code>&lt;main&gt;</code> element</li>
+          <li aria-description="Recommended"><code>&lt;aside&gt;</code> defines complementary content that supports but is not essential to the main content</li>
+          <li aria-description="Recommended"><code>&lt;footer&gt;</code> defines the contentinfo region and typically contains copyright information and secondary links</li>
+          <li aria-description="Recommended"><code>&lt;section&gt;</code> becomes a region landmark only when it has an accessible name via <code>aria-labelledby</code> referencing its heading. Without a name it is treated as a generic container</li>
         </ul>
       </section>
 
@@ -104,7 +104,8 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  font-size: 13px;
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
   color: dimgray;
 }
 

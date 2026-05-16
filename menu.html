@@ -31,10 +31,10 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">The menu is wrapped in <span class="code">&lt;nav&gt;</span> with an <span class="code">aria-label</span>, so screen readers announce it as a navigation landmark</li>
-          <li aria-description="Required"><span class="code">aria-current="page"</span> on the active link identifies the current page to screen readers</li>
-          <li aria-description="Required"><span class="code">aria-expanded</span> on the submenu button reflects whether the submenu is currently expanded</li>
-          <li aria-description="Recommended">An expanded submenu can be dismissed with <span class="kbd">Esc</span></li>
+          <li aria-description="Required">The menu is wrapped in <code>&lt;nav&gt;</code> with an <code>aria-label</code>, so screen readers announce it as a navigation landmark</li>
+          <li aria-description="Required"><code>aria-current="page"</code> on the active link identifies the current page to screen readers</li>
+          <li aria-description="Required"><code>aria-expanded</code> on the submenu button reflects whether the submenu is currently expanded</li>
+          <li aria-description="Recommended">An expanded submenu can be dismissed with <kbd>Esc</kbd></li>
         </ul>
       </section>
 
@@ -49,7 +49,7 @@
 
       <section class="component-section">
         <h2>With Parent Links</h2>
-        <p>In this variant, items with submenus have both a link to the parent page and a separate button that toggles the submenu. On wider screens the submenu also opens on hover. Hover-opened submenus can be dismissed with <span class="kbd">Esc</span>.</p>
+        <p>In this variant, items with submenus have both a link to the parent page and a separate button that toggles the submenu. On wider screens the submenu also opens on hover. Hover-opened submenus can be dismissed with <kbd>Esc</kbd>.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>
@@ -92,6 +92,8 @@
   flex-wrap: wrap;
   padding: 0;
   margin: 0;
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
   color: dimgray;
   background: whitesmoke;
   border: 1.5px solid lightgray;
@@ -248,6 +250,8 @@ document.addEventListener('click', (e) => {
   flex-wrap: wrap;
   padding: 0;
   margin: 0;
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
   color: dimgray;
   background: whitesmoke;
   border: 1.5px solid lightgray;

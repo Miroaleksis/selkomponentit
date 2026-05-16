@@ -32,17 +32,17 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">The carousel is wrapped in <span class="code">role="region"</span> with <span class="code">aria-roledescription="carousel"</span> and an <span class="code">aria-label</span>, so screen readers announce its purpose</li>
-          <li aria-description="Required">Each slide uses <span class="code">role="group"</span> with <span class="code">aria-roledescription="slide"</span> and <span class="code">aria-label="Slide N of M"</span> to communicate its position</li>
-          <li aria-description="Required">Inactive slides use <span class="code">aria-hidden="true"</span> and <span class="code">inert</span>, so they are removed from both the accessibility tree and the focus order</li>
-          <li aria-description="Recommended">The slides container uses <span class="code">aria-live="polite"</span> so screen readers announce each slide change, whether triggered by the user or automatically</li>
+          <li aria-description="Required">The carousel is wrapped in <code>role="region"</code> with <code>aria-roledescription="carousel"</code> and an <code>aria-label</code>, so screen readers announce its purpose</li>
+          <li aria-description="Required">Each slide uses <code>role="group"</code> with <code>aria-roledescription="slide"</code> and <code>aria-label="Slide N of M"</code> to communicate its position</li>
+          <li aria-description="Required">Inactive slides use <code>aria-hidden="true"</code> and <code>inert</code>, so they are removed from both the accessibility tree and the focus order</li>
+          <li aria-description="Recommended">The slides container uses <code>aria-live="polite"</code> so screen readers announce each slide change, whether triggered by the user or automatically</li>
           <li aria-description="Recommended">Auto-rotating carousels should provide a pause control, since automatic motion can interrupt the user and is difficult to follow with a screen reader</li>
         </ul>
       </section>
 
       <section class="component-section">
         <h2>Static Carousel</h2>
-        <p>A static carousel does not advance automatically. Users navigate between slides using the previous and next buttons or the indicator dots. Indicator buttons use <span class="code">aria-label="Slide N"</span> to announce their purpose, and the active indicator is marked with <span class="code">aria-current="true"</span>.</p>
+        <p>A static carousel does not advance automatically. Users navigate between slides using the previous and next buttons or the indicator dots. Indicator buttons use <code>aria-label="Slide N"</code> to announce their purpose, and the active indicator is marked with <code>aria-current="true"</code>.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
@@ -51,7 +51,7 @@
 
       <section class="component-section">
         <h2>Auto-rotating Carousel</h2>
-        <p>An auto-rotating carousel advances slides automatically at a set interval. A play/pause control lets users stop and resume the rotation. The slides container uses <span class="code">aria-live="polite"</span> so screen readers announce each slide change, whether triggered by the user or automatically.</p>
+        <p>An auto-rotating carousel advances slides automatically at a set interval. A play/pause control lets users stop and resume the rotation. The slides container uses <code>aria-live="polite"</code> so screen readers announce each slide change, whether triggered by the user or automatically.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>
@@ -94,6 +94,8 @@
 .carousel {
   display: flex;
   flex-direction: column;
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
   border: 1.5px solid lightgray;
   border-radius: 8px;
   overflow: hidden;
@@ -230,6 +232,8 @@ nextBtn.addEventListener('click', () => goToSlide((currentSlide + 1) % slides.le
 .carousel {
   display: flex;
   flex-direction: column;
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
   border: 1.5px solid lightgray;
   border-radius: 8px;
   overflow: hidden;

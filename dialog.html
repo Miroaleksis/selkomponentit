@@ -22,7 +22,7 @@
         <h1>Dialog</h1>
         <p>A dialog is a window overlaid on the page that interrupts the user's flow to request input or display important information.</p>
         <p>Dialogs can be used to confirm destructive actions, request information needed to continue a task, or display content that requires immediate attention. They are less suitable for non-urgent information that could be shown inline, since they interrupt the user's flow.</p>
-        <p>The recommended implementation is the native <span class="code">&lt;dialog&gt;</span> element with the <span class="code">showModal()</span> method, which provides focus management, the Escape key shortcut and a backdrop without additional JavaScript.</p>
+        <p>The recommended implementation is the native <code>&lt;dialog&gt;</code> element with the <code>showModal()</code> method, which provides focus management, the Escape key shortcut and a backdrop without additional JavaScript.</p>
       </div>
 
       <section class="component-section">
@@ -32,12 +32,12 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">The <span class="code">&lt;dialog&gt;</span> element conveys the modal role to screen readers automatically</li>
-          <li aria-description="Required"><span class="code">aria-labelledby</span> links the dialog to its heading so screen readers announce its purpose</li>
+          <li aria-description="Required">The <code>&lt;dialog&gt;</code> element conveys the modal role to screen readers automatically</li>
+          <li aria-description="Required"><code>aria-labelledby</code> links the dialog to its heading so screen readers announce its purpose</li>
           <li aria-description="Required">Focus moves into the dialog on open and returns to the trigger on close. Focus is trapped inside the dialog while it is open.</li>
-          <li aria-description="Required">The <span class="kbd">Esc</span> key closes the dialog</li>
-          <li aria-description="Recommended">The close button uses <span class="code">aria-labelledby</span> to reference both itself and the dialog title, so screen readers announce which dialog is being closed</li>
-          <li aria-description="Recommended"><span class="code">aria-haspopup="dialog"</span> communicates that the button opens a dialog</li>
+          <li aria-description="Required">The <kbd>Esc</kbd> key closes the dialog</li>
+          <li aria-description="Recommended">The close button uses <code>aria-labelledby</code> to reference both itself and the dialog title, so screen readers announce which dialog is being closed</li>
+          <li aria-description="Recommended"><code>aria-haspopup="dialog"</code> communicates that the button opens a dialog</li>
         </ul>
       </section>
 
@@ -65,8 +65,14 @@
   </script>
 
   <script type="text/plain" id="snippet-a-css">
+dialog {
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
+}
+
 button {
   padding: 8px 16px;
+  font-family: Verdana, sans-serif;
   font-size: 16px;
   color: dimgray;
   border: 1.5px solid;

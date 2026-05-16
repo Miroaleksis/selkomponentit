@@ -31,9 +31,9 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">The card itself must not be a link. If the entire card should be clickable, the "Read more" link's click area can be extended to cover the full card using a <span class="code">::before</span> pseudo-element.</li>
-          <li aria-description="Required">The link uses <span class="code">aria-labelledby="card-title card-link"</span> to combine the heading text with the link text. This ensures the purpose of the link is conveyed to screen readers in case there are multiple cards with identical "Read more" links.</li>
-          <li aria-description="Recommended">The card may use <span class="code">role="group"</span> and <span class="code">aria-roledescription="card"</span> to identify it as a distinct unit to screen readers, with <span class="code">aria-labelledby</span> pointing to the heading</li>
+          <li aria-description="Required">The card itself must not be a link. If the entire card should be clickable, the "Read more" link's click area can be extended to cover the full card using a <code>::before</code> pseudo-element.</li>
+          <li aria-description="Required">The link uses <code>aria-labelledby="card-title card-link"</code> to combine the heading text with the link text. This ensures the purpose of the link is conveyed to screen readers in case there are multiple cards with identical "Read more" links.</li>
+          <li aria-description="Recommended">The card may use <code>role="group"</code> and <code>aria-roledescription="card"</code> to identify it as a distinct unit to screen readers, with <code>aria-labelledby</code> pointing to the heading</li>
         </ul>
       </section>
 
@@ -64,6 +64,8 @@
 
   <script type="text/plain" id="snippet-a-css">
 .card {
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
   color: dimgray;
   background: whitesmoke;
   border: 1.5px solid lightgray;
