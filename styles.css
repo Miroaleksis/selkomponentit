@@ -109,6 +109,10 @@ button::after,
 
 /* ── Typography ──────────────────────────── */
 
+main ol {
+  padding-inline-start: 1.2em;
+}
+
 h1, h2 {
   color: var(--black);
   font-weight: 700;

@@ -65,13 +65,13 @@
   <script type="text/plain" id="snippet-a-html">
 <div role="region" aria-roledescription="carousel" aria-label="Slide carousel" class="carousel">
   <div class="carousel-controls">
-    <button aria-label="Previous slide">◀</button>
+    <button aria-label="Previous slide"></button>
     <ol class="carousel-indicators">
       <li><button aria-label="Slide 1" aria-current="true"></button></li>
       <li><button aria-label="Slide 2"></button></li>
       <li><button aria-label="Slide 3"></button></li>
     </ol>
-    <button aria-label="Next slide">▶</button>
+    <button aria-label="Next slide"></button>
   </div>
   <div class="carousel-slides" aria-live="polite">
     <div role="group" aria-roledescription="slide" aria-label="Slide 1 of 3" class="carousel-slide">
@@ -108,7 +108,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 8px 16px;
+  padding: 8px;
   border-top: 1.5px solid lightgray;
 }
 
@@ -119,6 +119,7 @@
 
 .carousel-slide {
   flex: 0 0 100%;
+  box-sizing: border-box;
   padding: 24px;
   background: whitesmoke;
 }
@@ -130,6 +131,11 @@
 }
 
 .carousel-controls > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   font: inherit;
   color: inherit;
   background: none;
@@ -165,6 +171,14 @@
 
 .carousel-indicators button[aria-current="true"] {
   background: dimgray;
+}
+
+[aria-label="Previous slide"]::before {
+  content: '⏮' / '';
+}
+
+[aria-label="Next slide"]::before {
+  content: '⏭' / '';
 }
   </script>
 
@@ -207,9 +221,9 @@ nextBtn.addEventListener('click', () => goToSlide((currentSlide + 1) % slides.le
   <script type="text/plain" id="snippet-b-html">
 <div role="region" aria-roledescription="carousel" aria-label="Auto-rotating carousel" class="carousel">
   <div class="carousel-controls">
-    <button aria-label="Previous slide">◀</button>
-    <button class="carousel-play" aria-label="Pause auto-rotation">⏸</button>
-    <button aria-label="Next slide">▶</button>
+    <button aria-label="Previous slide"></button>
+    <button class="carousel-play" aria-label="Pause auto-rotation" data-playing></button>
+    <button aria-label="Next slide"></button>
   </div>
   <div class="carousel-slides" aria-live="polite">
     <div role="group" aria-roledescription="slide" aria-label="Slide 1 of 3" class="carousel-slide">
@@ -246,7 +260,7 @@ nextBtn.addEventListener('click', () => goToSlide((currentSlide + 1) % slides.le
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 8px 16px;
+  padding: 8px;
   border-top: 1.5px solid lightgray;
 }
 
@@ -257,6 +271,7 @@ nextBtn.addEventListener('click', () => goToSlide((currentSlide + 1) % slides.le
 
 .carousel-slide {
   flex: 0 0 100%;
+  box-sizing: border-box;
   padding: 24px;
   background: whitesmoke;
 }
@@ -268,6 +283,11 @@ nextBtn.addEventListener('click', () => goToSlide((currentSlide + 1) % slides.le
 }
 
 .carousel-controls > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   font: inherit;
   color: inherit;
   background: none;
@@ -287,6 +307,22 @@ nextBtn.addEventListener('click', () => goToSlide((currentSlide + 1) % slides.le
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.carousel-play::before {
+  content: '▶' / '';
+}
+
+.carousel-play[data-playing]::before {
+  content: '❚❚' / '';
+}
+
+[aria-label="Previous slide"]::before {
+  content: '⏮' / '';
+}
+
+[aria-label="Next slide"]::before {
+  content: '⏭' / '';
 }
   </script>
 
@@ -311,20 +347,23 @@ function goToSlide(index) {
 
 function setPlaying(playing) {
   isPlaying = playing;
-  if (isPlaying) {
+  clearInterval(interval);
+  playBtn.toggleAttribute('data-playing', playing);
+  playBtn.setAttribute('aria-label', playing ? 'Pause auto-rotation' : 'Play auto-rotation');
+  if (playing) {
     interval = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 3000);
-    playBtn.textContent = '⏸';
-    playBtn.setAttribute('aria-label', 'Pause auto-rotation');
-  } else {
-    clearInterval(interval);
-    playBtn.textContent = '▶';
-    playBtn.setAttribute('aria-label', 'Play auto-rotation');
   }
 }
 
 playBtn.addEventListener('click', () => setPlaying(!isPlaying));
-prevBtn.addEventListener('click', () => goToSlide((currentSlide - 1 + slides.length) % slides.length));
-nextBtn.addEventListener('click', () => goToSlide((currentSlide + 1) % slides.length));
+prevBtn.addEventListener('click', () => {
+  goToSlide((currentSlide - 1 + slides.length) % slides.length);
+  if (isPlaying) setPlaying(true);
+});
+nextBtn.addEventListener('click', () => {
+  goToSlide((currentSlide + 1) % slides.length);
+  if (isPlaying) setPlaying(true);
+});
 
 setPlaying(true);
   </script>

@@ -20,8 +20,8 @@
 
       <div class="page-description">
         <h1>Button</h1>
-        <p>A button triggers an action when activated, such as submitting a form, opening a dialog or toggling a setting. Buttons can be momentary or stateful depending on their purpose.</p>
-        <p>Buttons and links are often confused but serve different purposes. A button performs an action on the current page. A link navigates the user to a new location. See the <a href="link.html">Link</a> page for more information.</p>
+        <p>A button triggers an action when activated, such as submitting a form or toggling a setting. Buttons can be momentary or stateful depending on their purpose.</p>
+        <p>Buttons and links are often confused but serve different purposes. A button performs an action on the current page. A link navigates the user to a new location (<a href="link.html">see the Link page for more information</a>).</p>
       </div>
 
       <section class="component-section">
@@ -31,22 +31,27 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required"><code>type="button"</code> prevents accidental form submission when the button is inside a form element</li>
-          <li aria-description="Required">Button text or <code>aria-label</code> must clearly describe the action the button performs</li>
+          <li aria-description="Required">Button label must clearly describe the action the button performs</li>
         </ul>
       </section>
 
       <section class="component-section">
         <h2>Regular Button</h2>
+        <p>A regular button triggers a one-time action when activated. The feedback from the action can be communicated by changing the button's label with <code>aria-live="polite"</code> or by a separate status message (<a href="alert.html">see the Alert  page for an example</a>).</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
-        <code-editor prefix="a" tabs="html,css"></code-editor>
+        <code-editor prefix="a" tabs="html,css,js"></code-editor>
       </section>
 
       <section class="component-section">
         <h2>Toggle Button</h2>
-        <p>A toggle button is a button that maintains a pressed or unpressed state between activations, such as a play/pause control or a mute button. <code>aria-pressed</code> communicates the current state to screen readers. The visual appearance should reflect the <code>aria-pressed</code> value so sighted users see the same state that screen readers announce.</p>
+        <p>A toggle button allows the user to switch between two distinct states. There are two ways to communicate the state to screen readers:</p>
+        <ol>
+          <li>A changing label reflects the current state or the action the button will perform next. The button must have <code>aria-live="polite"</code> to announce the change to screen readers.</li>
+          <li><code>aria-pressed</code> announces the pressed or unpressed state while keeping the button label stable.</li>
+        </ol>
+        <p>Note: a changing label and <code>aria-pressed</code> must not be used simultaneously as they provide conflicting information.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>
@@ -58,67 +63,108 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<button type="button" class="btn">Save changes</button>
+<button type="button" class="btn" aria-live="polite">Save changes</button>
   </script>
 
   <script type="text/plain" id="snippet-a-css">
 .btn {
-  padding: 8px 20px;
+  padding: 8px 16px;
   font-family: Verdana, sans-serif;
   font-size: 16px;
   cursor: pointer;
-  border: 1.5px solid dimgray;
+  border: none;
   border-radius: 4px;
-  background: none;
-  color: dimgray;
-}
-
-.btn:hover {
   background: dimgray;
   color: white;
 }
+  </script>
+
+  <script type="text/plain" id="snippet-a-js">
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.textContent = 'Changes saved';
+    setTimeout(() => { btn.textContent = 'Save changes'; }, 2000);
+  });
+});
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-<button type="button" class="play-btn" aria-pressed="false">Play</button>
+<div class="buttons">
+  <button type="button" class="play-btn" aria-live="polite">Play</button>
+  <button type="button" class="toggle-btn" aria-pressed="false">Like</button>
+</div>
   </script>
 
   <script type="text/plain" id="snippet-b-css">
-.play-btn {
+.buttons {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 20px;
+  gap: 16px;
   font-family: Verdana, sans-serif;
   font-size: 16px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  font: inherit;
   cursor: pointer;
-  border: 1.5px solid dimgray;
+  color: white;
+  border: none;
   border-radius: 4px;
-  background: none;
-  color: dimgray;
+}
+
+button::before {
+  display: flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+}
+
+.toggle-btn {
+  background: green;
+}
+
+.toggle-btn[aria-pressed="true"] {
+  background: darkgreen;
+}
+
+.toggle-btn::before {
+  content: '♡' / '';
+}
+
+.toggle-btn[aria-pressed="true"]::before {
+  content: '♥' / '';
+}
+
+.play-btn {
+  background: dimgray;
 }
 
 .play-btn::before {
-  content: '▶';
+  content: '▶' / '';
 }
 
-.play-btn[aria-pressed="true"] {
-  background: dimgray;
-  color: white;
-}
-
-.play-btn[aria-pressed="true"]::before {
-  content: '⏸';
+.play-btn[data-playing]::before {
+  content: '❚❚' / '';
 }
   </script>
 
   <script type="text/plain" id="snippet-b-js">
-const btn = document.querySelector('.play-btn');
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pressed = btn.getAttribute('aria-pressed') === 'true';
+    btn.setAttribute('aria-pressed', String(!pressed));
+  });
+});
 
-btn.addEventListener('click', function () {
-  const pressed = this.getAttribute('aria-pressed') === 'true';
-  this.setAttribute('aria-pressed', String(!pressed));
-  this.textContent = pressed ? 'Play' : 'Pause';
+document.querySelectorAll('.play-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const playing = btn.hasAttribute('data-playing');
+    btn.toggleAttribute('data-playing');
+    btn.textContent = playing ? 'Play' : 'Pause';
+  });
 });
   </script>
 

@@ -22,7 +22,6 @@
         <h1>Accordion</h1>
         <p>An accordion allows users to expand and collapse sections of content as needed.</p>
         <p>Accordions can be used when several related sections share the same context and reducing visual clutter is helpful. They are less suitable for content that users need to compare side by side, since toggling adds friction.</p>
-        <p>The recommended implementation is the native <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements, which provide expand/collapse behaviour and the necessary accessibility features without JavaScript.</p>
       </div>
 
       <section class="component-section">
@@ -33,7 +32,7 @@
         </div>
         <ul class="feature-list">
           <li aria-description="Required">Expands and collapses with <kbd>Space</kbd> and <kbd>Enter</kbd></li>
-          <li aria-description="Required">The expanded/collapsed state must be communicated programmatically so screen readers can announce whether a panel is expanded or collapsed</li>
+          <li aria-description="Required">The expanded/collapsed state is communicated programmatically to screen readers</li>
         </ul>
       </section>
 
@@ -48,9 +47,9 @@
 
   <script type="text/plain" id="snippet-a-html">
 <details>
-  <summary>Accordion toggle button</summary>
+  <summary>Can I change or cancel my order?</summary>
   <div class="accordion-content">
-    <p>Accordion content goes here.</p>
+    <p>Orders can be changed or cancelled within 24 hours of placing them. After that, the order may already be processed and on its way.</p>
   </div>
 </details>
   </script>
@@ -69,6 +68,7 @@ details {
 
 summary {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 8px;
   background: lightgray;
@@ -105,9 +105,9 @@ details[open] summary::after {
 
   <script type="text/plain" id="snippet-b-html">
 <div class="accordion">
-  <button class="accordion-trigger" id="accordion-trigger-1" aria-expanded="false" aria-controls="accordion-content-1">Accordion toggle button</button>
+  <button class="accordion-trigger" id="accordion-trigger-1" aria-expanded="false" aria-controls="accordion-content-1">Can I change or cancel my order?</button>
   <div class="accordion-content" id="accordion-content-1" role="region" aria-labelledby="accordion-trigger-1">
-    <p>Accordion content goes here.</p>
+    <p>Orders can be changed or cancelled within 24 hours of placing them. After that, the order may already be processed and on its way.</p>
   </div>
 </div>
   </script>
@@ -127,13 +127,12 @@ details[open] summary::after {
 
 .accordion-trigger {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  list-style: none;
   padding: 8px;
+  border: none;
   color: inherit;
   background: lightgray;
-  border: none;
-  border-radius: 0;
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;

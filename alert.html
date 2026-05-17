@@ -31,27 +31,24 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">The live region container must be present in the page before the message appears. Screen readers only announce changes within the region, so the container can only be hidden visually, not removed from the DOM</li>
-          <li aria-description="Recommended">Alerts are visually distinguishable through colour and an icon, not colour alone</li>
+          <li aria-description="Required"><code>role="status"</code> announces non-critical updates politely. Screen readers wait until the user is idle before reading the message</li>
+          <li aria-description="Required"><code>role="alert"</code> announces urgent messages assertively. Screen readers interrupt the current task to read the message immediately</li>
+          <li aria-description="Required">The live region container is present in the page before the message appears. Screen readers only announce changes within the region, so the container can only be hidden visually, not removed from the DOM</li>
+          <li aria-description="Required">The alert message conveys clearly the nature of the detected issues</li>
+          <li aria-description="Recommended">If the form is long, the alert message can also include list of links to all invalid fields</li>
+          <li aria-description="Recommended">When submitting the form fails, focus should be set to the alert message or the first invalid field</li>
         </ul>
       </section>
 
       <section class="component-section">
-        <h2>Status Message</h2>
-        <p><code>role="status"</code> announces non-critical updates politely. Screen readers wait until the user is idle before reading the message.</p>
-        <h3>Example</h3>
+        <h2>Example</h2>
+        <p>Leave the form fields empty and click the submit button to see the alert message. Fill in all required fields to see the status message.</p>
         <div class="example-container" data-prefix="a"></div>
-        <h3>Code Snippet</h3>
-        <code-editor prefix="a" tabs="html,css,js"></code-editor>
       </section>
 
       <section class="component-section">
-        <h2>Alert Message</h2>
-        <p><code>role="alert"</code> announces urgent messages assertively. Screen readers interrupt the current task to read the message immediately.</p>
-        <h3>Example</h3>
-        <div class="example-container" data-prefix="b"></div>
-        <h3>Code Snippet</h3>
-        <code-editor prefix="b" tabs="html,css,js"></code-editor>
+        <h2>Code Snippet</h2>
+        <code-editor prefix="a" tabs="html,css,js"></code-editor>
       </section>
 
     </main>
@@ -59,15 +56,38 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<button type="button" id="status-trigger">Save changes</button>
-<div role="status" id="status-message"></div>
+<form>
+  <div role="alert" id="alert-message"></div>
+  <div class="field">
+    <label for="field-name">Name (required)</label>
+    <input type="text" id="field-name" aria-describedby="error-name" required>
+    <span class="field-error" id="error-name"></span>
+  </div>
+  <div class="field">
+    <label for="field-email">Email (required)</label>
+    <input type="email" id="field-email" aria-describedby="error-email" required>
+    <span class="field-error" id="error-email"></span>
+  </div>
+  <button type="button" id="submit-btn">Submit form</button>
+  <div role="status" id="status-message"></div>
+</form>
   </script>
 
   <script type="text/plain" id="snippet-a-css">
-button {
-  padding: 8px 16px;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 320px;
   font-family: Verdana, sans-serif;
   font-size: 16px;
+  color: dimgray;
+}
+
+button {
+  font: inherit;
+  font-size: inherit;
+  padding: 8px 16px;
   background: dimgray;
   color: whitesmoke;
   border: none;
@@ -75,96 +95,98 @@ button {
   cursor: pointer;
 }
 
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field input {
+  padding: 8px;
+  color: inherit;
+  background-color: whitesmoke;
+  border: 1.5px solid dimgray;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.field-error {
+  font-size: 14px;
+  color: darkred;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+[role="alert"],
 [role="status"] {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 12px;
-  padding: 12px 16px;
+  margin-top: 8px;
+  padding: 8px 16px;
   border-radius: 8px;
   border: 1.5px solid;
-  color: #064a46;
-  background: #eaf5f4;
-  border-color: #84c6c1;
-}
-
-[role="status"]:empty {
-  position: absolute;
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-[role="status"]::before {
-  content: '✓' / '';
-  font-size: 20px;
-}
-  </script>
-
-  <script type="text/plain" id="snippet-a-js">
-const trigger = document.querySelector('#status-trigger');
-const message = document.querySelector('#status-message');
-
-trigger.addEventListener('click', () => {
-  message.textContent = 'Your changes have been saved.';
-});
-  </script>
-
-  <script type="text/plain" id="snippet-b-html">
-<button type="button" id="alert-trigger">Submit form</button>
-<div role="alert" id="alert-message"></div>
-  </script>
-
-  <script type="text/plain" id="snippet-b-css">
-button {
-  padding: 8px 16px;
   font-family: Verdana, sans-serif;
   font-size: 16px;
-  background: dimgray;
-  color: whitesmoke;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+}
+
+[role="alert"]:empty,
+[role="status"]:empty {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 [role="alert"] {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 12px;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1.5px solid;
-  color: #a53723;
-  background: #fef3f0;
-  border-color: #e8967f;
+  color: darkred;
+  background: lightpink;
+  border-color: palevioletred;
 }
 
-[role="alert"]:empty {
-  position: absolute;
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	white-space: nowrap;
+[role="status"] {
+  color: darkgreen;
+  background: lightgreen;
+  border-color: limegreen;
 }
 
 [role="alert"]::before {
   content: '✗' / '';
-  font-size: 20px;
+}
+
+[role="status"]::before {
+  content: '✓' / '';
 }
   </script>
 
-  <script type="text/plain" id="snippet-b-js">
-const trigger = document.querySelector('#alert-trigger');
-const message = document.querySelector('#alert-message');
+  <script type="text/plain" id="snippet-a-js">
+const submitBtn = document.querySelector('#submit-btn');
+const alertMessage = document.querySelector('#alert-message');
+const statusMessage = document.querySelector('#status-message');
+const fields = document.querySelectorAll('form input[required]');
 
-trigger.addEventListener('click', () => {
-  message.textContent = 'Something went wrong. Please try again.';
+submitBtn.addEventListener('click', () => {
+  const empty = [...fields].filter(field => !field.value.trim());
+
+  fields.forEach(field => {
+    const error = document.querySelector('#error-' + field.id.replace('field-', ''));
+    error.textContent = field.value.trim() ? '' : 'This field is required.';
+  });
+
+  if (empty.length > 0) {
+    alertMessage.textContent = 'Please fill in all required fields before submitting.';
+    statusMessage.textContent = '';
+    empty[0].focus();
+  } else {
+    alertMessage.textContent = '';
+    statusMessage.textContent = 'Your form has been submitted successfully.';
+    setTimeout(() => { statusMessage.textContent = ''; }, 3000);
+  }
 });
   </script>
 
