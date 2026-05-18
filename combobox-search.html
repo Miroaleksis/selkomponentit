@@ -202,6 +202,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
 
   function openDropdown() {
     input.setAttribute('aria-expanded', 'true');
+    setActive(0);
   }
 
   function closeDropdown() {
@@ -465,6 +466,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
 
   function openDropdown() {
     input.setAttribute('aria-expanded', 'true');
+    setActive(0);
   }
 
   function closeDropdown() {

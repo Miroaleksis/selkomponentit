@@ -148,7 +148,7 @@ function makeShadowProxy(shadow) {
     container.appendChild(host);
 
     const shadow = host.attachShadow({ mode: 'open' });
-    shadow.innerHTML = `<style>:host { all: initial; display: block; } ${css}</style>${html}`;
+    shadow.innerHTML = `<link rel="stylesheet" href="example-styles.css"><style>${css}</style>${html}`;
 
     if (js) {
       new Function('document', js)(makeShadowProxy(shadow));

@@ -1,9 +1,20 @@
-<svg width="232" height="128" viewBox="0 0 232 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="3.8147e-06" width="72" height="96" rx="8" fill="#D3D3D3"/>
-<rect x="80" width="72" height="96" rx="8" fill="#D3D3D3"/>
-<rect x="160" width="72" height="96" rx="8" fill="#D3D3D3"/>
-<path d="M14 122L8 116L14 110L15.4 111.4L10.8 116L15.4 120.6L14 122Z" fill="#696969"/>
-<rect x="32" y="112" width="168" height="8" rx="4" fill="#D3D3D3"/>
-<rect x="32" y="112" width="64" height="8" rx="4" fill="#696969"/>
-<path d="M218 110L224 116L218 122L216.6 120.6L221.2 116L216.6 111.4L218 110Z" fill="#696969"/>
+<svg width="232" height="136" viewBox="0 0 232 136" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2115_387)">
+<rect width="232" height="96" rx="8" fill="#A9A9A9"/>
+<path d="M232 96L169.777 41.9155L125.854 75.1983L100.233 58.5569L43.5 96H232Z" fill="#D3D3D3"/>
+<circle cx="30.8169" cy="32.4507" r="10.8169" fill="#D3D3D3"/>
+</g>
+<path d="M14 130L8 124L14 118L15.4 119.4L10.8 124L15.4 128.6L14 130Z" fill="#696969"/>
+<rect x="80" y="120" width="8" height="8" rx="4" fill="#A9A9A9"/>
+<rect x="96" y="120" width="8" height="8" rx="4" fill="#A9A9A9"/>
+<rect x="111" y="119" width="10" height="10" rx="5" fill="#696969"/>
+<rect x="111" y="119" width="10" height="10" rx="5" stroke="#696969" stroke-width="2"/>
+<rect x="128" y="120" width="8" height="8" rx="4" fill="#A9A9A9"/>
+<rect x="144" y="120" width="8" height="8" rx="4" fill="#A9A9A9"/>
+<path d="M218 118L224 124L218 130L216.6 128.6L221.2 124L216.6 119.4L218 118Z" fill="#696969"/>
+<defs>
+<clipPath id="clip0_2115_387">
+<rect width="232" height="96" rx="8" fill="white"/>
+</clipPath>
+</defs>
 </svg>
