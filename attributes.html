@@ -18,8 +18,9 @@
         <on-this-page></on-this-page>
         <div class="page-description">
           <h1>Attributes</h1>
-          <p>A reference of ARIA roles and attributes used in this library. ARIA (Accessible Rich Internet Applications) supplements HTML to communicate element purpose, state and relationships to assistive technologies.</p>
-          <p>This page covers the roles and attributes most commonly needed when building accessible components. It is not an exhaustive reference — the full ARIA specification includes many additional roles and attributes beyond what is listed here.</p>
+          <p>This page provides a reference of elements and attributes used in this library. Both native HTML elements and attributes and their corresponding ARIA attributes are listed side by side.</p>
+          <p>Native HTML elements and attributes come with built-in behaviors and semantics. ARIA (Accessible Rich Internet Applications) attributes supplement HTML when no native solution fits, when a custom component needs additional semantics, or when the built-in behaviors of a native element are unwanted. Always prefer the native element when possible.</p>
+          <p>This page covers the elements and attributes commonly needed when building accessible components. It is not an exhaustive reference, multiple elements and attributes beyond what is listed here exist.</p>
         </div>
       </div>
 
@@ -41,7 +42,7 @@
             <tr>
               <td><code>&lt;a&gt;</code></td>
               <td><code>link</code></td>
-              <td>A navigable hyperlink. Use the native element instead of the role where possible.</td>
+              <td>A navigable hyperlink.</td>
             </tr>
             <tr>
               <td>—</td>
@@ -56,7 +57,7 @@
             <tr>
               <td><code>&lt;nav&gt;</code></td>
               <td><code>navigation</code></td>
-              <td>A set of navigation links. Use the native element instead of the role where possible.</td>
+              <td>A set of navigation links.</td>
             </tr>
             <tr>
               <td>—</td>
@@ -81,12 +82,12 @@
             <tr>
               <td><code>&lt;button&gt;</code></td>
               <td><code>button</code></td>
-              <td>An interactive element that triggers an action. Use the native element instead of the role where possible.</td>
+              <td>An interactive element that triggers an action.</td>
             </tr>
             <tr>
               <td><code>&lt;input type="checkbox"&gt;</code></td>
               <td><code>checkbox</code></td>
-              <td>A control with three possible states: checked, unchecked, or mixed. Use the native element instead of the role where possible.</td>
+              <td>A control with three possible states: checked, unchecked, or mixed.</td>
             </tr>
             <tr>
               <td>—</td>
@@ -106,17 +107,17 @@
             <tr>
               <td><code>&lt;input type="radio"&gt;</code></td>
               <td><code>radio</code></td>
-              <td>A single option within a radiogroup. Use the native element instead of the role where possible.</td>
+              <td>A single option within a radiogroup.</td>
             </tr>
             <tr>
               <td><code>&lt;input type="search"&gt;</code></td>
               <td><code>searchbox</code></td>
-              <td>A text input intended for entering search queries. Use the native element instead of the role where possible.</td>
+              <td>A text input intended for entering search queries.</td>
             </tr>
             <tr>
               <td><code>&lt;input type="range"&gt;</code></td>
               <td><code>slider</code></td>
-              <td>An input for selecting a value within a range by dragging a thumb. Use the native element instead of the role where possible.</td>
+              <td>An input for selecting a value within a range by dragging a thumb.</td>
             </tr>
             <tr>
               <td><code>&lt;input type="number"&gt;</code></td>
@@ -131,17 +132,17 @@
             <tr>
               <td><code>&lt;input type="color"&gt;</code></td>
               <td>—</td>
-              <td>A color picker that lets users select a color value. Has no ARIA equivalent.</td>
+              <td>A color picker that lets users select a color value.</td>
             </tr>
             <tr>
               <td><code>&lt;input type="date"&gt;</code></td>
               <td>—</td>
-              <td>A date picker that lets users select a date. Has no ARIA equivalent.</td>
+              <td>A date picker that lets users select a date.</td>
             </tr>
             <tr>
               <td><code>&lt;input type="file"&gt;</code></td>
               <td>—</td>
-              <td>A file upload control that opens the system file dialog. Has no ARIA equivalent.</td>
+              <td>A file upload control that opens the system file dialog.</td>
             </tr>
           </tbody>
           <tbody class="table-group group--structure">
@@ -151,7 +152,7 @@
             <tr>
               <td><code>&lt;header&gt;</code></td>
               <td><code>banner</code></td>
-              <td>Site-level header region. Use the native element instead of the role where possible.</td>
+              <td>A header region for the page or its nearest sectioning ancestor, such as an <code>&lt;article&gt;</code> or <code>&lt;section&gt;</code>.</td>
             </tr>
             <tr>
               <td><code>&lt;td&gt;</code></td>
@@ -174,19 +175,19 @@
               <td>Site-level footer region containing copyright and secondary links.</td>
             </tr>
             <tr>
-              <td><code>&lt;fieldset&gt;</code></td>
+              <td><code>&lt;fieldset&gt;</code> / <code>&lt;legend&gt;</code></td>
               <td><code>group</code></td>
-              <td>A container that groups related elements, such as a set of radio buttons.</td>
+              <td>A container that groups related form controls, such as a set of radio buttons. The <code>&lt;legend&gt;</code> provides a caption for the group.</td>
             </tr>
             <tr>
               <td><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code></td>
               <td><code>list</code></td>
-              <td>A list of items. Use the native element instead of the role where possible.</td>
+              <td>A list of items.</td>
             </tr>
             <tr>
               <td><code>&lt;li&gt;</code></td>
               <td><code>listitem</code></td>
-              <td>A single item within a list. Use the native element instead of the role where possible.</td>
+              <td>A single item within a list.</td>
             </tr>
             <tr>
               <td><code>&lt;main&gt;</code></td>
@@ -226,12 +227,12 @@
             <tr>
               <td><code>&lt;table&gt;</code></td>
               <td><code>table</code></td>
-              <td>A grid of data arranged in rows and columns. Use the native element instead of the role where possible.</td>
+              <td>A grid of data arranged in rows and columns.</td>
             </tr>
             <tr>
               <td><code>&lt;details&gt;</code> / <code>&lt;summary&gt;</code></td>
               <td>—</td>
-              <td>A native disclosure widget that shows and hides content without JavaScript. The <code>&lt;summary&gt;</code> acts as the visible toggle. Has no ARIA equivalent.</td>
+              <td>A native disclosure widget that shows and hides content without JavaScript. The <code>&lt;summary&gt;</code> acts as the visible toggle.</td>
             </tr>
           </tbody>
           <tbody class="table-group group--notification">
