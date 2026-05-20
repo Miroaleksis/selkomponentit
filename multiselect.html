@@ -34,8 +34,7 @@
         </div>
         <ul class="feature-list">
           <li aria-description="Required">Options are navigable with <kbd>↑</kbd> and <kbd>↓</kbd> arrow keys</li>
-          <li aria-description="Required"><kbd>Space</kbd> toggles selection of the focused option without closing the dropdown</li>
-          <li aria-description="Required"><kbd>Enter</kbd> toggles selection of the focused option without closing the dropdown</li>
+          <li aria-description="Required"><kbd>Space</kbd> and <kbd>Enter</kbd> toggle selection of the focused option without closing the dropdown</li>
           <li aria-description="Required"><kbd>Esc</kbd> closes the dropdown and returns focus to the trigger</li>
           <li aria-description="Required"><code>aria-multiselectable="true"</code> on the listbox communicates that multiple options can be selected</li>
           <li aria-description="Required">Each option uses <code>aria-selected="true/false"</code> to convey its selection state</li>
@@ -61,13 +60,12 @@
   </div>
 
   <script type="text/plain" id="snippet-b-html">
-<label>
-  <span>Fruit</span>
-  <div class="multiselect">
-    <button role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="ms-listbox">
-      Select fruits
-    </button>
-    <ul role="listbox" id="ms-listbox" aria-multiselectable="true" aria-label="Fruit">
+<label for="ms-trigger">Fruit</label>
+<div class="multiselect">
+  <button id="ms-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="ms-listbox">
+    Select fruits
+  </button>
+  <ul role="listbox" id="ms-listbox" aria-multiselectable="true" aria-label="Fruit">
       <li role="option" aria-selected="false">Apple</li>
       <li role="option" aria-selected="false">Banana</li>
       <li role="option" aria-selected="false">Cherry</li>
@@ -75,18 +73,20 @@
       <li role="option" aria-selected="false">Elderberry</li>
       <li role="option" aria-selected="false">Fig</li>
     </ul>
-  </div>
-</label>
+</div>
   </script>
 
   <script type="text/plain" id="snippet-b-css">
-label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+label,
+.multiselect {
   font-family: Verdana, sans-serif;
   font-size: 16px;
   color: dimgray;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
 }
 
 [role="combobox"] {
@@ -177,8 +177,6 @@ const listbox = document.querySelector('[role="listbox"]');
 const options = [...document.querySelectorAll('[role="option"]')];
 let activeIndex = 0;
 let isOpen = false;
-let optionJustClicked = false;
-
 function setActive(index) {
   options[activeIndex].classList.remove('option-current');
   activeIndex = index;
@@ -218,10 +216,6 @@ function updateMenuState(open) {
 }
 
 trigger.addEventListener('click', () => {
-  if (optionJustClicked) {
-    optionJustClicked = false;
-    return;
-  }
   updateMenuState(!isOpen);
 });
 
@@ -258,7 +252,6 @@ trigger.addEventListener('keydown', (e) => {
 options.forEach((option, index) => {
   option.addEventListener('mousedown', e => e.preventDefault());
   option.addEventListener('click', () => {
-    optionJustClicked = true;
     setActive(index);
     toggleSelection(index);
   });

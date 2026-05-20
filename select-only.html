@@ -22,7 +22,7 @@
       <div class="page-description">
         <h1>Select-Only</h1>
         <p>A Select-Only combobox is an input widget that, when activated, displays a dropdown list of predefined options. The user can select one option from the list. It does not allow freeform text entry.</p>
-        <p>Select-only comboboxes can be used whenever the user picks one option from a known, limited set of values, such as a country, sort order or category.</p>
+        <p>Select-only comboboxes can be used whenever the user picks one option from a known, limited set of values.</p>
       </div>
 
       <section class="component-section">
@@ -101,31 +101,32 @@ select {
   </div>
 
   <script type="text/plain" id="snippet-b-html">
-<label>
-  <span>Fruit</span>
-  <div class="combobox">
-    <button role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="combobox-listbox-1"></button>
-    <ul role="listbox" id="combobox-listbox-1">
-      <li role="option" aria-selected="true">Select a fruit</li>
-      <li role="option" aria-selected="false">Apple</li>
-      <li role="option" aria-selected="false">Banana</li>
-      <li role="option" aria-selected="false">Cherry</li>
-      <li role="option" aria-selected="false">Date</li>
-      <li role="option" aria-selected="false">Elderberry</li>
-      <li role="option" aria-selected="false">Fig</li>
-    </ul>
-  </div>
-</label>
+<label for="combobox-btn">Fruit</label>
+<div class="combobox">
+  <button id="combobox-btn" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="combobox-listbox-1"></button>
+  <ul role="listbox" id="combobox-listbox-1">
+    <li role="option" aria-selected="true">Select a fruit</li>
+    <li role="option" aria-selected="false">Apple</li>
+    <li role="option" aria-selected="false">Banana</li>
+    <li role="option" aria-selected="false">Cherry</li>
+    <li role="option" aria-selected="false">Date</li>
+    <li role="option" aria-selected="false">Elderberry</li>
+    <li role="option" aria-selected="false">Fig</li>
+  </ul>
+</div>
   </script>
 
   <script type="text/plain" id="snippet-b-css">
-label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+label,
+.combobox {
   font-family: Verdana, sans-serif;
   font-size: 16px;
   color: dimgray;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
 }
 
 .combobox {
@@ -205,8 +206,6 @@ document.querySelectorAll('.combobox').forEach(container => {
   const options = [...container.querySelectorAll('[role="option"]')];
   let activeIndex = 0;
   let isOpen = false;
-  let optionJustClicked = false;
-
   function setActive(index) {
     options[activeIndex].classList.remove('option-current');
     activeIndex = index;
@@ -238,10 +237,6 @@ document.querySelectorAll('.combobox').forEach(container => {
   }
 
   trigger.addEventListener('click', () => {
-    if (optionJustClicked) {
-      optionJustClicked = false;
-      return;
-    }
     updateMenuState(!isOpen);
   });
 
@@ -280,7 +275,6 @@ document.querySelectorAll('.combobox').forEach(container => {
     // Prevent blur from firing on trigger when clicking an option
     option.addEventListener('mousedown', e => e.preventDefault());
     option.addEventListener('click', () => {
-      optionJustClicked = true;
       selectOption(index);
       updateMenuState(false);
     });
