@@ -310,7 +310,7 @@
               <td><code>hidden</code></td>
               <td><code>aria-hidden</code></td>
               <td><code>true</code> / <code>false</code></td>
-              <td>Removes an element from the accessibility tree so assistive technologies ignore it. The native <code>hidden</code> attribute also removes the element visually.</td>
+              <td>Removes an element from the accessibility tree so assistive technologies ignore it. The native <code>hidden</code> attribute also removes the element visually and from the tab order, so <code>tabindex="-1"</code> is not needed alongside it. When using <code>aria-hidden</code> on interactive elements, add <code>tabindex="-1"</code> to also remove them from the tab order.</td>
             </tr>
             <tr>
               <td><code>:invalid</code></td>
@@ -329,6 +329,12 @@
               <td><code>aria-selected</code></td>
               <td><code>true</code> / <code>false</code></td>
               <td>Indicates the currently selected item within a set such as a tab or option.</td>
+            </tr>
+            <tr>
+              <td><code>inert</code></td>
+              <td>—</td>
+              <td>—</td>
+              <td>Removes an element and all its descendants from focus order, pointer events and the accessibility tree.</td>
             </tr>
           </tbody>
         </table>
@@ -396,6 +402,11 @@
               <td>—</td>
               <td><code>aria-valuetext</code></td>
               <td>Provides a human-readable text alternative for the current numeric value of a range widget, announced by screen readers instead of the raw number.</td>
+            </tr>
+            <tr>
+              <td><code>tabindex</code></td>
+              <td>—</td>
+              <td>Controls whether an element is reachable via keyboard navigation. A value of <code>0</code> adds the element to the natural tab order. A value of <code>-1</code> makes it focusable programmatically but removes it from the tab order. Positive values are not recommended.</td>
             </tr>
           </tbody>
         </table>

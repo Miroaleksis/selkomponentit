@@ -32,10 +32,10 @@
         </div>
         <ul class="feature-list">
           <li aria-description="Required">Cards in a scrollable list include focusable elements (like links or buttons), so keyboard users can reach every card with <kbd>Tab</kbd>. The browser scrolls the off-screen card into view automatically when it receives focus</li>
-          <li aria-description="Required">The card itself must not be a link or a button. If the entire card should be clickable, the control's click area can be extended to cover the full card using a <code>::before</code> pseudo-element.</li>
-          <li aria-description="Required">The link/button uses <code>aria-labelledby</code> to combine the card heading with the label. This ensures the purpose of the control is conveyed to screen readers in case there are multiple cards with identical controls.</li>
+          <li aria-description="Required">The card itself must not be a link or a button. If the entire card should be clickable, the call-to-action element's click area can be extended to cover the full card using a <code>::before</code> pseudo-element.</li>
+          <li aria-description="Required">The call-to-action uses <code>aria-labelledby</code> to combine the card heading with the label. This ensures the purpose of the control is conveyed to screen readers in case there are multiple cards with identical controls.</li>
           <li aria-description="Recommended">The card may use <code>role="group"</code> and <code>aria-roledescription="card"</code> to identify it as a distinct unit to screen readers, with <code>aria-labelledby</code> pointing to the heading</li>
-          <li aria-description="Recommended">The card heading should be the first element in DOM order so that screen reader users associate the following content with it</li>
+          <li aria-description="Recommended">The card heading should be the first element in DOM order so that screen reader users associate the related content with it</li>
           <li aria-description="Recommended">A skip link before the carousel lets keyboard users bypass all cards and jump directly to the content that follows</li>
         </ul>
       </section>
@@ -251,6 +251,12 @@ h4 {
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
+}
+
+.card button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
 }
   </script>
 
