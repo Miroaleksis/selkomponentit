@@ -33,9 +33,9 @@
         <ul class="feature-list">
           <li aria-description="Required"><code>role="status"</code> announces non-critical updates politely. Screen readers wait until the user is idle before reading the message</li>
           <li aria-description="Required"><code>role="alert"</code> announces urgent messages assertively. Screen readers interrupt the current task to read the message immediately</li>
-          <li aria-description="Required">The live region container is present in the page before the message appears. Screen readers only announce changes within the region, so the container can only be hidden visually, not removed from the DOM</li>
-          <li aria-description="Required">The alert message conveys clearly the nature of the detected issues</li>
-          <li aria-description="Recommended">If the form is long, the alert message can also include list of links to all invalid fields</li>
+          <li aria-description="Required">The alert container must be present in the page before the message appears. Screen readers only announce changes within the container, so it must only be hidden visually, not removed from the DOM</li>
+          <li aria-description="Required">The alert message must convey clearly the nature of the detected issues</li>
+          <li aria-description="Recommended">If the form is long, the alert message may also include list of links to all invalid fields</li>
           <li aria-description="Recommended">When submitting the form fails, focus should be set to the alert message or the first invalid field</li>
         </ul>
       </section>
@@ -177,9 +177,11 @@ submitBtn.addEventListener('click', () => {
   });
 
   if (empty.length > 0) {
-    alertMessage.textContent = 'Please fill in all required fields before submitting.';
     statusMessage.textContent = '';
     empty[0].focus();
+    setTimeout(() => {
+      alertMessage.textContent = 'Please fill in all required fields before submitting.';
+    }, 100);
   } else {
     alertMessage.textContent = '';
     statusMessage.textContent = 'Your form has been submitted successfully.';

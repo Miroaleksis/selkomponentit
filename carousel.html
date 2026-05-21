@@ -21,7 +21,7 @@
       <div class="page-description">
         <h1>Carousel</h1>
         <p>A carousel cycles through a sequence of content panels, displaying one at a time. Users navigate between slides using previous and next buttons or indicator dots.</p>
-        <p>Carousels can be used when one area of the page must showcase several related but independent items, such as featured products, testimonials, or images of a single object from different angles. They are less suitable for primary content, since slides that are not currently visible are easily overlooked.</p>
+        <p>Carousels can be used when one area of the page must showcase several related but independent items, such as presentation slides, images or cards. They are less suitable for primary content, since slides that are not currently visible are easily overlooked.</p>
       </div>
 
       <section class="component-section">
@@ -31,13 +31,14 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">The carousel is wrapped in <code>role="region"</code> with <code>aria-roledescription="carousel"</code> and <code>aria-label</code> to communicate its purpose</li>
-          <li aria-description="Required">Each slide uses <code>aria-roledescription="slide"</code> to communicate its purpose</li>
-          <li aria-description="Required">Carousel controls have descriptive accessible names via <code>aria-label</code></li>
-          <li aria-description="Required">A play/pause control lets users stop and resume auto-rotation, since automatic motion can disrupt the user</li>
+          <li aria-description="Required">Carousel controls must have descriptive labels or accessible names. They must convey that the buttons are used to navigate between slides</li>
+          <li aria-description="Required">Carousel controls must be placed before the slides in the DOM order</li>
           <li aria-description="Required">Slides can be navigated using previous/next buttons or tabs. If tabs are used, appropriate attributes and keyboard interaction patterns are required. <a href="tabs.html">See the Tabs page for details</a></li>
-          <li aria-description="Required">Inactive slides use <code>inert</code>, so they are removed from the accessibility tree and focus order, and excluded from pointer events</li>
-          <li aria-description="Recommended">The slides container uses <code>aria-live="off"</code> by default. On manual navigation it is temporarily set to <code>aria-live="polite"</code> so screen readers announce the new slide</li>
+          <li aria-description="Required">Feedback must be provided when the slide changes. This can be achieved, for example, using <code>aria-live</code> region. Note that the attribute must be turned off when the slide rotates automatically</li>
+          <li aria-description="Required">If the carousel rotates automatically, a play/pause button must be available to stop the rotation, since motion can disrupt users</li>
+          <li aria-description="Required">Inactive slides must be removed from the accessibility tree and the focus order using, for example, <code>inert</code></li>
+          <li aria-description="Recommended">The carousel should be marked as a <code>&lt;section&gt;</code> landmark with <code>aria-roledescription="carousel"</code> and <code>aria-label</code> to identify its purpose</li>
+          <li aria-description="Recommended">Each slide should have <code>aria-roledescription="slide"</code></li>
         </ul>
       </section>
 
@@ -56,7 +57,7 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<div role="region" aria-roledescription="carousel" aria-label="Travelling destinations" class="carousel">
+<section aria-roledescription="carousel" aria-label="Travelling destinations" class="carousel">
   <div class="carousel-controls">
     <button class="carousel-play" aria-label="Pause auto-rotation" data-playing></button>
     <button aria-label="Previous slide"></button>
@@ -81,7 +82,7 @@
       <p>A small town surrounded by mountains and built for adventure.</p>
     </div>
   </div>
-</div>
+</section>
   </script>
 
   <script type="text/plain" id="snippet-a-css">

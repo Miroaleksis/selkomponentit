@@ -20,7 +20,7 @@
 
       <div class="page-description">
         <h1>Accordion</h1>
-        <p>An accordion allows users to expand and collapse sections of content as needed.</p>
+        <p>An accordion allows users to expand and collapse a section of content as needed. It consists of a trigger element and a content panel that is shown or hidden when the trigger is activated.</p>
         <p>Accordions can be used when several related sections share the same context and reducing visual clutter is helpful. They are less suitable for content that users need to compare side by side, since toggling adds friction.</p>
       </div>
 
@@ -31,14 +31,14 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">Expands and collapses with <kbd>Space</kbd> and <kbd>Enter</kbd></li>
-          <li aria-description="Required">The expanded/collapsed state is communicated programmatically to screen readers</li>
+          <li aria-description="Required">An accordion expands and collapses with <kbd>Space</kbd> and <kbd>Enter</kbd> when the trigger element is focused</li>
+          <li aria-description="Required">The expanded/collapsed state must be communicated programmatically to screen readers</li>
         </ul>
       </section>
 
       <section class="component-section">
         <h2>Details Element</h2>
-        <p>The native <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements handle expand/collapse behaviour and communicate state to screen readers automatically, without JavaScript or additional ARIA attributes.</p>
+        <p>The native <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements handle expand/collapse behaviour and communicate state to screen readers automatically, without JavaScript or additional attributes. Using them is recommended when possible.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
