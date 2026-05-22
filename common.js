@@ -93,14 +93,15 @@ class OnThisPage extends HTMLElement {
 
     const buildList = () => {
       const list = this.querySelector('.on-this-page-links');
-      document.querySelectorAll('.component-section h2').forEach(h2 => {
-        if (!h2.id) {
-          h2.id = h2.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      document.querySelectorAll('.component-section h2, .component-section caption').forEach(el => {
+        const text = el.textContent.trim();
+        if (!el.id) {
+          el.id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
         }
         const li = document.createElement('li');
         const a = document.createElement('a');
-        a.href = '#' + h2.id;
-        a.textContent = h2.textContent;
+        a.href = '#' + el.id;
+        a.textContent = text;
         li.appendChild(a);
         list.appendChild(li);
       });

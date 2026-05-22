@@ -24,15 +24,24 @@
         </div>
       </div>
 
+      <div class="table-group-container">
+
+      <div role="search" class="attr-search">
+        <div class="attr-search-input-wrap">
+          <input type="search" id="attr-search-input" aria-label="Search elements or attributes" placeholder="e.g. aria-expanded">
+        </div>
+        <output id="attr-search-results"></output>
+      </div>
+
       <section class="component-section">
-        <h2>Roles</h2>
         <div class="table-scroll">
         <table class="table">
+          <caption><button aria-expanded="true">Roles</button></caption>
           <thead>
             <tr>
               <th>Native</th>
               <th>Role</th>
-              <th>When to use</th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody class="table-group group--navigation">
@@ -270,9 +279,9 @@
       </section>
 
       <section class="component-section">
-        <h2>States</h2>
         <div class="table-scroll">
         <table class="table">
+          <caption><button aria-expanded="false">States</button></caption>
           <thead>
             <tr>
               <th>Native</th>
@@ -342,9 +351,9 @@
       </section>
 
       <section class="component-section">
-        <h2>Properties</h2>
         <div class="table-scroll">
         <table class="table">
+          <caption><button aria-expanded="false">Properties</button></caption>
           <thead>
             <tr>
               <th>Native</th>
@@ -438,9 +447,9 @@
       </section>
 
       <section class="component-section">
-        <h2>Relationships</h2>
         <div class="table-scroll">
         <table class="table">
+          <caption><button aria-expanded="false">Relationships</button></caption>
           <thead>
             <tr>
               <th>Attribute</th>
@@ -472,6 +481,8 @@
         </table>
         </div>
       </section>
+
+      </div>
 
     </main>
 
