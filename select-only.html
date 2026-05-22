@@ -21,8 +21,7 @@
 
       <div class="page-description">
         <h1>Select-Only</h1>
-        <p>A Select-Only combobox is an input widget that, when activated, displays a dropdown list of predefined options. The user can select one option from the list. It does not allow freeform text entry.</p>
-        <p>Select-only comboboxes can be used whenever the user picks one option from a known, limited set of values.</p>
+        <p>A select-only combobox allows users to select a single option from a dropdown list. It can be used whenever users must choose from a known, limited set of predefined values. It does not allow freeform text entry. The recommended implementation is to use the native <code>&lt;select&gt;</code> element as it has built-in accessibility.</p>
       </div>
 
       <section class="component-section">
@@ -32,16 +31,18 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">Expands and collapses with <kbd>Space</kbd> and <kbd>Enter</kbd></li>
-          <li aria-description="Required">Options are navigable with <kbd>↑</kbd> and <kbd>↓</kbd> arrow keys</li>
-          <li aria-description="Required">Pressing <kbd>Esc</kbd> closes the dropdown and returns focus to the trigger</li>
+          <li aria-description="Required">A combobox expands and collapses with <kbd>Space</kbd> and <kbd>Enter</kbd> when the trigger element is focused</li>
+          <li aria-description="Required">The expanded/collapsed state must be communicated programmatically to screen readers</li>
+          <li aria-description="Required">Options are navigable with <kbd>↑</kbd> and <kbd>↓</kbd> arrow keys and selected with <kbd>Space</kbd> and <kbd>Enter</kbd></li>
+          <li aria-description="Required"><kbd>Esc</kbd> collapses the dropdown and returns focus to the trigger</li>
+          <li aria-description="Recommended">Moving focus away from the dropdown with <kbd>Tab</kbd> collapses the dropdown automatically</li>
           <li aria-description="Recommended"><kbd>Home</kbd> and <kbd>End</kbd> move focus to the first and last option</li>
         </ul>
       </section>
 
       <section class="component-section">
         <h2>Select Element</h2>
-        <p>The native <code>&lt;select&gt;</code> element provides keyboard support, screen reader announcements and platform-native rendering for free. Its styling is limited across browsers.</p>
+        <p>The native <code>&lt;select&gt;</code> element provides keyboard support, screen reader announcements and platform-native rendering for free. Its styling is limited across browsers, which is why some users may prefer a custom option.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
@@ -105,13 +106,13 @@ select {
 <div class="combobox">
   <button id="combobox-btn" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="combobox-listbox-1"></button>
   <ul role="listbox" id="combobox-listbox-1">
-    <li role="option" aria-selected="true">Select a fruit</li>
-    <li role="option" aria-selected="false">Apple</li>
-    <li role="option" aria-selected="false">Banana</li>
-    <li role="option" aria-selected="false">Cherry</li>
-    <li role="option" aria-selected="false">Date</li>
-    <li role="option" aria-selected="false">Elderberry</li>
-    <li role="option" aria-selected="false">Fig</li>
+    <li role="option" id="so-opt-0" aria-selected="true">Select a fruit</li>
+    <li role="option" id="so-opt-1" aria-selected="false">Apple</li>
+    <li role="option" id="so-opt-2" aria-selected="false">Banana</li>
+    <li role="option" id="so-opt-3" aria-selected="false">Cherry</li>
+    <li role="option" id="so-opt-4" aria-selected="false">Date</li>
+    <li role="option" id="so-opt-5" aria-selected="false">Elderberry</li>
+    <li role="option" id="so-opt-6" aria-selected="false">Fig</li>
   </ul>
 </div>
   </script>

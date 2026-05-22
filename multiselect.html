@@ -21,9 +21,8 @@
 
       <div class="page-description">
         <h1>Multiselect</h1>
-        <p>A multiselect combobox is an input widget that allows users to choose one or more options from a dropdown list. Unlike the Select-Only variant, multiple options can be selected simultaneously.</p>
-        <p>Multiselect comboboxes are suitable when users need to filter by several categories, assign multiple tags, or pick from a known set of values where more than one answer applies.</p>
-        <p>The native <code>&lt;select multiple&gt;</code> element provides a similar function but renders as a scrollable listbox rather than a dropdown, so it is not demonstrated here.</p>
+        <p>A multiselect combobox allows users to choose multiple options from a dropdown list simultaneously. It can be used whenever users must choose from a known, limited set of values where more than one option applies, similarly to a checkbox group.</p>
+        <p>The native <code>&lt;select multiple&gt;</code> element provides a similar function as a multiselect combobox but renders as a scrollable listbox rather than a dropdown, so it is not demonstrated here.</p>
       </div>
 
       <section class="component-section">
@@ -33,15 +32,12 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">Options are navigable with <kbd>↑</kbd> and <kbd>↓</kbd> arrow keys</li>
-          <li aria-description="Required"><kbd>Space</kbd> and <kbd>Enter</kbd> toggle selection of the focused option without closing the dropdown</li>
-          <li aria-description="Required"><kbd>Esc</kbd> closes the dropdown and returns focus to the trigger</li>
+          <li aria-description="Required">A multiselect combobox has a similar structure and keyboard behaviour as the <a href="select-only.html">select-only combobox</a> apart from a few exceptions:</li>
           <li aria-description="Required"><code>aria-multiselectable="true"</code> on the listbox communicates that multiple options can be selected</li>
           <li aria-description="Required">Each option uses <code>aria-selected="true/false"</code> to convey its selection state</li>
-          <li aria-description="Required">The expanded/collapsed state is conveyed with <code>aria-expanded</code> on the trigger</li>
-          <li aria-description="Required"><code>aria-activedescendant</code> on the trigger tracks which option currently has focus</li>
+          <li aria-description="Required"><kbd>Space</kbd> and <kbd>Enter</kbd> toggle selection of the focused option without closing the dropdown</li>
+          <li aria-description="Recommended"><code>aria-activedescendant</code> on the trigger tracks which option currently has focus</li>
           <li aria-description="Recommended">Trigger label updates to reflect the current selection</li>
-          <li aria-description="Recommended"><kbd>Home</kbd> and <kbd>End</kbd> move focus to the first and last option</li>
         </ul>
       </section>
 
@@ -66,13 +62,13 @@
     Select fruits
   </button>
   <ul role="listbox" id="ms-listbox" aria-multiselectable="true" aria-label="Fruit">
-      <li role="option" aria-selected="false">Apple</li>
-      <li role="option" aria-selected="false">Banana</li>
-      <li role="option" aria-selected="false">Cherry</li>
-      <li role="option" aria-selected="false">Date</li>
-      <li role="option" aria-selected="false">Elderberry</li>
-      <li role="option" aria-selected="false">Fig</li>
-    </ul>
+    <li role="option" id="ms-opt-1" aria-selected="false">Apple</li>
+    <li role="option" id="ms-opt-2" aria-selected="false">Banana</li>
+    <li role="option" id="ms-opt-3" aria-selected="false">Cherry</li>
+    <li role="option" id="ms-opt-4" aria-selected="false">Date</li>
+    <li role="option" id="ms-opt-5" aria-selected="false">Elderberry</li>
+    <li role="option" id="ms-opt-6" aria-selected="false">Fig</li>
+  </ul>
 </div>
   </script>
 

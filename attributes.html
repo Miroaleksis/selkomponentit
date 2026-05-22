@@ -349,6 +349,7 @@
             <tr>
               <th>Native</th>
               <th>ARIA</th>
+              <th>Values</th>
               <th>Description</th>
             </tr>
           </thead>
@@ -356,56 +357,79 @@
             <tr>
               <td>—</td>
               <td><code>aria-atomic</code></td>
+              <td><code>true</code> / <code>false</code></td>
               <td>When set to <code>true</code>, instructs assistive technologies to announce the entire live region when any part of it changes, rather than only the changed portion.</td>
             </tr>
             <tr>
               <td>—</td>
+              <td><code>aria-autocomplete</code></td>
+              <td><code>none</code> / <code>list</code> / <code>inline</code> / <code>both</code></td>
+              <td>Indicates to assistive technologies how text completion is provided in a combobox. <code>list</code> means a dropdown list of suggestions is displayed.</td>
+            </tr>
+            <tr>
+              <td>—</td>
               <td><code>aria-describedby</code></td>
+              <td>Element <code>id</code></td>
               <td>References the <code>id</code> of an element that provides additional descriptive information about the current element.</td>
             </tr>
             <tr>
               <td>—</td>
               <td><code>aria-description</code></td>
+              <td>Text string</td>
               <td>Provides an accessible description directly as a text string. Use when no visible description is present.<p class="note note--warning">Not yet supported in all browsers and assistive technologies. Use <code>aria-describedby</code> for broader compatibility.</p></td>
             </tr>
             <tr>
               <td>—</td>
               <td><code>aria-haspopup</code></td>
+              <td><code>true</code> / <code>listbox</code> / <code>menu</code> / <code>dialog</code></td>
               <td>Indicates that interacting with the element will open a popup such as a listbox, menu or dialog.</td>
             </tr>
             <tr>
               <td>—</td>
               <td><code>aria-label</code></td>
+              <td>Text string</td>
               <td>Provides an accessible name directly as a text string. Use when no visible label is present.</td>
             </tr>
             <tr>
               <td>—</td>
               <td><code>aria-labelledby</code></td>
+              <td>Element <code>id</code></td>
               <td>References the <code>id</code> of another element whose text serves as the accessible name for the current element.</td>
             </tr>
             <tr>
               <td>—</td>
               <td><code>aria-live</code></td>
+              <td><code>polite</code> / <code>assertive</code> / <code>off</code></td>
               <td>Defines a live region whose content changes are announced by screen readers. Common values are <code>polite</code> (waits for user to be idle) and <code>assertive</code> (announces immediately).</td>
             </tr>
             <tr>
               <td><code>required</code></td>
               <td><code>aria-required</code></td>
+              <td><code>true</code> / <code>false</code></td>
               <td>Indicates that the field must be filled in before the form can be submitted. The native <code>required</code> attribute is stronger — it also prevents form submission and triggers built-in browser validation.</td>
             </tr>
             <tr>
               <td>—</td>
               <td><code>aria-roledescription</code></td>
+              <td>Text string</td>
               <td>Provides a human-readable description of the element's role, overriding the default role name announced by assistive technologies.</td>
             </tr>
             <tr>
               <td>—</td>
               <td><code>aria-valuetext</code></td>
+              <td>Text string</td>
               <td>Provides a human-readable text alternative for the current numeric value of a range widget, announced by screen readers instead of the raw number.</td>
+            </tr>
+            <tr>
+              <td><code>autocomplete</code></td>
+              <td>—</td>
+              <td><code>name</code> / <code>email</code> / <code>off</code> / …</td>
+              <td>Hints to the browser what type of data the field expects, enabling autofill. Common values include <code>name</code>, <code>email</code>, <code>tel</code> and <code>off</code>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">See all autocomplete values on MDN</a>.</td>
             </tr>
             <tr>
               <td><code>tabindex</code></td>
               <td>—</td>
+              <td><code>0</code> / <code>-1</code></td>
               <td>Controls whether an element is reachable via keyboard navigation. A value of <code>0</code> adds the element to the natural tab order. A value of <code>-1</code> makes it focusable programmatically but removes it from the tab order. Positive values are not recommended.</td>
             </tr>
           </tbody>
