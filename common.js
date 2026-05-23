@@ -94,7 +94,9 @@ class OnThisPage extends HTMLElement {
     const buildList = () => {
       const list = this.querySelector('.on-this-page-links');
       document.querySelectorAll('.component-section h2, .component-section caption').forEach(el => {
-        const text = el.textContent.trim();
+        const text = el.tagName === 'CAPTION'
+          ? el.querySelector('button:not(.tooltip-btn)').textContent.trim()
+          : el.textContent.trim();
         if (!el.id) {
           el.id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
         }

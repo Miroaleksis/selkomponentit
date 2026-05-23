@@ -27,16 +27,21 @@
       <div class="table-group-container">
 
       <div role="search" class="attr-search">
-        <div class="attr-search-input-wrap">
-          <input type="search" id="attr-search-input" aria-label="Search elements or attributes" placeholder="e.g. aria-expanded">
-        </div>
+        <input type="search" id="attr-search-input" aria-label="Search elements or attributes" placeholder="e.g. aria-expanded">
+        <button type="button" id="search-btn" class="button" aria-label="Search"></button>
         <output id="attr-search-results"></output>
       </div>
 
       <section class="component-section">
         <div class="table-scroll">
         <table class="table">
-          <caption><button aria-expanded="true">Roles</button></caption>
+          <caption>
+            <div class="caption-inner">
+              <button class="category-btn" aria-expanded="true">Roles</button>
+              <button class="tooltip-btn" aria-label="About Roles" aria-expanded="false"></button>
+            </div>
+            <div role="tooltip" id="tip-roles">Roles define the purpose of an element. Native elements come with built-in roles and behaviours and should be used when possible. ARIA roles only communicate semantics. Behaviours must be implemented separately.</div>
+          </caption>
           <thead>
             <tr>
               <th>Native</th>
@@ -104,14 +109,9 @@
               <td>A text input paired with a popup listbox of suggested values.</td>
             </tr>
             <tr>
-              <td><code>&lt;select&gt;</code></td>
-              <td><code>listbox</code></td>
-              <td>A list of options from which the user can select one or more items.</td>
-            </tr>
-            <tr>
-              <td><code>&lt;option&gt;</code></td>
-              <td><code>option</code></td>
-              <td>A selectable item within a listbox or combobox popup.</td>
+              <td><code>&lt;select&gt;</code> / <code>&lt;option&gt;</code></td>
+              <td><code>listbox</code> / <code>option</code></td>
+              <td>A list of options from which the user can select one or more items. Each <code>&lt;option&gt;</code> represents a selectable item within the list.</td>
             </tr>
             <tr>
               <td><code>&lt;input type="radio"&gt;</code></td>
@@ -281,7 +281,13 @@
       <section class="component-section">
         <div class="table-scroll">
         <table class="table">
-          <caption><button aria-expanded="false">States</button></caption>
+          <caption>
+            <div class="caption-inner">
+              <button class="category-btn" aria-expanded="false">Values</button>
+              <button class="tooltip-btn" aria-label="About Values" aria-expanded="false"></button>
+            </div>
+            <div role="tooltip" id="tip-values">Attributes that accept a fixed set of values. Some are dynamic states that change with user interaction (e.g. aria-expanded), others are static properties set once (e.g. aria-required).</div>
+          </caption>
           <thead>
             <tr>
               <th>Native</th>
@@ -291,6 +297,18 @@
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>—</td>
+              <td><code>aria-atomic</code></td>
+              <td><code>true</code> / <code>false</code></td>
+              <td>When set to <code>true</code>, instructs assistive technologies to announce the entire live region when any part of it changes, rather than only the changed portion.</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><code>aria-autocomplete</code></td>
+              <td><code>none</code> / <code>list</code> / <code>inline</code> / <code>both</code></td>
+              <td>Indicates to assistive technologies how text completion is provided in a combobox. <code>list</code> means a dropdown list of suggestions is displayed.</td>
+            </tr>
             <tr>
               <td><code>checked</code></td>
               <td><code>aria-checked</code></td>
@@ -316,6 +334,12 @@
               <td>Indicates whether a collapsible element such as an accordion panel or dropdown is open or closed.</td>
             </tr>
             <tr>
+              <td>—</td>
+              <td><code>aria-haspopup</code></td>
+              <td><code>true</code> / <code>listbox</code> / <code>menu</code> / <code>dialog</code></td>
+              <td>Indicates that interacting with the element will open a popup such as a listbox, menu or dialog.</td>
+            </tr>
+            <tr>
               <td><code>hidden</code></td>
               <td><code>aria-hidden</code></td>
               <td><code>true</code> / <code>false</code></td>
@@ -329,87 +353,15 @@
             </tr>
             <tr>
               <td>—</td>
-              <td><code>aria-pressed</code></td>
-              <td><code>true</code> / <code>false</code> / <code>mixed</code></td>
-              <td>Indicates the pressed state of a toggle button.</td>
-            </tr>
-            <tr>
-              <td>—</td>
-              <td><code>aria-selected</code></td>
-              <td><code>true</code> / <code>false</code></td>
-              <td>Indicates the currently selected item within a set such as a tab or option.</td>
-            </tr>
-            <tr>
-              <td><code>inert</code></td>
-              <td>—</td>
-              <td>—</td>
-              <td>Removes an element and all its descendants from focus order, pointer events and the accessibility tree.</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-      </section>
-
-      <section class="component-section">
-        <div class="table-scroll">
-        <table class="table">
-          <caption><button aria-expanded="false">Properties</button></caption>
-          <thead>
-            <tr>
-              <th>Native</th>
-              <th>ARIA</th>
-              <th>Values</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>—</td>
-              <td><code>aria-atomic</code></td>
-              <td><code>true</code> / <code>false</code></td>
-              <td>When set to <code>true</code>, instructs assistive technologies to announce the entire live region when any part of it changes, rather than only the changed portion.</td>
-            </tr>
-            <tr>
-              <td>—</td>
-              <td><code>aria-autocomplete</code></td>
-              <td><code>none</code> / <code>list</code> / <code>inline</code> / <code>both</code></td>
-              <td>Indicates to assistive technologies how text completion is provided in a combobox. <code>list</code> means a dropdown list of suggestions is displayed.</td>
-            </tr>
-            <tr>
-              <td>—</td>
-              <td><code>aria-describedby</code></td>
-              <td>Element <code>id</code></td>
-              <td>References the <code>id</code> of an element that provides additional descriptive information about the current element.</td>
-            </tr>
-            <tr>
-              <td>—</td>
-              <td><code>aria-description</code></td>
-              <td>Text string</td>
-              <td>Provides an accessible description directly as a text string. Use when no visible description is present.<p class="note note--warning">Not yet supported in all browsers and assistive technologies. Use <code>aria-describedby</code> for broader compatibility.</p></td>
-            </tr>
-            <tr>
-              <td>—</td>
-              <td><code>aria-haspopup</code></td>
-              <td><code>true</code> / <code>listbox</code> / <code>menu</code> / <code>dialog</code></td>
-              <td>Indicates that interacting with the element will open a popup such as a listbox, menu or dialog.</td>
-            </tr>
-            <tr>
-              <td>—</td>
-              <td><code>aria-label</code></td>
-              <td>Text string</td>
-              <td>Provides an accessible name directly as a text string. Use when no visible label is present.</td>
-            </tr>
-            <tr>
-              <td>—</td>
-              <td><code>aria-labelledby</code></td>
-              <td>Element <code>id</code></td>
-              <td>References the <code>id</code> of another element whose text serves as the accessible name for the current element.</td>
-            </tr>
-            <tr>
-              <td>—</td>
               <td><code>aria-live</code></td>
               <td><code>polite</code> / <code>assertive</code> / <code>off</code></td>
               <td>Defines a live region whose content changes are announced by screen readers. Common values are <code>polite</code> (waits for user to be idle) and <code>assertive</code> (announces immediately).</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><code>aria-pressed</code></td>
+              <td><code>true</code> / <code>false</code> / <code>mixed</code></td>
+              <td>Indicates the pressed state of a toggle button.</td>
             </tr>
             <tr>
               <td><code>required</code></td>
@@ -419,21 +371,21 @@
             </tr>
             <tr>
               <td>—</td>
-              <td><code>aria-roledescription</code></td>
-              <td>Text string</td>
-              <td>Provides a human-readable description of the element's role, overriding the default role name announced by assistive technologies.</td>
-            </tr>
-            <tr>
-              <td>—</td>
-              <td><code>aria-valuetext</code></td>
-              <td>Text string</td>
-              <td>Provides a human-readable text alternative for the current numeric value of a range widget, announced by screen readers instead of the raw number.</td>
+              <td><code>aria-selected</code></td>
+              <td><code>true</code> / <code>false</code></td>
+              <td>Indicates the currently selected item within a set such as a tab or option.</td>
             </tr>
             <tr>
               <td><code>autocomplete</code></td>
               <td>—</td>
               <td><code>name</code> / <code>email</code> / <code>off</code> / …</td>
               <td>Hints to the browser what type of data the field expects, enabling autofill. Common values include <code>name</code>, <code>email</code>, <code>tel</code> and <code>off</code>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">See all autocomplete values on MDN</a>.</td>
+            </tr>
+            <tr>
+              <td><code>inert</code></td>
+              <td>—</td>
+              <td>—</td>
+              <td>Removes an element and all its descendants from focus order, pointer events and the accessibility tree.</td>
             </tr>
             <tr>
               <td><code>tabindex</code></td>
@@ -449,7 +401,51 @@
       <section class="component-section">
         <div class="table-scroll">
         <table class="table">
-          <caption><button aria-expanded="false">Relationships</button></caption>
+          <caption>
+            <div class="caption-inner">
+              <button class="category-btn" aria-expanded="false">Names and Descriptions</button>
+              <button class="tooltip-btn" aria-label="About Names and Descriptions" aria-expanded="false"></button>
+            </div>
+            <div role="tooltip" id="tip-names">Attributes that provide accessible names and descriptions as text strings directly in the markup.</div>
+          </caption>
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>aria-description</code></td>
+              <td>Provides an accessible description directly as a text string. Use when no visible description is present.<p class="note note--warning">Not yet supported in all browsers and assistive technologies. Use <code>aria-describedby</code> for broader compatibility.</p></td>
+            </tr>
+            <tr>
+              <td><code>aria-label</code></td>
+              <td>Provides an accessible name directly as a text string. Use when no visible label is present.</td>
+            </tr>
+            <tr>
+              <td><code>aria-roledescription</code></td>
+              <td>Provides a human-readable description of the element's role, overriding the default role name announced by assistive technologies.</td>
+            </tr>
+            <tr>
+              <td><code>aria-valuetext</code></td>
+              <td>Provides a human-readable text alternative for the current numeric value of a range widget, announced by screen readers instead of the raw number.</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section class="component-section">
+        <div class="table-scroll">
+        <table class="table">
+          <caption>
+            <div class="caption-inner">
+              <button class="category-btn" aria-expanded="false">References</button>
+              <button class="tooltip-btn" aria-label="About References" aria-expanded="false"></button>
+            </div>
+            <div role="tooltip" id="tip-references">Attributes that reference the id of another element to create a relationship between elements.</div>
+          </caption>
           <thead>
             <tr>
               <th>Attribute</th>
@@ -466,12 +462,20 @@
               <td>References the <code>id</code> of the element that this element controls, such as a button that opens a panel.</td>
             </tr>
             <tr>
+              <td><code>aria-describedby</code></td>
+              <td>References the <code>id</code> of an element that provides additional descriptive information about the current element.</td>
+            </tr>
+            <tr>
               <td><code>aria-details</code></td>
               <td>References the <code>id</code> of an element that provides additional information about the current element, beyond what <code>aria-describedby</code> offers.</td>
             </tr>
             <tr>
               <td><code>aria-errormessage</code></td>
               <td>References the <code>id</code> of an element that contains an error message for the current element. Only relevant when <code>aria-invalid</code> is set.</td>
+            </tr>
+            <tr>
+              <td><code>aria-labelledby</code></td>
+              <td>References the <code>id</code> of another element whose text serves as the accessible name for the current element.</td>
             </tr>
             <tr>
               <td><code>aria-owns</code></td>

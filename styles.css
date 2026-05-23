@@ -654,35 +654,15 @@ code-editor {
 
 .attr-search {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 16px;
-}
-
-.attr-search-input-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.attr-search-input-wrap::before {
-  content: 'search' / '';
-  font-family: 'Material Symbols Outlined';
-  font-size: 20px;
-  position: absolute;
-  left: 16px;
-  color: var(--semi-gray);
-  pointer-events: none;
 }
 
 .attr-search input {
-  padding: 8px 12px 8px 48px;
-  border: 1.5px solid var(--medium-gray);
-  border-radius: 4px;
-  font-family: var(--font-family);
-  font-size: 16px;
-  color: var(--dark-gray);
+  padding: 8px 12px;
+  border: 1.5px solid;
+  border-radius: 4px 0 0 4px;
+  font: inherit;
+  color: inherit;
   background: var(--white);
   width: 100%;
 }
@@ -691,12 +671,25 @@ code-editor {
   color: var(--semi-gray);
 }
 
-.table-scroll {
-  overflow-x: auto;
+#search-btn {
+  padding: 0 16px;
+  border-radius: 0 4px 4px 0;
+}
+
+#search-btn::before {
+  content: 'search' / '';
+  font-family: 'Material Symbols Outlined';
+  font-size: 20px;
 }
 
 #attr-search-results {
   white-space: nowrap;
+  margin-left: 16px;
+  align-self: center;
+}
+
+.table-scroll {
+  overflow-x: auto;
 }
 
 #attr-search-results:empty {
@@ -744,19 +737,34 @@ code-editor {
   color: var(--white);
 }
 
-.table caption button {
+.caption-inner {
+  display: flex;
+  align-items: stretch;
+  position: relative;
+}
+
+.category-btn {
   all: unset;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
   padding: 12px 16px;
   cursor: pointer;
   font-weight: 700;
   box-sizing: border-box;
 }
 
-.table caption button::after,
+.category-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.category-btn::after {
+  position: absolute;
+  right: 16px;
+}
+
+.category-btn::after,
 .table-group-btn::after {
   content: 'expand_less' / '';
   text-transform: none;
@@ -766,13 +774,38 @@ code-editor {
   font-size: 16px;
 }
 
-.table caption button[aria-expanded="false"]::after,
+.category-btn[aria-expanded="false"]::after,
 .table-group-btn[aria-expanded="false"]::after {
   transform: rotate(180deg);
 }
 
-.table:has(caption button[aria-expanded="false"]) thead,
-.table:has(caption button[aria-expanded="false"]) tbody {
+.tooltip-btn {
+  all: unset;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  margin-left: -12px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.tooltip-btn::before {
+  content: 'info' / '';
+  font-size: 20px;
+}
+
+[role="tooltip"] {
+  display: none;
+  padding: 12px 16px;
+  color: var(--light-gray);
+}
+
+.table caption:has(.tooltip-btn[aria-expanded="true"]) [role="tooltip"] {
+  display: block;
+}
+
+.table:has(caption .category-btn[aria-expanded="false"]) thead,
+.table:has(caption .category-btn[aria-expanded="false"]) tbody {
   display: none;
 }
 
