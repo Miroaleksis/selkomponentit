@@ -21,7 +21,7 @@
 
       <div class="page-description">
         <h1>Select-Only</h1>
-        <p>A select-only combobox allows users to select a single option from a dropdown list. It can be used whenever users must choose from a known, limited set of predefined values. It does not allow freeform text entry. The recommended implementation is to use the native <code>&lt;select&gt;</code> element as it has built-in accessibility.</p>
+        <p>A select-only combobox allows users to select a single option from a dropdown list. It can be used whenever users must choose from a known, limited set of predefined values. It does not allow freeform text entry.</p>
       </div>
 
       <section class="component-section">
@@ -31,8 +31,8 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
+          <li aria-description="Required">The role and state of the trigger element and options must be communicated programmatically to screen readers</li>
           <li aria-description="Required">A combobox expands and collapses with <kbd>Space</kbd> and <kbd>Enter</kbd> when the trigger element is focused</li>
-          <li aria-description="Required">The expanded/collapsed state must be communicated programmatically to screen readers</li>
           <li aria-description="Required">Options are navigable with <kbd>↑</kbd> and <kbd>↓</kbd> arrow keys and selected with <kbd>Space</kbd> and <kbd>Enter</kbd></li>
           <li aria-description="Required"><kbd>Esc</kbd> collapses the dropdown and returns focus to the trigger</li>
           <li aria-description="Recommended">Moving focus away from the dropdown with <kbd>Tab</kbd> collapses the dropdown automatically</li>
@@ -42,12 +42,30 @@
 
       <section class="component-section">
         <h2>Select Element</h2>
-        <p>The native <code>&lt;select&gt;</code> element provides keyboard support, screen reader announcements and platform-native rendering for free. Its styling is limited across browsers, which is why some users may prefer a custom option.</p>
+        <p>The native <code>&lt;select&gt;</code> element handles keyboard support, screen reader announcements and dropdown behaviour automatically. Using it is recommended when possible. Its styling is limited across browsers however, which is why some may prefer a custom implementation.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
         <code-editor prefix="a" tabs="html,css"></code-editor>
       </section>
+
+      <section class="component-section">
+        <h2>Custom Select-Only</h2>
+        <p>A custom implementation may be necessary when the desired visual design cannot be achieved with the native <code>&lt;select&gt;</code> element. It requires explicit attributes to communicate dropdown semantics:
+        <ul>
+          <li><code>role="combobox"</code> identifies the trigger element and <code>aria-expanded</code> communicates its expanded or collapsed state.</li>
+          <li>Each option has <code>role="option"</code> and <code>aria-selected</code> to communicate its selection state.</li>
+        </ul>
+        <h3>Example</h3>
+        <div class="example-container" data-prefix="b"></div>
+        <h3>Code Snippet</h3>
+        <code-editor prefix="b" tabs="html,css,js"></code-editor>
+      </section>
+
+
+    </main>
+
+  </div>
 
   <script type="text/plain" id="snippet-a-html">
 <label>
@@ -86,20 +104,6 @@ select {
   max-width: 240px
 }
   </script>
-
-      <section class="component-section">
-        <h2>Custom Select-Only</h2>
-        <p>A custom implementation may be necessary when the visual design cannot be achieved with the native <code>&lt;select&gt;</code> element. It requires explicit ARIA to communicate widget semantics: <code>role="combobox"</code> on the trigger element identifies the widget, and <code>aria-expanded</code> communicates the expanded or collapsed state to screen readers.</p>
-        <h3>Example</h3>
-        <div class="example-container" data-prefix="b"></div>
-        <h3>Code Snippet</h3>
-        <code-editor prefix="b" tabs="html,css,js"></code-editor>
-      </section>
-
-
-    </main>
-
-  </div>
 
   <script type="text/plain" id="snippet-b-html">
 <label for="combobox-btn">Fruit</label>

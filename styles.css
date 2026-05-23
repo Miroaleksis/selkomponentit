@@ -109,7 +109,8 @@ button::after,
 
 /* ── Typography ──────────────────────────── */
 
-.component-section ol {
+.component-section ol,
+.component-section ul {
   padding-inline-start: 1.2em;
 }
 
@@ -555,6 +556,7 @@ on-this-page {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding-inline-start: 0 !important;
 }
 
 .feature-list li {

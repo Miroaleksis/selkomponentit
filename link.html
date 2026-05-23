@@ -20,7 +20,8 @@
 
       <div class="page-description">
         <h1>Link</h1>
-        <p>A link navigates the user to another location, either within the same page or to an external resource. Links and buttons are often confused but serve different purposes. A button performs an action on the current page, while a link navigates to a new location. See the <a href="button.html">Button</a> page for more information.</p>
+        <p>A link navigates the user to another location within the same site or page, or to an external resource.</p>
+        <p>Links and buttons are often confused but serve different purposes. A link navigates the user to a new location. A button performs an action on the current page (<a href="button.html">See the Button page for more information</a>).</p>
       </div>
 
       <section class="component-section">
@@ -31,7 +32,6 @@
         </div>
         <ul class="feature-list">
           <li aria-description="Required">Link text must describe the destination clearly enough to make sense when read out of context</li>
-          <li aria-description="Required">Links that open in a new tab must inform users — either in the visible link text or via visually hidden text — to avoid disorientation</li>
         </ul>
       </section>
 
@@ -46,7 +46,7 @@
 
       <section class="component-section">
         <h2>External Link</h2>
-        <p>An external link opens a resource outside the current site, typically in a new tab. Users must be informed of this behavior via visible text or a visually hidden alternative. A visual indicator such as an arrow icon helps sighted users identify external links.</p>
+        <p>An external link opens a resource outside the current site, typically in a new tab. Users should be informed of this behavior via visible text or a visual indicator such as an arrow icon. If a visual indicator is provided, an accessible alternative, such a visually hidden text, is required.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>
@@ -58,7 +58,7 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<p>Read more about <a href="#">accessible web design</a> and how it ensures that digital content can be used by everyone, including people with visual, auditory, motor or cognitive disabilities.</p>
+<p>By creating an account, you agree to our <a href="#">Terms of Service</a> and confirm that you have read our <a href="#">Privacy Policy</a>.</p>
   </script>
 
   <script type="text/plain" id="snippet-a-css">
@@ -74,8 +74,8 @@ a {
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-<a href="https://www.w3.org/WAI/" target="_blank" class="external-link">
-  W3C Web Accessibility Initiative
+<a href="https://www.wikipedia.org" target="_blank" class="external-link">
+  Wikipedia
   <span class="visually-hidden">, opens in new tab</span>
 </a>
   </script>

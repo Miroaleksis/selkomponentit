@@ -20,8 +20,7 @@
 
       <div class="page-description">
         <h1>Input Group</h1>
-        <p>An input group is a set of related form controls grouped together under a shared label.</p>
-        <p>The recommended implementation is the native <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> elements, which group the controls semantically and provide the group label to screen readers automatically.</p>
+        <p>An input group is a set of related form controls grouped together under a shared label. It is used when a set of controls shares a common context that cannot be understood from the individual labels alone.</p>
       </div>
 
       <section class="component-section">
@@ -31,8 +30,8 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required"><code>&lt;fieldset&gt;</code> groups the related inputs together semantically, and <code>&lt;legend&gt;</code> provides a label for the entire group</li>
-          <li aria-description="Required">Each input must have an associated individual <code>&lt;label&gt;</code>, linked via nesting or matching <code>for</code> and <code>id</code> attributes</li>
+          <li aria-description="Required">A native <code>&lt;fieldset&gt;</code> element groups the related inputs together semantically, while <code>&lt;legend&gt;</code> provides a label for the entire group. The elements handle screen reader announcements automatically. Using them is recommended whenever possible.</li>
+          <li aria-description="Required">Each input must have an individual <code>&lt;label&gt;</code>, linked via nesting or matching <code>for</code> and <code>id</code> attributes</li>
           <li aria-description="Required">Use <code>type="checkbox"</code> inputs when users can select any number of options from a group. Use <code>type="radio"</code> inputs when only one option can be selected at a time</li>
           <li aria-description="Required">Checkboxes and radio buttons that belong to the same group share a <code>name</code> attribute</li>
           <li aria-description="Recommended"><code>&lt;form&gt;</code> wraps related fieldsets into a single semantic container. When given an accessible name via <code>aria-label</code> or <code>aria-labelledby</code>, it is exposed as a form landmark that screen reader users can navigate to directly</li>
@@ -54,7 +53,8 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<form class="form">
+<form class="form" aria-labelledby="form-title">
+  <h3 id="form-title">Create your account</h3>
   <fieldset class="form-group">
     <legend>Account details</legend>
     <label class="form-field">

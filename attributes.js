@@ -66,6 +66,13 @@ function performSearch() {
   }
 }
 
+searchInput.addEventListener('input', () => {
+  if (searchInput.value === '') {
+    document.querySelectorAll('.table tbody tr:has(td)').forEach(row => row.hidden = false);
+    searchResults.textContent = '';
+  }
+});
+
 searchInput.addEventListener('keydown', e => {
   if (e.key === 'Enter') performSearch();
 });

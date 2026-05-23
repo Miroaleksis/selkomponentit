@@ -22,7 +22,6 @@
         <h1>Dialog</h1>
         <p>A dialog is a window overlaid on the page that interrupts the user's flow to request input or display important information.</p>
         <p>Dialogs can be used to confirm destructive actions, request information needed to continue a task, or display content that requires immediate attention. They are less suitable for non-urgent information that could be shown inline, since they interrupt the user's flow.</p>
-        <p>The recommended implementation is the native <code>&lt;dialog&gt;</code> element with the <code>showModal()</code> method, which provides focus management, the Escape key shortcut and a backdrop without additional JavaScript.</p>
       </div>
 
       <section class="component-section">
@@ -32,9 +31,9 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">The <code>&lt;dialog&gt;</code> element conveys the modal role to screen readers automatically</li>
+          <li aria-description="Required">Keyboard focus must move into the dialog on open and return to the trigger button on close. Focus must be trapped inside the dialog while it is open</li>
+          <li aria-description="Required">A native <code>&lt;dialog&gt;</code> element provides the modal role and the focus trap automatically. If <code>role="dialog"</code> is used instead, the focus trap must be implemented manually, for example, by assigning other elements on the page <code>inert</code></li>
           <li aria-description="Required"><code>aria-labelledby</code> links the dialog to its heading so screen readers announce its purpose</li>
-          <li aria-description="Required">Focus moves into the dialog on open and returns to the trigger on close. Focus is trapped inside the dialog while it is open.</li>
           <li aria-description="Recommended"><code>aria-haspopup="dialog"</code> communicates that the button opens a dialog</li>
           <li aria-description="Recommended">The <kbd>Esc</kbd> key closes the dialog</li>
         </ul>
@@ -124,7 +123,7 @@ dialog::backdrop {
 .confirm-btn {
   background: darkred;
   color: whitesmoke;
-  border-color: #a53723;
+  border: none;
 }
 
 .cancel-btn {

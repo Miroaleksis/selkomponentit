@@ -20,8 +20,7 @@
 
       <div class="page-description">
         <h1>Menu</h1>
-        <p>A navigation menu lists the main sections of a website and lets users move between them. Some items can expand into submenus that group related links.</p>
-        <p>Navigation menus can be used in the site header to provide consistent access to the most important pages. They are not suited for in-page actions or commands. Use buttons or a dialog for those.</p>
+        <p>A navigation menu lists the links to the website pages and lets users move between them. Menu items can expand into submenus that group related links. A menu is typically located in the site header to provide consistent access to the most important pages.</p>
       </div>
 
       <section class="component-section">
@@ -31,7 +30,7 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">The menu is wrapped in <code>&lt;nav&gt;</code> with an <code>aria-label</code>, so screen readers announce it as a navigation landmark</li>
+          <li aria-description="Required">A menu is marked as a <code>&lt;nav&gt;</code> landmark with a descriptive <code>aria-label</code>, so screen readers announce it as a specific navigation region</li>
           <li aria-description="Required"><code>aria-current="page"</code> on the active link identifies the current page to screen readers</li>
           <li aria-description="Required"><code>aria-expanded</code> on the submenu button reflects whether the submenu is currently expanded</li>
           <li aria-description="Recommended">An expanded submenu can be dismissed with <kbd>Esc</kbd></li>
@@ -40,7 +39,7 @@
 
       <section class="component-section">
         <h2>Without Parent Links</h2>
-        <p>In this variant, items with submenus use a button as the trigger. Clicking the button expands or collapses the submenu.</p>
+        <p>Menu items with submenus use a button as the trigger. Clicking the button expands or collapses the submenu.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
@@ -49,7 +48,7 @@
 
       <section class="component-section">
         <h2>With Parent Links</h2>
-        <p>In this variant, items with submenus have both a link to the parent page and a separate button that toggles the submenu. On wider screens the submenu also opens on hover. Hover-opened submenus can be dismissed with <kbd>Esc</kbd>.</p>
+        <p>Items with submenus can have both a link to the parent page and a separate button that toggles the submenu. On wider screens the submenus may also expand on hover, as the separate toggle button can be harder to discover. Hover-expanded submenus must be dismissable with <kbd>Esc</kbd>.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>
