@@ -52,9 +52,10 @@
       <section class="component-section">
         <h2>Custom Select-Only</h2>
         <p>A custom implementation may be necessary when the desired visual design cannot be achieved with the native <code>&lt;select&gt;</code> element. It requires explicit attributes to communicate dropdown semantics:
-        <ul>
-          <li><code>role="combobox"</code> identifies the trigger element and <code>aria-expanded</code> communicates its expanded or collapsed state.</li>
-          <li>Each option has <code>role="option"</code> and <code>aria-selected</code> to communicate its selection state.</li>
+        <ul class="feature-list">
+          <li aria-description="Required"><code>role="combobox"</code> identifies the trigger element and <code>aria-expanded</code> communicates its expanded or collapsed state</li>
+          <li aria-description="Required">Each option has <code>role="option"</code> and <code>aria-selected</code> to communicate its selection state</li>
+          <li aria-description="Recommended"><code>aria-controls</code> should point to the element the trigger controls</li>
         </ul>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>

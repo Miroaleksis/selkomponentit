@@ -20,8 +20,7 @@
 
       <div class="page-description">
         <h1>Pagination</h1>
-        <p>Pagination allows users to navigate between pages of content, one page at a time.</p>
-        <p>Pagination can be used when a long list or set of results is divided into discrete pages, especially when users benefit from a clear sense of how much content is available and the ability to jump to specific pages. Infinite scroll or "load more" patterns may be more appropriate when the content is open-ended or browsed casually.</p>
+        <p>Pagination allows users to navigate between pages of content, one page at a time. It can be used when a long list or set of results is divided into discrete pages, especially when users benefit from a clear sense of how much content is available and the ability to jump to specific pages. Infinite scroll or "load more" patterns may be more appropriate when the content is open-ended or browsed casually.</p>
       </div>
 
       <section class="component-section">
@@ -31,12 +30,12 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">Wrapped in a <code>&lt;nav&gt;</code> landmark with <code>aria-label="Pagination"</code> to identify the navigation region</li>
-          <li aria-description="Required"><code>aria-current="page"</code> marks the currently active page for screen readers</li>
-          <li aria-description="Required">The <code>disabled</code> attribute on the Previous and Next buttons prevents interaction when no further navigation is possible</li>
-          <li aria-description="Required">Use <code>&lt;button&gt;</code> when pagination updates content dynamically without a page reload. Use <code>&lt;a&gt;</code> when each page has its own URL</li>
-          <li aria-description="Recommended">Uses an ordered list (<code>&lt;ol&gt;</code>) to communicate the total number of pages to screen readers</li>
-          <li aria-description="Recommended">A <code>role="status"</code> element above the pagination announces the current page to screen readers when updated dynamically</li>
+          <li aria-description="Required">Pagination is wrapped in a <code>&lt;nav&gt;</code> landmark with <code>aria-label="Pagination"</code> to identify its purpose as a specific navigation region</li>
+          <li aria-description="Required"><code>aria-current="page"</code> identifies the currently active page</li>
+          <li aria-description="Required">Previous and next page controls are marked <code>disabled</code>to prevent interaction when no further navigation is possible</li>
+          <li aria-description="Required">Use <code>&lt;button&gt;</code> for the controls when pagination updates content dynamically without a page reload. Use <code>&lt;a&gt;</code> when each page has its own URL</li>
+          <li aria-description="Required">A <code>role="status"</code> element must be used to announces the current page to screen readers when updated dynamically (required only when the page does not reload)</li>
+          <li aria-description="Recommended">An ordered list (<code>&lt;ol&gt;</code>) should be used to identify the pagination as a list of pages and to communicate the total number of pages to screen readers</li>
         </ul>
       </section>
 

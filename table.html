@@ -31,16 +31,16 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required"><code>&lt;caption&gt;</code> provides a visible title for the table and is announced by screen readers before the table content</li>
-          <li aria-description="Required">Header cells use <code>&lt;th&gt;</code> and data cells use <code>&lt;td&gt;</code>, allowing screen readers to associate each data cell with its corresponding header</li>
-          <li aria-description="Required"><code>scope="col"</code> on <code>&lt;th&gt;</code> elements identifies them as column headers</li>
+          <li aria-description="Required">Header cells use <code>&lt;th&gt;</code> and data cells use <code>&lt;td&gt;</code>, allowing screen readers to associate each data cell with its corresponding column header</li>
+          <li aria-description="Required"><code>scope="col"</code> on <code>&lt;th&gt;</code> elements identifies them as column headers and <code>scope="col"</code> as row headers</li>
+          <li aria-description="Recommended"><code>&lt;caption&gt;</code> provides a title for the table</li>
           <li aria-description="Recommended"><code>&lt;thead&gt;</code> groups the header row and <code>&lt;tbody&gt;</code> groups the data rows, helping screen readers understand the table structure</li>
         </ul>
       </section>
 
       <section class="component-section">
         <h2>Sortable Table</h2>
-        <p>A sortable table lets users reorder rows by clicking column headers. <code>aria-sort="ascending|descending|none"</code> on the header communicates the current sort direction to screen readers. Sort controls use a <code>&lt;button&gt;</code> inside <code>&lt;th&gt;</code> so they are reachable by keyboard.</p>
+        <p>A sortable table lets users reorder rows by pressing column headers. <code>aria-sort="ascending/descending/none"</code> on the header communicates the current sort direction to screen readers. Sort controls use a <code>&lt;button&gt;</code> inside <code>&lt;th&gt;</code> to identify them as pressable elements.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
@@ -49,7 +49,7 @@
 
       <section class="component-section">
         <h2>Expandable Rows</h2>
-        <p>Expandable rows allow users to reveal additional detail for a table entry without leaving the page. Expanding must be triggered by a dedicated button whose accessible name clearly communicates which row's details it opens. In the example, <code>aria-labelledby</code> references the row's main cell to provide this context. <code>aria-expanded</code> and <code>aria-controls</code> on the button communicate its state and target to screen readers.</p>
+        <p>Expandable rows allow users to reveal additional detail for a table entry without leaving the page. It is practically a <a href="accordion.html">custom accordion</a> within a table. Expanding must be triggered by a dedicated button whose label or accessible name clearly communicates which row's details it opens, for example, using <code>aria-labelledby</code>. <code>aria-expanded</code> and <code>aria-controls</code> on the trigger communicate its state and target to screen readers. </p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>

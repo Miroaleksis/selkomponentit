@@ -37,21 +37,21 @@
         <table class="table">
           <caption>
             <div class="caption-inner">
-              <button class="category-btn" aria-expanded="true">Roles</button>
+              <button class="category-btn" aria-expanded="false">Roles</button>
               <button class="tooltip-btn" aria-label="About Roles" aria-expanded="false"></button>
             </div>
-            <div role="tooltip" id="tip-roles">Roles define the purpose of an element. Native elements come with built-in roles and behaviours and should be used when possible. ARIA roles only communicate semantics. Behaviours must be implemented separately.</div>
+            <div role="tooltip" id="tip-roles">Roles define the purpose of an element. Native elements come with built-in roles and behaviours and should be used when possible. ARIA roles only communicate semantics – behaviours must be implemented separately.</div>
           </caption>
           <thead>
             <tr>
-              <th>Native</th>
-              <th>Role</th>
-              <th>Description</th>
+              <th scope="col">Native</th>
+              <th scope="col">Role</th>
+              <th scope="col">Description</th>
             </tr>
           </thead>
           <tbody class="table-group group--navigation">
             <tr>
-              <th colspan="3"><button class="table-group-btn" aria-expanded="false">Navigation</button></th>
+              <th colspan="3" scope="rowgroup" headers=""><button class="table-group-btn" aria-expanded="false">Navigation</button></th>
             </tr>
             <tr>
               <td><code>&lt;a&gt;</code></td>
@@ -91,7 +91,7 @@
           </tbody>
           <tbody class="table-group group--function">
             <tr>
-              <th colspan="3"><button class="table-group-btn" aria-expanded="false">Function/Input</button></th>
+              <th colspan="3" scope="rowgroup" headers=""><button class="table-group-btn" aria-expanded="false">Function/Input</button></th>
             </tr>
             <tr>
               <td><code>&lt;button&gt;</code></td>
@@ -106,7 +106,7 @@
             <tr>
               <td>—</td>
               <td><code>combobox</code></td>
-              <td>A text input paired with a popup listbox of suggested values.</td>
+              <td>An input control that displays a dropdown list of options.</td>
             </tr>
             <tr>
               <td><code>&lt;select&gt;</code> / <code>&lt;option&gt;</code></td>
@@ -161,12 +161,12 @@
           </tbody>
           <tbody class="table-group group--structure">
             <tr>
-              <th colspan="3"><button class="table-group-btn" aria-expanded="false">Structure/Layout</button></th>
+              <th colspan="3" scope="rowgroup" headers=""><button class="table-group-btn" aria-expanded="false">Structure/Layout</button></th>
             </tr>
             <tr>
               <td><code>&lt;header&gt;</code></td>
               <td><code>banner</code></td>
-              <td>A header region for the page or its nearest sectioning ancestor, such as an <code>&lt;article&gt;</code> or <code>&lt;section&gt;</code>.</td>
+              <td>A header region for the page or its nearest sectioning ancestor, such as an <code>&lt;article&gt;</code>.</td>
             </tr>
             <tr>
               <td><code>&lt;td&gt;</code></td>
@@ -186,12 +186,12 @@
             <tr>
               <td><code>&lt;footer&gt;</code></td>
               <td><code>contentinfo</code></td>
-              <td>Site-level footer region containing copyright and secondary links.</td>
+              <td>A footer region region for the page or its nearest sectioning ancestor, such as an <code>&lt;article&gt;</code>.</td>
             </tr>
             <tr>
               <td><code>&lt;fieldset&gt;</code> / <code>&lt;legend&gt;</code></td>
               <td><code>group</code></td>
-              <td>A container that groups related form controls, such as a set of radio buttons. The <code>&lt;legend&gt;</code> provides a caption for the group.</td>
+              <td>A container that groups related form controls. The <code>&lt;legend&gt;</code> provides a caption for the group.</td>
             </tr>
             <tr>
               <td><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code></td>
@@ -219,7 +219,7 @@
               <td>An element that displays the progress of a task, either determinate or indeterminate.</td>
             </tr>
             <tr>
-              <td><code>&lt;section&gt;</code> (with accessible name)</td>
+              <td><code>&lt;section&gt;</code></td>
               <td><code>region</code></td>
               <td>A named section of a page. Only exposed as a landmark when it has an accessible name.</td>
             </tr>
@@ -246,17 +246,17 @@
             <tr>
               <td><code>&lt;details&gt;</code> / <code>&lt;summary&gt;</code></td>
               <td>—</td>
-              <td>A native disclosure widget that shows and hides content without JavaScript. The <code>&lt;summary&gt;</code> acts as the visible toggle.</td>
+              <td>A native accordion widget that expands and collapses content. The <code>&lt;summary&gt;</code> acts as the visible toggle.</td>
             </tr>
           </tbody>
           <tbody class="table-group group--notification">
             <tr>
-              <th colspan="3"><button class="table-group-btn" aria-expanded="false">Notification</button></th>
+              <th colspan="3" scope="rowgroup" headers=""><button class="table-group-btn" aria-expanded="false">Notification</button></th>
             </tr>
             <tr>
               <td>—</td>
               <td><code>alert</code></td>
-              <td>An important, time-sensitive message that is announced immediately by screen readers.</td>
+              <td>A live region for an important, time-sensitive message that is announced immediately by screen readers. Behaves as <code>aria-live="assertive"</code> and <code>aria-atomic="true"</code> by default.</td>
             </tr>
             <tr>
               <td>—</td>
@@ -271,12 +271,12 @@
             <tr>
               <td><code>&lt;output&gt;</code></td>
               <td><code>status</code></td>
-              <td>A live region for polite status updates that do not require immediate attention.</td>
+              <td>A live region for polite status updates that do not require immediate attention. Behaves as <code>aria-live="polite"</code> and <code>aria-atomic="true"</code> by default.</td>
             </tr>
             <tr>
               <td>—</td>
               <td><code>tooltip</code></td>
-              <td>A short descriptive popup that appears on hover or focus of its associated element.</td>
+              <td>A short descriptive popup that appears on hover, focus or press of its associated element.</td>
             </tr>
           </tbody>
         </table>
@@ -288,10 +288,10 @@
         <table class="table">
           <caption>
             <div class="caption-inner">
-              <button class="category-btn" aria-expanded="false">Values</button>
-              <button class="tooltip-btn" aria-label="About Values" aria-expanded="false"></button>
+              <button class="category-btn" aria-expanded="false">States and Properties</button>
+              <button class="tooltip-btn" aria-label="About States and Properties" aria-expanded="false"></button>
             </div>
-            <div role="tooltip" id="tip-values">Attributes that accept a fixed set of values. Some are dynamic states that change with user interaction (e.g. aria-expanded), others are static properties set once (e.g. aria-required).</div>
+            <div role="tooltip" id="tip-values">Attributes that only accept a fixed set of values. States are dynamic attributes that change with user interaction. Properties are static attributes that rarely change, set by the author to describe an element.</div>
           </caption>
           <thead>
             <tr>
@@ -348,7 +348,7 @@
               <td><code>hidden</code></td>
               <td><code>aria-hidden</code></td>
               <td><code>true</code> / <code>false</code></td>
-              <td>Removes an element from the accessibility tree so assistive technologies ignore it. The native <code>hidden</code> attribute also removes the element visually and from the tab order, so <code>tabindex="-1"</code> is not needed alongside it. When using <code>aria-hidden</code> on interactive elements, add <code>tabindex="-1"</code> to also remove them from the tab order.</td>
+              <td>Removes an element from the accessibility tree so assistive technologies ignore it. The native <code>hidden</code> attribute also removes the element visually and from the tab order. When using <code>aria-hidden</code> on interactive elements, add <code>tabindex="-1"</code> to also remove them from the tab order.</td>
             </tr>
             <tr>
               <td><code>:invalid</code></td>

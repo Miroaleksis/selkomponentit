@@ -32,7 +32,7 @@
         </div>
         <ul class="feature-list">
           <li aria-description="Required">Tabs are grouped in a <code>role="tablist"</code> element with an <code>aria-label</code> that describes the tab group</li>
-          <li aria-description="Required">Each tab has <code>role="tab"</code> and <code>aria-selected="true/false"</code> to convey its role and state to screen readers and is linked to its corresponding panel via <code>aria-controls</code></li>
+          <li aria-description="Required">Each tab has <code>role="tab"</code> and <code>aria-selected</code> to convey its role and state to screen readers and points to its corresponding panel via <code>aria-controls</code></li>
           <li aria-description="Required">Each panel has <code>role="tabpanel"</code> and is labelled by its corresponding tab with <code>aria-labelledby</code></li>
           <li aria-description="Required">Only the selected tab is in the tab order, all others have <code>tabindex="-1"</code></li>
           <li aria-description="Required">The <kbd>←</kbd> and <kbd>→</kbd> arrow keys move focus between tabs. Tabs can activate immediately on focus, or require the user to confirm with <kbd>Enter</kbd> or <kbd>Space</kbd></li>
@@ -104,7 +104,6 @@
   background: whitesmoke;
   border: 1.5px solid lightgray;
   border-bottom: 1.5px solid whitesmoke;
-  font-weight: bold;
 }
 
 [role="tabpanel"] {

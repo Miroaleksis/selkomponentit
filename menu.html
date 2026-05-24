@@ -20,7 +20,7 @@
 
       <div class="page-description">
         <h1>Menu</h1>
-        <p>A navigation menu lists the links to the website pages and lets users move between them. Menu items can expand into submenus that group related links. A menu is typically located in the site header to provide consistent access to the most important pages.</p>
+        <p>A navigation menu lists the links to the main pages of a website and lets users move between them. Menu items can expand into submenus that group related links. A menu is typically located in the site header to provide consistent access to the pages.</p>
       </div>
 
       <section class="component-section">
@@ -30,9 +30,10 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">A menu is marked as a <code>&lt;nav&gt;</code> landmark with a descriptive <code>aria-label</code>, so screen readers announce it as a specific navigation region</li>
-          <li aria-description="Required"><code>aria-current="page"</code> on the active link identifies the current page to screen readers</li>
-          <li aria-description="Required"><code>aria-expanded</code> on the submenu button reflects whether the submenu is currently expanded</li>
+          <li aria-description="Required">A menu is wrapped in a <code>&lt;nav&gt;</code> landmark with a descriptive <code>aria-label</code> to identify its purpose as a specific navigation region</li>
+          <li aria-description="Required"><code>aria-current="page"</code> identifies the currently active page</li>
+          <li aria-description="Required"><code>aria-expanded</code> on the submenu trigger button communicates the expanded or collapsed state to screen readers</li>
+          <li aria-description="Recommended"><code>aria-controls</code> should point to the submenu the trigger controls</li>
           <li aria-description="Recommended">An expanded submenu can be dismissed with <kbd>Esc</kbd></li>
         </ul>
       </section>

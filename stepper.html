@@ -20,8 +20,7 @@
 
       <div class="page-description">
         <h1>Stepper</h1>
-        <p>A stepper guides users through a multi-step process by displaying all steps and indicating progress.</p>
-        <p>Steppers can be used when a task is divided into a fixed sequence of distinct steps that benefit from being shown as a whole, such as a multi-step form, checkout flow, or onboarding wizard. They are less suitable for short tasks of one or two steps, or branching processes where the next step depends on previous answers.</p>
+        <p>A stepper guides users through a multi-step process by displaying all steps and indicating progress. It can be used when a task is divided into a fixed sequence of distinct steps that benefit from being shown as a whole. It is less suitable for short tasks of one or two steps, or branching processes where the next step depends on previous answers.</p>
       </div>
 
       <section class="component-section">
@@ -31,12 +30,12 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">Wrapped in a <code>&lt;nav&gt;</code> landmark with <code>aria-label</code> to identify the progress region</li>
-          <li aria-description="Required">Uses an ordered list (<code>&lt;ol&gt;</code>) to convey the sequence and total number of steps to screen readers</li>
-          <li aria-description="Required">The current step's button is marked with <code>aria-current="step"</code></li>
-          <li aria-description="Required">Upcoming step buttons use the <code>disabled</code> attribute, so screen readers and keyboard users know they cannot yet be navigated to</li>
-          <li aria-description="Required">Use <code>&lt;button&gt;</code> when the stepper navigates dynamically without a page reload. Use <code>&lt;a&gt;</code> when each step has its own URL</li>
-          <li aria-description="Recommended">An <code>aria-live="polite"</code> region announces the current step's label when it changes, so screen reader users hear the update without losing focus</li>
+          <li aria-description="Required">A stepper is wrapped in a <code>&lt;nav&gt;</code> landmark with a descriptive <code>aria-label</code> to identify its purpose as a specific navigation region</li>
+          <li aria-description="Required"><code>aria-current="step"</code> identifies the current step</li>
+          <li aria-description="Required">Upcoming step controls are marked <code>disabled</code>, so screen readers and keyboard users know they cannot yet be navigated to</li>
+          <li aria-description="Required">Use <code>&lt;button&gt;</code> for the controls when the stepper navigates dynamically without a page reload. Use <code>&lt;a&gt;</code> when each step has its own URL</li>
+          <li aria-description="Required">A <code>role="status"</code> element must be used to announces the current step to screen readers when updated dynamically (required only when the page does not reload)</li>
+          <li aria-description="Recommended">An ordered list (<code>&lt;ol&gt;</code>) should be used to identify the stepper as a list of steps and to communicate the total number of steps to screen readers</li>
           <li aria-description="Recommended">Step state (completed, current, upcoming) is conveyed through icon, font weight and disabled state, not by colour alone</li>
         </ul>
       </section>
@@ -66,7 +65,7 @@
       </ol>
     </nav>
     <div class="stepper-navigation">
-      <div aria-live="polite" id="step-description">Step 1: Account details</div>
+      <div role="status" id="step-description">Step 1: Account details</div>
       <div class="stepper-buttons">
         <button id="prev-step">Previous</button>
         <button id="next-step">Next</button>

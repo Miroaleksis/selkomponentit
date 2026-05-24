@@ -21,7 +21,7 @@
       <div class="page-description">
         <h1>Accordion</h1>
         <p>An accordion allows users to expand and collapse a section of content as needed. It consists of a trigger element and a content panel that is shown or hidden when the trigger is activated.</p>
-        <p>Accordions can be used when several related sections share the same context and reducing visual clutter is helpful. They are less suitable for content that users need to compare side by side, since toggling adds friction.</p>
+        <p>Accordions can be used when displaying content immediately is not necessary and reducing visual clutter is helpful. They are less suitable for content that users need to compare side by side, since toggling adds friction.</p>
       </div>
 
       <section class="component-section">
@@ -45,6 +45,25 @@
         <code-editor prefix="a" tabs="html,css"></code-editor>
       </section>
 
+      <section class="component-section">
+        <h2>Custom Accordion</h2>
+        <p>A custom accordion may be necessary, for example, when the content panel does not directly follow the trigger button in the DOM. It requires explicit attributes to communicate semantics:</p>
+        <ul class="feature-list">
+          <li aria-description="Required"><code>aria-expanded</code> on the trigger button communicates the expanded or collapsed state to screen readers</li>
+          <li aria-description="Required">If the trigger button follows the content panel in the DOM order, focus must be moved to the panel manually when the button is pressed</li>
+          <li aria-description="Recommended"><code>aria-controls</code> should point to the element the trigger controls</li>
+          <li aria-description="Recommended">The content panel can use <code>role="region"</code> with <code>aria-labelledby</code> pointing to the trigger to expose it as a named landmark.</li>
+        </ul>
+        <h3>Example</h3>
+        <div class="example-container" data-prefix="b"></div>
+        <h3>Code Snippet</h3>
+        <code-editor prefix="b" tabs="html,css,js"></code-editor>
+      </section>
+
+    </main>
+
+  </div>
+
   <script type="text/plain" id="snippet-a-html">
 <details>
   <summary>Can I change or cancel my order?</summary>
@@ -62,7 +81,7 @@ details {
   border: 1.5px solid;
   border-radius: 4px;
   cursor: pointer;
-  max-width: 320px;
+  max-width: 400px;
   overflow: hidden;
 }
 
@@ -90,54 +109,43 @@ details[open] summary::after {
 }
   </script>
 
-      <section class="component-section">
-        <h2>Custom Accordion</h2>
-        <p>A custom accordion requires <code>aria-expanded</code> on the trigger button to communicate the expanded or collapsed state to screen readers. The content panel can use <code>role="region"</code> with <code>aria-labelledby</code> pointing to the trigger to expose it as a named landmark. JavaScript is needed to toggle the attribute when the user activates the trigger.</p>
-        <h3>Example</h3>
-        <div class="example-container" data-prefix="b"></div>
-        <h3>Code Snippet</h3>
-        <code-editor prefix="b" tabs="html,css,js"></code-editor>
-      </section>
-
-    </main>
-
-  </div>
-
   <script type="text/plain" id="snippet-b-html">
-<div class="accordion">
-  <button class="accordion-trigger" id="accordion-trigger-1" aria-expanded="false" aria-controls="accordion-content-1">Can I change or cancel my order?</button>
-  <div class="accordion-content" id="accordion-content-1" role="region" aria-labelledby="accordion-trigger-1">
-    <p>Orders can be changed or cancelled within 24 hours of placing them. After that, the order may already be processed and on its way.</p>
-  </div>
+<div class="accordion-container">
+  <h3>Product description</h3>
+  <p>Wireless headphones with active noise cancellation and up to 30 hours of battery life.</p>
+  <p class="accordion-content" id="more-info" tabindex="-1">Compatible with Bluetooth 5.3 and available in three colours: black, white and navy. Includes a carrying case and USB-C charging cable. Foldable design for easy storage.</p>
+  <button class="accordion-trigger" aria-expanded="false" aria-controls="more-info">Show all</button>
 </div>
   </script>
 
   <script type="text/plain" id="snippet-b-css">
-.accordion {
-  display: flex;
-  flex-direction: column;
-  max-width: 320px;
+.accordion-container {
+  max-width: 400px;
   font-family: Verdana, sans-serif;
   font-size: 16px;
   color: dimgray;
-  border: 1.5px solid dimgray;
-  border-radius: 4px;
-  overflow: hidden;
+}
+
+.accordion-content {
+  display: none;
+}
+
+.accordion-container:has(.accordion-trigger[aria-expanded="true"]) .accordion-content {
+  display: block;
 }
 
 .accordion-trigger {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px;
+  gap: 8px;
+  background: none;
   border: none;
+  padding: 0;
+  margin-top: 16px;
   color: inherit;
-  background: lightgray;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
+  font: inherit;
   font-weight: bold;
-  text-align: left;
+  cursor: pointer;
 }
 
 .accordion-trigger::after {
@@ -145,18 +153,8 @@ details[open] summary::after {
   transition: transform 0.2s ease;
 }
 
-.accordion-trigger[aria-expanded="true"]::after {
+.accordion-container:has(.accordion-trigger[aria-expanded="true"]) .accordion-trigger::after {
   transform: rotate(180deg);
-}
-
-.accordion-content {
-  display: none;
-  padding: 8px;
-  background: whitesmoke;
-}
-
-.accordion-trigger[aria-expanded="true"] + .accordion-content {
-  display: block;
 }
   </script>
 
@@ -165,6 +163,7 @@ document.querySelectorAll('.accordion-trigger').forEach(trigger => {
   trigger.addEventListener('click', () => {
     const expanded = trigger.getAttribute('aria-expanded') === 'true';
     trigger.setAttribute('aria-expanded', !expanded);
+    if (!expanded) document.getElementById(trigger.getAttribute('aria-controls')).focus();
   });
 });
   </script>
