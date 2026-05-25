@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Input Group – Selko Digital HTML Library</title>
+  <title>Form – Selko Digital HTML Library</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,8 +19,9 @@
     <main class="page-content">
 
       <div class="page-description">
-        <h1>Input Group</h1>
-        <p>An input group is a set of related form controls grouped together under a shared label. It is used when a set of controls shares a common context that cannot be understood from the individual labels alone.</p>
+        <h1>Form</h1>
+        <p>A form is a section containing interactive controls that collect input from the user. It should be used whenever users submit data, such as registering an account, signing in, or completing a checkout.</p>
+        <p>Form content is often divided into input groups. An input group is a set of related form controls grouped together under a shared label. It is used when a set of input fields shares a common context that cannot be understood from the individual labels alone.</p>
       </div>
 
       <section class="component-section">
@@ -30,16 +31,18 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
+          <li aria-description="Required">A native <code>&lt;form&gt;</code> element enables built-in browser validation: required fields prevent submission, receive focus on error and display error hints automatically. It also improves browser autofill accuracy. Without a <code>&lt;form&gt;</code> element, these features are not available and must be implemented manually.</li>
           <li aria-description="Required">A native <code>&lt;fieldset&gt;</code> element groups the related inputs together semantically, while <code>&lt;legend&gt;</code> provides a label for the entire group. The elements handle screen reader announcements automatically. Using them is recommended whenever possible.</li>
           <li aria-description="Required">Each input must have an individual <code>&lt;label&gt;</code>, linked via nesting or matching <code>for</code> and <code>id</code> attributes</li>
-          <li aria-description="Required">Use <code>type="checkbox"</code> inputs when users can select any number of options from a group. Use <code>type="radio"</code> inputs when only one option can be selected at a time</li>
-          <li aria-description="Required">Checkboxes and radio buttons that belong to the same group share a <code>name</code> attribute</li>
-          <li aria-description="Recommended"><code>&lt;form&gt;</code> wraps related fieldsets into a single semantic container. When given an accessible name via <code>aria-label</code> or <code>aria-labelledby</code>, it is exposed as a form landmark that screen reader users can navigate to directly</li>
+          <li aria-description="Required">Use <code>type="checkbox"</code> inputs when users can select any number of predefined options from a group. Use <code>type="radio"</code> inputs when only one option can be selected at a time</li>
+          <li aria-description="Required">Checkboxes and radio buttons that belong to the same group must share a <code>name</code> attribute</li>
+          <li aria-description="Recommended">When a <code>&lt;form&gt;</code> is given an accessible name via <code>aria-label</code> or <code>aria-labelledby</code>, it is exposed as a landmark to screen readers</li>
         </ul>
       </section>
 
       <section class="component-section">
         <h2>Example</h2>
+        <p>Leave the form fields empty and click the submit button to see the error messages provided by the browser.</p>
         <div class="example-container" data-prefix="a"></div>
       </section>
 
@@ -58,22 +61,22 @@
   <fieldset class="form-group">
     <legend>Account details</legend>
     <label class="form-field">
-      Name
-      <input type="text" name="name" autocomplete="name">
+      Name (Required)
+      <input type="text" name="name" autocomplete="name" required>
     </label>
     <label class="form-field">
-      Email
-      <input type="email" name="email" autocomplete="email">
+      Email (Required)
+      <input type="email" name="email" autocomplete="email" required>
     </label>
   </fieldset>
   <fieldset class="form-group">
-    <legend>Account type</legend>
+    <legend>Account type (Required)</legend>
     <label class="form-option">
-      <input type="radio" name="account-type" value="personal">
+      <input type="radio" name="account-type" value="personal" required>
       Personal
     </label>
     <label class="form-option">
-      <input type="radio" name="account-type" value="business">
+      <input type="radio" name="account-type" value="business" required>
       Business
     </label>
   </fieldset>

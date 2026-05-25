@@ -35,14 +35,14 @@
           <li aria-description="Required"><code>role="alert"</code> announces urgent messages assertively. Screen readers interrupt the current task to read the message immediately</li>
           <li aria-description="Required">The alert container must be present in the page before the message appears. Screen readers only announce changes within the container, so it must only be hidden visually, not removed from the DOM</li>
           <li aria-description="Required">The alert message must convey clearly the nature of the detected issues</li>
-          <li aria-description="Recommended">If the form is long, the alert message may also include list of links to all invalid fields</li>
-          <li aria-description="Recommended">When submitting the form fails, focus should be set to the alert message or the first invalid field</li>
+          <li aria-description="Recommended">If there are multiple invalid fields, the alert message may also include a list of links to each field</li>
+          <li aria-description="Recommended">Avoid combining focus management with live region announcements unless focus moves to the live region itself. Screen readers prioritize focus changes and may not announce the live region. Generally, use one or the other: either move focus to the first incorrectly filled field (the field must have an associated error message), or rely on the live region to announce the error.</li>
         </ul>
       </section>
 
       <section class="component-section">
         <h2>Example</h2>
-        <p>Leave the form fields empty and click the submit button to see the alert message. Fill in all required fields to see the status message.</p>
+        <p>Set the quantity to 0 and click Add to cart to see the alert message. Add one or more items to see the status message.</p>
         <div class="example-container" data-prefix="a"></div>
       </section>
 
@@ -56,66 +56,61 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<form>
+<div class="product">
+  <p class="product-name">Portable speaker</p>
+  <p class="product-price">49.99€</p>
+  <label for="quantity-input">Quantity</label>
+  <input type="number" id="quantity-input" value="0" min="0">
+  <button type="button" id="add-to-cart-btn">Add to cart</button>
   <div role="alert" id="alert-message"></div>
-  <div class="field">
-    <label for="field-name">Name (required)</label>
-    <input type="text" id="field-name" aria-describedby="error-name" required>
-    <span class="field-error" id="error-name"></span>
-  </div>
-  <div class="field">
-    <label for="field-email">Email (required)</label>
-    <input type="email" id="field-email" aria-describedby="error-email" required>
-    <span class="field-error" id="error-email"></span>
-  </div>
-  <button type="button" id="submit-btn">Submit form</button>
   <div role="status" id="status-message"></div>
-</form>
+</div>
   </script>
 
   <script type="text/plain" id="snippet-a-css">
-form {
+.product {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  max-width: 320px;
+  gap: 8px;
+  max-width: 280px;
   font-family: Verdana, sans-serif;
   font-size: 16px;
   color: dimgray;
 }
 
-button {
-  font: inherit;
-  padding: 8px 16px;
-  background: dimgray;
-  color: whitesmoke;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.product-name {
+  margin: 0;
+  font-weight: bold;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.product-price {
+  margin: 0;
 }
 
-.field input {
+.product label {
+  margin-top: 8px;
+}
+
+input {
+  width: 64px;
   padding: 8px;
-  color: inherit;
-  background-color: whitesmoke;
   border: 1.5px solid dimgray;
   border-radius: 4px;
   font: inherit;
+  color: inherit;
+  background: whitesmoke;
 }
 
-.field-error {
-  font-size: 14px;
-  color: darkred;
-}
-
-.field-error:empty {
-  display: none;
+button {
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 8px 16px;
+  color: whitesmoke;
+  background: dimgray;
+  border: none;
+  border-radius: 4px;
+  font: inherit;
+  cursor: pointer;
 }
 
 [role="alert"],
@@ -127,7 +122,6 @@ button {
   padding: 8px;
   border-radius: 8px;
   border: 1.5px solid;
-  font: inherit;
 }
 
 [role="alert"]:empty,
@@ -163,29 +157,17 @@ button {
   </script>
 
   <script type="text/plain" id="snippet-a-js">
-const submitBtn = document.querySelector('#submit-btn');
+const input = document.querySelector('#quantity-input');
 const alertMessage = document.querySelector('#alert-message');
 const statusMessage = document.querySelector('#status-message');
-const fields = document.querySelectorAll('form input[required]');
 
-submitBtn.addEventListener('click', () => {
-  const empty = [...fields].filter(field => !field.value.trim());
-
-  fields.forEach(field => {
-    const error = document.querySelector('#error-' + field.id.replace('field-', ''));
-    error.textContent = field.value.trim() ? '' : 'This field is required.';
-  });
-
-  if (empty.length > 0) {
+document.querySelector('#add-to-cart-btn').addEventListener('click', () => {
+  if (Number(input.value) === 0) {
     statusMessage.textContent = '';
-    empty[0].focus();
-    setTimeout(() => {
-      alertMessage.textContent = 'Please fill in all required fields before submitting.';
-    }, 100);
+    alertMessage.textContent = 'Please select a quantity before adding to cart.';
   } else {
     alertMessage.textContent = '';
-    statusMessage.textContent = 'Your form has been submitted successfully.';
-    setTimeout(() => { statusMessage.textContent = ''; }, 3000);
+    statusMessage.textContent = 'Product added to your cart.';
   }
 });
   </script>
