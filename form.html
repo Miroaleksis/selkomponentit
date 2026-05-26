@@ -125,6 +125,11 @@
   box-sizing: border-box;
 }
 
+.form-group:has(input:user-invalid) {
+  border-color: darkred;
+  color: darkred;
+}
+
 legend {
   font-weight: bold;
   margin-bottom: 4px;
@@ -134,6 +139,8 @@ legend {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  color: dimgray;
+  position: relative;
 }
 
 .form-field input {
@@ -145,6 +152,23 @@ legend {
   font: inherit;
   color: inherit;
   box-sizing: border-box;
+}
+
+.form-field input:user-invalid {
+  border-color: darkred;
+  padding-right: 24px;
+}
+
+.form-field:has(input:user-invalid) {
+  color: darkred;
+}
+
+.form-field:has(input:user-invalid)::after {
+  content: '⚠' / '';
+  color: darkred;
+  position: absolute;
+  right: 8px;
+  bottom: 10px;
 }
 
 .form-option {

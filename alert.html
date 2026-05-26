@@ -22,6 +22,7 @@
         <h1>Alert</h1>
         <p>An alert is a message that communicates important feedback to the user in response to an action or event. There are two variants: a status message for non-critical updates and an alert message for errors or urgent information.</p>
         <p>Alerts use ARIA live regions to announce their content to screen readers automatically when they appear in the page, without requiring the user to navigate to them.</p>
+        <p>Browser provides native input error messages when input fields are wrapped inside a <code>&lt;form&gt;</code> element (<a href="form.html">See the Form page for more information</a>).</li>
       </div>
 
       <section class="component-section">
@@ -36,7 +37,8 @@
           <li aria-description="Required">The alert container must be present in the page before the message appears. Screen readers only announce changes within the container, so it must only be hidden visually, not removed from the DOM</li>
           <li aria-description="Required">The alert message must convey clearly the nature of the detected issues</li>
           <li aria-description="Recommended">If there are multiple invalid fields, the alert message may also include a list of links to each field</li>
-          <li aria-description="Recommended">Avoid combining focus management with live region announcements unless focus moves to the live region itself. Screen readers prioritize focus changes and may not announce the live region. Generally, use one or the other: either move focus to the first incorrectly filled field (the field must have an associated error message), or rely on the live region to announce the error.</li>
+          <li aria-description="Recommended">When an input error causes the alert message, the invalid field should be marked with <code>aria-invalid="true"</code> to communicate its state to screen readers. The field can also be associated with its error message using either <code>aria-errormessage</code> or <code>aria-describedby</code></li>
+          <li aria-description="Recommended">Avoid combining focus management with live region announcements unless focus moves to the live region itself. Screen readers prioritize focus changes and may not announce the live region. Generally, use one or the other: either move focus to the first incorrectly filled field (in this case, the field must have an associated error message), or rely on the live region to announce the error.</li>
         </ul>
       </section>
 
@@ -59,10 +61,12 @@
 <div class="product">
   <p class="product-name">Portable speaker</p>
   <p class="product-price">49.99€</p>
-  <label for="quantity-input">Quantity</label>
-  <input type="number" id="quantity-input" value="0" min="0">
-  <button type="button" id="add-to-cart-btn">Add to cart</button>
+  <label>
+    Quantity
+    <input type="number" id="quantity-input" value="0" min="0" aria-errormessage="alert-message">
+  </label>
   <div role="alert" id="alert-message"></div>
+  <button type="button" id="add-to-cart-btn">Add to cart</button>
   <div role="status" id="status-message"></div>
 </div>
   </script>
@@ -88,7 +92,11 @@
 }
 
 .product label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   margin-top: 8px;
+  position: relative;
 }
 
 input {
@@ -97,8 +105,16 @@ input {
   border: 1.5px solid dimgray;
   border-radius: 4px;
   font: inherit;
-  color: inherit;
+  color: dimgray;
   background: whitesmoke;
+}
+
+label:has(input[aria-invalid="true"]){
+  color: darkred;
+}
+
+input[aria-invalid="true"] {
+  border-color: darkred;
 }
 
 button {
@@ -117,9 +133,9 @@ button {
 [role="status"] {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
   margin-top: 8px;
-  padding: 8px;
+  padding: 8px 16px;
   border-radius: 8px;
   border: 1.5px solid;
 }
@@ -148,7 +164,7 @@ button {
 }
 
 [role="alert"]::before {
-  content: '✗' / '';
+  content: '⚠' / '';
 }
 
 [role="status"]::before {
@@ -161,11 +177,17 @@ const input = document.querySelector('#quantity-input');
 const alertMessage = document.querySelector('#alert-message');
 const statusMessage = document.querySelector('#status-message');
 
+input.addEventListener('input', () => {
+  if (Number(input.value) > 0) input.setAttribute('aria-invalid', 'false');
+});
+
 document.querySelector('#add-to-cart-btn').addEventListener('click', () => {
   if (Number(input.value) === 0) {
+    input.setAttribute('aria-invalid', 'true');
     statusMessage.textContent = '';
     alertMessage.textContent = 'Please select a quantity before adding to cart.';
   } else {
+    input.setAttribute('aria-invalid', 'false');
     alertMessage.textContent = '';
     statusMessage.textContent = 'Product added to your cart.';
   }
