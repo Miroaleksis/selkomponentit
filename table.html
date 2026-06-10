@@ -96,8 +96,7 @@ table {
 }
 
 caption {
-  background: dimgray;
-  color: whitesmoke;
+  padding-bottom: 12px;
   text-align: left;
   font-weight: bold;
 }
@@ -107,37 +106,40 @@ table, th, td {
   border: 1.5px solid lightgray;
 }
 
-caption, td, th button {
+td, th button {
   padding: 8px 16px;
 }
 
 th {
-  background: lightgray;
+  background: dimgray;
 }
 
 th button {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 6px;
   padding: 8px 16px;
   cursor: pointer;
+  width: 100%;
+  border-style: none;
+  color: whitesmoke;
+  background: none;
   font: inherit;
   font-weight: bold;
-  width: -webkit-fill-available;
-  border-style: none;
-  color: inherit;
-  background: none;
 }
 
 th[aria-sort="ascending"] button,
 th[aria-sort="descending"] button {
   background: rgb(0 0 0 / 0.1);
+  text-decoration: underline;
 }
 
-th[aria-sort] button::after {
-  content: '⬍' / '';
+th button::after {
+  position: absolute;
+  right: 16px;
 }
 
+th[aria-sort] button::after {content: '⬍' / '';}
 th[aria-sort="ascending"] button::after  { content: '⬆' / '';}
 th[aria-sort="descending"] button::after { content: '⬇' / '';}
   </script>
@@ -246,8 +248,7 @@ table {
 }
 
 caption {
-  background: dimgray;
-  color: whitesmoke;
+  padding-bottom: 12px;
   text-align: left;
   font-weight: bold;
 }
@@ -258,7 +259,7 @@ table, th, td {
   text-align: left;
 }
 
-caption, th, td {
+th, td {
   padding: 8px 16px;
 }
 
@@ -282,7 +283,8 @@ td button {
 }
 
 th {
-  background: lightgray;
+  color: whitesmoke;
+  background: dimgray;
 }
 
 .detail-row {

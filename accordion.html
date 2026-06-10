@@ -68,7 +68,7 @@
 <details>
   <summary>Can I change or cancel my order?</summary>
   <div class="accordion-content">
-    <p>Orders can be changed or cancelled within 24 hours of placing them. After that, the order may already be processed and on its way.</p>
+    <p>Orders can be changed or cancelled within 24 hours of placing them. After that, they may already be processed and on their way.</p>
   </div>
 </details>
   </script>
@@ -83,20 +83,23 @@ details {
   cursor: pointer;
   max-width: 400px;
   overflow: hidden;
+  background: whitesmoke;
 }
 
 summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px;
-  background: lightgray;
+  padding: 16px;
   font-weight: bold;
 }
 
+details[open] summary {
+  border-bottom: 1.5px solid lightgray;
+}
+
 .accordion-content {
-  padding: 8px;
-  background: whitesmoke;
+  padding: 16px;
 }
 
 summary::after {
@@ -114,7 +117,7 @@ details[open] summary::after {
   <h3>Product description</h3>
   <p>Wireless headphones with active noise cancellation and up to 30 hours of battery life.</p>
   <p class="accordion-content" id="more-info" tabindex="-1">Compatible with Bluetooth 5.3 and available in three colours: black, white and navy. Includes a carrying case and USB-C charging cable. Foldable design for easy storage.</p>
-  <button class="accordion-trigger" aria-expanded="false" aria-controls="more-info">Show all</button>
+  <button class="accordion-trigger" aria-expanded="false" aria-controls="more-info">Full description</button>
 </div>
   </script>
 

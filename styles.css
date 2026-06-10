@@ -3,7 +3,7 @@
 :root {
   --black: #3f3f3f;
   --dark-gray: dimgray;
-  --semi-gray: #8e8e8e;
+  --semi-gray: #757575;
   --medium-gray: darkgray;
   --gray: lightgray;
   --light-gray: #ebebeb;
@@ -741,8 +741,8 @@ code-editor {
 }
 
 .table tr:not(:last-child) td,
-.table tr:not(:last-child) th {
-  border-bottom: 1px solid var(--light-gray);
+.table tbody:last-child tr th {
+  border-bottom: 1.5px solid var(--light-gray);
 }
 
 .table th {
@@ -776,7 +776,6 @@ code-editor {
   padding: 0;
   border: none;
   font-size: inherit;
-  font-weight: inherit;
   color: inherit;
 }
 
@@ -836,6 +835,10 @@ code-editor {
   font-size: 20px;
 }
 
+.tooltip-btn[aria-expanded="true"]::before {
+  font-variation-settings: 'FILL' 1;
+}
+
 [role="tooltip"] {
   display: none;
   padding: 12px 16px;
@@ -857,9 +860,10 @@ code-editor {
 
 th:has(.table-group-btn) {
   color: inherit;
-  background: var(--gray);
+  background: var(--light-gray);
   font-style: italic;
   padding: 0;
+  border-bottom: 1.5px solid var(--gray);
 }
 
 .table-group-btn {
