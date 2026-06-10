@@ -14,14 +14,13 @@
   <main class="page-content">
     <h1 style="text-align: center">Accessible HTML Components</h1>
 
-    <fieldset class="filter-bar">
-      <legend>Filter by category</legend>
+    <div class="filter-bar" role="group" aria-label="Filter by category">
       <label class="button"><input type="radio" name="filter" value="all" checked> Show All</label>
       <label class="button tag--navigation"><input type="radio" name="filter" value="navigation"> Navigation</label>
       <label class="button tag--function"><input type="radio" name="filter" value="function"> Function/Input</label>
       <label class="button tag--structure"><input type="radio" name="filter" value="structure"> Structure/Layout</label>
       <label class="button tag--notification"><input type="radio" name="filter" value="notification"> Notification</label>
-    </fieldset>
+    </div>
 
     <div class="cards-grid">
 
