@@ -33,15 +33,16 @@
       </div>
 
       <section class="component-section">
-        <div class="table-scroll">
-        <table class="table">
-          <caption>
-            <div class="caption-inner">
+        <div class="table-accordion">
+          <div class="table-accordion-header">
+            <h2 id="heading-roles">
               <button class="category-btn" aria-expanded="false">Roles</button>
-              <button class="tooltip-btn" aria-label="About Roles" aria-expanded="false"></button>
-            </div>
-            <div role="tooltip" id="tip-roles">Roles define the purpose of an element. Native elements come with built-in roles and behaviours and should be used when possible. ARIA roles only communicate semantics – behaviours must be implemented separately.</div>
-          </caption>
+            </h2>
+            <button class="tooltip-btn" aria-label="About Roles" aria-expanded="false"></button>
+          </div>
+          <div role="tooltip" id="tip-roles">Roles define the purpose of an element. Native elements come with built-in roles and behaviours and should be used when possible. ARIA roles only communicate semantics – behaviours must be implemented separately.</div>
+          <div class="table-scroll">
+          <table class="table" aria-labelledby="heading-roles">
           <thead>
             <tr>
               <th scope="col">Native</th>
@@ -281,38 +282,31 @@
           </tbody>
         </table>
         </div>
+        </div>
       </section>
 
       <section class="component-section">
-        <div class="table-scroll">
-        <table class="table">
-          <caption>
-            <div class="caption-inner">
+        <div class="table-accordion">
+          <div class="table-accordion-header">
+            <h2 id="heading-states-properties">
               <button class="category-btn" aria-expanded="false">States and Properties</button>
-              <button class="tooltip-btn" aria-label="About States and Properties" aria-expanded="false"></button>
-            </div>
-            <div role="tooltip" id="tip-values">Attributes that only accept a fixed set of values. States are dynamic attributes that change with user interaction. Properties are static attributes that rarely change, set by the author to describe an element.</div>
-          </caption>
+            </h2>
+            <button class="tooltip-btn" aria-label="About States and Properties" aria-expanded="false"></button>
+          </div>
+          <div role="tooltip" id="tip-values">Attributes that only accept a fixed set of values. States are dynamic attributes that change with user interaction. Properties are static attributes that rarely change, set by the author to describe an element.</div>
+          <div class="table-scroll">
+          <table class="table" aria-labelledby="heading-states-properties">
           <thead>
             <tr>
-              <th>Native</th>
-              <th>ARIA</th>
-              <th>Values</th>
-              <th>Description</th>
+              <th scope="col">Native</th>
+              <th scope="col">ARIA</th>
+              <th scope="col">Values</th>
+              <th scope="col">Description</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="table-group">
             <tr>
-              <td>—</td>
-              <td><code>aria-atomic</code></td>
-              <td><code>true</code> / <code>false</code></td>
-              <td>When set to <code>true</code>, instructs assistive technologies to announce the entire live region when any part of it changes, rather than only the changed portion.</td>
-            </tr>
-            <tr>
-              <td>—</td>
-              <td><code>aria-autocomplete</code></td>
-              <td><code>none</code> / <code>list</code> / <code>inline</code> / <code>both</code></td>
-              <td>Indicates to assistive technologies how text completion is provided in a combobox. <code>list</code> means a dropdown list of suggestions is displayed.</td>
+              <th colspan="4" scope="rowgroup"><button class="table-group-btn" aria-expanded="false">States</button></th>
             </tr>
             <tr>
               <td><code>checked</code></td>
@@ -339,12 +333,6 @@
               <td>Indicates whether a collapsible element such as an accordion is open or closed.</td>
             </tr>
             <tr>
-              <td>—</td>
-              <td><code>aria-haspopup</code></td>
-              <td><code>true</code> / <code>listbox</code> / <code>menu</code> / <code>dialog</code></td>
-              <td>Indicates that interacting with the element will open a popup such as a listbox, menu or dialog.</td>
-            </tr>
-            <tr>
               <td><code>hidden</code></td>
               <td><code>aria-hidden</code></td>
               <td><code>true</code> / <code>false</code></td>
@@ -358,27 +346,50 @@
             </tr>
             <tr>
               <td>—</td>
-              <td><code>aria-live</code></td>
-              <td><code>polite</code> / <code>assertive</code> / <code>off</code></td>
-              <td>Defines a live region whose content changes are announced by screen readers. Common values are <code>polite</code> (waits for user to be idle) and <code>assertive</code> (announces immediately).</td>
-            </tr>
-            <tr>
-              <td>—</td>
               <td><code>aria-pressed</code></td>
               <td><code>true</code> / <code>false</code> / <code>mixed</code></td>
               <td>Indicates the pressed state of a toggle button.</td>
-            </tr>
-            <tr>
-              <td><code>required</code></td>
-              <td><code>aria-required</code></td>
-              <td><code>true</code> / <code>false</code></td>
-              <td>Indicates that the field must be filled in before the form can be submitted. The native <code>required</code> attribute also prevents form submission and triggers built-in browser validation.</td>
             </tr>
             <tr>
               <td>—</td>
               <td><code>aria-selected</code></td>
               <td><code>true</code> / <code>false</code></td>
               <td>Indicates the currently selected item within a set such as a tab or option.</td>
+            </tr>
+          </tbody>
+          <tbody class="table-group">
+            <tr>
+              <th colspan="4" scope="rowgroup"><button class="table-group-btn" aria-expanded="false">Properties</button></th>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><code>aria-atomic</code></td>
+              <td><code>true</code> / <code>false</code></td>
+              <td>When set to <code>true</code>, instructs assistive technologies to announce the entire live region when any part of it changes, rather than only the changed portion.</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><code>aria-autocomplete</code></td>
+              <td><code>none</code> / <code>list</code> / <code>inline</code> / <code>both</code></td>
+              <td>Indicates to assistive technologies how text completion is provided in a combobox. <code>list</code> means a dropdown list of suggestions is displayed.</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><code>aria-haspopup</code></td>
+              <td><code>true</code> / <code>listbox</code> / <code>menu</code> / <code>dialog</code></td>
+              <td>Indicates that interacting with the element will open a popup such as a listbox, menu or dialog.</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><code>aria-live</code></td>
+              <td><code>polite</code> / <code>assertive</code> / <code>off</code></td>
+              <td>Defines a live region whose content changes are announced by screen readers. Common values are <code>polite</code> (waits for user to be idle) and <code>assertive</code> (announces immediately).</td>
+            </tr>
+            <tr>
+              <td><code>required</code></td>
+              <td><code>aria-required</code></td>
+              <td><code>true</code> / <code>false</code></td>
+              <td>Indicates that the field must be filled in before the form can be submitted. The native <code>required</code> attribute also prevents form submission and triggers built-in browser validation.</td>
             </tr>
             <tr>
               <td><code>autocomplete</code></td>
@@ -401,18 +412,20 @@
           </tbody>
         </table>
         </div>
+        </div>
       </section>
 
       <section class="component-section">
-        <div class="table-scroll">
-        <table class="table">
-          <caption>
-            <div class="caption-inner">
+        <div class="table-accordion">
+          <div class="table-accordion-header">
+            <h2 id="heading-names">
               <button class="category-btn" aria-expanded="false">Names and Descriptions</button>
-              <button class="tooltip-btn" aria-label="About Names and Descriptions" aria-expanded="false"></button>
-            </div>
-            <div role="tooltip" id="tip-names">Attributes that provide accessible names and descriptions as text strings directly in the markup.</div>
-          </caption>
+            </h2>
+            <button class="tooltip-btn" aria-label="About Names and Descriptions" aria-expanded="false"></button>
+          </div>
+          <div role="tooltip" id="tip-names">Attributes that provide accessible names and descriptions as text strings directly in the markup.</div>
+          <div class="table-scroll">
+          <table class="table" aria-labelledby="heading-names">
           <thead>
             <tr>
               <th>Attribute</th>
@@ -439,18 +452,20 @@
           </tbody>
         </table>
         </div>
+        </div>
       </section>
 
       <section class="component-section">
-        <div class="table-scroll">
-        <table class="table">
-          <caption>
-            <div class="caption-inner">
+        <div class="table-accordion">
+          <div class="table-accordion-header">
+            <h2 id="heading-references">
               <button class="category-btn" aria-expanded="false">References</button>
-              <button class="tooltip-btn" aria-label="About References" aria-expanded="false"></button>
-            </div>
-            <div role="tooltip" id="tip-references">Attributes that reference the id of another element to create a relationship between elements.</div>
-          </caption>
+            </h2>
+            <button class="tooltip-btn" aria-label="About References" aria-expanded="false"></button>
+          </div>
+          <div role="tooltip" id="tip-references">Attributes that reference the id of another element to create a relationship between elements.</div>
+          <div class="table-scroll">
+          <table class="table" aria-labelledby="heading-references">
           <thead>
             <tr>
               <th>Attribute</th>
@@ -488,6 +503,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
         </div>
       </section>
 

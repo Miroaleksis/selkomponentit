@@ -10,15 +10,15 @@ class CodeEditor extends HTMLElement {
     ).join('');
 
     const panels = tabs.map((tab, i) => `
-          <div id="panel-${prefix}-${tab}" role="tabpanel" aria-labelledby="tab-${prefix}-${tab}" class="code-panel"${i > 0 ? ' hidden' : ''}>
+          <div id="panel-${prefix}-${tab}" role="tabpanel" aria-labelledby="tab-${prefix}-${tab}" class="code-panel" tabindex="0"${i > 0 ? ' hidden' : ''}>
 <pre><code></code></pre>
           </div>`
     ).join('');
 
     this.innerHTML = `
       <div class="code-editor">
-        <div class="code-toolbar" role="tablist">
-          <div class="code-tabs">${tabButtons}
+        <div class="code-toolbar">
+          <div class="code-tabs" role="tablist">${tabButtons}
           </div>
           <button class="button copy-btn">
             <span aria-live="polite">Copy</span>

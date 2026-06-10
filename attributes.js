@@ -1,4 +1,4 @@
-document.querySelectorAll('.table-group-btn, .table .category-btn').forEach(btn => {
+document.querySelectorAll('.table-group-btn, .category-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const expanded = btn.getAttribute('aria-expanded') === 'true';
     btn.setAttribute('aria-expanded', String(!expanded));
@@ -23,7 +23,7 @@ document.addEventListener('keydown', e => {
 });
 
 document.addEventListener('click', e => {
-  if (!e.target.closest('.tooltip-btn')) closeAllTooltips();
+  if (!e.target.closest('.tooltip-btn') && !e.target.closest('.category-btn')) closeAllTooltips();
 });
 
 const searchInput = document.getElementById('attr-search-input');
@@ -42,7 +42,7 @@ function openMatchingAccordions() {
   });
 
   document.querySelectorAll('.category-btn').forEach(btn => {
-    const table = btn.closest('table');
+    const table = btn.closest('.table-accordion').querySelector('.table');
     const hasVisible = [...table.querySelectorAll('tbody tr:has(td)')].some(row => !row.hidden);
     btn.setAttribute('aria-expanded', String(hasVisible));
   });
