@@ -84,22 +84,24 @@ label {
   margin-bottom: 8px;
 }
 
+.multiselect {
+  position: relative;
+  width: 240px;
+}
+
 [role="combobox"] {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   gap: 4px;
   padding: 8px 36px 8px 8px;
-  width: 240px;
+  width: 100%;
   color: inherit;
   background: whitesmoke;
   border: 1.5px solid;
   border-radius: 4px;
   cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  text-align: left;
+  font: inherit;
 }
 
 [role="combobox"]::after {
@@ -150,7 +152,7 @@ label {
 [role="listbox"] {
   display: none;
   position: absolute;
-  width: 240px;
+  width: 100%;
   background: whitesmoke;
   border: 1.5px solid;
   border-radius: 4px;
@@ -158,6 +160,7 @@ label {
   margin: 4px 0 0;
   padding: 0;
   z-index: 100;
+  box-sizing: border-box;
 }
 
 [role="combobox"][aria-expanded="true"] + [role="listbox"] {
