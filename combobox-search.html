@@ -289,7 +289,8 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   <script type="text/plain" id="snippet-b-html">
   <label for="csm-input">Country</label>
   <div class="combobox-search-multi">
-    <div class="ms-input" aria-live="polite" id="csm-tags">
+    <div class="ms-input">
+      <span class="ms-tags" aria-live="polite" id="csm-tags"></span>
       <input id="csm-input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags" placeholder="Select countries">
     </div>
     <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1">
@@ -379,13 +380,13 @@ input[role="combobox"] {
   color: inherit;
   background: transparent;
   border: none;
-  font-family: inherit;
-  font-size: inherit;
+  font: inherit;
   cursor: inherit;
 }
 
 input[role="combobox"]:focus {
   min-width: 80px;
+  padding: 0 4px;
 }
 
 .ms-tag {
@@ -402,6 +403,10 @@ input[role="combobox"]:focus {
 
 .ms-tag:hover {
   background: rgb(0 0 0 / 0.7);
+}
+
+.ms-tags {
+  display: contents;
 }
 
 .ms-input:has(.ms-tag) input::placeholder {
@@ -489,12 +494,13 @@ input[role="combobox"]:focus {
 document.querySelectorAll('.combobox-search-multi').forEach(container => {
   const input = container.querySelector('input');
   const msInput = container.querySelector('.ms-input');
+  const tagsContainer = container.querySelector('.ms-tags');
   const options = [...container.querySelectorAll('[role="option"]')];
   const noResults = container.querySelector('.no-results');
   let activeIndex = -1;
 
   function updateTags() {
-    msInput.querySelectorAll('.ms-tag').forEach(tag => tag.remove());
+    tagsContainer.querySelectorAll('.ms-tag').forEach(tag => tag.remove());
     options.forEach((option, index) => {
       if (option.getAttribute('aria-selected') !== 'true') return;
       const tag = document.createElement('span');
@@ -509,7 +515,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
       x.setAttribute('aria-hidden', 'true');
       x.textContent = ' ×';
       tag.appendChild(x);
-      msInput.insertBefore(tag, input);
+      tagsContainer.appendChild(tag);
     });
   }
 
