@@ -374,7 +374,7 @@ label {
 
 input[role="combobox"] {
   flex: 1;
-  min-width: 80px;
+  min-width: 0;
   padding: 0;
   color: inherit;
   background: transparent;
@@ -382,6 +382,10 @@ input[role="combobox"] {
   font-family: inherit;
   font-size: inherit;
   cursor: inherit;
+}
+
+input[role="combobox"]:focus {
+  min-width: 80px;
 }
 
 .ms-tag {

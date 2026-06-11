@@ -70,15 +70,15 @@
   </div>
   <div class="carousel-slides" aria-live="off" tabindex="-1">
     <div role="tabpanel" aria-roledescription="slide" id="slide-1" aria-labelledby="tab-1" class="carousel-slide">
-      <h4>Kyoto, Japan</h4>
+      <h3>Kyoto, Japan</h3>
       <p>A city where ancient temples and modern life exist side by side.</p>
     </div>
     <div role="tabpanel" aria-roledescription="slide" id="slide-2" aria-labelledby="tab-2" class="carousel-slide" inert>
-      <h4>Lisbon, Portugal</h4>
+      <h3>Lisbon, Portugal</h3>
       <p>Steep hills, tiled facades and a coastline stretching to the Atlantic.</p>
     </div>
     <div role="tabpanel" aria-roledescription="slide" id="slide-3" aria-labelledby="tab-3" class="carousel-slide" inert>
-      <h4>Queenstown, New Zealand</h4>
+      <h3>Queenstown, New Zealand</h3>
       <p>A small town surrounded by mountains and built for adventure.</p>
     </div>
   </div>
@@ -177,20 +177,13 @@
 
 .carousel-slides {
   display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
+  overflow-x: hidden;
   scroll-behavior: smooth;
-  scrollbar-width: none;
-}
-
-.carousel-slides::-webkit-scrollbar {
-  display: none;
 }
 
 .carousel-slide {
   flex: 0 0 100%;
   max-width: 100%;
-  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   justify-content: center;
