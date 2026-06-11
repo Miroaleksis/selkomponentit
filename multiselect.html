@@ -35,6 +35,7 @@
           <li aria-description="Required">A multiselect combobox has a similar structure and keyboard behaviour as the <a href="select-only.html">custom select-only combobox</a> with a few exceptions:</li>
           <li aria-description="Required"><code>aria-multiselectable="true"</code> on the listbox communicates that multiple options can be selected</li>
           <li aria-description="Required"><kbd>Space</kbd> and <kbd>Enter</kbd> toggle selection of the focused option without closing the dropdown</li>
+          <li aria-description="Required">Pressing <kbd>Backspace</kbd> removes the last selected option. <code>aria-live="polite"</code> on the trigger announces the change to screen readers</li>
           <li aria-description="Recommended"><code>aria-activedescendant</code> on the trigger tracks which option currently has focus</li>
           <li aria-description="Recommended">Trigger label updates to reflect the current selection</li>
         </ul>
@@ -57,8 +58,8 @@
   <script type="text/plain" id="snippet-b-html">
 <label for="ms-trigger">Language</label>
 <div class="multiselect">
-  <button id="ms-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="ms-listbox">
-    Select languages
+  <button id="ms-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="ms-listbox" aria-live="polite">
+    <span class="ms-placeholder">Select languages</span>
   </button>
   <ul role="listbox" id="ms-listbox" aria-multiselectable="true" aria-label="Language">
     <li role="option" id="ms-opt-1" aria-selected="false">English</li>
@@ -84,12 +85,13 @@ label {
 }
 
 [role="combobox"] {
+  position: relative;
   display: flex;
-  width: 240px;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 8px;
+  gap: 4px;
+  padding: 8px 36px 8px 8px;
+  width: 240px;
   color: inherit;
   background: whitesmoke;
   border: 1.5px solid;
@@ -102,12 +104,47 @@ label {
 
 [role="combobox"]::after {
   content: '▼' / '';
-  flex-shrink: 0;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   transition: transform 0.2s ease;
+  pointer-events: none;
 }
 
 [role="combobox"][aria-expanded="true"]::after {
-  transform: rotate(180deg);
+  transform: translateY(-50%) rotate(180deg);
+}
+
+[role="combobox"]:has(.ms-tag) .ms-placeholder {
+  display: none;
+}
+
+.ms-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 8px;
+  background: dimgray;
+  color: whitesmoke;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.ms-tag:hover {
+  background: rgb(0 0 0 / 0.7);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 
 [role="listbox"] {
@@ -182,18 +219,28 @@ function toggleSelection(index) {
   const option = options[index];
   const isSelected = option.getAttribute('aria-selected') === 'true';
   option.setAttribute('aria-selected', String(!isSelected));
-  updateTriggerLabel();
+  updateTags();
 }
 
-function updateTriggerLabel() {
-  const selected = options.filter(o => o.getAttribute('aria-selected') === 'true');
-  if (selected.length === 0) {
-    trigger.textContent = 'Select options';
-  } else if (selected.length === 1) {
-    trigger.textContent = selected[0].textContent;
-  } else {
-    trigger.textContent = selected.length + ' selected';
-  }
+function updateTags() {
+  trigger.querySelectorAll('.ms-tag').forEach(tag => tag.remove());
+  const placeholder = trigger.querySelector('.ms-placeholder');
+  options.forEach((option, index) => {
+    if (option.getAttribute('aria-selected') !== 'true') return;
+    const tag = document.createElement('span');
+    tag.className = 'ms-tag';
+    tag.dataset.index = index;
+    tag.textContent = option.textContent;
+    const sep = document.createElement('span');
+    sep.className = 'sr-only';
+    sep.textContent = ', ';
+    tag.appendChild(sep);
+    const x = document.createElement('span');
+    x.setAttribute('aria-hidden', 'true');
+    x.textContent = ' ×';
+    tag.appendChild(x);
+    trigger.insertBefore(tag, placeholder);
+  });
 }
 
 function updateMenuState(open) {
@@ -209,11 +256,24 @@ function updateMenuState(open) {
   }
 }
 
-trigger.addEventListener('click', () => {
+trigger.addEventListener('click', (e) => {
+  const tag = e.target.closest('.ms-tag');
+  if (tag) {
+    toggleSelection(parseInt(tag.dataset.index));
+    return;
+  }
   updateMenuState(!isOpen);
 });
 
 trigger.addEventListener('keydown', (e) => {
+  if (e.key === 'Backspace') {
+    const tags = trigger.querySelectorAll('.ms-tag');
+    if (tags.length > 0) {
+      e.preventDefault();
+      toggleSelection(parseInt(tags[tags.length - 1].dataset.index));
+    }
+    return;
+  }
   if (!isOpen && ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) {
     e.preventDefault();
     updateMenuState(true);
