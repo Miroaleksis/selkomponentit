@@ -104,8 +104,17 @@ label {
 
 .switch {
   position: relative;
-  width: 51px;
+  width: 52px;
   height: 30px;
+  background: lightgray;
+  border: 1.5px solid;
+  border-radius: 99px;
+  box-sizing: border-box;
+  transition: background 0.2s;
+}
+
+.switch:has(input:checked) {
+  background: dimgray;
 }
 
 .switch input {
@@ -114,22 +123,14 @@ label {
   appearance: none;
   cursor: pointer;
   margin: 0;
-}
-
-.switch::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: lightgray;
-  border: 1.5px solid;
   border-radius: 99px;
-  transition: background 0.2s;
 }
 
 .switch::after {
   content: '';
   position: absolute;
-  top: 2px;
+  top: 50%;
+  transform: translateY(-50%);
   left: 2px;
   width: 24px;
   height: 24px;
@@ -137,14 +138,11 @@ label {
   border: 1.5px solid;
   border-radius: 50%;
   transition: left 0.2s;
-}
-
-.switch:has(input:checked)::before {
-  background: dimgray;
+  box-sizing: border-box;
 }
 
 .switch:has(input:checked)::after {
-  left: 23px;
+  left: 24px;
 }
 
   </script>
