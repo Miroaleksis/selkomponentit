@@ -33,7 +33,7 @@
         </div>
         <ul class="feature-list">
           <li aria-description="Required">A combobox with search has a similar structure and keyboard behaviour as the <a href="select-only.html">select-only combobox</a> and the <a href="multiselect.html">multiselect combobox</a>. However, the implementation differs in a few ways:</li>
-          <li aria-description="Required"><code>input type="text"</code> as the trigger element provides search function</li>
+          <li aria-description="Required"><code>&lt;input type="text"&gt;</code> as the trigger element provides search function</li>
           <li aria-description="Required"><code>aria-autocomplete="list"</code> indicates that the displayed options are filtered based on the typed value</li>
           <li aria-description="Required">A <code>role="status"</code> element inside the listbox announces feedback to screen readers when no options match the search query</li>
         </ul>
@@ -49,7 +49,7 @@
 
       <section class="component-section">
         <h2>Multiselection</h2>
-        <p>In a multiselection combobox, selected options are associated with the combobox via <code>aria-describedby</code>, since they cannot be nested within an input field. Pressing <kbd>Backspace</kbd> when the input is empty removes the last selected option and <code>aria-live="polite"</code> on the option container announces the change to screen readers</p>
+        <p>In a multiselection combobox, selected options are associated with the combobox via <code>aria-describedby</code>, since they cannot be nested within an input field. Pressing <kbd>Backspace</kbd> when the input is empty removes the last selected option and <code>&lt;output&gt;</code> container announces the change to screen readers</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>
@@ -291,7 +291,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   <label for="csm-input">Country</label>
   <div class="combobox-search-multi">
     <div class="ms-input">
-      <span class="ms-tags" aria-live="polite" id="csm-tags"></span>
+      <output class="ms-tags" id="csm-tags"></output>
       <input id="csm-input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags" placeholder="Select countries">
     </div>
     <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1">
@@ -386,7 +386,7 @@ input[role="combobox"] {
   padding-left: 148px;
 }
 
-.ms-input:has(.ms-tags > :only-child) input:focus {
+.ms-input:has(.ms-tags > .ms-tag:only-child) input:focus {
   padding-left: 80px;
 }
 
