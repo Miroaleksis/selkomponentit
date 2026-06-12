@@ -134,6 +134,10 @@ label {
   cursor: pointer;
 }
 
+.ms-tag::after {
+  content: '×' / '';
+}
+
 .ms-tag:hover {
   background: rgb(0 0 0 / 0.7);
 }
@@ -238,10 +242,6 @@ function updateTags() {
     sep.className = 'sr-only';
     sep.textContent = ', ';
     tag.appendChild(sep);
-    const x = document.createElement('span');
-    x.setAttribute('aria-hidden', 'true');
-    x.textContent = ' ×';
-    tag.appendChild(x);
     trigger.insertBefore(tag, placeholder);
   });
 }

@@ -352,11 +352,8 @@ label {
   align-items: center;
   gap: 4px;
   padding: 8px 36px 8px 8px;
-  background: whitesmoke;
-  border: 1.5px solid;
-  border-radius: 4px;
   box-sizing: border-box;
-  cursor: pointer;
+  min-height: 36.8px;
 }
 
 .ms-input::after {
@@ -374,19 +371,32 @@ label {
 }
 
 input[role="combobox"] {
-  flex: 1;
-  min-width: 0;
-  padding: 0;
+  position: absolute;
+  inset: 0;
+  padding: 8px 36px 8px 8px;
   color: inherit;
-  background: transparent;
-  border: none;
+  background: whitesmoke;
+  border: 1.5px solid;
+  border-radius: 4px;
   font: inherit;
-  cursor: inherit;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
-input[role="combobox"]:focus {
-  min-width: 80px;
-  padding: 0 4px;
+.ms-input:has(.ms-tag) input[role="combobox"]:focus {
+  padding-left: 120px;
+}
+
+.ms-tags {
+  display: contents;
+}
+
+.ms-input:has(input:focus) .ms-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  width: 112px;
+  overflow: hidden;
 }
 
 .ms-tag {
@@ -399,14 +409,18 @@ input[role="combobox"]:focus {
   border-radius: 3px;
   font-size: 14px;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.ms-tag::after {
+  content: '×' / '';
 }
 
 .ms-tag:hover {
   background: rgb(0 0 0 / 0.7);
-}
-
-.ms-tags {
-  display: contents;
 }
 
 .ms-input:has(.ms-tag) input::placeholder {
@@ -494,7 +508,6 @@ input[role="combobox"]:focus {
   <script type="text/plain" id="snippet-b-js">
 document.querySelectorAll('.combobox-search-multi').forEach(container => {
   const input = container.querySelector('input');
-  const msInput = container.querySelector('.ms-input');
   const tagsContainer = container.querySelector('.ms-tags');
   const options = [...container.querySelectorAll('[role="option"]')];
   const noResults = container.querySelector('.no-results');
@@ -512,10 +525,8 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
       sep.className = 'sr-only';
       sep.textContent = ', ';
       tag.appendChild(sep);
-      const x = document.createElement('span');
-      x.setAttribute('aria-hidden', 'true');
-      x.textContent = ' ×';
-      tag.appendChild(x);
+      tag.addEventListener('mousedown', e => e.preventDefault());
+      tag.addEventListener('click', () => toggleSelection(options[parseInt(tag.dataset.index)]));
       tagsContainer.appendChild(tag);
     });
   }
@@ -565,27 +576,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
     updateTags();
   }
 
-  msInput.addEventListener('mousedown', (e) => {
-    if (e.target !== input) e.preventDefault();
-  });
-
-  msInput.addEventListener('click', (e) => {
-    const tag = e.target.closest('.ms-tag');
-    if (tag) {
-      toggleSelection(options[parseInt(tag.dataset.index)]);
-      return;
-    }
-    input.focus();
-    if (input.getAttribute('aria-expanded') === 'true') {
-      closeDropdown();
-    } else {
-      filterOptions(input.value);
-      openDropdown();
-    }
-  });
-
-  input.addEventListener('click', (e) => {
-    e.stopPropagation();
+  input.addEventListener('click', () => {
     if (input.getAttribute('aria-expanded') === 'true') {
       closeDropdown();
     } else {
@@ -601,7 +592,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
 
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Backspace' && input.value === '') {
-      const tags = msInput.querySelectorAll('.ms-tag');
+      const tags = tagsContainer.querySelectorAll('.ms-tag');
       if (tags.length > 0) {
         e.preventDefault();
         toggleSelection(options[parseInt(tags[tags.length - 1].dataset.index)]);
@@ -630,7 +621,6 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
       if (!expanded) { filterOptions(input.value); openDropdown(); return; }
       if (activeIndex >= 0) { const selected = vis[activeIndex]; toggleSelection(selected); filterOptions(''); input.value = ''; setActive(getVisible().indexOf(selected)); }
     } else if (e.key === ' ' && expanded) {
-      e.preventDefault();
       if (activeIndex >= 0) { const selected = vis[activeIndex]; toggleSelection(selected); filterOptions(''); input.value = ''; setActive(getVisible().indexOf(selected)); }
     } else if (e.key === 'Escape') {
       closeDropdown();
