@@ -183,11 +183,28 @@ kbd {
 
 /* ── Header ─────────────────────────────── */
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 48px;
+  padding: 8px 16px;
+  background: var(--white);
+  color: inherit;
+  font-weight: bold;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 .site-header {
   background-color: var(--black);
 }
 
 .site-header .header-inner {
+  position: relative;
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 48px;
@@ -938,6 +955,10 @@ th:has(.table-group-btn) {
     padding: 0 24px;
     position: relative;
     flex-wrap: wrap;
+  }
+
+  .skip-link {
+    left: 24px;
   }
 
   .site-logo {

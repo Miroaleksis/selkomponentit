@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -17,7 +17,7 @@
 
     <on-this-page></on-this-page>
 
-    <main class="page-content">
+    <main class="page-content" id="main-content">
 
       <div class="page-description">
         <h1>Combobox with Search</h1>
@@ -363,6 +363,7 @@ label {
   top: 50%;
   transform: translateY(-50%);
   transition: transform 0.2s ease;
+  pointer-events: none;
 }
 
 .combobox-search-multi:has([aria-expanded="true"]) .ms-input::after {

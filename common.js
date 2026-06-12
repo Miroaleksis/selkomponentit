@@ -4,6 +4,7 @@ class SiteHeader extends HTMLElement {
     this.innerHTML = `
       <header class="site-header">
         <div class="header-inner">
+          <a href="#main-content" class="skip-link">Skip to main content</a>
           <a href="index.html" class="site-logo">
             <img src="images/Selko-mark-white.svg" alt="">
             <div class="logo-name">
