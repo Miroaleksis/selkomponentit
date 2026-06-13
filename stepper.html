@@ -140,22 +140,20 @@
   justify-content: center;
   width: 32px;
   height: 32px;
+  border: 1.5px solid lightgray;
   border-radius: 50%;
-  background: lightgray;
+  background: whitesmoke;
   color: dimgray;
-  font-weight: bold;
   position: relative;
+  box-sizing: border-box;
   z-index: 1;
 }
 
-.stepper li button:not([aria-current]):not(:disabled) .step-indicator {
+.stepper li button:not(:disabled) .step-indicator,
+.stepper li button[aria-current] .step-indicator {
   background: dimgray;
   color: whitesmoke;
-}
-
-.stepper li button[aria-current] .step-indicator {
-  background: whitesmoke;
-  border: 1.5px solid dimgray;
+  border-color: dimgray;
 }
 
 .stepper-navigation {
