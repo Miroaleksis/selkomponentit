@@ -3,22 +3,20 @@ class SiteHeader extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <header class="site-header">
-        <div class="header-inner">
-          <a href="#main-content" class="skip-link">Skip to main content</a>
-          <a href="index.html" class="site-logo">
-            <img src="images/Selko-mark-white.svg" alt="">
-            <div class="logo-name">
-              <span class="title">Selko Digital</span>
-              <span class="subtitle">Accessible HTML Library</span>
-            </div>
-          </a>
-          <button class="nav-toggle" aria-label="Main menu" aria-expanded="false" aria-controls="site-nav"></button>
-          <nav id="site-nav" class="site-nav" aria-label="Main menu">
-            <a href="index.html">Components</a>
-            <a href="attributes.html">Attributes</a>
-            <a href="about.html">About</a>
-          </nav>
-        </div>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+        <a href="index.html" class="site-logo">
+          <img src="images/Selko-mark-white.svg" alt="">
+          <div class="logo-name">
+            <span class="title">Selko Digital</span>
+            <span class="subtitle">Accessible HTML Library</span>
+          </div>
+        </a>
+        <button class="nav-toggle" aria-label="Main menu" aria-expanded="false" aria-controls="site-nav"></button>
+        <nav id="site-nav" class="site-nav" aria-label="Main menu">
+          <a href="index.html">Components</a>
+          <a href="attributes.html">Attributes</a>
+          <a href="about.html">About</a>
+        </nav>
       </header>
     `;
 
@@ -44,9 +42,7 @@ class BreadcrumbBar extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <nav class="breadcrumb-bar" aria-label="Breadcrumb">
-        <div class="breadcrumb-inner">
-          <ol class="breadcrumb-trail"></ol>
-        </div>
+        <ol class="breadcrumb-trail"></ol>
       </nav>
     `;
 

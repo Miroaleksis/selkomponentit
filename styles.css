@@ -36,6 +36,11 @@ body {
   color: var(--dark-gray);
 }
 
+.site-header, .breadcrumb-bar, .page-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
 /* ── Icons ───────────────────────────────── */
 
 button::before,
@@ -199,14 +204,13 @@ kbd {
   top: 0;
 }
 
-.site-header {
+site-header {
+  display: block;
   background-color: var(--black);
 }
 
-.site-header .header-inner {
+.site-header {
   position: relative;
-  max-width: 1080px;
-  margin: 0 auto;
   padding: 0 48px;
   display: flex;
   justify-content: space-between;
@@ -218,7 +222,7 @@ kbd {
   gap: 4px;
   margin-left: -8px;
   text-decoration: none;
-  padding: 8px 0;
+  padding: 12px 0;
 }
 
 .site-logo img {
@@ -288,13 +292,12 @@ kbd {
 
 /* ── Breadcrumb bar ──────────────────────── */
 
-.breadcrumb-bar {
+breadcrumb-bar {
+  display: block;
   background-color: var(--white);
 }
 
-.breadcrumb-bar .breadcrumb-inner {
-  max-width: 1080px;
-  margin: 0 auto;
+.breadcrumb-bar {
   padding: 32px 48px;
 }
 
@@ -318,8 +321,6 @@ kbd {
 /* ── Page layout ─────────────────────────── */
 
 .page-inner {
-  max-width: 1080px;
-  margin: 0 auto;
   padding: 104px 48px;
   display: flex;
   gap: 64px;
@@ -350,11 +351,6 @@ kbd {
   display: flex;
   gap: 64px;
   align-items: flex-start;
-}
-
-.page-description-wrap .page-description {
-  flex: 1;
-  order: -1;
 }
 
 /* ── Aside ───────────────────────────────── */
@@ -459,6 +455,7 @@ on-this-page {
   flex-wrap: wrap;
   gap: 8px;
   align-self: center;
+  justify-content: center;
 }
 
 .filter-bar legend {
@@ -477,7 +474,6 @@ on-this-page {
   margin: 0;
   border-radius: 99px;
 }
-
 
 .tags {
   display: flex;
@@ -792,11 +788,10 @@ code-editor {
 .table-accordion-header h2 {
   display: flex;
   align-items: stretch;
-  margin: 0;
-  padding: 0;
   border: none;
   font-size: inherit;
   color: inherit;
+  padding: 0;
 }
 
 .category-btn {
@@ -806,7 +801,6 @@ code-editor {
   padding: 12px 16px;
   cursor: pointer;
   font-weight: 700;
-  box-sizing: border-box;
 }
 
 .category-btn:focus-visible {
@@ -915,10 +909,67 @@ th:has(.table-group-btn) {
 /* ── Responsive ──────────────────────────── */
 
 @media (max-width: 900px) {
+
+  .site-header {
+    padding: 0 24px;
+    flex-wrap: wrap;
+  }
+
+  .skip-link {
+    left: 24px;
+  }
+
+  .site-logo img {
+    height: 36px;
+  }
+
+  .site-header .logo-name .subtitle {
+    font-size: 12px;
+  }
+
+  .nav-toggle {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .site-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    border-top: 1.5px solid var(--dark-gray);
+  }
+
+  .site-nav a {
+    padding: 16px 0;
+  }
+
+  .site-nav a:hover,
+  .site-nav a[aria-current="page"] {
+    background: none;
+  }
+
+  .nav-toggle[aria-expanded="true"] ~ .site-nav {
+    display: flex;
+  }
+
+  .breadcrumb-bar {
+    padding: 24px;
+  }
+
+  .copy-btn [aria-live] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
   .page-inner {
     flex-direction: column;
     align-items: stretch;
-    gap: 48px;
+    padding: 48px 24px;
+    gap: 40px;
   }
 
   .variants-aside {
@@ -948,84 +999,6 @@ th:has(.table-group-btn) {
     max-width: 320px;
   }
 
-}
-
-@media (max-width: 560px) {
-  .site-header .header-inner {
-    padding: 0 24px;
-    position: relative;
-    flex-wrap: wrap;
-  }
-
-  .skip-link {
-    left: 24px;
-  }
-
-  .site-logo {
-    padding: 12px 0;
-    flex-shrink: 1;
-    min-width: 0;
-  }
-
-  .site-logo img {
-    height: 36px;
-  }
-
-  .site-header .logo-name {
-    font-size: 13px;
-  }
-
-  .site-header .logo-name .subtitle {
-    font-size: 11px;
-  }
-
-  .nav-toggle {
-    display: flex;
-    flex-shrink: 0;
-  }
-
-  .site-nav {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    border-top: 1.5px solid var(--dark-gray);
-  }
-
-  .site-nav a {
-    padding: 16px 0;
-  }
-
-  .site-nav a:hover,
-  .site-nav a[aria-current="page"] {
-    background: none;
-  }
-
-  .nav-toggle[aria-expanded="true"] ~ .site-nav {
-    display: flex;
-  }
-
-  .copy-btn [aria-live] {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-  }
-
-  .page-inner h1 {
-    font-size: 32px;
-  }
-
-  .breadcrumb-bar .breadcrumb-inner {
-    padding: 24px;
-  }
-
-  .page-inner {
-    padding: 48px 24px;
-    gap: 40px;
-  }
-
   .variant-cards .card {
     flex-direction: column;
   }
@@ -1034,6 +1007,7 @@ th:has(.table-group-btn) {
     width: auto;
     height: 160px;
   }
+
 }
 
 * :focus-visible,
