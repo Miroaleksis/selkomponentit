@@ -603,6 +603,7 @@ on-this-page {
   background-color: var(--light-gray);
   border-radius: 16px;
   padding: 48px 32px;
+  overflow-x: auto;
 }
 
 /* ── Code editor ─────────────────────────── */
