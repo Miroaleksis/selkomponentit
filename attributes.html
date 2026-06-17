@@ -435,19 +435,19 @@
           <tbody>
             <tr>
               <td><code>aria-description</code></td>
-              <td>Provides an accessible description directly as a text string. Use when no visible description is present.<p class="note note--warning">Not yet supported in all browsers and assistive technologies. Use <code>aria-describedby</code> for broader compatibility.</p></td>
+              <td>Provides an accessible description directly as a text string. Use when no visible description is present.<p class="note note--warning">Not yet supported in all browsers. Use <code>aria-describedby</code> for broader compatibility.</p></td>
             </tr>
             <tr>
               <td><code>aria-label</code></td>
-              <td>Provides an accessible name directly as a text string. Use when no visible label is present.</td>
+              <td>Provides an accessible name directly as a text string. Commonly used when no visible label is present. Overrides any visible label.</td>
             </tr>
             <tr>
               <td><code>aria-roledescription</code></td>
-              <td>Provides a human-readable description of the element's role, overriding the default role name announced by assistive technologies.</td>
+              <td>Provides a custom description of the element's role, overriding the default role name. Use when the current role is structurally correct but does not fully describe the element's purpose.</td>
             </tr>
             <tr>
               <td><code>aria-valuetext</code></td>
-              <td>Provides a human-readable text alternative for the current numeric value of a range widget, announced by screen readers instead of the raw number.</td>
+              <td>Provides a text alternative for the current numeric value of an input element, announced by screen readers instead of the raw number.</td>
             </tr>
           </tbody>
         </table>
@@ -463,7 +463,7 @@
             </h2>
             <button class="tooltip-btn" aria-label="About References" aria-expanded="false"></button>
           </div>
-          <div role="tooltip" id="tip-references">Attributes that reference the id of another element to create a relationship between elements.</div>
+          <div role="tooltip" id="tip-references">Attributes that reference the <code>id</code> of another element to create a relationship between elements.</div>
           <div class="table-scroll">
           <table class="table" aria-labelledby="heading-references">
           <thead>
