@@ -92,8 +92,8 @@
     <li role="option" id="cs-opt-25" aria-selected="false">Slovenia</li>
     <li role="option" id="cs-opt-26" aria-selected="false">Spain</li>
     <li role="option" id="cs-opt-27" aria-selected="false">Sweden</li>
-    <li class="no-results" role="status"></li>
   </ul>
+  <div class="no-results" role="status"></div>
 </div>
   </script>
 
@@ -153,6 +153,7 @@ input[role="combobox"] {
   margin: 4px 0 0;
   padding: 0;
   z-index: 100;
+  min-height: 36.8px;
   max-height: 200px;
   overflow-y: auto;
   box-sizing: border-box;
@@ -177,15 +178,19 @@ input[role="combobox"] {
 }
 
 .no-results:not(:empty) {
+  position: absolute;
+  border: 1.5px solid transparent;
+  margin: 4px 0 0;
   padding: 8px;
   font-style: italic;
+  z-index: 100;
+  box-sizing: border-box;
 }
   </script>
 
   <script type="text/plain" id="snippet-a-js">
 document.querySelectorAll('.combobox-search').forEach(container => {
   const input = container.querySelector('input');
-  const listbox = container.querySelector('[role="listbox"]');
   const options = [...container.querySelectorAll('[role="option"]')];
   const noResults = container.querySelector('.no-results');
   let activeIndex = -1;
@@ -226,7 +231,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     input.setAttribute('aria-expanded', 'false');
     const isValid = options.some(o => o.textContent.trim() === input.value);
     if (!isValid) input.value = '';
-    clearActive();
+    filterOptions('');
   }
 
   input.addEventListener('click', () => {
@@ -288,43 +293,43 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-  <label for="csm-input">Country</label>
-  <div class="combobox-search-multi">
-    <div class="ms-input">
-      <output class="ms-tags" id="csm-tags"></output>
-      <input id="csm-input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags" placeholder="Select countries">
-    </div>
-    <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1">
-      <li role="option" id="csm-opt-1" aria-selected="false">Austria</li>
-      <li role="option" id="csm-opt-2" aria-selected="false">Belgium</li>
-      <li role="option" id="csm-opt-3" aria-selected="false">Bulgaria</li>
-      <li role="option" id="csm-opt-4" aria-selected="false">Croatia</li>
-      <li role="option" id="csm-opt-5" aria-selected="false">Cyprus</li>
-      <li role="option" id="csm-opt-6" aria-selected="false">Czech Republic</li>
-      <li role="option" id="csm-opt-7" aria-selected="false">Denmark</li>
-      <li role="option" id="csm-opt-8" aria-selected="false">Estonia</li>
-      <li role="option" id="csm-opt-9" aria-selected="false">Finland</li>
-      <li role="option" id="csm-opt-10" aria-selected="false">France</li>
-      <li role="option" id="csm-opt-11" aria-selected="false">Germany</li>
-      <li role="option" id="csm-opt-12" aria-selected="false">Greece</li>
-      <li role="option" id="csm-opt-13" aria-selected="false">Hungary</li>
-      <li role="option" id="csm-opt-14" aria-selected="false">Ireland</li>
-      <li role="option" id="csm-opt-15" aria-selected="false">Italy</li>
-      <li role="option" id="csm-opt-16" aria-selected="false">Latvia</li>
-      <li role="option" id="csm-opt-17" aria-selected="false">Lithuania</li>
-      <li role="option" id="csm-opt-18" aria-selected="false">Luxembourg</li>
-      <li role="option" id="csm-opt-19" aria-selected="false">Malta</li>
-      <li role="option" id="csm-opt-20" aria-selected="false">Netherlands</li>
-      <li role="option" id="csm-opt-21" aria-selected="false">Poland</li>
-      <li role="option" id="csm-opt-22" aria-selected="false">Portugal</li>
-      <li role="option" id="csm-opt-23" aria-selected="false">Romania</li>
-      <li role="option" id="csm-opt-24" aria-selected="false">Slovakia</li>
-      <li role="option" id="csm-opt-25" aria-selected="false">Slovenia</li>
-      <li role="option" id="csm-opt-26" aria-selected="false">Spain</li>
-      <li role="option" id="csm-opt-27" aria-selected="false">Sweden</li>
-      <li class="no-results" role="status"></li>
-    </ul>
+<label for="csm-input">Country</label>
+<div class="combobox-search-multi">
+  <div class="ms-input">
+    <output class="ms-tags" id="csm-tags"></output>
+    <input id="csm-input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags" placeholder="Select countries">
   </div>
+  <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1">
+    <li role="option" id="csm-opt-1" aria-selected="false">Austria</li>
+    <li role="option" id="csm-opt-2" aria-selected="false">Belgium</li>
+    <li role="option" id="csm-opt-3" aria-selected="false">Bulgaria</li>
+    <li role="option" id="csm-opt-4" aria-selected="false">Croatia</li>
+    <li role="option" id="csm-opt-5" aria-selected="false">Cyprus</li>
+    <li role="option" id="csm-opt-6" aria-selected="false">Czech Republic</li>
+    <li role="option" id="csm-opt-7" aria-selected="false">Denmark</li>
+    <li role="option" id="csm-opt-8" aria-selected="false">Estonia</li>
+    <li role="option" id="csm-opt-9" aria-selected="false">Finland</li>
+    <li role="option" id="csm-opt-10" aria-selected="false">France</li>
+    <li role="option" id="csm-opt-11" aria-selected="false">Germany</li>
+    <li role="option" id="csm-opt-12" aria-selected="false">Greece</li>
+    <li role="option" id="csm-opt-13" aria-selected="false">Hungary</li>
+    <li role="option" id="csm-opt-14" aria-selected="false">Ireland</li>
+    <li role="option" id="csm-opt-15" aria-selected="false">Italy</li>
+    <li role="option" id="csm-opt-16" aria-selected="false">Latvia</li>
+    <li role="option" id="csm-opt-17" aria-selected="false">Lithuania</li>
+    <li role="option" id="csm-opt-18" aria-selected="false">Luxembourg</li>
+    <li role="option" id="csm-opt-19" aria-selected="false">Malta</li>
+    <li role="option" id="csm-opt-20" aria-selected="false">Netherlands</li>
+    <li role="option" id="csm-opt-21" aria-selected="false">Poland</li>
+    <li role="option" id="csm-opt-22" aria-selected="false">Portugal</li>
+    <li role="option" id="csm-opt-23" aria-selected="false">Romania</li>
+    <li role="option" id="csm-opt-24" aria-selected="false">Slovakia</li>
+    <li role="option" id="csm-opt-25" aria-selected="false">Slovenia</li>
+    <li role="option" id="csm-opt-26" aria-selected="false">Spain</li>
+    <li role="option" id="csm-opt-27" aria-selected="false">Sweden</li>
+  </ul>
+  <div class="no-results" role="status"></div>
+</div>
   </script>
 
   <script type="text/plain" id="snippet-b-css">
@@ -460,6 +465,7 @@ input[role="combobox"] {
   margin: 4px 0 0;
   padding: 0;
   z-index: 100;
+  min-height: 36.8px;
   max-height: 200px;
   overflow-y: auto;
   box-sizing: border-box;
@@ -511,8 +517,13 @@ input[role="combobox"] {
 }
 
 .no-results:not(:empty) {
+  position: absolute;
+  border: 1.5px solid transparent;
+  margin: 4px 0 0;
   padding: 8px;
   font-style: italic;
+  z-index: 100;
+  box-sizing: border-box;
 }
   </script>
 
