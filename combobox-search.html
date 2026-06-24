@@ -299,7 +299,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     <output class="ms-tags" id="csm-tags"></output>
     <input id="csm-input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags" placeholder="Select countries">
   </div>
-  <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1">
+  <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1" hidden>
     <li role="option" id="csm-opt-1" aria-selected="false">Austria</li>
     <li role="option" id="csm-opt-2" aria-selected="false">Belgium</li>
     <li role="option" id="csm-opt-3" aria-selected="false">Bulgaria</li>
@@ -371,7 +371,7 @@ label {
   pointer-events: none;
 }
 
-.combobox-search-multi.is-open .ms-input::after {
+.combobox-search-multi:has([aria-expanded="true"]) .ms-input::after {
   transform: translateY(-50%) rotate(180deg);
 }
 
@@ -455,7 +455,6 @@ input[role="combobox"] {
 }
 
 [role="listbox"] {
-  display: none;
   position: absolute;
   width: 100%;
   background: whitesmoke;
@@ -469,10 +468,6 @@ input[role="combobox"] {
   max-height: 200px;
   overflow-y: auto;
   box-sizing: border-box;
-}
-
-.combobox-search-multi.is-open [role="listbox"] {
-  display: block;
 }
 
 [role="option"] {
@@ -530,6 +525,7 @@ input[role="combobox"] {
   <script type="text/plain" id="snippet-b-js">
 document.querySelectorAll('.combobox-search-multi').forEach(container => {
   const input = container.querySelector('input');
+  const listbox = container.querySelector('[role="listbox"]');
   const tagsContainer = container.querySelector('.ms-tags');
   const options = [...container.querySelectorAll('[role="option"]')];
   const noResults = container.querySelector('.no-results');
@@ -584,12 +580,12 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
 
   function openDropdown() {
     input.setAttribute('aria-expanded', 'true');
-    container.classList.add('is-open');
+    listbox.removeAttribute('hidden');
   }
 
   function closeDropdown() {
     input.setAttribute('aria-expanded', 'false');
-    container.classList.remove('is-open');
+    listbox.setAttribute('hidden', '');
     input.value = '';
     filterOptions('');
   }
