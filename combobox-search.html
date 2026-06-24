@@ -358,10 +358,7 @@ label {
   gap: 4px;
   padding: 8px 28px 8px 8px;
   box-sizing: border-box;
-  border: 1.5px solid;
-  border-radius: 4px;
-  background: whitesmoke;
-  cursor: pointer;
+  min-height: 36.8px;
 }
 
 .ms-input::after {
@@ -379,23 +376,36 @@ label {
 }
 
 input[role="combobox"] {
-  flex: 1;
-  min-width: 0;
-  padding: 0;
+  position: absolute;
+  inset: 0;
+  padding: 8px 28px 8px 8px;
   color: inherit;
-  background: transparent;
-  border: none;
+  background: whitesmoke;
+  border: 1.5px solid;
+  border-radius: 4px;
   font: inherit;
   cursor: pointer;
   box-sizing: border-box;
 }
 
-input[role="combobox"]:focus {
-  min-width: 60px;
+.ms-input:has(.ms-tag) input[role="combobox"]:focus {
+  padding-left: 148px;
+}
+
+.ms-input:has(.ms-tags > .ms-tag:only-child) input:focus {
+  padding-left: 80px;
 }
 
 .ms-tags {
   display: contents;
+}
+
+.ms-input:has(input:focus) .ms-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  width: 136px;
+  overflow: hidden;
 }
 
 .ms-tag {
@@ -408,7 +418,16 @@ input[role="combobox"]:focus {
   border-radius: 3px;
   font-size: 14px;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
   box-sizing: border-box;
+}
+
+.ms-input:has(input:focus) .ms-tag {
+  max-width: 64px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .ms-tag::after {
