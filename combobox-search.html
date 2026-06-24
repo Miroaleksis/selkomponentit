@@ -452,7 +452,7 @@ input[role="combobox"]:focus {
   box-sizing: border-box;
 }
 
-.combobox-search-multi:has([aria-expanded="true"]) [role="listbox"] {
+.combobox-search-multi.is-open [role="listbox"] {
   display: block;
 }
 
@@ -565,10 +565,12 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
 
   function openDropdown() {
     input.setAttribute('aria-expanded', 'true');
+    container.classList.add('is-open');
   }
 
   function closeDropdown() {
     input.setAttribute('aria-expanded', 'false');
+    container.classList.remove('is-open');
     input.value = '';
     filterOptions('');
   }
