@@ -189,12 +189,12 @@ headers.forEach(th => {
       <td>In progress</td>
       <td><button type="button" aria-expanded="false" aria-labelledby="task-homework">▼</button></td>
     </tr>
-    <tr class="detail-row">
+    <tr class="detail-row" hidden>
       <td>Biology essay</td>
       <td>Done</td>
       <td></td>
     </tr>
-    <tr class="detail-row">
+    <tr class="detail-row" hidden>
       <td>Maths exercises</td>
       <td>In progress</td>
       <td></td>
@@ -206,12 +206,12 @@ headers.forEach(th => {
       <td>Pending</td>
       <td><button type="button" aria-expanded="false" aria-labelledby="task-chores">▼</button></td>
     </tr>
-    <tr class="detail-row">
+    <tr class="detail-row" hidden>
       <td>Vacuum living room</td>
       <td>Pending</td>
       <td></td>
     </tr>
-    <tr class="detail-row">
+    <tr class="detail-row" hidden>
       <td>Take out trash</td>
       <td>Pending</td>
       <td></td>
@@ -223,12 +223,12 @@ headers.forEach(th => {
       <td>Done</td>
       <td><button type="button" aria-expanded="false" aria-labelledby="task-project-work">▼</button></td>
     </tr>
-    <tr class="detail-row">
+    <tr class="detail-row" hidden>
       <td>Draft outline</td>
       <td>Done</td>
       <td></td>
     </tr>
-    <tr class="detail-row">
+    <tr class="detail-row" hidden>
       <td>Write introduction</td>
       <td>Done</td>
       <td></td>
@@ -240,6 +240,7 @@ headers.forEach(th => {
   <script type="text/plain" id="snippet-b-css">
 table {
   width: 100%;
+  table-layout: fixed;
   font-family: Verdana, sans-serif;
   font-size: 16px;
   color: dimgray;
@@ -286,16 +287,8 @@ th {
   background: dimgray;
 }
 
-.detail-row {
-  display: none;
-}
-
 .detail-row td:first-child {
   padding-left: 32px;
-}
-
-tr:has(button[aria-expanded="true"]) ~ .detail-row {
-  display: table-row;
 }
 
 button[aria-expanded="true"] {
@@ -308,6 +301,10 @@ document.querySelectorAll('button[aria-expanded]').forEach(btn => {
   btn.addEventListener('click', () => {
     const expanded = btn.getAttribute('aria-expanded') === 'true';
     btn.setAttribute('aria-expanded', String(!expanded));
+    btn.closest('tbody').querySelectorAll('.detail-row').forEach(row => {
+      if (!expanded) row.removeAttribute('hidden');
+      else row.setAttribute('hidden', '');
+    });
   });
 });
   </script>

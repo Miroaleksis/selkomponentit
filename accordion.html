@@ -116,7 +116,7 @@ details[open] summary::after {
 <div class="accordion-container">
   <h3>Product description</h3>
   <p>Wireless headphones with active noise cancellation and up to 30 hours of battery life.</p>
-  <p class="accordion-content" id="more-info" tabindex="-1">Compatible with Bluetooth 5.3 and available in three colours: black, white and navy. Includes a carrying case and USB-C charging cable. Foldable design for easy storage.</p>
+  <p class="accordion-content" id="more-info" tabindex="-1" hidden>Compatible with Bluetooth 5.3 and available in three colours: black, white and navy. Includes a carrying case and USB-C charging cable. Foldable design for easy storage.</p>
   <button class="accordion-trigger" aria-expanded="false" aria-controls="more-info">Full description</button>
 </div>
   </script>
@@ -127,14 +127,6 @@ details[open] summary::after {
   font-family: Verdana, sans-serif;
   font-size: 16px;
   color: dimgray;
-}
-
-.accordion-content {
-  display: none;
-}
-
-.accordion-container:has(.accordion-trigger[aria-expanded="true"]) .accordion-content {
-  display: block;
 }
 
 .accordion-trigger {
@@ -156,7 +148,7 @@ details[open] summary::after {
   transition: transform 0.2s ease;
 }
 
-.accordion-container:has(.accordion-trigger[aria-expanded="true"]) .accordion-trigger::after {
+.accordion-trigger[aria-expanded="true"]::after {
   transform: rotate(180deg);
 }
   </script>
@@ -166,7 +158,9 @@ document.querySelectorAll('.accordion-trigger').forEach(trigger => {
   trigger.addEventListener('click', () => {
     const expanded = trigger.getAttribute('aria-expanded') === 'true';
     trigger.setAttribute('aria-expanded', !expanded);
-    if (!expanded) document.getElementById(trigger.getAttribute('aria-controls')).focus();
+    const content = document.getElementById(trigger.getAttribute('aria-controls'));
+    if (!expanded) { content.removeAttribute('hidden'); content.focus(); }
+    else content.setAttribute('hidden', '');
   });
 });
   </script>
