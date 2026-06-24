@@ -579,14 +579,6 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
     updateTags();
   }
 
-  container.querySelector('.ms-input').addEventListener('mousedown', (e) => {
-    if (e.target === e.currentTarget) e.preventDefault();
-  });
-
-  container.querySelector('.ms-input').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) { input.click(); input.focus(); }
-  });
-
   input.addEventListener('click', () => {
     if (input.getAttribute('aria-expanded') === 'true') {
       closeDropdown();
