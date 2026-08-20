@@ -36,7 +36,7 @@ body {
   color: var(--dark-gray);
 }
 
-.site-header, .breadcrumb-bar, .page-inner {
+.site-header, .breadcrumb-bar, .page-inner, .site-footer {
   max-width: 1080px;
   margin: 0 auto;
 }
@@ -204,9 +204,28 @@ kbd {
   top: 0;
 }
 
-site-header {
+site-header,
+site-footer {
   display: block;
   background-color: var(--black);
+  color: var(--white);
+}
+
+.site-footer {
+  padding: 48px;
+}
+
+.site-footer-name {
+  font-weight: bold;
+  margin: 0 0 8px;
+}
+
+.site-footer-description {
+  margin: 0 0 32px;
+}
+
+.site-footer-copyright {
+  margin: 0;
 }
 
 .site-header {

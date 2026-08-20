@@ -112,3 +112,17 @@ class OnThisPage extends HTMLElement {
   }
 }
 customElements.define('on-this-page', OnThisPage);
+
+// Site footer web component
+class SiteFooter extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+      <footer class="site-footer">
+        <p class="site-footer-name">Selko Digital Accessible HTML Library</p>
+        <p class="site-footer-description">A collection of accessible HTML components with implementation examples</p>
+        <p class="site-footer-copyright">© 2026</p>
+      </footer>
+    `;
+  }
+}
+customElements.define('site-footer', SiteFooter);

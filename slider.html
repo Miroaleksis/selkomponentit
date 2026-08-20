@@ -191,6 +191,7 @@ legend {
   width: 100%;
   background: lightgray;
   border: 1.5px solid gray;
+  box-sizing: border-box;
 }
 
 .slider-fill {
@@ -203,6 +204,7 @@ input[type="range"] {
   background: transparent;
   pointer-events: none;
   width: calc(100% - 24px);
+  margin: 0;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -260,8 +262,8 @@ document.querySelectorAll('.sliders-container').forEach(container => {
     const minVal = parseInt(minThumb.value);
     const maxVal = parseInt(maxThumb.value);
     const w = container.querySelector('.sliders').offsetWidth;
-    const minX = (minVal - min) / (max - min) * (w - 24);
-    const maxX = 24 + (maxVal - min) / (max - min) * (w - 24);
+    const minX = (minVal - min) / (max - min) * (w - 48);
+    const maxX = 48 + (maxVal - min) / (max - min) * (w - 48);
     fill.style.left = minX + 'px';
     fill.style.width = Math.max(0, maxX - minX) + 'px';
     minOutput.textContent = minVal;
@@ -287,6 +289,7 @@ document.querySelectorAll('.sliders-container').forEach(container => {
   new ResizeObserver(update).observe(container.querySelector('.sliders'));
 });
   </script>
+  <site-footer></site-footer>
 
   <script src="common.js"></script>
   <script src="component-page.js"></script>
