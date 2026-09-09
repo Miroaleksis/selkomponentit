@@ -57,6 +57,7 @@ button::after,
   font-weight: normal;
   line-height: 1;
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  font-size: inherit;
 }
 
 .card-heading::after,
@@ -155,7 +156,7 @@ a {
   color: var(--white);
   white-space: nowrap;
   padding: 8px 16px;
-  border-radius: 99px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -163,14 +164,12 @@ a {
 .button:has(input:not(:checked)) {
   background: none;
   color: var(--dark-gray);
-  border: 1.5px solid var(--medium-gray);
 }
 
 code:not(pre code),
 kbd {
   font-family: Consolas, 'Courier New', monospace;
-  
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 14px;
 }
 
@@ -304,8 +303,9 @@ site-footer {
 }
 
 .site-nav a[aria-current="page"] {
+  color: var(--dark-gray);
   text-decoration: underline;
-  background: var(--dark-gray);
+  background: var(--extra-light-gray);
 }
 
 /* ── Breadcrumb bar ──────────────────────── */
@@ -421,7 +421,7 @@ on-this-page {
 
 .on-this-page {
   background: var(--white);
-  border-radius: 24px;
+  border-radius: 8px;
   padding: 40px;
 }
 
@@ -434,7 +434,7 @@ on-this-page {
   counter-reset: on-this-page;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
 }
 
 .on-this-page-links li {
@@ -474,6 +474,7 @@ on-this-page {
   gap: 8px;
   align-self: center;
   justify-content: center;
+  margin: 0;
 }
 
 .filter-bar legend {
@@ -490,7 +491,21 @@ on-this-page {
   appearance: none;
   cursor: pointer;
   margin: 0;
-  border-radius: 99px;
+  border-radius: 8px;
+}
+
+.home-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  width: fit-content;
+  align-self: center;
+}
+
+.home-search .attr-search {
+  width: 100%;
 }
 
 .tags {
@@ -506,16 +521,16 @@ on-this-page {
   gap: 4px;
   font-size: 12px;
   padding: 2px 10px 2px 6px;
-  border-radius: 99px;
+  border-radius: 8px;
   border: 1.5px solid var(--gray);
   color: var(--dark-gray);
   background: var(--light-gray);
 }
 
-.tag--navigation::before   { content: 'explore' / ''; font-size: 16px; }
-.tag--function::before     { content: 'ads_click' / ''; font-size: 16px; }
-.tag--structure::before { content: 'dashboard' / ''; font-size: 16px; }
-.tag--notification::before { content: 'info' / ''; font-size: 16px; }
+.tag--navigation::before   { content: 'explore' / ''; margin-left: -4px; }
+.tag--function::before     { content: 'ads_click' / ''; margin-left: -4px; }
+.tag--structure::before { content: 'dashboard' / ''; margin-left: -4px; }
+.tag--notification::before { content: 'info' / ''; margin-left: -4px; }
 
 /* ── Cards ──────────────────────────── */
 
@@ -534,7 +549,7 @@ on-this-page {
 
 .card {
   background: var(--white);
-  border-radius: 24px;
+  border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -620,7 +635,7 @@ on-this-page {
 
 .example-container {
   background-color: var(--light-gray);
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 48px 32px;
 }
 
@@ -631,7 +646,7 @@ code-editor {
 }
 
 .code-editor {
-  border-radius: 16px;
+  border-radius: 8px;
   min-width: 0;
   overflow: hidden;
   margin-bottom: 16px;
@@ -642,7 +657,7 @@ code-editor {
   background-color: rgb(0, 0, 0, 0.1);
   display: flex;
   align-items: stretch;
-  border-radius: 16px 16px 0 0;
+  border-radius: 8px 8px 0 0;
 }
 
 .code-tabs {
@@ -678,7 +693,7 @@ code-editor {
   padding: 24px;
   overflow: auto;
   max-height: 400px;
-  border-radius: 0 0 16px 16px;
+  border-radius: 0 0 8px 8px;
   scrollbar-color: var(--gray) rgb(0 0 0 / 0);
 }
 
@@ -711,23 +726,23 @@ code-editor {
   justify-content: space-between;
 }
 
-.attr-search input {
+.search-input {
   padding: 8px 12px;
   border: 1.5px solid;
-  border-radius: 4px 0 0 4px;
+  border-radius: 8px 0 0 8px;
   font: inherit;
   color: inherit;
   background: var(--white);
   width: 100%;
 }
 
-.attr-search input::placeholder {
+.search-input::placeholder {
   color: var(--semi-gray);
 }
 
 #search-btn {
   padding: 0 16px;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 8px 8px 0;
 }
 
 #search-btn::before {
@@ -736,7 +751,7 @@ code-editor {
   font-size: 20px;
 }
 
-#attr-search-results {
+.search-results {
   white-space: nowrap;
   margin-left: 16px;
   align-self: center;
@@ -746,7 +761,7 @@ code-editor {
   overflow-x: auto;
 }
 
-#attr-search-results:empty {
+.search-results:empty {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -950,6 +965,7 @@ th:has(.table-group-btn) {
 
   .site-nav a:hover,
   .site-nav a[aria-current="page"] {
+    color: inherit;
     background: none;
   }
 

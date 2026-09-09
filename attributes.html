@@ -27,9 +27,9 @@
       <div class="table-group-container">
 
       <div role="search" class="attr-search">
-        <input type="search" id="attr-search-input" aria-label="Search elements or attributes" placeholder="e.g. aria-expanded">
+        <input type="search" class="search-input" id="attr-search-input" aria-label="Search elements or attributes" placeholder="e.g. aria-expanded">
         <button type="button" id="search-btn" class="button" aria-label="Search"></button>
-        <output id="attr-search-results"></output>
+        <output class="search-results" id="attr-search-results"></output>
       </div>
 
       <section class="component-section">
@@ -401,7 +401,7 @@
               <td><code>inert</code></td>
               <td>—</td>
               <td>—</td>
-              <td>Removes an element and all its descendants from focus order, pointer events and the accessibility tree.</td>
+              <td>Removes an element and all its descendants from focus order, pointer events and the accessibility tree without hiding them visually.</td>
             </tr>
             <tr>
               <td><code>tabindex</code></td>
