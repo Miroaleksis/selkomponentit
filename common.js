@@ -5,10 +5,8 @@ class SiteHeader extends HTMLElement {
       <header class="site-header">
         <a href="#main-content" class="skip-link">Skip to main content</a>
         <a href="index.html" class="site-logo">
-          <img src="images/Selko-mark-white.svg" alt="">
           <div class="logo-name">
-            <span class="title">Selko Digital</span>
-            <span class="subtitle">Accessible HTML Library</span>
+            <span class="title">AccessiblyHTML</span>
           </div>
         </a>
         <button class="nav-toggle" aria-label="Main menu" aria-expanded="false" aria-controls="site-nav"></button>
@@ -118,7 +116,7 @@ class SiteFooter extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <footer class="site-footer">
-        <p class="site-footer-name">Selko Digital Accessible HTML Library</p>
+        <p class="site-footer-name">AccessiblyHTML</p>
         <p class="site-footer-description">A collection of accessible HTML components with implementation examples</p>
         <p class="site-footer-copyright">© 2026</p>
       </footer>
