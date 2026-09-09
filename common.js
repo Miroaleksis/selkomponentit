@@ -3,7 +3,7 @@ class SiteHeader extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <header class="site-header">
-        <a href="#main-content" class="skip-link">Skip to main content</a>
+        <a href="#main-content" class="skip-link button">Skip to main content</a>
         <a href="index.html" class="site-logo">
           <div class="logo-name">
             <span class="title">AccessiblyHTML</span>

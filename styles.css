@@ -174,6 +174,7 @@ a {
 .button:has(input:not(:checked)) {
   background: none;
   color: var(--color-700);
+  border-color: var(--color-400);
 }
 
 code:not(pre code),
@@ -201,12 +202,6 @@ kbd {
   position: absolute;
   top: -100%;
   left: 48px;
-  padding: 8px 16px;
-  background: var(--color-0);
-  color: var(--color-900);
-  font-weight: bold;
-  z-index: 1000;
-  text-decoration: none;
 }
 
 .skip-link:focus {
@@ -266,10 +261,7 @@ site-footer {
 
 .site-header .logo-name .title {
   font-weight: 700;
-}
-
-.site-header .logo-name .subtitle {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .nav-toggle {
@@ -314,17 +306,11 @@ site-footer {
 }
 
 .site-nav a[aria-current="page"] {
-  color: var(--color-700);
   text-decoration: underline;
   background: var(--color-100);
 }
 
 /* ── Breadcrumb bar ──────────────────────── */
-
-breadcrumb-bar {
-  display: block;
-  background-color: var(--color-0);
-}
 
 .breadcrumb-bar {
   padding: 32px 48px;
@@ -739,7 +725,7 @@ code-editor {
 
 .search-input {
   padding: 8px 12px;
-  border: 1.5px solid;
+  border: 1.5px solid var(--color-400);
   border-radius: 8px 0 0 8px;
   font: inherit;
   color: inherit;
