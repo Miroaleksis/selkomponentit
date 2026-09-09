@@ -180,7 +180,7 @@ a {
 code:not(pre code),
 kbd {
   font-family: Consolas, 'Courier New', monospace;
-  border-radius: 8px;
+  border-radius: 4px;
   font-size: 14px;
 }
 
