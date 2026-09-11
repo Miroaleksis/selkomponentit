@@ -5,9 +5,7 @@ class SiteHeader extends HTMLElement {
       <header class="site-header">
         <a href="#main-content" class="skip-link button">Skip to main content</a>
         <a href="index.html" class="site-logo">
-          <div class="logo-name">
-            <span class="title">AccessiblyHTML</span>
-          </div>
+          <img src="images/Logo.svg" alt="AccessiblyHTML">
         </a>
         <button class="nav-toggle" aria-label="Main menu" aria-expanded="false" aria-controls="site-nav"></button>
         <nav id="site-nav" class="site-nav" aria-label="Main menu">
