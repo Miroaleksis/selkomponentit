@@ -516,17 +516,17 @@ on-this-page {
   align-items: center;
   gap: 4px;
   font-size: 12px;
-  padding: 2px 10px 2px 6px;
+  padding: 2px 8px 2px 6px;
   border-radius: 8px;
   border: 1.5px solid var(--color-300);
   color: var(--color-700);
   background: var(--color-150);
 }
 
-.tag--navigation::before   { content: 'explore' / ''; margin-left: -4px; }
-.tag--function::before     { content: 'ads_click' / ''; margin-left: -4px; }
-.tag--structure::before { content: 'dashboard' / ''; margin-left: -4px; }
-.tag--notification::before { content: 'info' / ''; margin-left: -4px; }
+.tag--navigation::before   { content: 'explore' / ''; }
+.tag--function::before     { content: 'ads_click' / ''; }
+.tag--structure::before { content: 'dashboard' / ''; }
+.tag--notification::before { content: 'info' / ''; }
 
 /* ── Cards ──────────────────────────── */
 
