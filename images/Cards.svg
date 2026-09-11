@@ -1,38 +1,28 @@
-<svg width="252" height="140" viewBox="0 0 252 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_2119_462)">
-<rect width="120" height="140" rx="8" fill="#D3D3D3"/>
-<g clip-path="url(#clip1_2119_462)">
-<rect width="120" height="64" fill="#696969"/>
-<path d="M120 63.9999L87.8155 27.9436L65.0971 50.1321L51.8447 39.0379L22.5 63.9999H120Z" fill="#A9A9A9"/>
-<circle cx="27.2113" cy="21.6338" r="7.21127" fill="#D3D3D3"/>
+<svg width="340" height="200" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2145_1338)">
+<rect x="44" y="30" width="120" height="140" rx="4" fill="#D3D3D3"/>
+<rect width="120" height="64" transform="translate(44 30)" fill="#696969"/>
+<path d="M164 93.9999L131.816 57.9436L109.097 80.1321L95.8447 69.0379L66.5 93.9999H164Z" fill="#A9A9A9"/>
+<circle cx="71.2113" cy="51.6338" r="7.21127" fill="#D3D3D3"/>
+<rect width="96" height="2" transform="translate(56 110)" fill="#A9A9A9"/>
+<rect width="96" height="2" transform="translate(56 124)" fill="#A9A9A9"/>
+<rect x="56" y="142" width="63" height="16" rx="4" fill="#696969"/>
 </g>
-<rect width="96" height="2" transform="translate(12 80)" fill="#A9A9A9"/>
-<rect width="96" height="2" transform="translate(12 94)" fill="#A9A9A9"/>
-<rect x="12" y="112" width="96" height="16" rx="8" fill="#696969"/>
-</g>
-<g clip-path="url(#clip2_2119_462)">
-<rect x="132" width="120" height="140" rx="8" fill="#D3D3D3"/>
-<g clip-path="url(#clip3_2119_462)">
-<rect width="120" height="64" transform="translate(132)" fill="#A9A9A9"/>
-<path d="M252 63.9999L219.816 27.9436L197.097 50.1321L183.845 39.0379L154.5 63.9999H252Z" fill="#696969"/>
-<circle cx="159.211" cy="21.6338" r="7.21127" fill="#D3D3D3"/>
-</g>
-<rect width="96" height="2" transform="translate(144 80)" fill="#A9A9A9"/>
-<rect width="96" height="2" transform="translate(144 94)" fill="#A9A9A9"/>
-<rect x="144" y="112" width="96" height="16" rx="8" fill="#696969"/>
+<g clip-path="url(#clip1_2145_1338)">
+<rect x="176" y="30" width="120" height="140" rx="4" fill="#D3D3D3"/>
+<rect width="120" height="64" transform="translate(176 30)" fill="#A9A9A9"/>
+<path d="M296 93.9999L263.816 57.9436L241.097 80.1321L227.845 69.0379L198.5 93.9999H296Z" fill="#696969"/>
+<circle cx="203.211" cy="51.6338" r="7.21127" fill="#D3D3D3"/>
+<rect width="96" height="2" transform="translate(188 110)" fill="#A9A9A9"/>
+<rect width="96" height="2" transform="translate(188 124)" fill="#A9A9A9"/>
+<rect x="188" y="142" width="63" height="16" rx="4" fill="#A9A9A9"/>
 </g>
 <defs>
-<clipPath id="clip0_2119_462">
-<rect width="120" height="140" rx="8" fill="white"/>
+<clipPath id="clip0_2145_1338">
+<rect x="44" y="30" width="120" height="140" rx="4" fill="white"/>
 </clipPath>
-<clipPath id="clip1_2119_462">
-<rect width="120" height="64" fill="white"/>
-</clipPath>
-<clipPath id="clip2_2119_462">
-<rect x="132" width="120" height="140" rx="8" fill="white"/>
-</clipPath>
-<clipPath id="clip3_2119_462">
-<rect width="120" height="64" fill="white" transform="translate(132)"/>
+<clipPath id="clip1_2145_1338">
+<rect x="176" y="30" width="120" height="140" rx="4" fill="white"/>
 </clipPath>
 </defs>
 </svg>

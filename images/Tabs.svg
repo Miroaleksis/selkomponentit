@@ -1,9 +1,9 @@
-<svg width="260" height="110" viewBox="0 0 260 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0 8C0 3.58172 3.58172 0 8 0H68C72.4183 0 76 3.58172 76 8V24H0V8Z" fill="#D3D3D3"/>
-<path d="M92 12C92 7.58172 95.5817 4 100 4H160C164.418 4 168 7.58172 168 12V24H92V12Z" fill="#696969"/>
-<path d="M184 12C184 7.58172 187.582 4 192 4H252C256.418 4 260 7.58172 260 12V24H184V12Z" fill="#696969"/>
-<path d="M0 24H260V102C260 106.418 256.418 110 252 110H8C3.58172 110 0 106.418 0 102V24Z" fill="#D3D3D3"/>
-<rect width="148" height="2" transform="translate(16 48)" fill="#A9A9A9"/>
-<rect width="58" height="2" transform="translate(16 66)" fill="#A9A9A9"/>
-<rect width="104" height="2" transform="translate(16 84)" fill="#A9A9A9"/>
+<svg width="340" height="200" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M40 49C40 46.7909 41.7909 45 44 45H112C114.209 45 116 46.7909 116 49V69H40V49Z" fill="#D3D3D3"/>
+<path d="M132 53C132 50.7909 133.791 49 136 49H204C206.209 49 208 50.7909 208 53V69H132V53Z" fill="#696969"/>
+<path d="M224 53C224 50.7909 225.791 49 228 49H296C298.209 49 300 50.7909 300 53V69H224V53Z" fill="#696969"/>
+<path d="M40 69H300V151C300 153.209 298.209 155 296 155H44C41.7909 155 40 153.209 40 151V69Z" fill="#D3D3D3"/>
+<rect width="148" height="2" transform="translate(56 93)" fill="#A9A9A9"/>
+<rect width="58" height="2" transform="translate(56 111)" fill="#A9A9A9"/>
+<rect width="104" height="2" transform="translate(56 129)" fill="#A9A9A9"/>
 </svg>
