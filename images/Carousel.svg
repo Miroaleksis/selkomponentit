@@ -1,17 +1,17 @@
 <svg width="340" height="200" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2145_1354)">
-<rect x="54" y="32" width="232" height="96" rx="4" fill="#A9A9A9"/>
-<path d="M286 128L223.777 73.9155L179.854 107.198L154.233 90.5569L97.5 128H286Z" fill="#D3D3D3"/>
-<circle cx="84.8169" cy="64.4507" r="10.8169" fill="#D3D3D3"/>
+<rect x="54" y="32" width="232" height="96" rx="4" fill="#9d7dc4"/>
+<path d="M286 128L223.777 73.9155L179.854 107.198L154.233 90.5569L97.5 128H286Z" fill="#c9b8e8"/>
+<circle cx="84.8169" cy="64.4507" r="10.8169" fill="#c9b8e8"/>
 </g>
-<path d="M68 162L62 156L68 150L69.4 151.4L64.8 156L69.4 160.6L68 162Z" fill="#696969"/>
-<rect x="134" y="152" width="8" height="8" rx="4" fill="#A9A9A9"/>
-<rect x="150" y="152" width="8" height="8" rx="4" fill="#A9A9A9"/>
-<rect x="165" y="151" width="10" height="10" rx="5" fill="#696969"/>
-<rect x="165" y="151" width="10" height="10" rx="5" stroke="#696969" stroke-width="2"/>
-<rect x="182" y="152" width="8" height="8" rx="4" fill="#A9A9A9"/>
-<rect x="198" y="152" width="8" height="8" rx="4" fill="#A9A9A9"/>
-<path d="M272 150L278 156L272 162L270.6 160.6L275.2 156L270.6 151.4L272 150Z" fill="#696969"/>
+<path d="M68 162L62 156L68 150L69.4 151.4L64.8 156L69.4 160.6L68 162Z" fill="#6b4f9a"/>
+<rect x="134" y="152" width="8" height="8" rx="4" fill="#9d7dc4"/>
+<rect x="150" y="152" width="8" height="8" rx="4" fill="#9d7dc4"/>
+<rect x="165" y="151" width="10" height="10" rx="5" fill="#6b4f9a"/>
+<rect x="165" y="151" width="10" height="10" rx="5" stroke="#6b4f9a" stroke-width="2"/>
+<rect x="182" y="152" width="8" height="8" rx="4" fill="#9d7dc4"/>
+<rect x="198" y="152" width="8" height="8" rx="4" fill="#9d7dc4"/>
+<path d="M272 150L278 156L272 162L270.6 160.6L275.2 156L270.6 151.4L272 150Z" fill="#6b4f9a"/>
 <defs>
 <clipPath id="clip0_2145_1354">
 <rect x="54" y="32" width="232" height="96" rx="4" fill="white"/>

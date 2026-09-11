@@ -1,14 +1,14 @@
 <svg width="340" height="200" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="39.5" y="80" width="40" height="40" rx="20" fill="#A9A9A9"/>
+<rect x="39.5" y="80" width="40" height="40" rx="20" fill="#9d7dc4"/>
 <g clip-path="url(#clip0_2145_1317)">
-<path d="M57.05 106.3L51.35 100.6L52.775 99.175L57.05 103.45L66.225 94.275L67.65 95.7L57.05 106.3Z" fill="#D3D3D3"/>
+<path d="M57.05 106.3L51.35 100.6L52.775 99.175L57.05 103.45L66.225 94.275L67.65 95.7L57.05 106.3Z" fill="#c9b8e8"/>
 </g>
-<rect width="33.6667" height="4" transform="translate(79.5 98)" fill="#A9A9A9"/>
-<rect x="113.167" y="80" width="40" height="40" rx="20" fill="#696969"/>
-<rect width="33.6667" height="4" transform="translate(153.167 98)" fill="#D3D3D3"/>
-<rect x="188.833" y="82" width="36" height="36" rx="18" stroke="#D3D3D3" stroke-width="4"/>
-<rect width="33.6667" height="4" transform="translate(226.833 98)" fill="#D3D3D3"/>
-<rect x="262.5" y="82" width="36" height="36" rx="18" stroke="#D3D3D3" stroke-width="4"/>
+<rect width="33.6667" height="4" transform="translate(79.5 98)" fill="#9d7dc4"/>
+<rect x="113.167" y="80" width="40" height="40" rx="20" fill="#6b4f9a"/>
+<rect width="33.6667" height="4" transform="translate(153.167 98)" fill="#c9b8e8"/>
+<rect x="188.833" y="82" width="36" height="36" rx="18" stroke="#c9b8e8" stroke-width="4"/>
+<rect width="33.6667" height="4" transform="translate(226.833 98)" fill="#c9b8e8"/>
+<rect x="262.5" y="82" width="36" height="36" rx="18" stroke="#c9b8e8" stroke-width="4"/>
 <defs>
 <clipPath id="clip0_2145_1317">
 <rect width="24" height="24" fill="white" transform="translate(47.5 112) rotate(-90)"/>

@@ -1,21 +1,21 @@
 <svg width="340" height="200" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2145_1293)">
-<path d="M20 49C20 46.7909 21.7909 45 24 45H316C318.209 45 320 46.7909 320 49V73C320 75.2091 318.209 77 316 77H20V49Z" fill="#A9A9A9"/>
-<rect width="100" height="32" transform="translate(20 45)" fill="#696969"/>
-<rect width="48" height="2" transform="translate(36 60)" fill="#D3D3D3"/>
-<path d="M94 63L100 57L106 63L104.6 64.4L100 59.8L95.4 64.4L94 63Z" fill="#D3D3D3"/>
-<rect width="100" height="32" transform="translate(120 45)" fill="#A9A9A9"/>
-<rect width="48" height="2" transform="translate(136 60)" fill="#D3D3D3"/>
-<path d="M206 59L200 65L194 59L195.4 57.6L200 62.2L204.6 57.6L206 59Z" fill="#D3D3D3"/>
-<rect width="100" height="32" transform="translate(220 45)" fill="#A9A9A9"/>
-<rect width="48" height="2" transform="translate(236 60)" fill="#D3D3D3"/>
-<path d="M306 59L300 65L294 59L295.4 57.6L300 62.2L304.6 57.6L306 59Z" fill="#D3D3D3"/>
+<path d="M20 49C20 46.7909 21.7909 45 24 45H316C318.209 45 320 46.7909 320 49V73C320 75.2091 318.209 77 316 77H20V49Z" fill="#9d7dc4"/>
+<rect width="100" height="32" transform="translate(20 45)" fill="#6b4f9a"/>
+<rect width="48" height="2" transform="translate(36 60)" fill="#c9b8e8"/>
+<path d="M94 63L100 57L106 63L104.6 64.4L100 59.8L95.4 64.4L94 63Z" fill="#c9b8e8"/>
+<rect width="100" height="32" transform="translate(120 45)" fill="#9d7dc4"/>
+<rect width="48" height="2" transform="translate(136 60)" fill="#c9b8e8"/>
+<path d="M206 59L200 65L194 59L195.4 57.6L200 62.2L204.6 57.6L206 59Z" fill="#c9b8e8"/>
+<rect width="100" height="32" transform="translate(220 45)" fill="#9d7dc4"/>
+<rect width="48" height="2" transform="translate(236 60)" fill="#c9b8e8"/>
+<path d="M306 59L300 65L294 59L295.4 57.6L300 62.2L304.6 57.6L306 59Z" fill="#c9b8e8"/>
 </g>
 <g clip-path="url(#clip1_2145_1293)">
-<path d="M20 77H120V151C120 153.209 118.209 155 116 155H24C21.7909 155 20 153.209 20 151V77Z" fill="#D3D3D3"/>
-<rect width="68" height="2" transform="translate(36 89)" fill="#A9A9A9"/>
-<rect width="68" height="2" transform="translate(36 115)" fill="#A9A9A9"/>
-<rect width="68" height="2" transform="translate(36 141)" fill="#A9A9A9"/>
+<path d="M20 77H120V151C120 153.209 118.209 155 116 155H24C21.7909 155 20 153.209 20 151V77Z" fill="#c9b8e8"/>
+<rect width="68" height="2" transform="translate(36 89)" fill="#9d7dc4"/>
+<rect width="68" height="2" transform="translate(36 115)" fill="#9d7dc4"/>
+<rect width="68" height="2" transform="translate(36 141)" fill="#9d7dc4"/>
 </g>
 <defs>
 <clipPath id="clip0_2145_1293">

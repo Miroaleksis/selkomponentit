@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accessible HTML Components</title>
+  <title>Accessible HTML Patterns</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,11 +12,14 @@
 
   <div class="page-inner">
   <main class="page-content" id="main-content">
-    <h1 style="text-align: center">Accessible HTML Components</h1>
+    <div style="text-align: center">
+      <h1>Accessible HTML Patterns</h1>
+      <p class="page-subtitle">Semantic markup with working code examples</p>
+    </div>
 
     <div class="home-search">
       <div role="search" class="attr-search">
-        <input type="search" class="search-input" id="component-search" aria-label="Search components" placeholder="Component name...">
+        <input type="search" class="search-input" id="component-search" aria-label="Search patterns" placeholder="e.g. accordion">
         <button type="button" id="search-btn" class="button" aria-label="Search"></button>
         <output class="search-results" id="home-search-results"></output>
       </div>

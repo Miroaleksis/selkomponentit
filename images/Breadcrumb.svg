@@ -1,17 +1,17 @@
 <svg width="340" height="200" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2145_1288)">
-<rect width="76" height="34" transform="translate(40 83)" fill="#D3D3D3"/>
-<rect width="52" height="2" transform="translate(56 99)" fill="#A9A9A9"/>
-<path d="M132 100L116 117L116 83L132 100Z" fill="#D3D3D3"/>
-<path d="M124 83L140 83L140 100L124 83Z" fill="#D3D3D3"/>
-<path d="M140 100V117L124 117L140 100Z" fill="#D3D3D3"/>
-<rect width="60" height="34" transform="translate(140 83)" fill="#D3D3D3"/>
-<rect width="44" height="2" transform="translate(148 99)" fill="#A9A9A9"/>
-<path d="M216 100L200 117L200 83L216 100Z" fill="#D3D3D3"/>
-<path d="M208 83L224 83L224 100L208 83Z" fill="#696969"/>
-<path d="M224 100V117L208 117L224 100Z" fill="#696969"/>
-<rect width="76" height="34" transform="translate(224 83)" fill="#696969"/>
-<rect width="52" height="2" transform="translate(232 99)" fill="#D3D3D3"/>
+<rect width="76" height="34" transform="translate(40 83)" fill="#c9b8e8"/>
+<rect width="52" height="2" transform="translate(56 99)" fill="#9d7dc4"/>
+<path d="M132 100L116 117L116 83L132 100Z" fill="#c9b8e8"/>
+<path d="M124 83L140 83L140 100L124 83Z" fill="#c9b8e8"/>
+<path d="M140 100V117L124 117L140 100Z" fill="#c9b8e8"/>
+<rect width="60" height="34" transform="translate(140 83)" fill="#c9b8e8"/>
+<rect width="44" height="2" transform="translate(148 99)" fill="#9d7dc4"/>
+<path d="M216 100L200 117L200 83L216 100Z" fill="#c9b8e8"/>
+<path d="M208 83L224 83L224 100L208 83Z" fill="#6b4f9a"/>
+<path d="M224 100V117L208 117L224 100Z" fill="#6b4f9a"/>
+<rect width="76" height="34" transform="translate(224 83)" fill="#6b4f9a"/>
+<rect width="52" height="2" transform="translate(232 99)" fill="#c9b8e8"/>
 </g>
 <defs>
 <clipPath id="clip0_2145_1288">

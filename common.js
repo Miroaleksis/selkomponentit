@@ -5,11 +5,12 @@ class SiteHeader extends HTMLElement {
       <header class="site-header">
         <a href="#main-content" class="skip-link button">Skip to main content</a>
         <a href="index.html" class="site-logo">
-          <img src="images/Logo.svg" alt="AccessiblyHTML">
+          <img src="images/Logo.svg" alt="Accessibly">
+          <span class="site-logo-subtitle">Accessible HTML Library</span>
         </a>
         <button class="nav-toggle" aria-label="Main menu" aria-expanded="false" aria-controls="site-nav"></button>
         <nav id="site-nav" class="site-nav" aria-label="Main menu">
-          <a href="index.html">Components</a>
+          <a href="index.html">Patterns</a>
           <a href="attributes.html">Attributes</a>
           <a href="about.html">About</a>
         </nav>
@@ -60,7 +61,7 @@ class BreadcrumbBar extends HTMLElement {
       return li;
     }
 
-    trail.appendChild(createItem('Components', 'index.html'));
+    trail.appendChild(createItem('Patterns', 'index.html'));
 
     if (parentMeta) {
       const [url, label] = parentMeta.content.split('|');
@@ -114,8 +115,8 @@ class SiteFooter extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <footer class="site-footer">
-        <p class="site-footer-name">AccessiblyHTML</p>
-        <p class="site-footer-description">A collection of accessible HTML components with implementation examples</p>
+        <img src="images/Logo.svg" alt="Accessibly" class="site-footer-logo">
+        <p class="site-footer-description">A collection of accessible HTML patterns with implementation examples</p>
         <p class="site-footer-copyright">© 2026</p>
       </footer>
     `;

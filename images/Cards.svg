@@ -1,21 +1,21 @@
 <svg width="340" height="200" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2145_1338)">
-<rect x="44" y="30" width="120" height="140" rx="4" fill="#D3D3D3"/>
-<rect width="120" height="64" transform="translate(44 30)" fill="#696969"/>
-<path d="M164 93.9999L131.816 57.9436L109.097 80.1321L95.8447 69.0379L66.5 93.9999H164Z" fill="#A9A9A9"/>
-<circle cx="71.2113" cy="51.6338" r="7.21127" fill="#D3D3D3"/>
-<rect width="96" height="2" transform="translate(56 110)" fill="#A9A9A9"/>
-<rect width="96" height="2" transform="translate(56 124)" fill="#A9A9A9"/>
-<rect x="56" y="142" width="63" height="16" rx="4" fill="#696969"/>
+<rect x="44" y="30" width="120" height="140" rx="4" fill="#c9b8e8"/>
+<rect width="120" height="64" transform="translate(44 30)" fill="#6b4f9a"/>
+<path d="M164 93.9999L131.816 57.9436L109.097 80.1321L95.8447 69.0379L66.5 93.9999H164Z" fill="#9d7dc4"/>
+<circle cx="71.2113" cy="51.6338" r="7.21127" fill="#c9b8e8"/>
+<rect width="96" height="2" transform="translate(56 110)" fill="#9d7dc4"/>
+<rect width="96" height="2" transform="translate(56 124)" fill="#9d7dc4"/>
+<rect x="56" y="142" width="63" height="16" rx="4" fill="#6b4f9a"/>
 </g>
 <g clip-path="url(#clip1_2145_1338)">
-<rect x="176" y="30" width="120" height="140" rx="4" fill="#D3D3D3"/>
-<rect width="120" height="64" transform="translate(176 30)" fill="#A9A9A9"/>
-<path d="M296 93.9999L263.816 57.9436L241.097 80.1321L227.845 69.0379L198.5 93.9999H296Z" fill="#696969"/>
-<circle cx="203.211" cy="51.6338" r="7.21127" fill="#D3D3D3"/>
-<rect width="96" height="2" transform="translate(188 110)" fill="#A9A9A9"/>
-<rect width="96" height="2" transform="translate(188 124)" fill="#A9A9A9"/>
-<rect x="188" y="142" width="63" height="16" rx="4" fill="#A9A9A9"/>
+<rect x="176" y="30" width="120" height="140" rx="4" fill="#c9b8e8"/>
+<rect width="120" height="64" transform="translate(176 30)" fill="#9d7dc4"/>
+<path d="M296 93.9999L263.816 57.9436L241.097 80.1321L227.845 69.0379L198.5 93.9999H296Z" fill="#6b4f9a"/>
+<circle cx="203.211" cy="51.6338" r="7.21127" fill="#c9b8e8"/>
+<rect width="96" height="2" transform="translate(188 110)" fill="#9d7dc4"/>
+<rect width="96" height="2" transform="translate(188 124)" fill="#9d7dc4"/>
+<rect x="188" y="142" width="63" height="16" rx="4" fill="#9d7dc4"/>
 </g>
 <defs>
 <clipPath id="clip0_2145_1338">

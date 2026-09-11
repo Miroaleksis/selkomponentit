@@ -1,13 +1,13 @@
 <svg width="340" height="200" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2145_1240)">
-<rect width="220" height="32" transform="translate(60 24)" fill="#696969"/>
-<path d="M254 42L260 36L266 42L264.6 43.4L260 38.8L255.4 43.4L254 42Z" fill="#D3D3D3"/>
-<rect width="220" height="120" transform="translate(60 56)" fill="#D3D3D3"/>
-<rect width="188" height="2" transform="translate(76 70)" fill="#A9A9A9"/>
-<rect width="188" height="2" transform="translate(76 100)" fill="#A9A9A9"/>
-<rect width="220" height="30" transform="translate(60 116)" fill="#A9A9A9"/>
-<rect width="188" height="2" transform="translate(76 130)" fill="#D3D3D3"/>
-<rect width="188" height="2" transform="translate(76 160)" fill="#A9A9A9"/>
+<rect width="220" height="32" transform="translate(60 24)" fill="#6b4f9a"/>
+<path d="M254 42L260 36L266 42L264.6 43.4L260 38.8L255.4 43.4L254 42Z" fill="#c9b8e8"/>
+<rect width="220" height="120" transform="translate(60 56)" fill="#c9b8e8"/>
+<rect width="188" height="2" transform="translate(76 70)" fill="#9d7dc4"/>
+<rect width="188" height="2" transform="translate(76 100)" fill="#9d7dc4"/>
+<rect width="220" height="30" transform="translate(60 116)" fill="#9d7dc4"/>
+<rect width="188" height="2" transform="translate(76 130)" fill="#c9b8e8"/>
+<rect width="188" height="2" transform="translate(76 160)" fill="#9d7dc4"/>
 </g>
 <defs>
 <clipPath id="clip0_2145_1240">

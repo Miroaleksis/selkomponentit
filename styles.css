@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0..1,0');
+﻿@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0..1,0');
 
 :root {
   --black: #3f3f3f;
@@ -9,19 +9,30 @@
   --light-gray: #ebebeb;
   --extra-light-gray: whitesmoke;
   --white: #ffffff;
-  --blue: #006080;
+  --blue: #0077a0;
 
-  --color-900: var(--black);
-  --color-700: var(--dark-gray);
-  --color-500: var(--semi-gray);
-  --color-400: var(--medium-gray);
-  --color-300: var(--gray);
-  --color-150: var(--light-gray);
-  --color-100: var(--extra-light-gray);
+  --purple-900: #1e0e3d;
+  --purple-700: #3b1f6b;
+  --purple-500: #6b4f9a;
+  --purple-400: #9d7dc4;
+  --purple-300: #c9b8e8;
+  --purple-150: #ede8f7;
+  --purple-100: #f5f2fb;
+  --magenta: #be185d;
+
+  --color-900: var(--purple-900);
+  --color-700: var(--purple-700);
+  --color-500: var(--purple-500);
+  --color-400: var(--purple-400);
+  --color-300: var(--purple-300);
+  --color-150: var(--purple-150);
+  --color-100: var(--purple-100);
   --color-0: var(--white);
-  --color-accent: var(--blue);
+  --color-accent: var(--magenta);
+  --color-accent-2: var(--blue);
+  --color-text: var(--dark-gray);
 
-  --font-family: Verdana, sans-serif;
+  --font-family: 'Atkinson Hyperlegible', Verdana, sans-serif;
 }
 
 html {
@@ -43,7 +54,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   background-color: var(--color-100);
-  color: var(--color-700);
+  color: var(--color-text);
 }
 
 .site-header, .breadcrumb-bar, .page-inner, .site-footer {
@@ -103,12 +114,14 @@ button::after,
 .feature-list li[aria-description="Required"]::before,
 .feature-list-legend .required::before {
   content: 'square' / '';
+  color: var(--color-500);
   font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
 
 .feature-list li[aria-description="Recommended"]::before,
 .feature-list-legend .recommended::before {
   content: 'circle' / '';
+  color: var(--color-500);
 }
 
 .feature-list-legend {
@@ -132,13 +145,19 @@ button::after,
 }
 
 h1, h2 {
-  color: var(--color-900);
+  color: var(--color-700);
   font-weight: 700;
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 40px;
   line-height: 1;
+}
+
+.page-subtitle {
+  font-size: 18px;
+  color: var(--color-500);
+  margin-top: 0.5rem;
 }
 
 h2 {
@@ -161,8 +180,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--color-700);
-  border: 1.5px solid var(--color-700);
+  background: linear-gradient(145deg, var(--color-700), var(--color-500));
   color: var(--color-0);
   white-space: nowrap;
   padding: 8px 16px;
@@ -174,7 +192,7 @@ a {
 .button:has(input:not(:checked)) {
   background: none;
   color: var(--color-700);
-  border-color: var(--color-400);
+  border: 1.5px solid var(--color-400);
 }
 
 code:not(pre code),
@@ -212,15 +230,16 @@ site-header,
 site-footer {
   display: block;
   background-color: var(--color-150);
-  color: var(--color-900);
+  color: var(--color-700);
 }
 
 .site-footer {
   padding: 48px;
 }
 
-.site-footer-name {
-  font-weight: bold;
+.site-footer-logo {
+  height: 32px;
+  width: auto;
   margin: 0 0 8px;
 }
 
@@ -245,12 +264,19 @@ site-footer {
   gap: 8px;
   text-decoration: none;
   padding: 16px 0;
-  color: var(--color-900);
 }
 
 .site-logo img {
   height: 32px;
   width: auto;
+}
+
+.site-logo-subtitle {
+  font-size: 14px;
+  color: var(--color-500);
+  border-left: 1.5px solid var(--color-300);
+  padding-left: 12px;
+  margin: 4px 0 0 4px;
 }
 
 .site-header .logo-name {
@@ -278,7 +304,7 @@ site-footer {
 
 .nav-toggle::before {
   content: 'menu' / '';
-  color: var(--color-900);
+  color: var(--color-700);
   font-size: 24px;
 }
 
@@ -291,7 +317,7 @@ site-footer {
 }
 
 .site-nav a {
-  color: var(--color-900);
+  color: var(--color-700);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -312,7 +338,7 @@ site-footer {
 /* ── Breadcrumb bar ──────────────────────── */
 
 .breadcrumb-bar {
-  padding: 32px 48px;
+  padding: 24px 48px;
 }
 
 .breadcrumb-trail {
@@ -398,7 +424,8 @@ site-footer {
 
 .component-section h2 {
   border-bottom: 1.5px solid var(--color-300);
-  padding-bottom: 8px;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 /* ── On This Page aside ──────────────────── */
@@ -416,13 +443,12 @@ on-this-page {
 }
 
 .on-this-page {
-  background: var(--color-0);
+  display: flex;
+  flex-direction: column;
+  background: var(--color-150);
   border-radius: 8px;
   padding: 40px;
-}
-
-.on-this-page h2 {
-  margin-bottom: 24px;
+  gap: 24px;
 }
 
 .on-this-page-links {
@@ -442,7 +468,8 @@ on-this-page {
 
 .on-this-page-links li::before {
   content: counter(on-this-page);
-  background-color: var(--color-150);
+  background-color: var(--color-500);
+  color: var(--color-0);
   border-radius: 50%;
   width: 28px;
   height: 28px;
@@ -468,7 +495,6 @@ on-this-page {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  align-self: center;
   justify-content: center;
   margin: 0;
 }
@@ -493,7 +519,6 @@ on-this-page {
 .home-search {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 16px;
   margin-bottom: 32px;
   width: fit-content;
@@ -630,7 +655,8 @@ on-this-page {
 /* ── Example container ───────────────────── */
 
 .example-container {
-  background-color: var(--color-150);
+  background-color: var(--color-0);
+  border: 1.5px solid var(--color-300);
   border-radius: 8px;
   padding: 48px 32px;
 }
@@ -646,7 +672,7 @@ code-editor {
   min-width: 0;
   overflow: hidden;
   margin-bottom: 16px;
-  background-color: var(--color-900);
+  background-color: var(--color-700);
 }
 
 .code-toolbar {
@@ -816,6 +842,7 @@ code-editor {
   font-size: inherit;
   color: inherit;
   padding: 0;
+  margin: 0;
 }
 
 .category-btn {
@@ -930,6 +957,10 @@ th:has(.table-group-btn) {
 
 @media (max-width: 900px) {
 
+  .site-logo-subtitle {
+    display: none;
+  }
+
   .site-header {
     padding: 0 24px;
     flex-wrap: wrap;
@@ -1029,7 +1060,7 @@ th:has(.table-group-btn) {
 
 * :focus-visible,
 .table-accordion-header:has(.category-btn:focus-visible) {
-	outline: 2px dashed var(--color-900);
+	outline: 2px dashed var(--color-700);
 	outline-offset: -2px;
 	box-shadow: inset 0 0 0 2px var(--color-0);
 }
