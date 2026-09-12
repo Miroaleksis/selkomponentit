@@ -115,8 +115,8 @@ class SiteFooter extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <footer class="site-footer">
-        <div class="site-footer-brand">
-          <img src="images/Logo.svg" alt="Accessibly" class="site-footer-logo">
+        <div class="site-logo">
+          <img src="images/Logo.svg" alt="Accessibly">
           <span class="site-logo-subtitle">Accessible HTML Library</span>
         </div>
         <p class="site-footer-copyright">© 2026</p>
