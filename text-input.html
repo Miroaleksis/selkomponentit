@@ -31,11 +31,9 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">Every input must have a visible <code>&lt;label&gt;</code> associated via matching <code>for</code> and <code>id</code> attributes or nesting. Note that multiple inputs (or other interactive elements) must not be nested inside a single <code>&lt;label&gt;</code></li>
+          <li aria-description="Required">Every input must have a visible <code>&lt;label&gt;</code> associated via matching <code>for</code> and <code>id</code> attributes or nesting. Note that multiple inputs (or other interactive elements) must not be nested inside a single <code>&lt;label&gt;</code>.</li>
           <li aria-description="Required">The help text, error messages and prefixes/suffixes must be associated with the input using the <code>aria-describedby</code> attribute</li>
-          <li aria-description="Required">Use <code>autocomplete</code> to help users fill in common fields such as name, email and address</li>
           <li aria-description="Required">Placeholder text must not be used as a substitute for a label as it is not permanent and disappears on input</li>
-          <li aria-description="Recommended">The required state should be indicated clearly with text. If a symbol like an asterisk (*) is used, it should be explained at the top of the form. <code>required</code> attribute helps to communicate the information programmatically</li>
         </ul>
       </section>
 
@@ -63,12 +61,9 @@
 
   <script type="text/plain" id="snippet-a-html">
 <div class="input-wrapper">
-  <label for="website-field">Website (Required)</label>
-  <div class="input-area">
-    <span id="subdomain" class="input-prefix" aria-hidden="true">www.</span>
-    <input type="text" id="website-field" placeholder="yourwebsite.com" autocomplete="url" aria-describedby="website-hint subdomain" required>
-  </div>
-  <span id="website-hint" class="help-text">Enter your website name without the subdomain</span>
+  <label for="username-field">Username</label>
+  <input type="text" id="username-field" autocomplete="username" aria-describedby="username-hint">
+  <span id="username-hint" class="help-text">Letters, numbers and underscores only. 3–20 characters.</span>
 </div>
   </script>
 
@@ -86,14 +81,7 @@ label {
   font-weight: 600;
 }
 
-.input-area {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
 input {
-  display: inline-flex;
   padding: 8px;
   background: whitesmoke;
   border: 1.5px solid;
@@ -101,13 +89,7 @@ input {
   color: inherit;
   font-family: inherit;
   font-size: inherit;
-  min-width: 0;
-}
-
-.input-prefix {
-  display: inline-flex;
-  padding: 8px 0 8px 0;
-  user-select: none;
+  max-width: 240px;
 }
 
 .help-text {

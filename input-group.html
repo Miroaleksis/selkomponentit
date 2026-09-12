@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Group</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <site-header></site-header>
+
+  <breadcrumb-bar></breadcrumb-bar>
+
+  <div class="page-inner">
+
+    <on-this-page></on-this-page>
+
+    <main class="page-content" id="main-content">
+
+      <div class="page-description">
+        <h1>Input Group</h1>
+        <p>An input group is a set of related form controls grouped together under a shared label. It is used when a set of controls shares a common context that cannot be understood from the individual labels alone. Input groups are often used, for example, to divide <a href="form.html">forms</a> into logical sections.</p>
+      </div>
+
+      <section class="component-section">
+        <h2>Accessibility Features</h2>
+        <div class="feature-list-legend" aria-hidden="true">
+          <span class="required">= Required</span>
+          <span class="recommended">= Recommended</span>
+        </div>
+        <ul class="feature-list">
+          <li aria-description="Required">A native <code>&lt;fieldset&gt;</code> element groups the related inputs together semantically, while <code>&lt;legend&gt;</code> provides a label for the entire group. The elements handle screen reader announcements automatically. Using them is recommended whenever possible.</li>
+          <li aria-description="Required">Each input must have an individual <code>&lt;label&gt;</code>, linked via nesting or matching <code>for</code> and <code>id</code> attributes</li>
+          <li aria-description="Required">Use <code>type="checkbox"</code> inputs when users can select any number of options from a group. Use <code>type="radio"</code> inputs when only one option can be selected at a time</li>
+          <li aria-description="Required">Checkboxes and radio buttons that belong to the same group must share a <code>name</code> attribute</li>
+        </ul>
+      </section>
+
+      <section class="component-section">
+        <h2>Example</h2>
+        <div class="example-container" data-prefix="a"></div>
+      </section>
+
+      <section class="component-section">
+        <h2>Code Snippet</h2>
+        <code-editor prefix="a" tabs="html,css"></code-editor>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="text/plain" id="snippet-a-html">
+<fieldset class="filter-group">
+  <legend>Category</legend>
+  <label class="filter-option">
+    <input type="checkbox" name="category" value="clothing">
+    Clothing
+  </label>
+  <label class="filter-option">
+    <input type="checkbox" name="category" value="electronics">
+    Electronics
+  </label>
+  <label class="filter-option">
+    <input type="checkbox" name="category" value="furniture">
+    Furniture
+  </label>
+  <label class="filter-option">
+    <input type="checkbox" name="category" value="sports">
+    Sports
+  </label>
+  <label class="filter-option">
+    <input type="checkbox" name="category" value="books">
+    Books
+  </label>
+</fieldset>
+  </script>
+
+  <script type="text/plain" id="snippet-a-css">
+.filter-group {
+  border: 1.5px solid lightgray;
+  border-radius: 4px;
+  padding: 16px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
+  color: dimgray;
+}
+
+legend {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.filter-option input {
+  width: 16px;
+  height: 16px;
+  accent-color: dimgray;
+  cursor: pointer;
+}
+  </script>
+
+  <site-footer></site-footer>
+
+  <script src="common.js"></script>
+  <script src="component-page.js"></script>
+
+</body>
+</html>

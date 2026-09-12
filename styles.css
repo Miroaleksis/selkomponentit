@@ -235,12 +235,21 @@ site-footer {
 
 .site-footer {
   padding: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.site-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
 }
 
 .site-footer-logo {
   height: 32px;
   width: auto;
-  margin: 0 0 8px;
 }
 
 .site-footer-description {
@@ -957,13 +966,14 @@ th:has(.table-group-btn) {
 
 @media (max-width: 900px) {
 
-  .site-logo-subtitle {
-    display: none;
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 
   .site-header {
     padding: 0 24px;
-    flex-wrap: wrap;
   }
 
   .skip-link {
