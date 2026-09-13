@@ -127,7 +127,7 @@ label {
   padding: 2px 8px;
   background: dimgray;
   color: whitesmoke;
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
 }
@@ -140,7 +140,7 @@ label {
   background: rgb(0 0 0 / 0.7);
 }
 
-.sr-only {
+.visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -237,7 +237,7 @@ function updateTags() {
     tag.dataset.index = index;
     tag.textContent = option.textContent;
     const sep = document.createElement('span');
-    sep.className = 'sr-only';
+    sep.className = 'visually-hidden';
     sep.textContent = ', ';
     tag.appendChild(sep);
     trigger.insertBefore(tag, placeholder);

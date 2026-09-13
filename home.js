@@ -20,6 +20,14 @@ function applyFilters() {
 
 function performSearch() {
   appliedQuery = search.value.toLowerCase().trim();
+  if (appliedQuery) {
+    const category = document.querySelector('.filter-bar input:checked').value;
+    const hasMatch = [...cards].some(card => {
+      const name = card.querySelector('h2').textContent.toLowerCase();
+      return name.includes(appliedQuery) && (category === 'all' || card.querySelector('.tag--' + category));
+    });
+    if (!hasMatch) document.querySelector('.filter-bar input[value="all"]').checked = true;
+  }
   applyFilters();
 }
 

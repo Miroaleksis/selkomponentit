@@ -51,15 +51,24 @@ function openMatchingAccordions() {
 function performSearch() {
   const query = searchInput.value.toLowerCase().trim();
 
-  document.querySelectorAll('.table tbody tr:has(td)').forEach(row => {
-    const nameText = [...row.querySelectorAll('td')].slice(0, 2).map(td => td.textContent).join(' ').toLowerCase();
-    row.hidden = Boolean(query) && !nameText.includes(query);
+  document.querySelectorAll('.table').forEach(table => {
+    const searchableIndices = [...table.querySelectorAll('thead th')].reduce((acc, th, i) => {
+      if (th.hasAttribute('data-searchable')) acc.push(i);
+      return acc;
+    }, []);
+
+    table.querySelectorAll('tbody tr:has(td)').forEach(row => {
+      const cells = [...row.querySelectorAll('td')];
+      const text = searchableIndices.map(i => cells[i]?.textContent ?? '').join(' ').toLowerCase();
+      row.hidden = Boolean(query) && !text.includes(query);
+    });
   });
 
   if (query) {
     closeAll();
     openMatchingAccordions();
     const count = [...document.querySelectorAll('.table tbody tr:has(td)')].filter(row => !row.hidden).length;
+
     searchResults.textContent = count + ' results';
   } else {
     searchResults.textContent = '';
@@ -68,7 +77,7 @@ function performSearch() {
 
 searchInput.addEventListener('input', () => {
   if (searchInput.value === '') {
-    document.querySelectorAll('.table tbody tr:has(td)').forEach(row => row.hidden = false);
+    document.querySelectorAll('.table tbody tr:has(td)').forEach(row => (row.hidden = false));
     searchResults.textContent = '';
   }
 });

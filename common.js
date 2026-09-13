@@ -11,7 +11,7 @@ class SiteHeader extends HTMLElement {
         <button class="nav-toggle" aria-label="Main menu" aria-expanded="false" aria-controls="site-nav"></button>
         <nav id="site-nav" class="site-nav" aria-label="Main menu">
           <a href="index.html">Patterns</a>
-          <a href="attributes.html">Attributes</a>
+          <a href="attributes.html">Elements & Attributes</a>
           <a href="about.html">About</a>
         </nav>
       </header>

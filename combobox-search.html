@@ -303,7 +303,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
 <div class="combobox-search-multi">
   <div class="ms-input">
     <input id="csm-input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags" placeholder="Select countries">
-    <output class="ms-tags" id="csm-tags"><span class="sr-only">No countries selected</span></output>
+    <output class="ms-tags" id="csm-tags"><span class="visually-hidden">No countries selected</span></output>
   </div>
   <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1" hidden>
     <li role="option" id="csm-opt-1" aria-selected="false">Austria</li>
@@ -415,7 +415,7 @@ input[role="combobox"]:focus {
   padding: 2px 8px;
   background: dimgray;
   color: whitesmoke;
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
   box-sizing: border-box;
@@ -430,7 +430,7 @@ input[role="combobox"]:focus {
   background: rgb(0 0 0 / 0.7);
 }
 
-.ms-tags .sr-only:not(:only-child) {
+.ms-tags .visually-hidden:not(:only-child) {
   display: none;
 }
 
@@ -438,7 +438,7 @@ input[role="combobox"]:focus {
   color: transparent;
 }
 
-.sr-only {
+.visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -537,7 +537,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
       tag.dataset.index = index;
       tag.textContent = option.textContent.trim();
       const sep = document.createElement('span');
-      sep.className = 'sr-only';
+      sep.className = 'visually-hidden';
       sep.textContent = ', ';
       tag.appendChild(sep);
       tag.addEventListener('mousedown', e => e.preventDefault());

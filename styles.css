@@ -208,10 +208,10 @@ code:not(pre code) {
 }
 
 kbd {
-  border: 1.5px solid var(--color-500);
+  border: 1.5px solid var(--medium-gray);
   padding: 1px 5px 4px 4px;
   box-shadow: -1px -2px 0px rgba(0, 0, 0, 0.2) inset;
-  background-color: var(--color-150);
+  background-color: var(--light-gray);
 }
 
 /* ── Header ─────────────────────────────── */
