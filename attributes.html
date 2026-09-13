@@ -20,14 +20,14 @@
           <h1>Attributes</h1>
           <p>This page provides a reference of elements and attributes used in this library. Both native HTML elements and attributes and their corresponding ARIA attributes are listed side by side.</p>
           <p>Native HTML elements and attributes come with built-in behaviors and semantics. ARIA (Accessible Rich Internet Applications) attributes supplement HTML when no native solution fits, when a custom component needs additional semantics, or when the built-in behaviors of a native element are unwanted. Always prefer the native element when possible.</p>
-          <p>This page covers the elements and attributes commonly needed when building accessible components. It is not an exhaustive reference, multiple elements and attributes beyond what is listed here exist.</p>
+          <p>This page covers the elements and attributes commonly needed when building accessible patterns. It is not an exhaustive reference, multiple elements and attributes beyond what is listed here exist.</p>
         </div>
       </div>
 
       <div class="table-group-container">
 
       <div role="search" class="attr-search">
-        <input type="search" class="search-input" id="attr-search-input" aria-label="Search elements or attributes" placeholder="e.g. aria-expanded">
+        <input type="search" class="search-input" id="attr-search-input" aria-label="Search elements or attributes" placeholder="e.g., aria-expanded">
         <button type="button" id="search-btn" class="button" aria-label="Search"></button>
         <output class="search-results" id="attr-search-results"></output>
       </div>
@@ -145,6 +145,11 @@
               <td>A color picker that lets users select a color value.</td>
             </tr>
             <tr>
+              <td><code>&lt;input type="email"&gt;</code></td>
+              <td>—</td>
+              <td>A text input for email addresses. The browser validates the format on submit and triggers an email-optimised keyboard on mobile devices.</td>
+            </tr>
+            <tr>
               <td><code>&lt;input type="password"&gt;</code></td>
               <td>—</td>
               <td>A text input that masks the entered characters for sensitive data such as passwords.</td>
@@ -155,14 +160,59 @@
               <td>A text input for telephone numbers. Triggers a numeric keyboard on mobile devices.</td>
             </tr>
             <tr>
+              <td><code>&lt;input type="url"&gt;</code></td>
+              <td>—</td>
+              <td>A text input for URLs. The browser validates the format on submit and triggers a URL-optimised keyboard on mobile devices.</td>
+            </tr>
+            <tr>
               <td><code>&lt;input type="date"&gt;</code></td>
               <td>—</td>
               <td>A date picker that lets users select a date.</td>
             </tr>
             <tr>
+              <td><code>&lt;input type="time"&gt;</code></td>
+              <td>—</td>
+              <td>A time picker that lets users select a time of day.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;input type="datetime-local"&gt;</code></td>
+              <td>—</td>
+              <td>A combined date and time picker with no timezone information.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;input type="month"&gt;</code></td>
+              <td>—</td>
+              <td>A picker that lets users select a year and month.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;input type="week"&gt;</code></td>
+              <td>—</td>
+              <td>A picker that lets users select a year and week number.</td>
+            </tr>
+            <tr>
               <td><code>&lt;input type="file"&gt;</code></td>
               <td>—</td>
               <td>A file upload control that opens the system file dialog.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;input type="hidden"&gt;</code></td>
+              <td>—</td>
+              <td>A non-visible input that submits data with the form without user interaction. Not exposed to assistive technologies.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;input type="submit"&gt;</code></td>
+              <td>—</td>
+              <td>A button that submits the form. Prefer <code>&lt;button type="submit"&gt;</code> as it allows richer content and styling.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;input type="reset"&gt;</code></td>
+              <td>—</td>
+              <td>A button that resets all form fields to their default values. Use with caution — accidental resets can frustrate users.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;input type="image"&gt;</code></td>
+              <td>—</td>
+              <td>A graphical submit button rendered as an image. Requires an <code>alt</code> attribute for accessibility.</td>
             </tr>
             <tr>
               <td><code>&lt;label&gt;</code></td>
