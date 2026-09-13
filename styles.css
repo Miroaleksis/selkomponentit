@@ -265,16 +265,6 @@ site-footer {
   margin: 4px 0 0 4px;
 }
 
-.site-header .logo-name {
-  display: flex;
-  flex-direction: column;
-}
-
-.site-header .logo-name .title {
-  font-weight: 700;
-  font-size: 18px;
-}
-
 .nav-toggle {
   display: none;
   appearance: none;
@@ -328,10 +318,6 @@ site-footer {
   display: flex;
   justify-content: space-between;
   gap: 24px;
-}
-
-.site-footer-description {
-  margin: 0 0 32px;
 }
 
 /* ── Breadcrumb bar ──────────────────────── */
@@ -979,10 +965,6 @@ th:has(.table-group-btn) {
 
   .skip-link {
     left: 24px;
-  }
-
-  .site-header .logo-name .subtitle {
-    font-size: 12px;
   }
 
   .nav-toggle {
