@@ -770,6 +770,7 @@ code-editor {
 
 .table-scroll {
   overflow-x: auto;
+  border-radius: 0 0 8px 8px;
 }
 
 .search-results:empty {
@@ -806,11 +807,6 @@ code-editor {
   background: var(--color-500);
 }
 
-.table-accordion {
-  border-radius: 8px;
-  overflow: hidden;
-}
-
 .table-accordion .table {
   border-radius: 0;
 }
@@ -822,6 +818,13 @@ code-editor {
   text-align: left;
   background: var(--color-700);
   color: var(--color-0);
+  border-radius: 8px;
+}
+
+.table-accordion-header:has(.category-btn[aria-expanded="true"]),
+.table-accordion-header:has(.tooltip-btn[aria-expanded="true"]) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .table-accordion-header h2 {

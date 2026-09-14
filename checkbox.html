@@ -104,17 +104,16 @@ label {
 
 .switch {
   position: relative;
-  width: 52px;
-  height: 30px;
-  background: lightgray;
-  border: 1.5px solid;
+  width: 56px;
+  height: 32px;
+  background: gray;
   border-radius: 99px;
   box-sizing: border-box;
   transition: background 0.2s;
 }
 
 .switch:has(input:checked) {
-  background: dimgray;
+  background: green;
 }
 
 .switch input {
@@ -131,18 +130,17 @@ label {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 2px;
+  left: 4px;
   width: 24px;
   height: 24px;
   background: white;
-  border: 1.5px solid;
   border-radius: 50%;
   transition: left 0.2s;
   box-sizing: border-box;
 }
 
 .switch:has(input:checked)::after {
-  left: 24px;
+  left: 28px;
 }
 
   </script>

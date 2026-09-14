@@ -116,7 +116,7 @@
   color: dimgray;
   padding: 8px 16px;
   text-decoration: none;
-  border: 1px solid lightgray;
+  border: 2px solid lightgray;
   border-radius: 4px;
 }
 
@@ -130,12 +130,15 @@
 }
 
 header, footer {
-  background: whitesmoke;
-  border: 1px solid lightgray;
-  border-radius: 4px;
-  padding: 16px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: whitesmoke;
+  border: 2px solid lightgray;
+  border-radius: 4px;
+  padding: 16px;
+
 }
 
 .logo {
@@ -147,6 +150,7 @@ header, footer {
 nav {
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 nav a, aside a {
@@ -155,6 +159,7 @@ nav a, aside a {
 
 .page-body {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -164,8 +169,14 @@ aside {
   padding: 16px;
   width: 140px;
   background: whitesmoke;
-  border: 1px solid lightgray;
+  border: 2px solid lightgray;
   border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  aside {
+    width: 100%;
+  }
 }
 
 aside ul {
@@ -186,7 +197,7 @@ main {
 }
 
 section {
-  border: 1px dashed gray;
+  border: 2px dashed lightgray;
   border-radius: 4px;
   padding: 8px;
   margin: 0;
