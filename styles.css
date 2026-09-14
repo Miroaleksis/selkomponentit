@@ -903,6 +903,10 @@ code-editor {
   color: var(--color-150);
 }
 
+.table-accordion:has(.category-btn[aria-expanded="false"]) [role="tooltip"] {
+  border-radius: 0 0 8px 8px;
+}
+
 .table-accordion:has(.tooltip-btn[aria-expanded="true"]) [role="tooltip"] {
   display: block;
 }
