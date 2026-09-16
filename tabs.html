@@ -37,6 +37,7 @@
           <li aria-description="Required">Only the selected tab is in the tab order, all others have <code>tabindex="-1"</code></li>
           <li aria-description="Required">The <kbd>←</kbd> and <kbd>→</kbd> arrow keys move focus between tabs. Tabs can activate immediately on focus, or require the user to confirm with <kbd>Enter</kbd> or <kbd>Space</kbd></li>
           <li aria-description="Required">Inactive panels are hidden from both view and screen readers with the <code>hidden</code> attribute</li>
+          <li aria-description="Required">If the tab list is long, it must scale to mobile screens without overflowing. One way to achieve this is by allowing the tabs to wrap onto multiple rows.</li>
         </ul>
       </section>
 
@@ -82,35 +83,33 @@
 
 [role="tablist"] {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 8px;
 }
 
 [role="tab"] {
-  display: flex;
-  color: whitesmoke;
-  background: dimgray;
-  border: 0;
-  border-bottom: 2px solid lightgray;
-  border-radius: 4px 4px 0 0;
   padding: 8px 16px;
+  background: whitesmoke;
+  border: 2px solid lightgray;
+  border-radius: 4px 4px 4px 0;
+  color: inherit;
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
-  margin-bottom: -1.5px; 
 }
 
 [role="tab"][aria-selected="true"] {
-  color: inherit;
-  background: whitesmoke;
-  border: 2px solid lightgray;
-  border-bottom: 2px solid whitesmoke;
+  background: dimgray;
+  color: whitesmoke;
+  border-color: dimgray;
 }
 
 [role="tabpanel"] {
   padding: 16px;
   background: whitesmoke;
   border: 2px solid lightgray;
-  border-radius: 0 0 4px 4px;
+  border-radius: 0 4px 4px 4px;
 }
   </script>
 
