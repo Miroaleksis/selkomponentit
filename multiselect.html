@@ -35,8 +35,8 @@
           <li aria-description="Required">A multiselect combobox has a similar structure and keyboard behaviour as the <a href="select-only.html#custom-select-only">custom select-only combobox</a> with a few exceptions:</li>
           <li aria-description="Required"><code>aria-multiselectable="true"</code> on the listbox communicates that multiple options can be selected</li>
           <li aria-description="Required"><kbd>Space</kbd> and <kbd>Enter</kbd> toggle selection of the focused option without closing the dropdown</li>
-          <li aria-description="Required">Pressing <kbd>Backspace</kbd> removes the last selected option. <code>aria-live="polite"</code> on the trigger announces the change to screen readers</li>
-          <li aria-description="Recommended">Trigger label updates to reflect the current selections</li>
+          <li aria-description="Required">Pressing <kbd>Backspace</kbd> removes the last selected option</li>
+          <li aria-description="Recommended">Selected options are displayed in an <code>&lt;output&gt;</code> element below the trigger, which announces changes to screen readers as a live region</li>
         </ul>
       </section>
 
@@ -57,9 +57,12 @@
   <script type="text/plain" id="snippet-b-html">
 <label for="ms-trigger">Language</label>
 <div class="multiselect">
-  <button id="ms-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="ms-listbox" aria-live="polite">
-    <span class="ms-placeholder">Select languages</span>
-  </button>
+  <div class="ms-trigger">
+    <button id="ms-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="ms-listbox" aria-describedby="ms-tags"></button>
+    <output class="ms-tags" id="ms-tags">
+      <span class="ms-placeholder">Select languages</span>
+    </output>
+  </div>
   <ul role="listbox" id="ms-listbox" aria-multiselectable="true" aria-label="Language">
     <li role="option" id="ms-opt-1" aria-selected="false">English</li>
     <li role="option" id="ms-opt-2" aria-selected="false">Finnish</li>
@@ -88,46 +91,65 @@ label {
   width: 240px;
 }
 
-[role="combobox"] {
+.ms-trigger {
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 4px;
   padding: 8px 36px 8px 8px;
-  width: 100%;
-  color: inherit;
-  background: whitesmoke;
+  box-sizing: border-box;
   border: 2px solid;
   border-radius: 4px;
+  background: whitesmoke;
   cursor: pointer;
-  font: inherit;
 }
 
-[role="combobox"]::after {
+.ms-trigger::after {
   content: '▼' / '';
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
   transition: transform 0.2s ease;
+  pointer-events: none;
 }
 
-[role="combobox"][aria-expanded="true"]::after {
+.multiselect:has([aria-expanded="true"]) .ms-trigger::after {
   transform: translateY(-50%) rotate(180deg);
 }
 
-[role="combobox"]:has(.ms-tag) .ms-placeholder {
+[role="combobox"] {
+  position: absolute;
+  inset: -2px;
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.ms-tags {
+  display: contents;
+}
+
+.ms-trigger:has(.ms-tag) .ms-placeholder {
   display: none;
 }
 
 .ms-tag {
+  appearance: none;
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 2px;
   padding: 2px 8px;
   background: dimgray;
   color: whitesmoke;
+  border: none;
   border-radius: 4px;
+  font: inherit;
   font-size: 14px;
   cursor: pointer;
 }
@@ -165,7 +187,7 @@ label {
   box-sizing: border-box;
 }
 
-[role="combobox"][aria-expanded="true"] + [role="listbox"] {
+.multiselect:has([aria-expanded="true"]) [role="listbox"] {
   display: block;
 }
 
@@ -208,113 +230,115 @@ label {
   </script>
 
   <script type="text/plain" id="snippet-b-js">
-const trigger = document.querySelector('[role="combobox"]');
-const listbox = document.querySelector('[role="listbox"]');
-const options = [...document.querySelectorAll('[role="option"]')];
-let activeIndex = 0;
-let isOpen = false;
-function setActive(index) {
-  options[activeIndex].classList.remove('option-current');
-  activeIndex = index;
-  options[index].classList.add('option-current');
-  trigger.setAttribute('aria-activedescendant', options[index].id);
-}
+document.querySelectorAll('.multiselect').forEach(container => {
+  const trigger = container.querySelector('[role="combobox"]');
+  const listbox = container.querySelector('[role="listbox"]');
+  const tagsContainer = container.querySelector('.ms-tags');
+  const options = [...container.querySelectorAll('[role="option"]')];
+  let activeIndex = 0;
+  let isOpen = false;
 
-function toggleSelection(index) {
-  const option = options[index];
-  const isSelected = option.getAttribute('aria-selected') === 'true';
-  option.setAttribute('aria-selected', String(!isSelected));
-  updateTags();
-}
-
-function updateTags() {
-  trigger.querySelectorAll('.ms-tag').forEach(tag => tag.remove());
-  const placeholder = trigger.querySelector('.ms-placeholder');
-  options.forEach((option, index) => {
-    if (option.getAttribute('aria-selected') !== 'true') return;
-    const tag = document.createElement('span');
-    tag.className = 'ms-tag';
-    tag.dataset.index = index;
-    tag.textContent = option.textContent;
-    const sep = document.createElement('span');
-    sep.className = 'visually-hidden';
-    sep.textContent = ', ';
-    tag.appendChild(sep);
-    trigger.insertBefore(tag, placeholder);
-  });
-}
-
-function updateMenuState(open) {
-  if (isOpen === open) return;
-  isOpen = open;
-  trigger.setAttribute('aria-expanded', String(open));
-  if (open) {
-    options[activeIndex].classList.add('option-current');
-    trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
-  } else {
-    options.forEach(o => o.classList.remove('option-current'));
-    trigger.removeAttribute('aria-activedescendant');
+  function setActive(index) {
+    options[activeIndex].classList.remove('option-current');
+    activeIndex = index;
+    options[index].classList.add('option-current');
+    trigger.setAttribute('aria-activedescendant', options[index].id);
   }
-}
 
-trigger.addEventListener('click', (e) => {
-  const tag = e.target.closest('.ms-tag');
-  if (tag) {
-    toggleSelection(parseInt(tag.dataset.index));
-    return;
+  function toggleSelection(index) {
+    const option = options[index];
+    const isSelected = option.getAttribute('aria-selected') === 'true';
+    option.setAttribute('aria-selected', String(!isSelected));
+    updateTags();
   }
-  updateMenuState(!isOpen);
-});
 
-trigger.addEventListener('keydown', (e) => {
-  if (e.key === 'Backspace') {
-    const tags = trigger.querySelectorAll('.ms-tag');
-    if (tags.length > 0) {
-      e.preventDefault();
-      toggleSelection(parseInt(tags[tags.length - 1].dataset.index));
+  function updateTags() {
+    tagsContainer.querySelectorAll('.ms-tag').forEach(tag => tag.remove());
+    options.forEach((option, index) => {
+      if (option.getAttribute('aria-selected') !== 'true') return;
+      const tag = document.createElement('button');
+      tag.type = 'button';
+      tag.className = 'ms-tag';
+      tag.setAttribute('aria-roledescription', 'Selected option, press Enter to remove');
+      tag.dataset.index = index;
+      tag.textContent = option.textContent.trim();
+      const sep = document.createElement('span');
+      sep.className = 'visually-hidden';
+      sep.textContent = ', ';
+      tag.appendChild(sep);
+      tag.addEventListener('mousedown', e => e.preventDefault());
+      tag.addEventListener('click', () => toggleSelection(parseInt(tag.dataset.index)));
+      tagsContainer.appendChild(tag);
+    });
+  }
+
+  function updateMenuState(open) {
+    if (isOpen === open) return;
+    isOpen = open;
+    trigger.setAttribute('aria-expanded', String(open));
+    if (open) {
+      options[activeIndex].classList.add('option-current');
+      trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
+    } else {
+      options.forEach(o => o.classList.remove('option-current'));
+      trigger.removeAttribute('aria-activedescendant');
     }
-    return;
   }
-  if (!isOpen && ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) {
-    e.preventDefault();
-    updateMenuState(true);
-    return;
-  }
-  if (!isOpen) return;
 
-  if (e.key === 'ArrowDown') {
-    e.preventDefault();
-    setActive(Math.min(activeIndex + 1, options.length - 1));
-  } else if (e.key === 'ArrowUp') {
-    e.preventDefault();
-    setActive(Math.max(activeIndex - 1, 0));
-  } else if (e.key === 'Home') {
-    e.preventDefault();
-    setActive(0);
-  } else if (e.key === 'End') {
-    e.preventDefault();
-    setActive(options.length - 1);
-  } else if (e.key === ' ' || e.key === 'Enter') {
-    e.preventDefault();
-    toggleSelection(activeIndex);
-  } else if (e.key === 'Escape') {
-    e.preventDefault();
-    updateMenuState(false);
-    trigger.focus();
-  }
-});
-
-options.forEach((option, index) => {
-  option.addEventListener('mousedown', e => e.preventDefault());
-  option.addEventListener('click', () => {
-    setActive(index);
-    toggleSelection(index);
+  trigger.addEventListener('click', () => {
+    updateMenuState(!isOpen);
   });
-});
 
-trigger.addEventListener('blur', (e) => {
-  if (listbox.contains(e.relatedTarget)) return;
-  updateMenuState(false);
+  trigger.addEventListener('keydown', (e) => {
+    if (e.key === 'Backspace') {
+      const tags = tagsContainer.querySelectorAll('.ms-tag');
+      if (tags.length > 0) {
+        e.preventDefault();
+        toggleSelection(parseInt(tags[tags.length - 1].dataset.index));
+      }
+      return;
+    }
+    if (!isOpen && ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) {
+      e.preventDefault();
+      updateMenuState(true);
+      return;
+    }
+    if (!isOpen) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setActive(Math.min(activeIndex + 1, options.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setActive(Math.max(activeIndex - 1, 0));
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      setActive(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      setActive(options.length - 1);
+    } else if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      toggleSelection(activeIndex);
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      updateMenuState(false);
+      trigger.focus();
+    }
+  });
+
+  options.forEach((option, index) => {
+    option.addEventListener('mousedown', e => e.preventDefault());
+    option.addEventListener('click', () => {
+      setActive(index);
+      toggleSelection(index);
+    });
+  });
+
+  trigger.addEventListener('blur', (e) => {
+    if (listbox.contains(e.relatedTarget)) return;
+    updateMenuState(false);
+  });
 });
   </script>
   <site-footer></site-footer>
