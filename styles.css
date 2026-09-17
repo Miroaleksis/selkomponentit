@@ -372,6 +372,10 @@ site-footer {
   margin-bottom: 24px;
 }
 
+.page-description h2:not(:first-of-type) {
+  margin-top: 24px;
+}
+
 .page-description-wrap {
   display: flex;
   gap: 64px;
