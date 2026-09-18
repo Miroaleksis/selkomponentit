@@ -33,13 +33,12 @@
         <ul class="feature-list">
           <li aria-description="Required">A tooltip is activated when a dedicated trigger button either receives hover or focus, or is pressed. Using a pressable trigger button is more reliable than solely hover- or focus-based activation, which can behave inconsistently on touchscreens</li>
           <li aria-description="Required">If a tooltip obscures content, it must be dismissible with <kbd>Esc</kbd></li>
-          <li aria-description="Recommended"><code>role="tooltip"</code> should be used to identify the tooltip</li>
         </ul>
       </section>
 
       <section class="component-section">
         <h2>Tooltip</h2>
-        <p>A standard tooltip is activated when the trigger button receives focus or hover. The tooltip must be referenced by the trigger button using <code>aria-describedby</code>.</p>
+        <p>A standard tooltip is activated when the trigger button receives focus or hover. The tooltip must be referenced by the trigger button using <code>aria-describedby</code>. <code>role="tooltip"</code> should be used to identify the tooltip.</p>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
@@ -158,7 +157,7 @@ document.addEventListener('keydown', (e) => {
   <script type="text/plain" id="snippet-b-html">
 <div class="toggletip-wrapper">
   <button class="toggletip-btn" aria-label="Tooltip about password requirements" aria-expanded="false" aria-controls="toggletip-content">?</button>
-  <div class="toggletip-content" id="toggletip-content" role="tooltip">Your password must be at least 8 characters long and include at least one uppercase letter, one number and one special character.</div>
+  <div class="toggletip-content" id="toggletip-content">Your password must be at least 8 characters long and include at least one uppercase letter, one number and one special character.</div>
 </div>
   </script>
 

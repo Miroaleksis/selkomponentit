@@ -64,7 +64,7 @@
           <li aria-description="Required">Keyboard focus must move into the menu on open and return to the toggle button on close</li>
           <li aria-description="Required">If the menu obscures content, it must be dismissible with the <kbd>Esc</kbd> key and/or trap keyboard focus while it is open.<br>
           → A native <code>&lt;dialog&gt;</code> element provides the focus trap automatically. If another element is used instead, the focus trap must be implemented manually, for example, by assigning other elements on the page <code>inert</code></li>
-          <li aria-description="Recommended"><code>aria-haspopup="menu"</code> communicates that the button opens a menu dialog</li>
+          <li aria-description="Recommended"><code>aria-haspopup="dialog"</code> communicates that the button opens a dialog</li>
         </ul>
         <h3>Example</h3>
         <div class="example-container" data-prefix="c"></div>
@@ -428,7 +428,7 @@ document.addEventListener('click', (e) => {
   <script type="text/plain" id="snippet-c-html">
 <header class="hb-header">
   <a href="#" class="hb-brand">Brand</a>
-  <button class="hb-open" aria-label="Open main menu" aria-haspopup="menu"></button>
+  <button class="hb-open" aria-label="Open main menu" aria-haspopup="dialog"></button>
   <dialog id="hb-dialog" class="hb-dialog">
     <button class="hb-close" aria-label="Close main menu"></button>
     <nav aria-label="Main">

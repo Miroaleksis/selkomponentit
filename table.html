@@ -187,14 +187,14 @@ headers.forEach(th => {
     <tr>
       <td id="task-homework">Homework</td>
       <td>In progress</td>
-      <td><button type="button" aria-expanded="false" aria-labelledby="task-homework">▼</button></td>
+      <td><button type="button" aria-expanded="false" aria-labelledby="task-homework" aria-controls="task-homework-1 task-homework-2">▼</button></td>
     </tr>
-    <tr class="detail-row" hidden>
+    <tr class="detail-row" id="task-homework-1" hidden>
       <td>Biology essay</td>
       <td>Done</td>
       <td></td>
     </tr>
-    <tr class="detail-row" hidden>
+    <tr class="detail-row" id="task-homework-2" hidden>
       <td>Maths exercises</td>
       <td>In progress</td>
       <td></td>
@@ -204,14 +204,14 @@ headers.forEach(th => {
     <tr>
       <td id="task-chores">Chores</td>
       <td>Pending</td>
-      <td><button type="button" aria-expanded="false" aria-labelledby="task-chores">▼</button></td>
+      <td><button type="button" aria-expanded="false" aria-labelledby="task-chores" aria-controls="task-chores-1 task-chores-2">▼</button></td>
     </tr>
-    <tr class="detail-row" hidden>
+    <tr class="detail-row" id="task-chores-1" hidden>
       <td>Vacuum living room</td>
       <td>Pending</td>
       <td></td>
     </tr>
-    <tr class="detail-row" hidden>
+    <tr class="detail-row" id="task-chores-2" hidden>
       <td>Take out trash</td>
       <td>Pending</td>
       <td></td>
@@ -221,14 +221,14 @@ headers.forEach(th => {
     <tr>
       <td id="task-project-work">Project work</td>
       <td>Done</td>
-      <td><button type="button" aria-expanded="false" aria-labelledby="task-project-work">▼</button></td>
+      <td><button type="button" aria-expanded="false" aria-labelledby="task-project-work" aria-controls="task-project-work-1 task-project-work-2">▼</button></td>
     </tr>
-    <tr class="detail-row" hidden>
+    <tr class="detail-row" id="task-project-work-1" hidden>
       <td>Draft outline</td>
       <td>Done</td>
       <td></td>
     </tr>
-    <tr class="detail-row" hidden>
+    <tr class="detail-row" id="task-project-work-2" hidden>
       <td>Write introduction</td>
       <td>Done</td>
       <td></td>
