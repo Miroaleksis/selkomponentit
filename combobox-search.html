@@ -49,13 +49,6 @@
 
       <section class="component-section">
         <h2>Multiselection</h2>
-        <ul class="feature-list">
-          <li aria-description="Required">In a multiselect combobox with search, an <code>&lt;output&gt;</code> element holds the selected options and announces changes to screen readers, since they cannot be nested within an input field</li>
-          <li aria-description="Required">The output is associated with the input via <code>aria-describedby</code></li>
-          <li aria-description="Required">Selected options are rendered as <code>&lt;button&gt;</code> elements, making them individually focusable and removable via keyboard. <code>aria-roledescription="Selected option, press Enter to remove"</code> communicates the purpose and interaction to screen readers</li>
-          <li aria-description="Required">When no options are selected, a visually hidden text inside the <code>&lt;output&gt;</code> announces the empty state to screen readers</li>
-          <li aria-description="Recommended">Pressing <kbd>Backspace</kbd> when the input is empty removes the last selected option</li>
-        </ul>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
         <h3>Code Snippet</h3>
@@ -301,9 +294,9 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   <script type="text/plain" id="snippet-b-html">
 <label for="csm-input">Country</label>
 <div class="combobox-search-multi">
-  <div class="ms-input">
-    <input id="csm-input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags" placeholder="Select countries">
-    <output class="ms-tags" id="csm-tags"><span class="visually-hidden">No countries selected</span></output>
+  <div class="csm-input">
+    <input id="csm-input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags">
+    <output class="csm-tags" id="csm-tags"><span class="csm-counter">0 selected</span></output>
   </div>
   <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1" hidden>
     <li role="option" id="csm-opt-1" aria-selected="false">Austria</li>
@@ -356,7 +349,7 @@ label {
   width: 240px;
 }
 
-.ms-input {
+.csm-input {
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -370,7 +363,7 @@ label {
   cursor: pointer;
 }
 
-.ms-input::after {
+.csm-input::after {
   content: '▼' / '';
   position: absolute;
   right: 8px;
@@ -380,7 +373,7 @@ label {
   pointer-events: none;
 }
 
-.combobox-search-multi:has([aria-expanded="true"]) .ms-input::after {
+.combobox-search-multi:has([aria-expanded="true"]) .csm-input::after {
   transform: translateY(-50%) rotate(180deg);
 }
 
@@ -401,11 +394,11 @@ input[role="combobox"]:focus {
   min-width: 60px;
 }
 
-.ms-tags {
+.csm-tags {
   display: contents;
 }
 
-.ms-tag {
+.csm-tag {
   appearance: none;
   font: inherit;
   border: none;
@@ -421,21 +414,29 @@ input[role="combobox"]:focus {
   box-sizing: border-box;
 }
 
-.ms-tag::after {
+.csm-tag::after {
   content: '×' / '';
   padding-left: 4px;
 }
 
-.ms-tag:hover {
+.csm-tag:hover {
   background: rgb(0 0 0 / 0.7);
 }
 
-.ms-tags .visually-hidden:not(:only-child) {
-  display: none;
+.csm-counter {
+  pointer-events: none;
 }
 
-.ms-input:has(.ms-tag) input::placeholder {
-  color: transparent;
+.csm-counter:not(:only-child),
+.csm-input:has(input:focus) .csm-counter {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 
 .visually-hidden {
@@ -521,21 +522,24 @@ input[role="combobox"]:focus {
 document.querySelectorAll('.combobox-search-multi').forEach(container => {
   const input = container.querySelector('input');
   const listbox = container.querySelector('[role="listbox"]');
-  const tagsContainer = container.querySelector('.ms-tags');
+  const tagsContainer = container.querySelector('.csm-tags');
   const options = [...container.querySelectorAll('[role="option"]')];
   const noResults = container.querySelector('.no-results');
   let activeIndex = -1;
 
   function updateTags() {
-    tagsContainer.querySelectorAll('.ms-tag').forEach(tag => tag.remove());
-    options.forEach((option, index) => {
-      if (option.getAttribute('aria-selected') !== 'true') return;
+    tagsContainer.querySelectorAll('.csm-tag').forEach(tag => tag.remove());
+    const selected = options.filter(o => o.getAttribute('aria-selected') === 'true');
+    const placeholder = tagsContainer.querySelector('.csm-counter');
+    placeholder.textContent = `${selected.length} selected`;
+    selected.forEach(option => {
+      const index = options.indexOf(option);
       const tag = document.createElement('button');
       tag.type = 'button';
-      tag.className = 'ms-tag';
-      tag.setAttribute('aria-roledescription', 'Selected option, press Enter to remove');
+      tag.className = 'csm-tag';
       tag.dataset.index = index;
       tag.textContent = option.textContent.trim();
+      tag.setAttribute('aria-label', `Remove ${option.textContent.trim()}`);
       const sep = document.createElement('span');
       sep.className = 'visually-hidden';
       sep.textContent = ', ';
@@ -593,11 +597,11 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
     updateTags();
   }
 
-  container.querySelector('.ms-input').addEventListener('mousedown', (e) => {
+  container.querySelector('.csm-input').addEventListener('mousedown', (e) => {
     if (e.target === e.currentTarget) e.preventDefault();
   });
 
-  container.querySelector('.ms-input').addEventListener('click', (e) => {
+  container.querySelector('.csm-input').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) { input.click(); input.focus(); }
   });
 
@@ -617,7 +621,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
 
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Backspace' && input.value === '') {
-      const tags = tagsContainer.querySelectorAll('.ms-tag');
+      const tags = tagsContainer.querySelectorAll('.csm-tag');
       if (tags.length > 0) {
         e.preventDefault();
         toggleSelection(options[parseInt(tags[tags.length - 1].dataset.index)]);

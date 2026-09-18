@@ -35,8 +35,10 @@
           <li aria-description="Required">A multiselect combobox has a similar structure and keyboard behaviour as the <a href="select-only.html#custom-select-only">custom select-only combobox</a> with a few exceptions:</li>
           <li aria-description="Required"><code>aria-multiselectable="true"</code> on the listbox communicates that multiple options can be selected</li>
           <li aria-description="Required"><kbd>Space</kbd> and <kbd>Enter</kbd> toggle selection of the focused option without closing the dropdown</li>
-          <li aria-description="Required">Pressing <kbd>Backspace</kbd> removes the last selected option</li>
-          <li aria-description="Recommended">Selected options are displayed in an <code>&lt;output&gt;</code> element below the trigger, which announces changes to screen readers as a live region</li>
+          <li aria-description="Required">An <code>&lt;output&gt;</code> element holds the selected options and announces changes to screen readers. The output is associated with the input via <code>aria-describedby</code></li>
+          <li aria-description="Required">A counter inside the <code>&lt;output&gt;</code> announces the number of selected options. It is only visible when 0 options are selected</li>
+          <li aria-description="Required">Selected options are rendered as <code>&lt;button&gt;</code> elements, making them individually focusable and removable via keyboard. <code>aria-roledescription="Selected option, press Enter to remove"</code> communicates the purpose and interaction to screen readers</li>
+          <li aria-description="Recommended">Pressing <kbd>Backspace</kbd> removes the last selected option</li>
         </ul>
       </section>
 
@@ -60,7 +62,7 @@
   <div class="ms-trigger">
     <button id="ms-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="ms-listbox" aria-describedby="ms-tags"></button>
     <output class="ms-tags" id="ms-tags">
-      <span class="ms-placeholder">Select languages</span>
+      <span class="ms-counter">0 selected</span>
     </output>
   </div>
   <ul role="listbox" id="ms-listbox" aria-multiselectable="true" aria-label="Language">
@@ -133,8 +135,15 @@ label {
   display: contents;
 }
 
-.ms-trigger:has(.ms-tag) .ms-placeholder {
-  display: none;
+.ms-counter:not(:only-child) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 
 .ms-tag {
@@ -254,14 +263,17 @@ document.querySelectorAll('.multiselect').forEach(container => {
 
   function updateTags() {
     tagsContainer.querySelectorAll('.ms-tag').forEach(tag => tag.remove());
-    options.forEach((option, index) => {
-      if (option.getAttribute('aria-selected') !== 'true') return;
+    const selected = options.filter(o => o.getAttribute('aria-selected') === 'true');
+    const placeholder = tagsContainer.querySelector('.ms-counter');
+    placeholder.textContent = `${selected.length} selected`;
+    selected.forEach(option => {
+      const index = options.indexOf(option);
       const tag = document.createElement('button');
       tag.type = 'button';
       tag.className = 'ms-tag';
-      tag.setAttribute('aria-roledescription', 'Selected option, press Enter to remove');
       tag.dataset.index = index;
       tag.textContent = option.textContent.trim();
+      tag.setAttribute('aria-label', `Remove ${option.textContent.trim()}`);
       const sep = document.createElement('span');
       sep.className = 'visually-hidden';
       sep.textContent = ', ';
