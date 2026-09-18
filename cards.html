@@ -31,9 +31,10 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">Off-screen cards in a scrollable list must scroll into view automatically when they (or the buttons and links inside them) receive keyboard focus</li>
+          <li aria-description="Required">Off-screen cards in a scrollable list must scroll into view automatically when they (or the buttons and links inside them) receive keyboard or screen reader focus</li>
           <li aria-description="Required">The card itself must not be a button or a link. If the entire card is desired to be clickable, the call-to-action element's click area can be extended to cover the full card using a <code>::before</code> pseudo-element</li>
           <li aria-description="Required">The call-to-action uses <code>aria-labelledby</code> to combine its own label with the card heading. This ensures it has a unique name for screen readers in case there are multiple cards with identical call-to-actions</li>
+          <li aria-description="Required">Left and right buttons must be provided to allow pointer users to navigate between cards without path-based gestures like swiping. Hide these buttons from screen readers and the keyboard with <code>aria-hidden="true"</code> and <code>tabindex="-1"</code></li>
           <li aria-description="Recommended">The card may use <code>role="group"</code> and <code>aria-roledescription="card"</code> to identify it as a distinct unit for screen readers, with <code>aria-labelledby</code> pointing to the heading</li>
           <li aria-description="Recommended">The card heading should be the first element in DOM order so that screen reader users associate the related content with it</li>
           <li aria-description="Recommended">A skip link before the card list lets keyboard users bypass all cards and jump directly to the content that follows</li>
@@ -47,7 +48,7 @@
 
       <section class="component-section">
         <h2>Code Snippet</h2>
-        <code-editor prefix="b" tabs="html,css"></code-editor>
+        <code-editor prefix="b" tabs="html,css,js"></code-editor>
       </section>
 
     </main>
@@ -58,6 +59,8 @@
 <div class="cards">
   <a href="#code-snippet" class="skip-cards">Skip offers</a>
   <h3>Offers</h3>
+  <button class="cards-prev" aria-hidden="true" tabindex="-1"></button>
+  <button class="cards-next" aria-hidden="true" tabindex="-1"></button>
   <ol>
     <li>
       <div class="card" role="group" aria-roledescription="card" aria-labelledby="cc-title-1">
@@ -250,6 +253,48 @@ h4 {
   position: absolute;
   inset: 0;
 }
+
+.cards-prev,
+.cards-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  background: dimgray;
+  color: whitesmoke;
+  border: none;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-prev { left: 8px; }
+.cards-next { right: 8px; }
+
+.cards-prev::after { content: '◀' / ''; }
+.cards-next::after { content: '▶' / ''; }
+  </script>
+
+  <script type="text/plain" id="snippet-b-js">
+const list = document.querySelector('.cards ol');
+
+function getScrollAmount() {
+  return list.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(list).gap);
+}
+
+document.querySelector('.cards-prev').addEventListener('click', () => {
+  list.scrollBy({ left: -getScrollAmount() });
+});
+
+document.querySelector('.cards-next').addEventListener('click', () => {
+  list.scrollBy({ left: getScrollAmount() });
+});
   </script>
   <site-footer></site-footer>
 
