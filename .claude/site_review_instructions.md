@@ -24,6 +24,7 @@ Check that the page text is well-written and consistent across the site:
 - Descriptions are concise and informative — not too long, not too vague
 - Accessibility feature list items follow a consistent pattern and level of detail
 - Page titles, h1s, and descriptions are aligned in meaning
+- Similar descriptions across pages follow consistent sentence structures — the same concept should be expressed the same way (e.g. if one page says "X must have `aria-expanded`", another page should not say "X is implemented with `aria-expanded`")
 
 ### Developer Perspective
 Check that the code examples shown on the site are correct and idiomatic from a developer's point of view:
