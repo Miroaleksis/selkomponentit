@@ -61,7 +61,7 @@
 <div class="multiselect">
   <div class="ms-trigger">
     <button id="ms-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="ms-listbox" aria-describedby="ms-tags"></button>
-    <output class="ms-tags" id="ms-tags" aria-atomic="true">
+    <output class="ms-tags" id="ms-tags">
       <span class="ms-counter">0 selected</span>
     </output>
   </div>
@@ -293,6 +293,7 @@ document.querySelectorAll('.multiselect').forEach(container => {
     if (open) {
       options[activeIndex].classList.add('ms-option-current');
       trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
+      trigger.focus();
     } else {
       options.forEach(o => o.classList.remove('ms-option-current'));
       trigger.removeAttribute('aria-activedescendant');

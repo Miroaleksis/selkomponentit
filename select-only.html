@@ -227,8 +227,12 @@ document.querySelectorAll('.combobox').forEach(container => {
     if (isOpen === open) return;
     isOpen = open;
     trigger.setAttribute('aria-expanded', open);
-    if (open) trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
-    else trigger.removeAttribute('aria-activedescendant');
+    if (open) {
+      trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
+      trigger.focus();
+    } else {
+      trigger.removeAttribute('aria-activedescendant');
+    }
   }
 
   // Initial state — read from aria-selected
