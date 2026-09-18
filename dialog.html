@@ -54,14 +54,14 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<button id="open-delete-account" aria-haspopup="dialog">Delete account</button>
+<button class="btn" id="open-delete-account" aria-haspopup="dialog">Delete account</button>
 <dialog id="delete-account-dialog" aria-labelledby="dialog-title">
-  <button id="close-dialog" class="close-btn" aria-label="Close">✕</button>
+  <button class="btn close-btn" id="close-dialog" aria-label="Close">✕</button>
   <h3 id="dialog-title">Delete account</h3>
   <p>This will permanently delete your account and all associated data. This action cannot be undone.</p>
   <div class="dialog-actions">
-    <button id="confirm-delete" class="confirm-btn">Delete account</button>
-    <button id="cancel-delete" class="cancel-btn">Cancel</button>
+    <button class="btn confirm-btn" id="confirm-delete">Delete account</button>
+    <button class="btn cancel-btn" id="cancel-delete">Cancel</button>
   </div>
 </dialog>
   </script>
@@ -72,7 +72,7 @@ dialog {
   font-size: 16px;
 }
 
-button {
+.btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,7 +116,7 @@ dialog::backdrop {
   gap: 8px;
 }
 
-.dialog-actions button {
+.dialog-actions .btn {
   width: 100%;
 }
 

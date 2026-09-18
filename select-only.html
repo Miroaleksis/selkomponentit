@@ -99,8 +99,7 @@ label {
   background: whitesmoke;
   border: 2px solid;
   border-radius: 4px;
-  font-family: inherit;
-  font-size: inherit;
+  font: inherit;
   cursor: pointer;
   max-width: 240px;
 }
@@ -151,8 +150,7 @@ label {
   border: 2px solid;
   border-radius: 4px;
   cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
+  font: inherit;
 }
 
 .combobox [role="combobox"]::after {
@@ -182,7 +180,7 @@ label {
   display: block;
 }
 
-[role="option"] {
+.combobox [role="option"] {
   display: flex;
   gap: 8px;
   justify-content: space-between;
@@ -190,15 +188,15 @@ label {
   cursor: pointer;
 }
 
-[role="option"][aria-selected="true"]::after {
+.combobox [role="option"][aria-selected="true"]::after {
   content: '✓' / '';
 }
 
-[role="option"]:hover {
+.combobox [role="option"]:hover {
   background: rgb(0 0 0 / 0.05);
 }
 
-[role="option"].so-option-current {
+.combobox [role="option"].so-option-current {
   background: dimgray;
   color: whitesmoke;
 }

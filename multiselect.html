@@ -202,7 +202,7 @@ label {
   display: block;
 }
 
-[role="option"] {
+.multiselect [role="option"] {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -210,7 +210,7 @@ label {
   cursor: pointer;
 }
 
-[role="option"]::before {
+.multiselect [role="option"]::before {
   content: '';
   display: flex;
   align-items: center;
@@ -221,20 +221,20 @@ label {
   border-radius: 4px;
 }
 
-[role="option"][aria-selected="true"]::before {
+.multiselect [role="option"][aria-selected="true"]::before {
   content: '✓' / '';
 }
 
-[role="option"]:hover {
+.multiselect [role="option"]:hover {
   background: rgb(0 0 0 / 0.05);
 }
 
-[role="option"].ms-option-current {
+.multiselect [role="option"].ms-option-current {
   background: dimgray;
   color: whitesmoke;
 }
 
-[role="option"].ms-option-current::before {
+.multiselect [role="option"].ms-option-current::before {
   border-color: whitesmoke;
   background: transparent;
 }
