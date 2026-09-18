@@ -59,10 +59,10 @@
 <div class="stepper-container">
     <nav aria-label="Form progress">
       <ol class="stepper">
-        <li><button aria-current="step"><span class="step-indicator">1</span> Account details</button></li>
-        <li><button disabled><span class="step-indicator">2</span> Personal information</button></li>
-        <li><button disabled><span class="step-indicator">3</span> Payment</button></li>
-        <li><button disabled><span class="step-indicator">4</span> Confirmation</button></li>
+        <li><button aria-current="step"><span class="step-indicator">1</span> <span class="step-label">Account details</span></button></li>
+        <li><button disabled><span class="step-indicator">2</span> <span class="step-label">Personal information</span></button></li>
+        <li><button disabled><span class="step-indicator">3</span> <span class="step-label">Payment</span></button></li>
+        <li><button disabled><span class="step-indicator">4</span> <span class="step-label">Confirmation</span></button></li>
       </ol>
     </nav>
     <div class="stepper-navigation">
@@ -174,10 +174,6 @@
   gap: 8px;
 }
 
-#step-description {
-  margin-right: auto;
-}
-
 .stepper-navigation button {
   font: inherit;
   color: whitesmoke;
@@ -246,7 +242,7 @@ function goToStep(step) {
   prevBtn.disabled = currentStep === 0;
   nextBtn.disabled = currentStep === stepButtons.length - 1;
 
-  const label = stepButtons[currentStep].lastChild.textContent.trim();
+  const label = stepButtons[currentStep].querySelector('.step-label').textContent;
   stepDescription.textContent = 'Step ' + (currentStep + 1) + ': ' + label;
 }
 

@@ -60,13 +60,13 @@
 <section aria-roledescription="carousel" aria-label="Travelling destinations" class="carousel">
   <div class="carousel-controls">
     <button class="carousel-play" aria-label="Pause auto-rotation" data-playing></button>
-    <button aria-label="Previous slide"></button>
+    <button class="carousel-prev" aria-label="Previous slide"></button>
     <div role="tablist" class="carousel-indicators">
       <button role="tab" id="tab-1" aria-controls="slide-1" aria-selected="true" aria-label="Slide 1"></button>
       <button role="tab" id="tab-2" aria-controls="slide-2" aria-selected="false" tabindex="-1" aria-label="Slide 2"></button>
       <button role="tab" id="tab-3" aria-controls="slide-3" aria-selected="false" tabindex="-1" aria-label="Slide 3"></button>
     </div>
-    <button aria-label="Next slide"></button>
+    <button class="carousel-next" aria-label="Next slide"></button>
   </div>
   <div class="carousel-slides" aria-live="off" tabindex="-1">
     <div role="tabpanel" aria-roledescription="slide" id="slide-1" aria-labelledby="tab-1" class="carousel-slide">
@@ -120,13 +120,13 @@
   right: 8px;
 }
 
-.carousel-controls > button[aria-label="Previous slide"] {
+.carousel-prev {
   left: 8px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.carousel-controls > button[aria-label="Next slide"] {
+.carousel-next {
   right: 8px;
   top: 50%;
   transform: translateY(-50%);
@@ -167,11 +167,11 @@
   content: '❚❚' / '';
 }
 
-[aria-label="Previous slide"]::before {
+.carousel-prev::before {
   content: '⏮' / '';
 }
 
-[aria-label="Next slide"]::before {
+.carousel-next::before {
   content: '⏭' / '';
 }
 
@@ -205,8 +205,8 @@ const slidesContainer = document.querySelector('.carousel-slides');
 const slides = Array.from(document.querySelectorAll('.carousel-slide'));
 const indicators = Array.from(document.querySelectorAll('.carousel-indicators button'));
 const playBtn = document.querySelector('.carousel-play');
-const prevBtn = document.querySelector('[aria-label="Previous slide"]');
-const nextBtn = document.querySelector('[aria-label="Next slide"]');
+const prevBtn = document.querySelector('.carousel-prev');
+const nextBtn = document.querySelector('.carousel-next');
 let currentSlide = 0;
 let isPlaying = true;
 let interval;

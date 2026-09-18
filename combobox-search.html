@@ -60,9 +60,9 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<label for="cs-input">Country</label>
+<label for="cs-trigger">Country</label>
 <div class="combobox-search">
-  <input id="cs-input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="cs-listbox" placeholder="Select a country">
+  <input id="cs-trigger" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="cs-listbox" placeholder="Select a country">
   <ul role="listbox" id="cs-listbox" tabindex="-1">
     <li role="option" id="cs-opt-1" aria-selected="false">Austria</li>
     <li role="option" id="cs-opt-2" aria-selected="false">Belgium</li>
@@ -128,7 +128,7 @@ label {
   transform: translateY(-50%) rotate(180deg);
 }
 
-input[role="combobox"] {
+.combobox-search input[role="combobox"] {
   padding: 8px 28px 8px 8px;
   width: 100%;
   color: inherit;
@@ -141,7 +141,7 @@ input[role="combobox"] {
   cursor: pointer;
 }
 
-[role="listbox"] {
+.combobox-search [role="listbox"] {
   display: none;
   position: absolute;
   width: 100%;
@@ -158,7 +158,7 @@ input[role="combobox"] {
   box-sizing: border-box;
 }
 
-[role="combobox"][aria-expanded="true"] + [role="listbox"] {
+.combobox-search [role="combobox"][aria-expanded="true"] + [role="listbox"] {
   display: block;
 }
 
@@ -171,7 +171,7 @@ input[role="combobox"] {
   background: rgb(0 0 0 / 0.05);
 }
 
-[role="option"].option-current {
+[role="option"].cs-option-current {
   background: dimgray;
   color: whitesmoke;
 }
@@ -206,7 +206,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   }
 
   function clearActive() {
-    options.forEach(o => o.classList.remove('option-current'));
+    options.forEach(o => o.classList.remove('cs-option-current'));
     input.removeAttribute('aria-activedescendant');
     activeIndex = -1;
   }
@@ -215,7 +215,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     const vis = getVisible();
     clearActive();
     if (index >= 0 && index < vis.length) {
-      vis[index].classList.add('option-current');
+      vis[index].classList.add('cs-option-current');
       input.setAttribute('aria-activedescendant', vis[index].id);
       vis[index].scrollIntoView({ block: 'nearest' });
       activeIndex = index;
@@ -292,13 +292,13 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-<label for="csm-input">Country</label>
+<label for="csm-trigger">Country</label>
 <div class="combobox-search-multi">
-  <div class="csm-input">
-    <input id="csm-input" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags">
+  <div class="csm-trigger">
+    <input id="csm-trigger" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags">
     <output class="csm-tags" id="csm-tags"><span class="csm-counter">0 selected</span></output>
   </div>
-  <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1" hidden>
+  <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1">
     <li role="option" id="csm-opt-1" aria-selected="false">Austria</li>
     <li role="option" id="csm-opt-2" aria-selected="false">Belgium</li>
     <li role="option" id="csm-opt-3" aria-selected="false">Bulgaria</li>
@@ -349,7 +349,7 @@ label {
   width: 240px;
 }
 
-.csm-input {
+.csm-trigger {
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -363,7 +363,7 @@ label {
   cursor: pointer;
 }
 
-.csm-input::after {
+.csm-trigger::after {
   content: '▼' / '';
   position: absolute;
   right: 8px;
@@ -373,11 +373,11 @@ label {
   pointer-events: none;
 }
 
-.combobox-search-multi:has([aria-expanded="true"]) .csm-input::after {
+.combobox-search-multi:has([aria-expanded="true"]) .csm-trigger::after {
   transform: translateY(-50%) rotate(180deg);
 }
 
-input[role="combobox"] {
+.combobox-search-multi input[role="combobox"] {
   order: 1;
   flex: 1;
   min-width: 0;
@@ -390,7 +390,7 @@ input[role="combobox"] {
   box-sizing: border-box;
 }
 
-input[role="combobox"]:focus {
+.combobox-search-multi input[role="combobox"]:focus {
   min-width: 60px;
 }
 
@@ -400,23 +400,21 @@ input[role="combobox"]:focus {
 
 .csm-tag {
   appearance: none;
-  font: inherit;
-  border: none;
-  display: inline-block;
+  display: inline-flex;
   align-items: center;
   gap: 2px;
   padding: 2px 8px;
   background: dimgray;
   color: whitesmoke;
+  border: none;
   border-radius: 4px;
+  font: inherit;
   font-size: 14px;
   cursor: pointer;
-  box-sizing: border-box;
 }
 
 .csm-tag::after {
   content: '×' / '';
-  padding-left: 4px;
 }
 
 .csm-tag:hover {
@@ -428,7 +426,7 @@ input[role="combobox"]:focus {
 }
 
 .csm-counter:not(:only-child),
-.csm-input:has(input:focus) .csm-counter {
+.csm-trigger:has(input:focus) .csm-counter {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -447,10 +445,13 @@ input[role="combobox"]:focus {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
+  border: 0;
 }
 
-[role="listbox"] {
+.combobox-search-multi [role="listbox"] {
+  display: none;
   position: absolute;
   width: 100%;
   background: whitesmoke;
@@ -464,6 +465,10 @@ input[role="combobox"]:focus {
   max-height: 200px;
   overflow-y: auto;
   box-sizing: border-box;
+}
+
+.combobox-search-multi:has([aria-expanded="true"]) [role="listbox"] {
+  display: block;
 }
 
 [role="option"] {
@@ -498,12 +503,12 @@ input[role="combobox"]:focus {
   background: rgb(0 0 0 / 0.05);
 }
 
-[role="option"].option-current {
+[role="option"].csm-option-current {
   background: dimgray;
   color: whitesmoke;
 }
 
-[role="option"].option-current::before {
+[role="option"].csm-option-current::before {
   border-color: whitesmoke;
 }
 
@@ -521,7 +526,6 @@ input[role="combobox"]:focus {
   <script type="text/plain" id="snippet-b-js">
 document.querySelectorAll('.combobox-search-multi').forEach(container => {
   const input = container.querySelector('input');
-  const listbox = container.querySelector('[role="listbox"]');
   const tagsContainer = container.querySelector('.csm-tags');
   const options = [...container.querySelectorAll('[role="option"]')];
   const noResults = container.querySelector('.no-results');
@@ -563,7 +567,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
   }
 
   function clearActive() {
-    options.forEach(o => o.classList.remove('option-current'));
+    options.forEach(o => o.classList.remove('csm-option-current'));
     input.removeAttribute('aria-activedescendant');
     activeIndex = -1;
   }
@@ -572,7 +576,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
     const vis = getVisible();
     clearActive();
     if (index >= 0 && index < vis.length) {
-      vis[index].classList.add('option-current');
+      vis[index].classList.add('csm-option-current');
       input.setAttribute('aria-activedescendant', vis[index].id);
       vis[index].scrollIntoView({ block: 'nearest' });
       activeIndex = index;
@@ -581,12 +585,10 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
 
   function openDropdown() {
     input.setAttribute('aria-expanded', 'true');
-    listbox.removeAttribute('hidden');
   }
 
   function closeDropdown() {
     input.setAttribute('aria-expanded', 'false');
-    listbox.setAttribute('hidden', '');
     input.value = '';
     filterOptions('');
   }
@@ -597,11 +599,11 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
     updateTags();
   }
 
-  container.querySelector('.csm-input').addEventListener('mousedown', (e) => {
+  container.querySelector('.csm-trigger').addEventListener('mousedown', (e) => {
     if (e.target === e.currentTarget) e.preventDefault();
   });
 
-  container.querySelector('.csm-input').addEventListener('click', (e) => {
+  container.querySelector('.csm-trigger').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) { input.click(); input.focus(); }
   });
 

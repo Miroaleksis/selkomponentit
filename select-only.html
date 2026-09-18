@@ -72,7 +72,7 @@
   <script type="text/plain" id="snippet-a-html">
 <label>
   <span>Language</span>
-  <select>
+  <select class="native-select">
     <option value="">Select a language</option>
     <option value="1">English</option>
     <option value="2">Finnish</option>
@@ -93,24 +93,24 @@ label {
   color: dimgray;
 }
 
-select {
+.native-select {
   padding: 8px;
-  color: inherit; ;
+  color: inherit;
   background: whitesmoke;
   border: 2px solid;
   border-radius: 4px;
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
-  max-width: 240px
+  max-width: 240px;
 }
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-<label for="combobox-btn">Language</label>
+<label for="so-trigger">Language</label>
 <div class="combobox">
-  <button id="combobox-btn" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="combobox-listbox"></button>
-  <ul role="listbox" id="combobox-listbox">
+  <button id="so-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="so-listbox"></button>
+  <ul role="listbox" id="so-listbox">
     <li role="option" id="so-opt-0" aria-selected="true">Select a language</li>
     <li role="option" id="so-opt-1" aria-selected="false">English</li>
     <li role="option" id="so-opt-2" aria-selected="false">Finnish</li>
@@ -139,10 +139,11 @@ label {
   width: 240px;
 }
 
-[role="combobox"] {
+.combobox [role="combobox"] {
   display: flex;
   width: 100%;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
   padding: 8px;
   color: inherit;
@@ -152,19 +153,18 @@ label {
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
-  justify-content: space-between;
 }
 
-[role="combobox"]::after {
+.combobox [role="combobox"]::after {
   content: '▼' / '';
   transition: transform 0.2s ease;
 }
 
-[role="combobox"][aria-expanded="true"]::after {
+.combobox [role="combobox"][aria-expanded="true"]::after {
   transform: rotate(180deg);
 }
 
-[role="listbox"] {
+.combobox [role="listbox"] {
   display: none;
   width: 100%;
   position: absolute;
@@ -178,7 +178,7 @@ label {
   box-sizing: border-box;
 }
 
-[role="combobox"][aria-expanded="true"] + [role="listbox"] {
+.combobox [role="combobox"][aria-expanded="true"] + [role="listbox"] {
   display: block;
 }
 
@@ -198,7 +198,7 @@ label {
   background: rgb(0 0 0 / 0.05);
 }
 
-[role="option"].option-current {
+[role="option"].so-option-current {
   background: dimgray;
   color: whitesmoke;
 }
@@ -212,9 +212,9 @@ document.querySelectorAll('.combobox').forEach(container => {
   let activeIndex = 0;
   let isOpen = false;
   function setActive(index) {
-    options[activeIndex].classList.remove('option-current');
+    options[activeIndex].classList.remove('so-option-current');
     activeIndex = index;
-    options[index].classList.add('option-current');
+    options[index].classList.add('so-option-current');
     trigger.setAttribute('aria-activedescendant', options[index].id);
   }
 
@@ -238,7 +238,7 @@ document.querySelectorAll('.combobox').forEach(container => {
   if (selectedIndex >= 0) {
     activeIndex = selectedIndex;
     trigger.textContent = options[selectedIndex].textContent;
-    options[selectedIndex].classList.add('option-current');
+    options[selectedIndex].classList.add('so-option-current');
   }
 
   trigger.addEventListener('click', () => {

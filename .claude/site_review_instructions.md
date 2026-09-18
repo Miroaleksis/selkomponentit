@@ -48,6 +48,7 @@ Check that the code examples themselves meet WCAG standards — they are the pri
 ### Developer Perspective
 Check that the code examples are well-crafted from a developer's point of view:
 - HTML structure is clean and minimal
+- No dead code — unused CSS rules, unreachable JS branches, or HTML elements that serve no purpose
 - JavaScript is readable and appropriately minimal — no unnecessary abstractions or over-engineering
 - CSS selectors are appropriate and not overly specific
 - Attribute names and values are correct per the HTML/ARIA spec
