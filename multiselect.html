@@ -350,8 +350,12 @@ document.querySelectorAll('.multiselect').forEach(container => {
   });
 
   trigger.addEventListener('blur', (e) => {
-    if (listbox.contains(e.relatedTarget)) return;
+    if (container.contains(e.relatedTarget)) return;
     updateMenuState(false);
+  });
+
+  document.addEventListener('pointerdown', (e) => {
+    if (!container.contains(e.target)) updateMenuState(false);
   });
 });
   </script>
