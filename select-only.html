@@ -209,6 +209,7 @@ document.querySelectorAll('.combobox').forEach(container => {
   const options = [...container.querySelectorAll('[role="option"]')];
   let activeIndex = 0;
   let isOpen = false;
+  let ignoreBlur = false;
   function setActive(index) {
     options[activeIndex].classList.remove('so-option-current');
     activeIndex = index;
@@ -242,6 +243,10 @@ document.querySelectorAll('.combobox').forEach(container => {
     trigger.textContent = options[selectedIndex].textContent;
     options[selectedIndex].classList.add('so-option-current');
   }
+
+  trigger.addEventListener('pointerdown', () => {
+    if (isOpen) ignoreBlur = true;
+  });
 
   trigger.addEventListener('click', () => {
     updateMenuState(!isOpen, false);
@@ -288,6 +293,7 @@ document.querySelectorAll('.combobox').forEach(container => {
   });
 
   trigger.addEventListener('blur', (e) => {
+    if (ignoreBlur) { ignoreBlur = false; return; }
     if (container.contains(e.relatedTarget)) return;
     if (isOpen) {
       selectOption(activeIndex);

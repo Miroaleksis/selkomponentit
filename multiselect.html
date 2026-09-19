@@ -244,6 +244,7 @@ document.querySelectorAll('.multiselect').forEach(container => {
   const options = [...container.querySelectorAll('[role="option"]')];
   let activeIndex = 0;
   let isOpen = false;
+  let ignoreBlur = false;
 
   function setActive(index) {
     options[activeIndex].classList.remove('ms-option-current');
@@ -296,6 +297,10 @@ document.querySelectorAll('.multiselect').forEach(container => {
     }
   }
 
+  trigger.addEventListener('pointerdown', () => {
+    if (isOpen) ignoreBlur = true;
+  });
+
   trigger.addEventListener('click', () => {
     updateMenuState(!isOpen, false);
   });
@@ -347,6 +352,7 @@ document.querySelectorAll('.multiselect').forEach(container => {
   });
 
   container.addEventListener('focusout', (e) => {
+    if (ignoreBlur) { ignoreBlur = false; return; }
     if (container.contains(e.relatedTarget)) return;
     updateMenuState(false);
   });
