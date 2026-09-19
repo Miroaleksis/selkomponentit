@@ -348,7 +348,9 @@ document.querySelectorAll('.multiselect').forEach(container => {
 
   container.addEventListener('focusout', (e) => {
     if (container.contains(e.relatedTarget)) return;
-    setTimeout(() => updateMenuState(false), 0);
+    setTimeout(() => {
+      if (!container.contains(document.activeElement)) updateMenuState(false);
+    }, 0);
   });
 
   document.addEventListener('pointerdown', (e) => {
