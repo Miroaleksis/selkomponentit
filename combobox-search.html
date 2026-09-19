@@ -419,7 +419,7 @@ label {
 }
 
 .csm-counter:not(:only-child),
-.combobox-search-multi:has(input:focus) .csm-counter {
+.combobox-search-multi input:focus ~ .csm-tags .csm-counter {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -477,7 +477,7 @@ label {
   box-sizing: border-box;
 }
 
-.combobox-search-multi:has([aria-expanded="true"]) [role="listbox"] {
+.combobox-search-multi [role="combobox"][aria-expanded="true"] + [role="listbox"] {
   display: block;
 }
 
