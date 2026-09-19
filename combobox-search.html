@@ -189,11 +189,9 @@ label {
   <script type="text/plain" id="snippet-a-js">
 document.querySelectorAll('.combobox-search').forEach(container => {
   const input = container.querySelector('input');
-  const listbox = container.querySelector('[role="listbox"]');
   const options = [...container.querySelectorAll('[role="option"]')];
   const noResults = container.querySelector('.no-results');
   let activeIndex = -1;
-  let ignoreBlur = false;
   function getVisible() {
     return options.filter(o => !o.hidden);
   }
@@ -223,25 +221,23 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     }
   }
 
-  function openDropdown(callFocus = true) {
+  function openDropdown() {
     input.setAttribute('aria-expanded', 'true');
-    if (callFocus) input.focus();
   }
 
-  function closeDropdown(callFocus = true) {
+  function closeDropdown() {
     input.setAttribute('aria-expanded', 'false');
     const isValid = options.some(o => o.textContent.trim() === input.value);
     if (!isValid) input.value = '';
     filterOptions('');
-    if (callFocus) input.focus();
   }
 
   input.addEventListener('click', () => {
     if (input.getAttribute('aria-expanded') === 'true') {
-      closeDropdown(false);
+      closeDropdown();
     } else {
       filterOptions(input.value);
-      openDropdown(false);
+      openDropdown();
     }
   });
 
@@ -279,20 +275,14 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     }
   });
 
-  function onComboBlur(e) {
-    if (listbox.contains(e.relatedTarget)) return;
-    closeDropdown(false);
-  }
-
-  input.addEventListener('blur', onComboBlur);
-  listbox.addEventListener('focusout', onComboBlur);
+  container.addEventListener('focusout', (e) => {
+    if (container.contains(e.relatedTarget)) return;
+    closeDropdown();
+  });
 
   options.forEach(option => {
-    option.addEventListener('mousedown', () => {
-      ignoreBlur = true;
-    });
-    option.addEventListener('click', (e) => {
-      e.stopPropagation();
+    option.addEventListener('mousedown', e => e.preventDefault());
+    option.addEventListener('click', () => {
       input.value = option.textContent.trim();
       closeDropdown();
     });
