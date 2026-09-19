@@ -189,9 +189,11 @@ label {
   <script type="text/plain" id="snippet-a-js">
 document.querySelectorAll('.combobox-search').forEach(container => {
   const input = container.querySelector('input');
+  const listbox = container.querySelector('[role="listbox"]');
   const options = [...container.querySelectorAll('[role="option"]')];
   const noResults = container.querySelector('.no-results');
   let activeIndex = -1;
+  let ignoreBlur = false;
   function getVisible() {
     return options.filter(o => !o.hidden);
   }
@@ -221,23 +223,25 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     }
   }
 
-  function openDropdown() {
+  function openDropdown(callFocus = true) {
     input.setAttribute('aria-expanded', 'true');
+    if (callFocus) input.focus();
   }
 
-  function closeDropdown() {
+  function closeDropdown(callFocus = true) {
     input.setAttribute('aria-expanded', 'false');
     const isValid = options.some(o => o.textContent.trim() === input.value);
     if (!isValid) input.value = '';
     filterOptions('');
+    if (callFocus) input.focus();
   }
 
   input.addEventListener('click', () => {
     if (input.getAttribute('aria-expanded') === 'true') {
-      closeDropdown();
+      closeDropdown(false);
     } else {
       filterOptions(input.value);
-      openDropdown();
+      openDropdown(false);
     }
   });
 
@@ -275,14 +279,20 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     }
   });
 
-  container.addEventListener('focusout', (e) => {
-    if (container.contains(e.relatedTarget)) return;
-    closeDropdown();
-  });
+  function onComboBlur(e) {
+    if (listbox.contains(e.relatedTarget)) return;
+    closeDropdown(false);
+  }
+
+  input.addEventListener('blur', onComboBlur);
+  listbox.addEventListener('focusout', onComboBlur);
 
   options.forEach(option => {
-    option.addEventListener('mousedown', e => e.preventDefault());
-    option.addEventListener('click', () => {
+    option.addEventListener('mousedown', () => {
+      ignoreBlur = true;
+    });
+    option.addEventListener('click', (e) => {
+      e.stopPropagation();
       input.value = option.textContent.trim();
       closeDropdown();
     });
