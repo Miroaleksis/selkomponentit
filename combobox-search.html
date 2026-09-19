@@ -277,7 +277,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
 
   container.addEventListener('focusout', (e) => {
     if (container.contains(e.relatedTarget)) return;
-    closeDropdown();
+    setTimeout(() => closeDropdown(), 0);
   });
 
   options.forEach(option => {
@@ -660,7 +660,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
 
   container.addEventListener('focusout', (e) => {
     if (container.contains(e.relatedTarget)) return;
-    closeDropdown();
+    setTimeout(() => closeDropdown(), 0);
   });
 
   options.forEach(option => {

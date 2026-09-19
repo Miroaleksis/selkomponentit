@@ -289,10 +289,12 @@ document.querySelectorAll('.combobox').forEach(container => {
 
   trigger.addEventListener('blur', (e) => {
     if (container.contains(e.relatedTarget)) return;
-    if (isOpen) {
-      selectOption(activeIndex);
-      updateMenuState(false);
-    }
+    setTimeout(() => {
+      if (isOpen) {
+        selectOption(activeIndex);
+        updateMenuState(false);
+      }
+    }, 0);
   });
 
   document.addEventListener('pointerdown', (e) => {
