@@ -109,7 +109,7 @@ label {
 <label for="so-trigger">Language</label>
 <div class="combobox">
   <button id="so-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-activedescendant="" aria-controls="so-listbox"></button>
-  <ul role="listbox" id="so-listbox">
+  <ul role="listbox" id="so-listbox" tabindex="-1">
     <li role="option" id="so-opt-0" aria-selected="true">Select a language</li>
     <li role="option" id="so-opt-1" aria-selected="false">English</li>
     <li role="option" id="so-opt-2" aria-selected="false">Finnish</li>
@@ -209,6 +209,7 @@ document.querySelectorAll('.combobox').forEach(container => {
   const options = [...container.querySelectorAll('[role="option"]')];
   let activeIndex = 0;
   let isOpen = false;
+  let ignoreBlur = false;
   function setActive(index) {
     options[activeIndex].classList.remove('so-option-current');
     activeIndex = index;
@@ -223,7 +224,7 @@ document.querySelectorAll('.combobox').forEach(container => {
     trigger.textContent = options[index].textContent;
   }
 
-  function updateMenuState(open) {
+  function updateMenuState(open, callFocus = true) {
     if (isOpen === open) return;
     isOpen = open;
     trigger.setAttribute('aria-expanded', open);
@@ -232,6 +233,7 @@ document.querySelectorAll('.combobox').forEach(container => {
     } else {
       trigger.setAttribute('aria-activedescendant', '');
     }
+    if (callFocus) trigger.focus();
   }
 
   // Initial state — read from aria-selected
@@ -243,7 +245,7 @@ document.querySelectorAll('.combobox').forEach(container => {
   }
 
   trigger.addEventListener('click', () => {
-    updateMenuState(!isOpen);
+    updateMenuState(!isOpen, false);
   });
 
   trigger.addEventListener('keydown', (e) => {
@@ -278,24 +280,29 @@ document.querySelectorAll('.combobox').forEach(container => {
   });
 
   options.forEach((option, index) => {
-    // Prevent blur from firing on trigger when clicking an option
-    option.addEventListener('mousedown', e => e.preventDefault());
-    option.addEventListener('click', () => {
+    option.addEventListener('mousedown', () => {
+      ignoreBlur = true;
+    });
+    option.addEventListener('click', (e) => {
+      e.stopPropagation();
       selectOption(index);
       updateMenuState(false);
     });
   });
 
-  trigger.addEventListener('blur', (e) => {
-    if (container.contains(e.relatedTarget)) return;
+  function onComboBlur(e) {
+    if (listbox.contains(e.relatedTarget)) return;
     if (isOpen) {
       selectOption(activeIndex);
-      updateMenuState(false);
+      updateMenuState(false, false);
     }
-  });
+  }
+
+  trigger.addEventListener('blur', onComboBlur);
+  listbox.addEventListener('focusout', onComboBlur);
 
   document.addEventListener('pointerdown', (e) => {
-    if (!container.contains(e.target)) updateMenuState(false);
+    if (!container.contains(e.target)) updateMenuState(false, false);
   });
 });
   </script>
