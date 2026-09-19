@@ -151,7 +151,7 @@ label {
   margin: 4px 0 0;
   padding: 0;
   z-index: 100;
-  min-height: 38.4px;
+  min-height: 36.8px;
   max-height: 200px;
   overflow-y: auto;
   box-sizing: border-box;
@@ -277,9 +277,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
 
   container.addEventListener('focusout', (e) => {
     if (container.contains(e.relatedTarget)) return;
-    setTimeout(() => {
-      if (!container.contains(document.activeElement)) closeDropdown();
-    }, 0);
+    closeDropdown();
   });
 
   options.forEach(option => {
@@ -295,7 +293,10 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   <script type="text/plain" id="snippet-b-html">
 <label for="csm-trigger">Country</label>
 <div class="combobox-search-multi">
-  <input id="csm-trigger" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags">
+  <div class="csm-trigger">
+    <input id="csm-trigger" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags">
+    <output class="csm-tags" id="csm-tags"><span class="csm-counter">0 selected</span></output>
+  </div>
   <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1">
     <li role="option" id="csm-opt-1" aria-selected="false">Austria</li>
     <li role="option" id="csm-opt-2" aria-selected="false">Belgium</li>
@@ -326,7 +327,6 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     <li role="option" id="csm-opt-27" aria-selected="false">Sweden</li>
   </ul>
   <div class="no-results" role="status"></div>
-  <output class="csm-tags" id="csm-tags"><span class="csm-counter">0 selected</span></output>
 </div>
   </script>
 
@@ -345,6 +345,11 @@ label {
 
 .combobox-search-multi {
   position: relative;
+  width: 240px;
+}
+
+.csm-trigger {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -355,10 +360,9 @@ label {
   border-radius: 4px;
   background: whitesmoke;
   cursor: pointer;
-  width: 240px;
 }
 
-.combobox-search-multi::after {
+.csm-trigger::after {
   content: '▼' / '';
   position: absolute;
   right: 8px;
@@ -368,7 +372,7 @@ label {
   pointer-events: none;
 }
 
-.combobox-search-multi:has([aria-expanded="true"])::after {
+.combobox-search-multi:has([aria-expanded="true"]) .csm-trigger::after {
   transform: translateY(-50%) rotate(180deg);
 }
 
@@ -421,7 +425,7 @@ label {
 }
 
 .csm-counter:not(:only-child),
-.combobox-search-multi:has(input:focus) .csm-counter {
+.csm-trigger:has(input:focus) .csm-counter {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -448,34 +452,17 @@ label {
 .combobox-search-multi [role="listbox"] {
   display: none;
   position: absolute;
-  top: 100%;
-  left: -2px;
-  width: calc(100% + 4px);
+  width: 100%;
   background: whitesmoke;
   border: 2px solid;
   border-radius: 4px;
   list-style: none;
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   padding: 0;
   z-index: 100;
-  min-height: 38.4px;
+  min-height: 36.8px;
   max-height: 200px;
   overflow-y: auto;
-  box-sizing: border-box;
-}
-
-.no-results {
-  position: absolute;
-}
-
-.no-results:not(:empty) {
-  top: 100%;
-  left: -2px;
-  border: 2px solid transparent;
-  margin: 6px 0 0;
-  padding: 8px;
-  font-style: italic;
-  z-index: 100;
   box-sizing: border-box;
 }
 
@@ -522,6 +509,16 @@ label {
 
 .combobox-search-multi [role="option"].csm-option-current::before {
   border-color: whitesmoke;
+}
+
+.no-results:not(:empty) {
+  position: absolute;
+  border: 2px solid transparent;
+  margin: 4px 0 0;
+  padding: 8px;
+  font-style: italic;
+  z-index: 100;
+  box-sizing: border-box;
 }
   </script>
 
@@ -601,12 +598,12 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
     updateTags();
   }
 
-  container.addEventListener('mousedown', (e) => {
-    if (e.target === container) e.preventDefault();
+  container.querySelector('.csm-trigger').addEventListener('mousedown', (e) => {
+    if (e.target === e.currentTarget) e.preventDefault();
   });
 
-  container.addEventListener('click', (e) => {
-    if (e.target === container) { input.focus(); input.click(); }
+  container.querySelector('.csm-trigger').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) { input.click(); input.focus(); }
   });
 
   input.addEventListener('click', () => {
@@ -662,9 +659,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
 
   container.addEventListener('focusout', (e) => {
     if (container.contains(e.relatedTarget)) return;
-    setTimeout(() => {
-      if (!container.contains(document.activeElement)) closeDropdown();
-    }, 0);
+    closeDropdown();
   });
 
   options.forEach(option => {

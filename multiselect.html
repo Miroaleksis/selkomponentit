@@ -59,7 +59,12 @@
   <script type="text/plain" id="snippet-b-html">
 <label for="ms-trigger">Language</label>
 <div class="multiselect">
-  <button id="ms-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="ms-listbox" aria-describedby="ms-tags"></button>
+  <div class="ms-trigger">
+    <button id="ms-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="ms-listbox" aria-describedby="ms-tags"></button>
+    <output class="ms-tags" id="ms-tags">
+      <span class="ms-counter">0 selected</span>
+    </output>
+  </div>
   <ul role="listbox" id="ms-listbox" aria-multiselectable="true" aria-label="Language">
     <li role="option" id="ms-opt-1" aria-selected="false">English</li>
     <li role="option" id="ms-opt-2" aria-selected="false">Finnish</li>
@@ -67,9 +72,6 @@
     <li role="option" id="ms-opt-4" aria-selected="false">Norwegian</li>
     <li role="option" id="ms-opt-5" aria-selected="false">Danish</li>
   </ul>
-  <output class="ms-tags" id="ms-tags">
-    <span class="ms-counter">0 selected</span>
-  </output>
 </div>
   </script>
 
@@ -88,6 +90,11 @@ label {
 
 .multiselect {
   position: relative;
+  width: 240px;
+}
+
+.ms-trigger {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -98,10 +105,9 @@ label {
   border-radius: 4px;
   background: whitesmoke;
   cursor: pointer;
-  width: 240px;
 }
 
-.multiselect::after {
+.ms-trigger::after {
   content: '▼' / '';
   position: absolute;
   right: 10px;
@@ -111,7 +117,7 @@ label {
   pointer-events: none;
 }
 
-.multiselect:has([aria-expanded="true"])::after {
+.multiselect:has([aria-expanded="true"]) .ms-trigger::after {
   transform: translateY(-50%) rotate(180deg);
 }
 
@@ -181,16 +187,14 @@ label {
 .multiselect [role="listbox"] {
   display: none;
   position: absolute;
-  top: 100%;
-  left: -2px;
-  width: calc(100% + 4px);
+  width: 100%;
   background: whitesmoke;
   border: 2px solid;
   border-radius: 4px;
   list-style: none;
+  margin: 4px 0 0;
   padding: 0;
   z-index: 100;
-  margin: 6px 0 0;
   box-sizing: border-box;
 }
 
@@ -282,14 +286,14 @@ document.querySelectorAll('.multiselect').forEach(container => {
     });
   }
 
-  function updateMenuState(open) {
+  function updateMenuState(open, callFocus = true) {
     if (isOpen === open) return;
     isOpen = open;
     trigger.setAttribute('aria-expanded', String(open));
     if (open) {
       options[activeIndex].classList.add('ms-option-current');
       trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
-      trigger.focus();
+      if (callFocus) trigger.focus();
     } else {
       options.forEach(o => o.classList.remove('ms-option-current'));
       trigger.removeAttribute('aria-activedescendant');
@@ -297,7 +301,7 @@ document.querySelectorAll('.multiselect').forEach(container => {
   }
 
   trigger.addEventListener('click', () => {
-    updateMenuState(!isOpen);
+    updateMenuState(!isOpen, false);
   });
 
   trigger.addEventListener('keydown', (e) => {
@@ -346,11 +350,9 @@ document.querySelectorAll('.multiselect').forEach(container => {
     });
   });
 
-  container.addEventListener('focusout', (e) => {
+  trigger.addEventListener('blur', (e) => {
     if (container.contains(e.relatedTarget)) return;
-    setTimeout(() => {
-      if (!container.contains(document.activeElement)) updateMenuState(false);
-    }, 0);
+    updateMenuState(false);
   });
 
   document.addEventListener('pointerdown', (e) => {
