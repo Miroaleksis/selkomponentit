@@ -244,7 +244,6 @@ document.querySelectorAll('.multiselect').forEach(container => {
   const options = [...container.querySelectorAll('[role="option"]')];
   let activeIndex = 0;
   let isOpen = false;
-  let ignoreBlur = false;
 
   function setActive(index) {
     options[activeIndex].classList.remove('ms-option-current');
@@ -283,26 +282,22 @@ document.querySelectorAll('.multiselect').forEach(container => {
     });
   }
 
-  function updateMenuState(open, callFocus = true) {
+  function updateMenuState(open) {
     if (isOpen === open) return;
     isOpen = open;
     trigger.setAttribute('aria-expanded', String(open));
     if (open) {
       options[activeIndex].classList.add('ms-option-current');
       trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
-      if (callFocus) trigger.focus();
+      trigger.focus();
     } else {
       options.forEach(o => o.classList.remove('ms-option-current'));
       trigger.removeAttribute('aria-activedescendant');
     }
   }
 
-  trigger.addEventListener('pointerdown', () => {
-    if (isOpen) ignoreBlur = true;
-  });
-
   trigger.addEventListener('click', () => {
-    updateMenuState(!isOpen, false);
+    updateMenuState(!isOpen);
   });
 
   trigger.addEventListener('keydown', (e) => {
@@ -352,7 +347,6 @@ document.querySelectorAll('.multiselect').forEach(container => {
   });
 
   container.addEventListener('focusout', (e) => {
-    if (ignoreBlur) { ignoreBlur = false; return; }
     if (container.contains(e.relatedTarget)) return;
     updateMenuState(false);
   });

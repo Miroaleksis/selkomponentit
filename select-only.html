@@ -209,7 +209,6 @@ document.querySelectorAll('.combobox').forEach(container => {
   const options = [...container.querySelectorAll('[role="option"]')];
   let activeIndex = 0;
   let isOpen = false;
-  let ignoreBlur = false;
   function setActive(index) {
     options[activeIndex].classList.remove('so-option-current');
     activeIndex = index;
@@ -224,13 +223,13 @@ document.querySelectorAll('.combobox').forEach(container => {
     trigger.textContent = options[index].textContent;
   }
 
-  function updateMenuState(open, callFocus = true) {
+  function updateMenuState(open) {
     if (isOpen === open) return;
     isOpen = open;
     trigger.setAttribute('aria-expanded', open);
     if (open) {
       trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
-      if (callFocus) trigger.focus();
+      trigger.focus();
     } else {
       trigger.removeAttribute('aria-activedescendant');
     }
@@ -244,12 +243,8 @@ document.querySelectorAll('.combobox').forEach(container => {
     options[selectedIndex].classList.add('so-option-current');
   }
 
-  trigger.addEventListener('pointerdown', () => {
-    if (isOpen) ignoreBlur = true;
-  });
-
   trigger.addEventListener('click', () => {
-    updateMenuState(!isOpen, false);
+    updateMenuState(!isOpen);
   });
 
   trigger.addEventListener('keydown', (e) => {
@@ -293,7 +288,6 @@ document.querySelectorAll('.combobox').forEach(container => {
   });
 
   trigger.addEventListener('blur', (e) => {
-    if (ignoreBlur) { ignoreBlur = false; return; }
     if (container.contains(e.relatedTarget)) return;
     if (isOpen) {
       selectOption(activeIndex);
