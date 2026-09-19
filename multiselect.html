@@ -282,14 +282,14 @@ document.querySelectorAll('.multiselect').forEach(container => {
     });
   }
 
-  function updateMenuState(open) {
+  function updateMenuState(open, callFocus = true) {
     if (isOpen === open) return;
     isOpen = open;
     trigger.setAttribute('aria-expanded', String(open));
     if (open) {
       options[activeIndex].classList.add('ms-option-current');
       trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
-      trigger.focus();
+      if (callFocus) trigger.focus();
     } else {
       options.forEach(o => o.classList.remove('ms-option-current'));
       trigger.removeAttribute('aria-activedescendant');
@@ -297,7 +297,7 @@ document.querySelectorAll('.multiselect').forEach(container => {
   }
 
   trigger.addEventListener('click', () => {
-    updateMenuState(!isOpen);
+    updateMenuState(!isOpen, false);
   });
 
   trigger.addEventListener('keydown', (e) => {
