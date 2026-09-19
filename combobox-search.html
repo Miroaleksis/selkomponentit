@@ -275,13 +275,13 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     }
   });
 
-  container.addEventListener('focusout', (e) => {
-    if (container.contains(e.relatedTarget)) return;
-    closeDropdown();
-  });
+  document.body.addEventListener('pointerup', (e) => {
+    if (!container.contains(e.target)) {
+      setTimeout(closeDropdown, 300);
+    }
+  }, true);
 
   options.forEach(option => {
-    option.addEventListener('mousedown', e => e.preventDefault());
     option.addEventListener('click', () => {
       input.value = option.textContent.trim();
       closeDropdown();
