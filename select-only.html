@@ -223,13 +223,13 @@ document.querySelectorAll('.combobox').forEach(container => {
     trigger.textContent = options[index].textContent;
   }
 
-  function updateMenuState(open, callFocus = true) {
+  function updateMenuState(open) {
     if (isOpen === open) return;
     isOpen = open;
     trigger.setAttribute('aria-expanded', open);
     if (open) {
       trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
-      if (callFocus) trigger.focus();
+      trigger.focus();
     } else {
       trigger.removeAttribute('aria-activedescendant');
     }
@@ -244,7 +244,7 @@ document.querySelectorAll('.combobox').forEach(container => {
   }
 
   trigger.addEventListener('click', () => {
-    updateMenuState(!isOpen, false);
+    updateMenuState(!isOpen);
   });
 
   trigger.addEventListener('keydown', (e) => {
