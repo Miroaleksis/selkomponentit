@@ -59,7 +59,7 @@
   <script type="text/plain" id="snippet-b-html">
 <label for="ms-trigger">Language</label>
 <div class="multiselect">
-  <button id="ms-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="ms-listbox" aria-describedby="ms-tags"></button>
+  <button id="ms-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-activedescendant="" aria-controls="ms-listbox" aria-describedby="ms-tags"></button>
   <ul role="listbox" id="ms-listbox" aria-multiselectable="true" aria-label="Language">
     <li role="option" id="ms-opt-1" aria-selected="false">English</li>
     <li role="option" id="ms-opt-2" aria-selected="false">Finnish</li>
@@ -289,10 +289,9 @@ document.querySelectorAll('.multiselect').forEach(container => {
     if (open) {
       options[activeIndex].classList.add('ms-option-current');
       trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
-      trigger.focus();
     } else {
       options.forEach(o => o.classList.remove('ms-option-current'));
-      trigger.removeAttribute('aria-activedescendant');
+      trigger.setAttribute('aria-activedescendant', '');
     }
   }
 

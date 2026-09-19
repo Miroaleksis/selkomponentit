@@ -108,7 +108,7 @@ label {
   <script type="text/plain" id="snippet-b-html">
 <label for="so-trigger">Language</label>
 <div class="combobox">
-  <button id="so-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="so-listbox"></button>
+  <button id="so-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-activedescendant="" aria-controls="so-listbox"></button>
   <ul role="listbox" id="so-listbox">
     <li role="option" id="so-opt-0" aria-selected="true">Select a language</li>
     <li role="option" id="so-opt-1" aria-selected="false">English</li>
@@ -229,9 +229,8 @@ document.querySelectorAll('.combobox').forEach(container => {
     trigger.setAttribute('aria-expanded', open);
     if (open) {
       trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
-      trigger.focus();
     } else {
-      trigger.removeAttribute('aria-activedescendant');
+      trigger.setAttribute('aria-activedescendant', '');
     }
   }
 

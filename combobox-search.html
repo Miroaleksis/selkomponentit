@@ -62,7 +62,7 @@
   <script type="text/plain" id="snippet-a-html">
 <label for="cs-trigger">Country</label>
 <div class="combobox-search">
-  <input id="cs-trigger" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="cs-listbox" placeholder="Select a country">
+  <input id="cs-trigger" type="text" role="combobox" aria-expanded="false" aria-activedescendant="" aria-autocomplete="list" aria-controls="cs-listbox" placeholder="Select a country">
   <ul role="listbox" id="cs-listbox" tabindex="-1">
     <li role="option" id="cs-opt-1" aria-selected="false">Austria</li>
     <li role="option" id="cs-opt-2" aria-selected="false">Belgium</li>
@@ -206,7 +206,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
 
   function clearActive() {
     options.forEach(o => o.classList.remove('cs-option-current'));
-    input.removeAttribute('aria-activedescendant');
+    input.setAttribute('aria-activedescendant', '');
     activeIndex = -1;
   }
 
@@ -293,7 +293,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   <script type="text/plain" id="snippet-b-html">
 <label for="csm-trigger">Country</label>
 <div class="combobox-search-multi">
-  <input id="csm-trigger" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags">
+  <input id="csm-trigger" type="text" role="combobox" aria-expanded="false" aria-activedescendant="" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags">
   <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1">
     <li role="option" id="csm-opt-1" aria-selected="false">Austria</li>
     <li role="option" id="csm-opt-2" aria-selected="false">Belgium</li>
@@ -568,7 +568,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
 
   function clearActive() {
     options.forEach(o => o.classList.remove('csm-option-current'));
-    input.removeAttribute('aria-activedescendant');
+    input.setAttribute('aria-activedescendant', '');
     activeIndex = -1;
   }
 
