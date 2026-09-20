@@ -92,7 +92,7 @@
     <li role="option" id="cs-opt-26" aria-selected="false">Spain</li>
     <li role="option" id="cs-opt-27" aria-selected="false">Sweden</li>
   </ul>
-  <div class="no-results" role="status"></div>
+  <div class="cs-no-results" role="status"></div>
 </div>
   </script>
 
@@ -186,7 +186,7 @@ label {
   color: whitesmoke;
 }
 
-.no-results:not(:empty) {
+.cs-no-results:not(:empty) {
   position: absolute;
   border: 2px solid transparent;
   margin: 4px 0 0;
@@ -201,7 +201,7 @@ label {
 document.querySelectorAll('.combobox-search').forEach(container => {
   const input = container.querySelector('input');
   const options = [...container.querySelectorAll('[role="option"]')];
-  const noResults = container.querySelector('.no-results');
+  const noResults = container.querySelector('.cs-no-results');
   let activeIndex = -1;
   function getVisible() {
     return options.filter(o => !o.hidden);
@@ -351,7 +351,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     <li role="option" id="csm-opt-26" aria-selected="false">Spain</li>
     <li role="option" id="csm-opt-27" aria-selected="false">Sweden</li>
   </ul>
-  <div class="no-results" role="status"></div>
+  <div class="csm-no-results" role="status"></div>
   <output class="csm-tags" id="csm-tags"><span class="csm-counter">0 selected</span></output>
 </div>
   </script>
@@ -490,11 +490,11 @@ label {
   box-sizing: border-box;
 }
 
-.no-results {
+.csm-no-results {
   position: absolute;
 }
 
-.no-results:not(:empty) {
+.csm-no-results:not(:empty) {
   top: 100%;
   left: -2px;
   border: 2px solid transparent;
@@ -557,7 +557,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
   const listbox = container.querySelector('[role="listbox"]');
   const tagsContainer = container.querySelector('.csm-tags');
   const options = [...container.querySelectorAll('[role="option"]')];
-  const noResults = container.querySelector('.no-results');
+  const noResults = container.querySelector('.csm-no-results');
   let activeIndex = -1;
 
   function updateTags() {
