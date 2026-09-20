@@ -162,8 +162,19 @@ label {
 }
 
 .combobox-search [role="option"] {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
   padding: 8px;
   cursor: pointer;
+}
+
+.combobox-search [role="option"][aria-selected="true"]::after {
+  content: '✓' / '';
+}
+
+.combobox-search [role="option"][hidden] {
+  display: none;
 }
 
 .combobox-search [role="option"]:hover {
@@ -200,6 +211,9 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     options.forEach(o => {
       o.hidden = Boolean(query) && !o.textContent.toLowerCase().startsWith(query.toLowerCase());
     });
+    const match = options.find(o => o.textContent.toLowerCase() === input.value.toLowerCase());
+    options.forEach(o => o.setAttribute('aria-selected', String(o === match)));
+    if (match && input.value !== match.textContent) input.value = match.textContent;
     noResults.textContent = getVisible().length === 0 ? 'No results found' : '';
     clearActive();
   }
