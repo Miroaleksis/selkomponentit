@@ -1,5 +1,5 @@
 const cards = document.querySelectorAll('.card');
-const search = document.getElementById('component-search');
+const search = document.getElementById('pattern-search');
 const searchResults = document.getElementById('home-search-results');
 let appliedQuery = '';
 

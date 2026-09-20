@@ -77,7 +77,7 @@ customElements.define('breadcrumb-bar', BreadcrumbBar);
 class OnThisPage extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <aside class="component-aside">
+      <aside class="page-aside">
         <div class="on-this-page">
           <h2>On This Page</h2>
           <ol class="on-this-page-links"></ol>
@@ -87,7 +87,7 @@ class OnThisPage extends HTMLElement {
 
     const buildList = () => {
       const list = this.querySelector('.on-this-page-links');
-      document.querySelectorAll('.component-section h2').forEach(el => {
+      document.querySelectorAll('.page-section h2').forEach(el => {
         const text = el.textContent.trim();
         if (!el.id) {
           el.id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');

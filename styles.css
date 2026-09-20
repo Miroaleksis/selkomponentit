@@ -139,8 +139,8 @@ button::after,
 
 /* ── Typography ──────────────────────────── */
 
-.component-section ol,
-.component-section ul {
+.page-section ol,
+.page-section ul {
   padding-inline-start: 1.2em;
 }
 
@@ -362,7 +362,7 @@ site-footer {
 }
 
 .page-description,
-.component-section {
+.page-section {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -407,11 +407,11 @@ site-footer {
   text-decoration: underline;
 }
 
-.component-section {
+.page-section {
   min-width: 0;
 }
 
-.component-section h2 {
+.page-section h2 {
   border-bottom: 1.5px solid var(--color-300);
   padding-bottom: 4px;
   margin-bottom: 8px;
@@ -424,7 +424,7 @@ on-this-page {
   align-self: stretch;
 }
 
-.component-aside {
+.page-aside {
   width: 300px;
   flex-shrink: 0;
   position: sticky;
@@ -1040,7 +1040,7 @@ th:has(.table-group-btn) {
     order: 0;
   }
 
-  .component-aside {
+  .page-aside {
     width: 100%;
     position: static;
   }
