@@ -108,7 +108,7 @@ label {
   <script type="text/plain" id="snippet-b-html">
 <label for="so-trigger">Language</label>
 <div class="combobox">
-  <button id="so-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-activedescendant="" aria-controls="so-listbox"></button>
+  <input id="so-trigger" type="text" readonly role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-activedescendant="" aria-controls="so-listbox">
   <ul role="listbox" id="so-listbox" tabindex="-1">
     <li role="option" id="so-opt-0" aria-selected="true">Select a language</li>
     <li role="option" id="so-opt-1" aria-selected="false">English</li>
@@ -138,28 +138,30 @@ label {
   width: 240px;
 }
 
+.combobox::after {
+  content: '▼' / '';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.combobox:has([aria-expanded="true"])::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
 .combobox [role="combobox"] {
-  display: flex;
   width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 8px;
+  padding: 8px 28px 8px 8px;
   color: inherit;
   background: whitesmoke;
   border: 2px solid;
   border-radius: 4px;
   cursor: pointer;
   font: inherit;
-}
-
-.combobox [role="combobox"]::after {
-  content: '▼' / '';
-  transition: transform 0.2s ease;
-}
-
-.combobox [role="combobox"][aria-expanded="true"]::after {
-  transform: rotate(180deg);
+  box-sizing: border-box;
 }
 
 .combobox [role="listbox"] {
@@ -221,7 +223,7 @@ document.querySelectorAll('.combobox').forEach(container => {
     setActive(index);
     options.forEach(o => o.setAttribute('aria-selected', 'false'));
     options[index].setAttribute('aria-selected', 'true');
-    trigger.textContent = options[index].textContent;
+    trigger.value = options[index].textContent;
   }
 
   function updateMenuState(open, callFocus = true) {
@@ -240,7 +242,7 @@ document.querySelectorAll('.combobox').forEach(container => {
   const selectedIndex = options.findIndex(o => o.getAttribute('aria-selected') === 'true');
   if (selectedIndex >= 0) {
     activeIndex = selectedIndex;
-    trigger.textContent = options[selectedIndex].textContent;
+    trigger.value = options[selectedIndex].textContent;
     options[selectedIndex].classList.add('so-option-current');
   }
 
