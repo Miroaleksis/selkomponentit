@@ -186,6 +186,7 @@ a {
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
+  border: 1.5px solid transparent;
 }
 
 .button[aria-pressed="false"],
