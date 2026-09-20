@@ -62,7 +62,7 @@
   <script type="text/plain" id="snippet-a-html">
 <label for="cs-trigger">Country</label>
 <div class="combobox-search">
-  <input id="cs-trigger" type="text" role="combobox" aria-expanded="false" aria-activedescendant="" aria-autocomplete="list" aria-controls="cs-listbox" placeholder="Select a country">
+  <input id="cs-trigger" type="text" role="combobox" autocomplete="off" aria-expanded="false" aria-activedescendant="" aria-autocomplete="list" aria-controls="cs-listbox" placeholder="Select a country">
   <ul role="listbox" id="cs-listbox">
     <li role="option" id="cs-opt-1" aria-selected="false">Austria</li>
     <li role="option" id="cs-opt-2" aria-selected="false">Belgium</li>
@@ -275,6 +275,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
       setActive(activeIndex < 0 ? 0 : Math.min(activeIndex + 1, vis.length - 1));
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
+      if (!expanded) { filterOptions(input.value); openDropdown(); setActive(getVisible().length - 1); return; }
       setActive(Math.max(activeIndex - 1, 0));
     } else if (e.key === 'Home') {
       e.preventDefault();
@@ -320,7 +321,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   <script type="text/plain" id="snippet-b-html">
 <label for="csm-trigger">Country</label>
 <div class="combobox-search-multi">
-  <input id="csm-trigger" type="text" role="combobox" aria-expanded="false" aria-activedescendant="" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags">
+  <input id="csm-trigger" type="text" role="combobox" autocomplete="off" aria-expanded="false" aria-activedescendant="" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags">
   <ul role="listbox" id="csm-listbox" aria-multiselectable="true">
     <li role="option" id="csm-opt-1" aria-selected="false">Austria</li>
     <li role="option" id="csm-opt-2" aria-selected="false">Belgium</li>
@@ -667,6 +668,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
       setActive(activeIndex < 0 ? 0 : Math.min(activeIndex + 1, vis.length - 1));
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
+      if (!expanded) { filterOptions(input.value); openDropdown(); setActive(getVisible().length - 1); return; }
       setActive(Math.max(activeIndex - 1, 0));
     } else if (e.key === 'Home') {
       e.preventDefault();
