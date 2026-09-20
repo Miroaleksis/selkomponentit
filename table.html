@@ -77,11 +77,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr><td>Ergonomic Chair</td><td>Furniture</td><td>450</td></tr>
-    <tr><td>Standing Desk</td><td>Furniture</td><td>890</td></tr>
-    <tr><td>Monitor 4K</td><td>Electronics</td><td>620</td></tr>
-    <tr><td>Wireless Keyboard</td><td>Electronics</td><td>129</td></tr>
-    <tr><td>Cable Organiser</td><td>Accessories</td><td>24</td></tr>
+    <tr><td>Headphones</td><td>TV &amp; Audio</td><td>149</td></tr>
+    <tr><td>Speaker</td><td>TV &amp; Audio</td><td>89</td></tr>
+    <tr><td>Webcam</td><td>Accessories</td><td>79</td></tr>
+    <tr><td>USB Hub</td><td>Accessories</td><td>24</td></tr>
+    <tr><td>Laptop Stand</td><td>Accessories</td><td>39</td></tr>
   </tbody>
 </table>
   </script>
@@ -174,62 +174,57 @@ headers.forEach(th => {
 
   <script type="text/plain" id="snippet-b-html">
 <table>
-  <caption>Task list</caption>
+  <caption>Order history</caption>
   <thead>
     <tr>
-      <th scope="col">Task</th>
+      <th scope="col">Order</th>
       <th scope="col">Status</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="task-homework">Homework</td>
-      <td>In progress</td>
-      <td><button type="button" aria-expanded="false" aria-labelledby="task-homework" aria-controls="task-homework-1 task-homework-2">▼</button></td>
+      <td id="order-1024">Order #1024</td>
+      <td>In transit</td>
+      <td><button type="button" aria-expanded="false" aria-labelledby="order-1024" aria-controls="order-1024-1 order-1024-2">▼</button></td>
     </tr>
-    <tr class="detail-row" id="task-homework-1" hidden>
-      <td>Biology essay</td>
-      <td>Done</td>
+    <tr class="detail-row" id="order-1024-1" hidden>
+      <td>Headphones</td>
+      <td>Shipped</td>
       <td></td>
     </tr>
-    <tr class="detail-row" id="task-homework-2" hidden>
-      <td>Maths exercises</td>
-      <td>In progress</td>
-      <td></td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td id="task-chores">Chores</td>
-      <td>Pending</td>
-      <td><button type="button" aria-expanded="false" aria-labelledby="task-chores" aria-controls="task-chores-1 task-chores-2">▼</button></td>
-    </tr>
-    <tr class="detail-row" id="task-chores-1" hidden>
-      <td>Vacuum living room</td>
-      <td>Pending</td>
-      <td></td>
-    </tr>
-    <tr class="detail-row" id="task-chores-2" hidden>
-      <td>Take out trash</td>
-      <td>Pending</td>
+    <tr class="detail-row" id="order-1024-2" hidden>
+      <td>USB Hub</td>
+      <td>Shipped</td>
       <td></td>
     </tr>
   </tbody>
   <tbody>
     <tr>
-      <td id="task-project-work">Project work</td>
-      <td>Done</td>
-      <td><button type="button" aria-expanded="false" aria-labelledby="task-project-work" aria-controls="task-project-work-1 task-project-work-2">▼</button></td>
+      <td id="order-1025">Order #1025</td>
+      <td>Processing</td>
+      <td><button type="button" aria-expanded="false" aria-labelledby="order-1025" aria-controls="order-1025-1">▼</button></td>
     </tr>
-    <tr class="detail-row" id="task-project-work-1" hidden>
-      <td>Draft outline</td>
-      <td>Done</td>
+    <tr class="detail-row" id="order-1025-1" hidden>
+      <td>Speaker</td>
+      <td>Backordered</td>
       <td></td>
     </tr>
-    <tr class="detail-row" id="task-project-work-2" hidden>
-      <td>Write introduction</td>
-      <td>Done</td>
+  </tbody>
+  <tbody>
+    <tr>
+      <td id="order-1032">Order #1032</td>
+      <td>Delivered</td>
+      <td><button type="button" aria-expanded="false" aria-labelledby="order-1032" aria-controls="order-1032-1 order-1032-2">▼</button></td>
+    </tr>
+    <tr class="detail-row" id="order-1032-1" hidden>
+      <td>Webcam</td>
+      <td>Delivered</td>
+      <td></td>
+    </tr>
+    <tr class="detail-row" id="order-1032-2" hidden>
+      <td>Laptop Stand</td>
+      <td>Delivered</td>
       <td></td>
     </tr>
   </tbody>
