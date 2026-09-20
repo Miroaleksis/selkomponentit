@@ -59,7 +59,7 @@
   <script type="text/plain" id="snippet-b-html">
 <label for="ms-trigger">Language</label>
 <div class="multiselect">
-  <button id="ms-trigger" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-activedescendant="" aria-controls="ms-listbox" aria-describedby="ms-tags"></button>
+  <input id="ms-trigger" type="text" readonly role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-activedescendant="" aria-controls="ms-listbox" aria-describedby="ms-tags">
   <ul role="listbox" id="ms-listbox" aria-multiselectable="true" aria-label="Language">
     <li role="option" id="ms-opt-1" aria-selected="false">English</li>
     <li role="option" id="ms-opt-2" aria-selected="false">Finnish</li>
@@ -101,6 +101,20 @@ label {
   width: 240px;
 }
 
+.multiselect::after {
+  content: '▼' / '';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+
+.multiselect:has([aria-expanded="true"])::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
 .multiselect [role="combobox"] {
   position: absolute;
   inset: -2px;
@@ -111,20 +125,6 @@ label {
   color: inherit;
   font: inherit;
   cursor: pointer;
-}
-
-.multiselect [role="combobox"]::after {
-  content: '▼' / '';
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: transform 0.2s ease;
-  pointer-events: none;
-}
-
-.multiselect [role="combobox"][aria-expanded="true"]::after {
-  transform: translateY(-50%) rotate(180deg);
 }
 
 .ms-tags {
