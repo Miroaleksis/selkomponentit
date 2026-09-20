@@ -284,21 +284,22 @@ document.querySelectorAll('.multiselect').forEach(container => {
     });
   }
 
-  function updateMenuState(open) {
-    if (isOpen === open) return;
-    isOpen = open;
-    trigger.setAttribute('aria-expanded', String(open));
-    if (open) {
-      options[activeIndex].classList.add('ms-option-current');
-      trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
-    } else {
-      options.forEach(o => o.classList.remove('ms-option-current'));
-      trigger.setAttribute('aria-activedescendant', '');
-    }
+  function openDropdown() {
+    isOpen = true;
+    trigger.setAttribute('aria-expanded', 'true');
+    options[activeIndex].classList.add('ms-option-current');
+    trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
+  }
+
+  function closeDropdown() {
+    isOpen = false;
+    trigger.setAttribute('aria-expanded', 'false');
+    options.forEach(o => o.classList.remove('ms-option-current'));
+    trigger.setAttribute('aria-activedescendant', '');
   }
 
   trigger.addEventListener('click', () => {
-    updateMenuState(!isOpen);
+    if (isOpen) { closeDropdown(); } else { openDropdown(); }
   });
 
   trigger.addEventListener('keydown', (e) => {
@@ -312,7 +313,7 @@ document.querySelectorAll('.multiselect').forEach(container => {
     }
     if (!isOpen && ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) {
       e.preventDefault();
-      updateMenuState(true);
+      openDropdown();
       return;
     }
     if (!isOpen) return;
@@ -334,7 +335,7 @@ document.querySelectorAll('.multiselect').forEach(container => {
       toggleSelection(activeIndex);
     } else if (e.key === 'Escape') {
       e.preventDefault();
-      updateMenuState(false);
+      closeDropdown();
       trigger.focus();
     }
   });
@@ -349,11 +350,11 @@ document.querySelectorAll('.multiselect').forEach(container => {
 
   container.addEventListener('focusout', (e) => {
     if (container.contains(e.relatedTarget)) return;
-    updateMenuState(false);
+    closeDropdown();
   });
 
   document.addEventListener('pointerdown', (e) => {
-    if (!container.contains(e.target)) updateMenuState(false);
+    if (!container.contains(e.target)) closeDropdown();
   });
 });
   </script>
