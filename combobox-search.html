@@ -221,6 +221,11 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     }
   }
 
+  function selectOption(option) {
+    options.forEach(o => o.setAttribute('aria-selected', String(o === option)));
+    input.value = option.textContent.trim();
+  }
+
   function openDropdown() {
     input.setAttribute('aria-expanded', 'true');
   }
@@ -267,7 +272,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
       e.preventDefault();
       if (!expanded) { filterOptions(input.value); openDropdown(); return; }
       if (activeIndex >= 0) {
-        input.value = vis[activeIndex].textContent.trim();
+        selectOption(vis[activeIndex]);
         closeDropdown();
       }
     } else if (e.key === 'Escape') {
@@ -275,15 +280,13 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     }
   });
 
-  document.body.addEventListener('pointerup', (e) => {
-    if (!container.contains(e.target)) {
-      setTimeout(closeDropdown, 300);
-    }
-  }, true);
+  document.addEventListener('pointerdown', (e) => {
+    if (!container.contains(e.target)) closeDropdown();
+  });
 
   options.forEach(option => {
     option.addEventListener('click', () => {
-      input.value = option.textContent.trim();
+      selectOption(option);
       closeDropdown();
     });
   });
