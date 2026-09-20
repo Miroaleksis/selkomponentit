@@ -554,6 +554,7 @@ label {
   <script type="text/plain" id="snippet-b-js">
 document.querySelectorAll('.combobox-search-multi').forEach(container => {
   const input = container.querySelector('input');
+  const listbox = container.querySelector('[role="listbox"]');
   const tagsContainer = container.querySelector('.csm-tags');
   const options = [...container.querySelectorAll('[role="option"]')];
   const noResults = container.querySelector('.no-results');
@@ -695,7 +696,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
   });
 
   container.addEventListener('focusout', (e) => {
-    if (container.contains(e.relatedTarget)) return;
+    if (listbox.contains(e.relatedTarget)) return;
     closeDropdown();
   });
 
