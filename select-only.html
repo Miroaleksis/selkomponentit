@@ -236,7 +236,6 @@ document.querySelectorAll('.combobox').forEach(container => {
     trigger.setAttribute('aria-activedescendant', '');
   }
 
-  // Initial state — read from aria-selected
   const selectedIndex = options.findIndex(o => o.getAttribute('aria-selected') === 'true');
   if (selectedIndex >= 0) {
     activeIndex = selectedIndex;
