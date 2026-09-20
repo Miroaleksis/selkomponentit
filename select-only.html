@@ -255,6 +255,12 @@ document.querySelectorAll('.combobox').forEach(container => {
       openDropdown();
       return;
     }
+    if (!isOpen && (e.key === 'Home' || e.key === 'End')) {
+      e.preventDefault();
+      openDropdown();
+      setActive(e.key === 'Home' ? 0 : options.length - 1);
+      return;
+    }
     if (isOpen) {
       if (e.key === 'ArrowDown') {
         e.preventDefault();

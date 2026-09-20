@@ -316,6 +316,12 @@ document.querySelectorAll('.multiselect').forEach(container => {
       openDropdown();
       return;
     }
+    if (!isOpen && (e.key === 'Home' || e.key === 'End')) {
+      e.preventDefault();
+      openDropdown();
+      setActive(e.key === 'Home' ? 0 : options.length - 1);
+      return;
+    }
     if (!isOpen) return;
 
     if (e.key === 'ArrowDown') {
