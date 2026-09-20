@@ -274,6 +274,8 @@ document.querySelectorAll('.combobox-search').forEach(container => {
       if (activeIndex >= 0) {
         selectOption(vis[activeIndex]);
         closeDropdown();
+        input.blur();
+        input.focus();
       }
     } else if (e.key === 'Escape') {
       closeDropdown();
@@ -288,6 +290,8 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     option.addEventListener('click', () => {
       selectOption(option);
       closeDropdown();
+      input.blur();
+      input.focus();
     });
   });
 });
