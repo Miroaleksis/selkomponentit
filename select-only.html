@@ -207,11 +207,9 @@ label {
   <script type="text/plain" id="snippet-b-js">
 document.querySelectorAll('.combobox').forEach(container => {
   const trigger = container.querySelector('[role="combobox"]');
-  const listbox = container.querySelector('[role="listbox"]');
   const options = [...container.querySelectorAll('[role="option"]')];
   let activeIndex = 0;
   let isOpen = false;
-  let ignoreBlur = false;
   function setActive(index) {
     options[activeIndex].classList.remove('so-option-current');
     activeIndex = index;
@@ -284,9 +282,7 @@ document.querySelectorAll('.combobox').forEach(container => {
   });
 
   options.forEach((option, index) => {
-    option.addEventListener('mousedown', () => {
-      ignoreBlur = true;
-    });
+    option.addEventListener('mousedown', e => e.preventDefault());
     option.addEventListener('click', (e) => {
       e.stopPropagation();
       selectOption(index);
@@ -296,16 +292,13 @@ document.querySelectorAll('.combobox').forEach(container => {
     });
   });
 
-  function onComboBlur(e) {
-    if (listbox.contains(e.relatedTarget)) return;
+  container.addEventListener('focusout', (e) => {
+    if (container.contains(e.relatedTarget)) return;
     if (isOpen) {
       selectOption(activeIndex);
       updateMenuState(false, false);
     }
-  }
-
-  trigger.addEventListener('blur', onComboBlur);
-  listbox.addEventListener('focusout', onComboBlur);
+  });
 
   document.addEventListener('pointerdown', (e) => {
     if (!container.contains(e.target)) updateMenuState(false, false);
