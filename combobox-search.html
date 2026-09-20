@@ -627,6 +627,13 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
     updateTags();
   }
 
+  function selectOptionAndReset(option) {
+    toggleSelection(option);
+    filterOptions('');
+    input.value = '';
+    setActive(getVisible().indexOf(option));
+  }
+
   container.addEventListener('mousedown', (e) => {
     if (e.target === container) e.preventDefault();
   });
@@ -679,9 +686,9 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
     } else if (e.key === 'Enter') {
       e.preventDefault();
       if (!expanded) { filterOptions(input.value); openDropdown(); return; }
-      if (activeIndex >= 0) { const selected = vis[activeIndex]; toggleSelection(selected); filterOptions(''); input.value = ''; setActive(getVisible().indexOf(selected)); }
+      if (activeIndex >= 0) selectOptionAndReset(vis[activeIndex]);
     } else if (e.key === ' ' && expanded) {
-      if (activeIndex >= 0) { const selected = vis[activeIndex]; toggleSelection(selected); filterOptions(''); input.value = ''; setActive(getVisible().indexOf(selected)); }
+      if (activeIndex >= 0) selectOptionAndReset(vis[activeIndex]);
     } else if (e.key === 'Escape') {
       closeDropdown();
     }
@@ -699,10 +706,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
   options.forEach(option => {
     option.addEventListener('mousedown', e => e.preventDefault());
     option.addEventListener('click', () => {
-      toggleSelection(option);
-      filterOptions('');
-      input.value = '';
-      setActive(getVisible().indexOf(option));
+      selectOptionAndReset(option);
     });
   });
 });
