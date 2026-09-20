@@ -223,7 +223,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
 
   function selectOption(option) {
     options.forEach(o => o.setAttribute('aria-selected', String(o === option)));
-    input.value = option.textContent.trim();
+    input.value = option.textContent;
   }
 
   function openDropdown() {
@@ -232,7 +232,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
 
   function closeDropdown() {
     input.setAttribute('aria-expanded', 'false');
-    const isValid = options.some(o => o.textContent.trim() === input.value);
+    const isValid = options.some(o => o.textContent === input.value);
     if (!isValid) input.value = '';
     filterOptions('');
   }
@@ -555,8 +555,8 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
       tag.type = 'button';
       tag.className = 'csm-tag';
       tag.dataset.index = index;
-      tag.textContent = option.textContent.trim();
-      tag.setAttribute('aria-label', `Remove ${option.textContent.trim()}`);
+      tag.textContent = option.textContent;
+      tag.setAttribute('aria-label', `Remove ${option.textContent}`);
       const sep = document.createElement('span');
       sep.className = 'visually-hidden';
       sep.textContent = ', ';

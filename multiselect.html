@@ -272,8 +272,8 @@ document.querySelectorAll('.multiselect').forEach(container => {
       tag.type = 'button';
       tag.className = 'ms-tag';
       tag.dataset.index = index;
-      tag.textContent = option.textContent.trim();
-      tag.setAttribute('aria-label', `Remove ${option.textContent.trim()}`);
+      tag.textContent = option.textContent;
+      tag.setAttribute('aria-label', `Remove ${option.textContent}`);
       const sep = document.createElement('span');
       sep.className = 'visually-hidden';
       sep.textContent = ', ';
