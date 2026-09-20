@@ -274,6 +274,8 @@ document.querySelectorAll('.combobox').forEach(container => {
         e.preventDefault();
         selectOption(activeIndex);
         updateMenuState(false);
+        trigger.blur();
+        trigger.focus();
       } else if (e.key === 'Escape') {
         e.preventDefault();
         updateMenuState(false);
@@ -289,6 +291,8 @@ document.querySelectorAll('.combobox').forEach(container => {
       e.stopPropagation();
       selectOption(index);
       updateMenuState(false);
+      trigger.blur();
+      trigger.focus();
     });
   });
 
