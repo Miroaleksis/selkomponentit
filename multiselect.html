@@ -279,7 +279,10 @@ document.querySelectorAll('.multiselect').forEach(container => {
       sep.textContent = ', ';
       tag.appendChild(sep);
       tag.addEventListener('mousedown', e => e.preventDefault());
-      tag.addEventListener('click', () => toggleSelection(parseInt(tag.dataset.index)));
+      tag.addEventListener('click', () => {
+        toggleSelection(parseInt(tag.dataset.index));
+        trigger.focus();
+      });
       tagsContainer.appendChild(tag);
     });
   }

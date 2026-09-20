@@ -580,7 +580,10 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
       sep.textContent = ', ';
       tag.appendChild(sep);
       tag.addEventListener('mousedown', e => e.preventDefault());
-      tag.addEventListener('click', () => toggleSelection(options[parseInt(tag.dataset.index)]));
+      tag.addEventListener('click', () => {
+        toggleSelection(options[parseInt(tag.dataset.index)]);
+        input.focus();
+      });
       tagsContainer.appendChild(tag);
     });
   }
