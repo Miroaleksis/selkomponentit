@@ -538,10 +538,10 @@ on-this-page {
   background: var(--color-150);
 }
 
-.tag--navigation::before   { content: 'explore' / ''; }
-.tag--function::before     { content: 'ads_click' / ''; }
-.tag--structure::before { content: 'dashboard' / ''; }
-.tag--notification::before { content: 'info' / ''; }
+.tag--category-1::before   { content: 'explore' / ''; }
+.tag--category-2::before     { content: 'ads_click' / ''; }
+.tag--category-3::before { content: 'dashboard' / ''; }
+.tag--category-4::before { content: 'info' / ''; }
 
 /* ── Cards ──────────────────────────── */
 
