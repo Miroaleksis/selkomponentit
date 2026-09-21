@@ -30,11 +30,12 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">A native <code>&lt;form&gt;</code> element enables built-in browser validation: required fields prevent submission, receive focus on error and display error hints automatically. It also improves browser autofill accuracy. Without a <code>&lt;form&gt;</code> element, these features are not available and must be implemented manually.</li>
-          <li aria-description="Required">Required input fields must be indicated clearly with a text. If a symbol like an asterisk (*) is used, it should be explained at the top of the form. The <code>required</code> attribute must be used to indicate the required fields to the browser.</li>
+          <li aria-description="Required">A native <code>&lt;form&gt;</code> element enables built-in browser validation: required fields prevent submission, receive focus on error and display error hints automatically. It also improves browser autofill accuracy. Without a <code>&lt;form&gt;</code> element, these features are not available and must be implemented manually</li>
+          <li aria-description="Required">Required input fields must be indicated clearly with a text. If a symbol like an asterisk (*) is used, it must be explained at the top of the form. The <code>required</code> attribute must be used to indicate the required fields to the browser</li>
           <li aria-description="Required">Use <code>autocomplete</code> to help users fill in common fields such as name, email and address</li>
+          <li aria-description="Recommended">Correct input types should be used (<code>&lt;input type="email"&gt;</code>, <code>&lt;input type="tel"&gt;</code>, etc.) so that the browser can provide the most accurate feedback possible about the expected input format</li>
           <li aria-description="Recommended">Even though using the <code>&lt;form&gt;</code> element is usually enough to fulfill the standard accessibility requirements, using it alone has disadvantages. For example, if several errors are present, only the first one is exposed. The user has to correct the error and resubmit the form for the next error to be identified.<br>
-          &rarr; Due to this, other accessibility features should be used in conjuction, such as field specific custom error messages. The messages must clearly indicate the nature of the error and provide guidance on how to correct it.</li>
+          &rarr; Due to this, other accessibility features should be used in conjuction, such as field specific custom error messages. The messages must clearly indicate the nature of the error and provide guidance on how to correct it</li>
           <li aria-description="Recommended">When a <code>&lt;form&gt;</code> is given an accessible name via <code>aria-label</code> or <code>aria-labelledby</code>, it is exposed as a landmark to screen readers</li>
         </ul>
       </section>
