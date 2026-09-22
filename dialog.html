@@ -55,7 +55,7 @@
 
   <script type="text/plain" id="snippet-a-html">
 <button class="btn" id="open-delete-account" aria-haspopup="dialog">Delete account</button>
-<dialog id="delete-account-dialog" aria-labelledby="dialog-title">
+<dialog id="delete-account-dialog" aria-labelledby="dialog-title" class="dialog">
   <button class="btn close-btn" id="close-dialog" aria-label="Close">✕</button>
   <h3 id="dialog-title">Delete account</h3>
   <p>This will permanently delete your account and all associated data. This action cannot be undone.</p>
@@ -67,7 +67,7 @@
   </script>
 
   <script type="text/plain" id="snippet-a-css">
-dialog {
+.dialog {
   font-family: Verdana, sans-serif;
   font-size: 16px;
 }
@@ -85,7 +85,7 @@ dialog {
   border-radius: 4px;
 }
 
-dialog[open] {
+.dialog[open] {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -109,6 +109,10 @@ dialog::backdrop {
   right: 16px;
   width: 32px;
   height: 32px;
+}
+
+.dialog h3 {
+  margin: 0;
 }
 
 .dialog-actions {
