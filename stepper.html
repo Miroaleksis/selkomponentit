@@ -76,7 +76,7 @@
   </script>
 
   <script type="text/plain" id="snippet-a-css">
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0..1,0');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
 .stepper-container {
   display: flex;
@@ -155,7 +155,8 @@
 }
 
 .step-indicator.is-complete {
-  font-family: 'Material Symbols Outlined';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
 }
 
 .stepper li button:not(:disabled) .step-indicator,
@@ -233,7 +234,7 @@ function goToStep(step) {
     if (i < currentStep) {
       btn.removeAttribute('aria-current');
       btn.disabled = false;
-      indicator.textContent = 'check';
+      indicator.textContent = '';
       indicator.classList.add('is-complete');
     } else if (i === currentStep) {
       btn.setAttribute('aria-current', 'step');

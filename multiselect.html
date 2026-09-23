@@ -74,6 +74,8 @@
   </script>
 
   <script type="text/plain" id="snippet-b-css">
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
 label,
 .multiselect {
   font-family: Verdana, sans-serif;
@@ -92,7 +94,7 @@ label {
   flex-wrap: wrap;
   align-items: center;
   gap: 4px;
-  padding: 8px 36px 8px 8px;
+  padding: 8px 32px 8px 8px;
   box-sizing: border-box;
   border: 2px solid;
   border-radius: 4px;
@@ -102,9 +104,11 @@ label {
 }
 
 .multiselect::after {
-  content: '▼' / '';
+  content: '\f078' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
   position: absolute;
-  right: 10px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
   transition: transform 0.2s ease;
@@ -148,7 +152,7 @@ label {
   z-index: 1;
   display: inline-flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   padding: 2px 8px;
   background: dimgray;
   color: whitesmoke;
@@ -160,7 +164,9 @@ label {
 }
 
 .ms-tag::after {
-  content: '×' / '';
+  content: '\f00d' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
 }
 
 .ms-tag:hover {
@@ -220,7 +226,9 @@ label {
 }
 
 .multiselect [role="option"][aria-selected="true"]::before {
-  content: '✓' / '';
+  content: '\f00c' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
 }
 
 .multiselect [role="option"]:hover {

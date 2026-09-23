@@ -53,14 +53,16 @@
   <script type="text/plain" id="snippet-a-html">
 <label for="quantity">Quantity</label>
 <div class="spinbutton">
-  <button type="button" aria-label="Decrease quantity">−</button>
+  <button type="button" aria-label="Decrease quantity"></button>
   <input type="number" id="quantity" min="1" step="1" value="1">
-  <button type="button" aria-label="Increase quantity">+</button>
+  <button type="button" aria-label="Increase quantity"></button>
   <output class="visually-hidden"></output>
 </div>
   </script>
 
   <script type="text/plain" id="snippet-a-css">
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
 label {
   display: block;
   font-family: Verdana, sans-serif;
@@ -116,6 +118,18 @@ input[type="number"]::-webkit-outer-spin-button {
 .spinbutton button:disabled {
   opacity: 0.4;
   cursor: default;
+}
+
+.spinbutton button[aria-label="Decrease quantity"]::before {
+  content: '\f068' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+}
+
+.spinbutton button[aria-label="Increase quantity"]::before {
+  content: '\2b' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
 }
 
 .visually-hidden {

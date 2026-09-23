@@ -71,7 +71,7 @@
   </script>
 
   <script type="text/plain" id="snippet-a-css">
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0..1,0');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
 .pagination-wrapper {
   font-family: Verdana, sans-serif;
@@ -101,13 +101,15 @@
 }
 
 .pagination button[aria-label="Previous page"]::before {
-  content: 'chevron_left' / '';
-  font-family: 'Material Symbols Outlined';
+  content: '\f053' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
 }
 
 .pagination button[aria-label="Next page"]::before {
-  content: 'chevron_right' / '';
-  font-family: 'Material Symbols Outlined';
+  content: '\f054' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
 }
 
 .pagination button[aria-current="page"] {

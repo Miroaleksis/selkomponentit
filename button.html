@@ -97,6 +97,8 @@ document.querySelectorAll('.btn').forEach(btn => {
   </script>
 
   <script type="text/plain" id="snippet-b-css">
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
 .buttons {
   display: flex;
   gap: 16px;
@@ -107,8 +109,8 @@ document.querySelectorAll('.btn').forEach(btn => {
 .btn {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 8px 16px;
+  gap: 8px;
+  padding: 8px 12px;
   font: inherit;
   cursor: pointer;
   color: whitesmoke;
@@ -119,8 +121,7 @@ document.querySelectorAll('.btn').forEach(btn => {
 button::before {
   display: flex;
   align-items: center;
-  width: 16px;
-  height: 16px;
+  font-family: 'Font Awesome 6 Free';
 }
 
 .toggle-btn {
@@ -132,11 +133,13 @@ button::before {
 }
 
 .toggle-btn::before {
-  content: '♡' / '';
+  content: '\f004' / '';
+  font-weight: 400;
 }
 
 .toggle-btn[aria-pressed="true"]::before {
-  content: '♥' / '';
+  content: '\f004' / '';
+  font-weight: 900;
 }
 
 .play-btn {
@@ -144,11 +147,13 @@ button::before {
 }
 
 .play-btn::before {
-  content: '▶' / '';
+  content: '\f04b' / '';
+  font-weight: 900;
 }
 
 .play-btn[data-playing]::before {
-  content: '❚❚' / '';
+  content: '\f04c' / '';
+  font-weight: 900;
 }
   </script>
 

@@ -97,6 +97,8 @@
   </script>
 
   <script type="text/plain" id="snippet-a-css">
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
 label,
 .combobox-search {
   font-family: Verdana, sans-serif;
@@ -115,7 +117,9 @@ label {
 }
 
 .combobox-search::after {
-  content: '▼' / '';
+  content: '\f078' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
   position: absolute;
   right: 8px;
   top: 50%;
@@ -129,7 +133,7 @@ label {
 }
 
 .combobox-search input[role="combobox"] {
-  padding: 8px 28px 8px 8px;
+  padding: 8px 32px 8px 8px;
   width: 100%;
   color: inherit;
   background: whitesmoke;
@@ -170,7 +174,9 @@ label {
 }
 
 .combobox-search [role="option"][aria-selected="true"]::after {
-  content: '✓' / '';
+  content: '\f00c' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
 }
 
 .combobox-search [role="option"][hidden] {
@@ -359,6 +365,8 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   </script>
 
   <script type="text/plain" id="snippet-b-css">
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
 label,
 .combobox-search-multi {
   font-family: Verdana, sans-serif;
@@ -377,7 +385,7 @@ label {
   flex-wrap: wrap;
   align-items: center;
   gap: 4px;
-  padding: 8px 28px 8px 8px;
+  padding: 8px 32px 8px 8px;
   box-sizing: border-box;
   border: 2px solid;
   border-radius: 4px;
@@ -387,7 +395,9 @@ label {
 }
 
 .combobox-search-multi::after {
-  content: '▼' / '';
+  content: '\f078' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
   position: absolute;
   right: 8px;
   top: 50%;
@@ -425,7 +435,7 @@ label {
   appearance: none;
   display: inline-flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   padding: 2px 8px;
   background: dimgray;
   color: whitesmoke;
@@ -437,7 +447,9 @@ label {
 }
 
 .csm-tag::after {
-  content: '×' / '';
+  content: '\f00d' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
 }
 
 .csm-tag:hover {
@@ -529,7 +541,9 @@ label {
 }
 
 .combobox-search-multi [role="option"][aria-selected="true"]::before {
-  content: '✓' / '';
+  content: '\f00c' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
   display: flex;
   align-items: center;
   justify-content: center;
