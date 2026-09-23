@@ -81,14 +81,20 @@ a {
   </script>
 
   <script type="text/plain" id="snippet-b-css">
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0..1,0');
+
 .external-link {
   font-family: Verdana, sans-serif;
   font-size: 16px;
   color: midnightblue;
+  padding-right: 24px;
 }
 
 .external-link::after {
-  content: ' ↗';
+  content: 'open_in_new' / '';
+  font-family: 'Material Symbols Outlined';
+  position: absolute;
+  margin-left: 4px;
 }
 
 .visually-hidden {

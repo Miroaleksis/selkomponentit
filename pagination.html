@@ -58,19 +58,21 @@
   <p role="status">Page 1 of 5</p>
   <nav aria-label="Pagination">
     <ol class="pagination">
-      <li><button aria-label="Previous page" disabled>◀</button></li>
+      <li><button aria-label="Previous page" disabled></button></li>
       <li><button aria-label="Page 1" aria-current="page">1</button></li>
       <li><button aria-label="Page 2">2</button></li>
       <li><button aria-label="Page 3">3</button></li>
       <li><button aria-label="Page 4">4</button></li>
       <li><button aria-label="Page 5">5</button></li>
-      <li><button aria-label="Next page">▶</button></li>
+      <li><button aria-label="Next page"></button></li>
     </ol>
   </nav>
 </div>
   </script>
 
   <script type="text/plain" id="snippet-a-css">
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0..1,0');
+
 .pagination-wrapper {
   font-family: Verdana, sans-serif;
   font-size: 16px;
@@ -96,6 +98,16 @@
   border: 2px solid;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.pagination button[aria-label="Previous page"]::before {
+  content: 'chevron_left' / '';
+  font-family: 'Material Symbols Outlined';
+}
+
+.pagination button[aria-label="Next page"]::before {
+  content: 'chevron_right' / '';
+  font-family: 'Material Symbols Outlined';
 }
 
 .pagination button[aria-current="page"] {

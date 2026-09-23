@@ -74,6 +74,8 @@
   </script>
 
   <script type="text/plain" id="snippet-a-css">
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0..1,0');
+
 .accordion {
   color: dimgray;
   font-family: Verdana, sans-serif;
@@ -89,8 +91,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 16px 16px 0;
-  padding-bottom: 16px;
+  padding: 16px;
   font-weight: bold;
 }
 
@@ -103,7 +104,8 @@
 }
 
 .accordion summary::after {
-  content: '▼' / '';
+  content: 'expand_more' / '';
+  font-family: 'Material Symbols Outlined';
   transition: transform 0.2s ease;
 }
 
@@ -122,6 +124,8 @@
   </script>
 
   <script type="text/plain" id="snippet-b-css">
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0..1,0');
+
 .custom-accordion {
   max-width: 400px;
   font-family: Verdana, sans-serif;
@@ -130,6 +134,7 @@
   padding: 16px;
   border: 2px solid lightgray;
   border-radius: 4px;
+  background: whitesmoke;
 }
 
 .custom-accordion h3 {
@@ -151,7 +156,8 @@
 }
 
 .custom-accordion-trigger::after {
-  content: '▼' / '';
+  content: 'expand_more' / '';
+  font-family: 'Material Symbols Outlined';
   transition: transform 0.2s ease;
 }
 

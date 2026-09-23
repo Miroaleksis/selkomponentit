@@ -76,6 +76,7 @@
   </script>
 
   <script type="text/plain" id="snippet-a-css">
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0..1,0');
 
 .stepper-container {
   display: flex;
@@ -153,6 +154,10 @@
   z-index: 1;
 }
 
+.step-indicator.is-complete {
+  font-family: 'Material Symbols Outlined';
+}
+
 .stepper li button:not(:disabled) .step-indicator,
 .stepper li button[aria-current] .step-indicator {
   background: dimgray;
@@ -228,15 +233,18 @@ function goToStep(step) {
     if (i < currentStep) {
       btn.removeAttribute('aria-current');
       btn.disabled = false;
-      indicator.textContent = '✓';
+      indicator.textContent = 'check';
+      indicator.classList.add('is-complete');
     } else if (i === currentStep) {
       btn.setAttribute('aria-current', 'step');
       btn.disabled = false;
       indicator.textContent = String(i + 1);
+      indicator.classList.remove('is-complete');
     } else {
       btn.removeAttribute('aria-current');
       btn.disabled = true;
       indicator.textContent = String(i + 1);
+      indicator.classList.remove('is-complete');
     }
   });
   prevBtn.disabled = currentStep === 0;
