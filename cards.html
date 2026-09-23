@@ -236,6 +236,10 @@ h4 {
 }
 
 .card button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   font: inherit;
   margin-top: auto;
   padding: 8px 16px;
@@ -251,6 +255,12 @@ h4 {
   content: '';
   position: absolute;
   inset: 0;
+}
+
+.card button::after {
+  content: '\f07a' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
 }
 
 .cards-prev,

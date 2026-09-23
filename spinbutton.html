@@ -75,18 +75,16 @@ label {
 .spinbutton {
   display: inline-flex;
   gap: 4px;
-  padding: 4px;
   color: dimgray;
-  border: 2px solid lightgray;
   border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
   font-family: Verdana, sans-serif;
 }
 
-input[type="number"] {
+.spinbutton input[type="number"] {
   background: whitesmoke;
-  border: 2px solid lightgray;
+  border: 2px solid;
   border-radius: 4px;
   font: inherit;
   color: inherit;
@@ -96,8 +94,8 @@ input[type="number"] {
   padding: 0;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+.spinbutton input[type="number"]::-webkit-inner-spin-button,
+.spinbutton input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 

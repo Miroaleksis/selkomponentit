@@ -78,6 +78,8 @@
   </script>
 
   <script type="text/plain" id="snippet-a-css">
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
 .filter-group {
   border: 2px solid lightgray;
   border-radius: 4px;
@@ -104,10 +106,25 @@ legend {
 }
 
 .filter-option input {
-  width: 16px;
-  height: 16px;
-  accent-color: dimgray;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid dimgray;
+  border-radius: 4px;
+  background: whitesmoke;
+  color: dimgray;
   cursor: pointer;
+}
+
+.filter-option input:checked::before {
+  content: '\f00c' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 14px;
 }
   </script>
 
