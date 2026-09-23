@@ -87,6 +87,8 @@
   </script>
 
   <script type="text/plain" id="snippet-a-css">
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
 table {
   width: 100%;
   font-family: Verdana, sans-serif;
@@ -138,9 +140,9 @@ th button::after {
   right: 16px;
 }
 
-th[aria-sort] button::after {content: '⬍' / '';}
-th[aria-sort="ascending"] button::after  { content: '⬆' / '';}
-th[aria-sort="descending"] button::after { content: '⬇' / '';}
+th[aria-sort] button::after {content: '\f0dc' / ''; font-family: 'Font Awesome 6 Free'; font-weight: 900;}
+th[aria-sort="ascending"] button::after  { content: '\f0de' / ''; font-family: 'Font Awesome 6 Free'; font-weight: 900;}
+th[aria-sort="descending"] button::after { content: '\f0dd' / ''; font-family: 'Font Awesome 6 Free'; font-weight: 900;}
   </script>
 
   <script type="text/plain" id="snippet-a-js">
@@ -186,7 +188,7 @@ headers.forEach(th => {
     <tr>
       <td id="order-1024">Order #1024</td>
       <td>In transit</td>
-      <td><button type="button" aria-expanded="false" aria-labelledby="order-1024" aria-controls="order-1024-1 order-1024-2">▼</button></td>
+      <td><button type="button" aria-expanded="false" aria-labelledby="order-1024" aria-controls="order-1024-1 order-1024-2"></button></td>
     </tr>
     <tr class="detail-row" id="order-1024-1" hidden>
       <td>Headphones</td>
@@ -203,7 +205,7 @@ headers.forEach(th => {
     <tr>
       <td id="order-1025">Order #1025</td>
       <td>Processing</td>
-      <td><button type="button" aria-expanded="false" aria-labelledby="order-1025" aria-controls="order-1025-1">▼</button></td>
+      <td><button type="button" aria-expanded="false" aria-labelledby="order-1025" aria-controls="order-1025-1"></button></td>
     </tr>
     <tr class="detail-row" id="order-1025-1" hidden>
       <td>Speaker</td>
@@ -215,7 +217,7 @@ headers.forEach(th => {
     <tr>
       <td id="order-1032">Order #1032</td>
       <td>Delivered</td>
-      <td><button type="button" aria-expanded="false" aria-labelledby="order-1032" aria-controls="order-1032-1 order-1032-2">▼</button></td>
+      <td><button type="button" aria-expanded="false" aria-labelledby="order-1032" aria-controls="order-1032-1 order-1032-2"></button></td>
     </tr>
     <tr class="detail-row" id="order-1032-1" hidden>
       <td>Webcam</td>
@@ -232,6 +234,8 @@ headers.forEach(th => {
   </script>
 
   <script type="text/plain" id="snippet-b-css">
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
 table {
   width: 100%;
   table-layout: fixed;
@@ -274,6 +278,12 @@ td button {
   font: inherit;
   transition: transform 0.2s ease;
   border: none;
+}
+
+td button::before {
+  content: '\f078' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
 }
 
 th {

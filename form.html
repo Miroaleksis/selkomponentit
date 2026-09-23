@@ -78,6 +78,8 @@
   </script>
 
   <script type="text/plain" id="snippet-a-css">
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
 .form {
   display: flex;
   flex-direction: column;
@@ -117,7 +119,10 @@
 }
 
 .form-error::before {
-  content: '⚠ ' / '';
+  content: '\f071 ' / '';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  margin-right: 4px;
 }
 
 .form-field:has(:user-invalid) {
