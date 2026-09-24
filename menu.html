@@ -214,32 +214,34 @@
   </script>
 
   <script type="text/plain" id="snippet-a-js">
-const buttons = document.querySelectorAll('.menu > li > button');
+document.querySelectorAll('.menu').forEach(menu => {
+  const buttons = menu.querySelectorAll(':scope > li > button');
 
-function closeAll() {
-  buttons.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
-}
+  function closeAll() {
+    buttons.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+  }
 
-buttons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const wasOpen = btn.getAttribute('aria-expanded') === 'true';
-    closeAll();
-    if (!wasOpen) btn.setAttribute('aria-expanded', 'true');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wasOpen = btn.getAttribute('aria-expanded') === 'true';
+      closeAll();
+      if (!wasOpen) btn.setAttribute('aria-expanded', 'true');
+    });
   });
-});
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeAll();
-});
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAll();
+  });
 
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.menu')) closeAll();
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target)) closeAll();
+  });
 });
   </script>
 
   <script type="text/plain" id="snippet-b-html">
 <nav aria-label="Main menu">
-  <ul class="menu">
+  <ul class="link-menu">
     <li><a href="#" aria-current="page">Home</a></li>
     <li>
       <a href="#" id="products-link">Products</a>
@@ -269,7 +271,7 @@ document.addEventListener('click', (e) => {
   <script type="text/plain" id="snippet-b-css">
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
-.menu {
+.link-menu {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -283,14 +285,14 @@ document.addEventListener('click', (e) => {
   border-radius: 4px;
 }
 
-.menu > li {
+.link-menu > li {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.menu a,
-.menu button {
+.link-menu a,
+.link-menu button {
   display: flex;
   align-items: center;
   color: inherit;
@@ -302,46 +304,46 @@ document.addEventListener('click', (e) => {
   cursor: pointer;
 }
 
-.menu a:not(:last-child) {
+.link-menu a:not(:last-child) {
   padding-right: 32px;
 }
 
-.menu button {
+.link-menu button {
   position: absolute;
   right: 4px;
   padding: 4px;
   border-radius: 4px;
 }
 
-.menu a:hover {
+.link-menu a:hover {
   background: rgb(0 0 0 / 0.05);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-.menu button:hover {
+.link-menu button:hover {
   background: rgb(0 0 0 / 0.05);
 }
 
-.menu li:has(button[aria-expanded="true"]) {
+.link-menu li:has(button[aria-expanded="true"]) {
   background: dimgray;
   color: whitesmoke;
 }
 
-.menu a[aria-current="page"] {
+.link-menu a[aria-current="page"] {
   font-weight: bold;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-.menu > li > button::after {
+.link-menu > li > button::after {
   content: '\f078' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
   transition: transform 0.2s ease;
 }
 
-.menu > li > button[aria-expanded="true"]::after {
+.link-menu > li > button[aria-expanded="true"]::after {
   transform: rotate(180deg);
 }
 
@@ -360,40 +362,40 @@ document.addEventListener('click', (e) => {
   z-index: 100;
 }
 
-.menu button[aria-expanded="true"] + .submenu {
+.link-menu button[aria-expanded="true"] + .submenu {
   display: block;
 }
 
 @media (min-width: 561px) {
 
-  .menu > li > a:hover ~ button::after {
+  .link-menu > li > a:hover ~ button::after {
     transform: rotate(180deg);
   }
 
-  .menu > li > a:hover ~ .submenu,
+  .link-menu > li > a:hover ~ .submenu,
   .submenu:hover {
     display: block;
   }
 
-  .menu li:has(button):has(> a:hover),
-  .menu li:has(.submenu:hover) {
+  .link-menu li:has(button):has(> a:hover),
+  .link-menu li:has(.submenu:hover) {
     background: dimgray;
     color: whitesmoke;
   }
 }
 
 @media (max-width: 560px) {
-  .menu {
+  .link-menu {
     flex-direction: column;
     gap: 0;
   }
 
-  .menu > li {
+  .link-menu > li {
     justify-content: space-between;
     flex-wrap: wrap;
   }
 
-  .menu > li > a {
+  .link-menu > li > a {
     flex: 1;
   }
 
@@ -410,38 +412,40 @@ document.addEventListener('click', (e) => {
   </script>
 
   <script type="text/plain" id="snippet-b-js">
-const buttons = document.querySelectorAll('.menu > li > button');
+document.querySelectorAll('.link-menu').forEach(menu => {
+  const buttons = menu.querySelectorAll(':scope > li > button');
 
-function closeAll() {
-  buttons.forEach(btn => {
-    btn.setAttribute('aria-expanded', 'false');
-    btn.nextElementSibling.style.display = '';
-  });
-}
-
-buttons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const wasOpen = btn.getAttribute('aria-expanded') === 'true';
-    closeAll();
-    if (!wasOpen) btn.setAttribute('aria-expanded', 'true');
-  });
-
-  btn.parentElement.addEventListener('mouseleave', () => {
-    btn.nextElementSibling.style.display = '';
-  });
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeAll();
-    document.querySelectorAll('.menu > li:hover .submenu').forEach(s => {
-      s.style.display = 'none';
+  function closeAll() {
+    buttons.forEach(btn => {
+      btn.setAttribute('aria-expanded', 'false');
+      btn.nextElementSibling.style.display = '';
     });
   }
-});
 
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.menu')) closeAll();
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wasOpen = btn.getAttribute('aria-expanded') === 'true';
+      closeAll();
+      if (!wasOpen) btn.setAttribute('aria-expanded', 'true');
+    });
+
+    btn.parentElement.addEventListener('mouseleave', () => {
+      btn.nextElementSibling.style.display = '';
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAll();
+      menu.querySelectorAll(':scope > li:hover .submenu').forEach(s => {
+        s.style.display = 'none';
+      });
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target)) closeAll();
+  });
 });
   </script>
   <script type="text/plain" id="snippet-c-html">

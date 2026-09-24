@@ -141,13 +141,15 @@
   </script>
 
   <script type="text/plain" id="snippet-b-js">
-const textarea = document.getElementById('message-field');
-const counter = document.getElementById('message-counter');
-const max = textarea.maxLength;
+document.querySelectorAll('.textarea-wrapper').forEach(wrapper => {
+  const textarea = wrapper.querySelector('textarea');
+  const counter = wrapper.querySelector('.char-counter');
+  const max = textarea.maxLength;
 
-textarea.addEventListener('input', () => {
-  const remaining = max - textarea.value.length;
-  counter.textContent = remaining + ' characters remaining';
+  textarea.addEventListener('input', () => {
+    const remaining = max - textarea.value.length;
+    counter.textContent = remaining + ' characters remaining';
+  });
 });
   </script>
   <site-footer></site-footer>

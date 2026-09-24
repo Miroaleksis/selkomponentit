@@ -284,18 +284,20 @@
   </script>
 
   <script type="text/plain" id="snippet-b-js">
-const list = document.querySelector('.cards ol');
+document.querySelectorAll('.cards').forEach(cards => {
+  const list = cards.querySelector('ol');
 
-function getScrollAmount() {
-  return list.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(list).gap);
-}
+  function getScrollAmount() {
+    return list.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(list).gap);
+  }
 
-document.querySelector('.cards-prev').addEventListener('click', () => {
-  list.scrollBy({ left: -getScrollAmount() });
-});
+  cards.querySelector('.cards-prev').addEventListener('click', () => {
+    list.scrollBy({ left: -getScrollAmount() });
+  });
 
-document.querySelector('.cards-next').addEventListener('click', () => {
-  list.scrollBy({ left: getScrollAmount() });
+  cards.querySelector('.cards-next').addEventListener('click', () => {
+    list.scrollBy({ left: getScrollAmount() });
+  });
 });
   </script>
   <site-footer></site-footer>

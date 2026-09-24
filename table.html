@@ -146,30 +146,31 @@
   </script>
 
   <script type="text/plain" id="snippet-a-js">
-const table = document.querySelector('table');
-const headers = table.querySelectorAll('th[aria-sort]');
+document.querySelectorAll('.sortable-table').forEach(table => {
+  const headers = table.querySelectorAll('th[aria-sort]');
 
-headers.forEach(th => {
-  th.querySelector('button').addEventListener('click', () => {
-    const col = [...th.parentElement.children].indexOf(th);
-    const asc = th.getAttribute('aria-sort') !== 'ascending';
+  headers.forEach(th => {
+    th.querySelector('button').addEventListener('click', () => {
+      const col = [...th.parentElement.children].indexOf(th);
+      const asc = th.getAttribute('aria-sort') !== 'ascending';
 
-    headers.forEach(h => h.setAttribute('aria-sort', 'none'));
-    th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+      headers.forEach(h => h.setAttribute('aria-sort', 'none'));
+      th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
 
-    const tbody = table.querySelector('tbody');
-    const rows = [...tbody.querySelectorAll('tr')];
+      const tbody = table.querySelector('tbody');
+      const rows = [...tbody.querySelectorAll('tr')];
 
-    rows.sort((a, b) => {
-      const aVal = a.cells[col].textContent.trim();
-      const bVal = b.cells[col].textContent.trim();
-      const isNum = !isNaN(aVal) && !isNaN(bVal);
-      return asc
-        ? isNum ? aVal - bVal : aVal.localeCompare(bVal)
-        : isNum ? bVal - aVal : bVal.localeCompare(aVal);
+      rows.sort((a, b) => {
+        const aVal = a.cells[col].textContent.trim();
+        const bVal = b.cells[col].textContent.trim();
+        const isNum = !isNaN(aVal) && !isNaN(bVal);
+        return asc
+          ? isNum ? aVal - bVal : aVal.localeCompare(bVal)
+          : isNum ? bVal - aVal : bVal.localeCompare(aVal);
+      });
+
+      rows.forEach(row => tbody.appendChild(row));
     });
-
-    rows.forEach(row => tbody.appendChild(row));
   });
 });
   </script>
@@ -301,13 +302,15 @@ headers.forEach(th => {
   </script>
 
   <script type="text/plain" id="snippet-b-js">
-document.querySelectorAll('button[aria-expanded]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!expanded));
-    btn.closest('tbody').querySelectorAll('.detail-row').forEach(row => {
-      if (!expanded) row.removeAttribute('hidden');
-      else row.setAttribute('hidden', '');
+document.querySelectorAll('.expandable-table').forEach(table => {
+  table.querySelectorAll('button[aria-expanded]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.closest('tbody').querySelectorAll('.detail-row').forEach(row => {
+        if (!expanded) row.removeAttribute('hidden');
+        else row.setAttribute('hidden', '');
+      });
     });
   });
 });

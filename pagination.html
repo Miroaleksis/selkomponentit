@@ -55,16 +55,16 @@
 
   <script type="text/plain" id="snippet-a-html">
 <div class="pagination-wrapper">
-  <p role="status">Page 1 of 5</p>
+  <p role="status" class="pagination-status">Page 1 of 5</p>
   <nav aria-label="Pagination">
     <ol class="pagination">
-      <li><button aria-label="Previous page" disabled></button></li>
+      <li><button class="pagination-prev" aria-label="Previous page" disabled></button></li>
       <li><button aria-label="Page 1" aria-current="page">1</button></li>
       <li><button aria-label="Page 2">2</button></li>
       <li><button aria-label="Page 3">3</button></li>
       <li><button aria-label="Page 4">4</button></li>
       <li><button aria-label="Page 5">5</button></li>
-      <li><button aria-label="Next page"></button></li>
+      <li><button class="pagination-next" aria-label="Next page"></button></li>
     </ol>
   </nav>
 </div>
@@ -100,13 +100,13 @@
   cursor: pointer;
 }
 
-.pagination button[aria-label="Previous page"]::before {
+.pagination-prev::before {
   content: '\f053' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
 }
 
-.pagination button[aria-label="Next page"]::before {
+.pagination-next::before {
   content: '\f054' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
@@ -126,10 +126,10 @@
   </script>
 
   <script type="text/plain" id="snippet-a-js">
-const status = document.querySelector('[role="status"]');
-const prevBtn = document.querySelector('[aria-label="Previous page"]');
-const nextBtn = document.querySelector('[aria-label="Next page"]');
-const pageButtons = Array.from(document.querySelectorAll('.pagination button:not([aria-label="Previous page"]):not([aria-label="Next page"])'));
+const status = document.querySelector('.pagination-status');
+const prevBtn = document.querySelector('.pagination-prev');
+const nextBtn = document.querySelector('.pagination-next');
+const pageButtons = Array.from(document.querySelectorAll('.pagination button:not(.pagination-prev):not(.pagination-next)'));
 const totalPages = pageButtons.length;
 let currentPage = 1;
 

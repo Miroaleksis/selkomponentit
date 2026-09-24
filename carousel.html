@@ -240,76 +240,78 @@
   </script>
 
   <script type="text/plain" id="snippet-a-js">
-const slidesContainer = document.querySelector('.carousel-slides');
-const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-const indicators = Array.from(document.querySelectorAll('.carousel-indicators button'));
-const playBtn = document.querySelector('.carousel-play');
-const prevBtn = document.querySelector('.carousel-prev');
-const nextBtn = document.querySelector('.carousel-next');
-let currentSlide = 0;
-let isPlaying = true;
-let interval;
+document.querySelectorAll('.carousel').forEach(carousel => {
+  const slidesContainer = carousel.querySelector('.carousel-slides');
+  const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+  const indicators = Array.from(carousel.querySelectorAll('.carousel-indicators button'));
+  const playBtn = carousel.querySelector('.carousel-play');
+  const prevBtn = carousel.querySelector('.carousel-prev');
+  const nextBtn = carousel.querySelector('.carousel-next');
+  let currentSlide = 0;
+  let isPlaying = true;
+  let interval;
 
-function goToSlide(index, announce = false) {
-  if (announce) slidesContainer.setAttribute('aria-live', 'polite');
-  slides[currentSlide].setAttribute('inert', '');
-  currentSlide = index;
-  slides[currentSlide].removeAttribute('inert');
-  slidesContainer.scrollLeft = index * slidesContainer.clientWidth;
-  indicators.forEach((btn, i) => {
-    btn.setAttribute('aria-selected', i === index ? 'true' : 'false');
-    btn.setAttribute('tabindex', i === index ? '0' : '-1');
-  });
-  if (announce) setTimeout(() => slidesContainer.setAttribute('aria-live', 'off'), 1000);
-}
-
-function setPlaying(playing) {
-  isPlaying = playing;
-  clearInterval(interval);
-  playBtn.toggleAttribute('data-playing', playing);
-  playBtn.setAttribute('aria-label', playing ? 'Pause auto-rotation' : 'Play auto-rotation');
-  if (playing) {
-    interval = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 3000);
+  function goToSlide(index, announce = false) {
+    if (announce) slidesContainer.setAttribute('aria-live', 'polite');
+    slides[currentSlide].setAttribute('inert', '');
+    currentSlide = index;
+    slides[currentSlide].removeAttribute('inert');
+    slidesContainer.scrollLeft = index * slidesContainer.clientWidth;
+    indicators.forEach((btn, i) => {
+      btn.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      btn.setAttribute('tabindex', i === index ? '0' : '-1');
+    });
+    if (announce) setTimeout(() => slidesContainer.setAttribute('aria-live', 'off'), 1000);
   }
-}
 
-indicators.forEach((btn, i) => {
-  btn.addEventListener('click', () => {
-    goToSlide(i, true);
+  function setPlaying(playing) {
+    isPlaying = playing;
+    clearInterval(interval);
+    playBtn.toggleAttribute('data-playing', playing);
+    playBtn.setAttribute('aria-label', playing ? 'Pause auto-rotation' : 'Play auto-rotation');
+    if (playing) {
+      interval = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 3000);
+    }
+  }
+
+  indicators.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      goToSlide(i, true);
+      if (isPlaying) setPlaying(true);
+    });
+    btn.addEventListener('keydown', (e) => {
+      let next;
+      if (e.key === 'ArrowRight') next = (i + 1) % indicators.length;
+      else if (e.key === 'ArrowLeft') next = (i - 1 + indicators.length) % indicators.length;
+      else return;
+      e.preventDefault();
+      goToSlide(next, true);
+      indicators[next].focus();
+      if (isPlaying) setPlaying(true);
+    });
+  });
+  const indicatorsContainer = carousel.querySelector('.carousel-indicators');
+  indicatorsContainer.addEventListener('focusin', () => clearInterval(interval));
+  indicatorsContainer.addEventListener('focusout', () => {
     if (isPlaying) setPlaying(true);
   });
-  btn.addEventListener('keydown', (e) => {
-    let next;
-    if (e.key === 'ArrowRight') next = (i + 1) % indicators.length;
-    else if (e.key === 'ArrowLeft') next = (i - 1 + indicators.length) % indicators.length;
-    else return;
-    e.preventDefault();
-    goToSlide(next, true);
-    indicators[next].focus();
+
+  playBtn.addEventListener('click', () => setPlaying(!isPlaying));
+  prevBtn.addEventListener('click', () => {
+    goToSlide((currentSlide - 1 + slides.length) % slides.length, true);
     if (isPlaying) setPlaying(true);
   });
-});
-const indicatorsContainer = document.querySelector('.carousel-indicators');
-indicatorsContainer.addEventListener('focusin', () => clearInterval(interval));
-indicatorsContainer.addEventListener('focusout', () => {
-  if (isPlaying) setPlaying(true);
-});
+  nextBtn.addEventListener('click', () => {
+    goToSlide((currentSlide + 1) % slides.length, true);
+    if (isPlaying) setPlaying(true);
+  });
 
-playBtn.addEventListener('click', () => setPlaying(!isPlaying));
-prevBtn.addEventListener('click', () => {
-  goToSlide((currentSlide - 1 + slides.length) % slides.length, true);
-  if (isPlaying) setPlaying(true);
-});
-nextBtn.addEventListener('click', () => {
-  goToSlide((currentSlide + 1) % slides.length, true);
-  if (isPlaying) setPlaying(true);
-});
+  window.addEventListener('resize', () => {
+    slidesContainer.scrollTo({ left: currentSlide * slidesContainer.clientWidth, behavior: 'instant' });
+  });
 
-window.addEventListener('resize', () => {
-  slidesContainer.scrollTo({ left: currentSlide * slidesContainer.clientWidth, behavior: 'instant' });
+  setPlaying(true);
 });
-
-setPlaying(true);
   </script>
   <site-footer></site-footer>
 
