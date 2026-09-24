@@ -57,7 +57,7 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<label>
+<label class="checkbox-label">
   <input type="checkbox">
   I accept the terms and conditions
 </label>
@@ -66,7 +66,7 @@
   <script type="text/plain" id="snippet-a-css">
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
-label {
+.checkbox-label {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -76,7 +76,7 @@ label {
   cursor: pointer;
 }
 
-input {
+.checkbox-label input {
   appearance: none;
   display: inline-flex;
   align-items: center;
@@ -91,7 +91,7 @@ input {
   cursor: pointer;
 }
 
-input:checked::before {
+.checkbox-label input:checked::before {
   content: '\f00c' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
@@ -100,7 +100,7 @@ input:checked::before {
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-<label>
+<label class="switch-label">
   Dark mode
   <span class="switch">
     <input type="checkbox" role="switch">
@@ -109,7 +109,7 @@ input:checked::before {
   </script>
 
   <script type="text/plain" id="snippet-b-css">
-label {
+.switch-label {
   display: flex;
   align-items: center;
   gap: 12px;

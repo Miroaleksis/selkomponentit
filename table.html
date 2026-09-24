@@ -61,7 +61,7 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<table>
+<table class="sortable-table">
   <caption>Products</caption>
   <thead>
     <tr>
@@ -89,7 +89,7 @@
   <script type="text/plain" id="snippet-a-css">
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
-table {
+.sortable-table {
   width: 100%;
   font-family: Verdana, sans-serif;
   font-size: 16px;
@@ -97,26 +97,26 @@ table {
   background: whitesmoke;
 }
 
-caption {
+.sortable-table caption {
   padding-bottom: 12px;
   text-align: left;
   font-weight: bold;
 }
 
-table, th, td {
+.sortable-table, .sortable-table th, .sortable-table td {
   border-collapse: collapse;
   border: 2px solid lightgray;
 }
 
-td, th button {
+.sortable-table td, .sortable-table th button {
   padding: 8px 16px;
 }
 
-th {
+.sortable-table th {
   background: dimgray;
 }
 
-th button {
+.sortable-table th button {
   position: relative;
   display: flex;
   align-items: center;
@@ -129,20 +129,20 @@ th button {
   font-weight: bold;
 }
 
-th[aria-sort="ascending"] button,
-th[aria-sort="descending"] button {
+.sortable-table th[aria-sort="ascending"] button,
+.sortable-table th[aria-sort="descending"] button {
   background: rgb(0 0 0 / 0.2);
   text-decoration: underline;
 }
 
-th button::after {
+.sortable-table th button::after {
   position: absolute;
   right: 16px;
 }
 
-th[aria-sort] button::after {content: '\f0dc' / ''; font-family: 'Font Awesome 6 Free'; font-weight: 900;}
-th[aria-sort="ascending"] button::after  { content: '\f0de' / ''; font-family: 'Font Awesome 6 Free'; font-weight: 900;}
-th[aria-sort="descending"] button::after { content: '\f0dd' / ''; font-family: 'Font Awesome 6 Free'; font-weight: 900;}
+.sortable-table th[aria-sort] button::after {content: '\f0dc' / ''; font-family: 'Font Awesome 6 Free'; font-weight: 900;}
+.sortable-table th[aria-sort="ascending"] button::after  { content: '\f0de' / ''; font-family: 'Font Awesome 6 Free'; font-weight: 900;}
+.sortable-table th[aria-sort="descending"] button::after { content: '\f0dd' / ''; font-family: 'Font Awesome 6 Free'; font-weight: 900;}
   </script>
 
   <script type="text/plain" id="snippet-a-js">
@@ -175,7 +175,7 @@ headers.forEach(th => {
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-<table>
+<table class="expandable-table">
   <caption>Order history</caption>
   <thead>
     <tr>
@@ -236,7 +236,7 @@ headers.forEach(th => {
   <script type="text/plain" id="snippet-b-css">
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
-table {
+.expandable-table {
   width: 100%;
   table-layout: fixed;
   font-family: Verdana, sans-serif;
@@ -245,28 +245,28 @@ table {
   background: whitesmoke;
 }
 
-caption {
+.expandable-table caption {
   padding-bottom: 12px;
   text-align: left;
   font-weight: bold;
 }
 
-table, th, td {
+.expandable-table, .expandable-table th, .expandable-table td {
   border-collapse: collapse;
   border: 2px solid lightgray;
   text-align: left;
 }
 
-th, td {
+.expandable-table th, .expandable-table td {
   padding: 8px 16px;
 }
 
-th:last-child, td:last-child {
+.expandable-table th:last-child, .expandable-table td:last-child {
   padding: 0;
   width: 40px;
 }
 
-td button {
+.expandable-table td button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -280,13 +280,13 @@ td button {
   border: none;
 }
 
-td button::before {
+.expandable-table td button::before {
   content: '\f078' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
 }
 
-th {
+.expandable-table th {
   color: whitesmoke;
   background: dimgray;
 }
@@ -295,7 +295,7 @@ th {
   padding-left: 32px;
 }
 
-button[aria-expanded="true"] {
+.expandable-table button[aria-expanded="true"] {
   transform: rotate(180deg);
 }
   </script>

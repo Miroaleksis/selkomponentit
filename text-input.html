@@ -77,11 +77,11 @@
   color: dimgray;
 }
 
-label {
+.input-wrapper label {
   font-weight: 600;
 }
 
-input {
+.input-wrapper input {
   padding: 8px;
   background: whitesmoke;
   border: 2px solid;
@@ -96,14 +96,14 @@ input {
   font-size: 14px;
 }
 
-input::placeholder {
+.input-wrapper input::placeholder {
   color: gray;
   font-style: italic;
 }
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-<div class="input-wrapper">
+<div class="textarea-wrapper">
   <label for="message-field">Message</label>
   <textarea id="message-field" maxlength="200" rows="4" aria-describedby="message-counter"></textarea>
   <span id="message-counter" class="char-counter">200 characters remaining</span>
@@ -111,7 +111,7 @@ input::placeholder {
   </script>
 
   <script type="text/plain" id="snippet-b-css">
-.input-wrapper {
+.textarea-wrapper {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -120,11 +120,11 @@ input::placeholder {
   color: dimgray;
 }
 
-label {
+.textarea-wrapper label {
   font-weight: 600;
 }
 
-textarea {
+.textarea-wrapper textarea {
   padding: 8px;
   background: whitesmoke;
   border: 2px solid;

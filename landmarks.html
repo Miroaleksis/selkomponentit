@@ -129,7 +129,7 @@
   white-space: nowrap;
 }
 
-header, footer {
+.page-demo header, .page-demo footer {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -147,13 +147,13 @@ header, footer {
   text-decoration: none;
 }
 
-nav {
+.page-demo nav {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
 }
 
-nav a, aside a {
+.page-demo nav a, .page-demo aside a {
   color: inherit;
 }
 
@@ -163,7 +163,7 @@ nav a, aside a {
   gap: 8px;
 }
 
-aside {
+.page-demo aside {
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -174,12 +174,12 @@ aside {
 }
 
 @media (max-width: 900px) {
-  aside {
+  .page-demo aside {
     width: 100%;
   }
 }
 
-aside ul {
+.page-demo aside ul {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -187,7 +187,7 @@ aside ul {
   padding: 0;
 }
 
-main {
+.page-demo main {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -196,14 +196,14 @@ main {
   margin: 0;
 }
 
-section {
+.page-demo section {
   border: 2px dashed lightgray;
   border-radius: 4px;
   padding: 8px;
   margin: 0;
 }
 
-footer {
+.page-demo footer {
   justify-content: center;
 }
   </script>
