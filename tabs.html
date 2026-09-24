@@ -81,14 +81,14 @@
   color: dimgray;
 }
 
-[role="tablist"] {
+.tabs [role="tablist"] {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 8px;
 }
 
-[role="tab"] {
+.tabs [role="tab"] {
   padding: 8px 16px;
   background: whitesmoke;
   border: 2px solid lightgray;
@@ -98,13 +98,13 @@
   font: inherit;
 }
 
-[role="tab"][aria-selected="true"] {
+.tabs [role="tab"][aria-selected="true"] {
   background: dimgray;
   color: whitesmoke;
   border-color: dimgray;
 }
 
-[role="tabpanel"] {
+.tabs [role="tabpanel"] {
   padding: 16px;
   background: whitesmoke;
   border: 2px solid lightgray;
@@ -113,32 +113,34 @@
   </script>
 
   <script type="text/plain" id="snippet-a-js">
-const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
-const panels = document.querySelectorAll('[role="tabpanel"]');
+document.querySelectorAll('.tabs').forEach(container => {
+  const tabs = Array.from(container.querySelectorAll('[role="tab"]'));
+  const panels = container.querySelectorAll('[role="tabpanel"]');
 
-function activateTab(tab) {
-  tabs.forEach(t => {
-    t.setAttribute('aria-selected', 'false');
-    t.setAttribute('tabindex', '-1');
-  });
-  panels.forEach(p => { p.hidden = true; });
-  tab.setAttribute('aria-selected', 'true');
-  tab.setAttribute('tabindex', '0');
-  tab.focus();
-  document.getElementById(tab.getAttribute('aria-controls')).hidden = false;
-}
+  function activateTab(tab) {
+    tabs.forEach(t => {
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    panels.forEach(p => { p.hidden = true; });
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+    tab.focus();
+    document.getElementById(tab.getAttribute('aria-controls')).hidden = false;
+  }
 
-tabs.forEach((tab, index) => {
-  tab.addEventListener('click', () => activateTab(tab));
-  tab.addEventListener('keydown', (e) => {
-    let newIndex;
-    if (e.key === 'ArrowRight') newIndex = (index + 1) % tabs.length;
-    else if (e.key === 'ArrowLeft') newIndex = (index - 1 + tabs.length) % tabs.length;
-    else if (e.key === 'Home') newIndex = 0;
-    else if (e.key === 'End') newIndex = tabs.length - 1;
-    else return;
-    e.preventDefault();
-    activateTab(tabs[newIndex]);
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateTab(tab));
+    tab.addEventListener('keydown', (e) => {
+      let newIndex;
+      if (e.key === 'ArrowRight') newIndex = (index + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft') newIndex = (index - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') newIndex = 0;
+      else if (e.key === 'End') newIndex = tabs.length - 1;
+      else return;
+      e.preventDefault();
+      activateTab(tabs[newIndex]);
+    });
   });
 });
   </script>
