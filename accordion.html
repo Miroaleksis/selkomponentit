@@ -119,7 +119,10 @@
 <div class="custom-accordion">
   <h3>Product description</h3>
   <p>Wireless headphones with active noise cancellation and up to 30 hours of battery life.</p>
-  <p id="more-info" tabindex="-1" hidden>Compatible with Bluetooth 5.3 and available in three colours: black, white and navy. Includes a carrying case and USB-C charging cable. Foldable design for easy storage.</p>
+  <div id="more-info" class="custom-accordion-content" tabindex="-1" aria-hidden="true">
+    <p>Compatible with Bluetooth 5.3 and available in three colours: black, white and navy. Includes a carrying case and USB-C charging cable. Foldable design for easy storage.</p>
+    <p>The ear cushions are made from memory foam for extended comfort, and the headband adjusts to fit most head sizes. A 2-year warranty is included with every purchase.</p>
+  </div>
   <button class="custom-accordion-trigger" aria-expanded="false" aria-controls="more-info">Full description</button>
 </div>
   </script>
@@ -166,6 +169,28 @@
 .custom-accordion-trigger[aria-expanded="true"]::after {
   transform: rotate(180deg);
 }
+
+.custom-accordion p {
+  margin-top: 0;
+}
+
+.custom-accordion-content {
+  overflow: hidden;
+  max-height: 24px;
+  transition: max-height 0.3s ease, -webkit-mask-image 0.3s ease, mask-image 0.3s ease;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+}
+
+.custom-accordion-content p:last-child {
+  margin-bottom: 0;
+}
+
+.custom-accordion-content[aria-hidden="false"] {
+  max-height: 1000px;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
   </script>
 
   <script type="text/plain" id="snippet-b-js">
@@ -174,8 +199,8 @@ document.querySelectorAll('.custom-accordion-trigger').forEach(trigger => {
     const expanded = trigger.getAttribute('aria-expanded') === 'true';
     trigger.setAttribute('aria-expanded', !expanded);
     const content = document.getElementById(trigger.getAttribute('aria-controls'));
-    if (!expanded) { content.removeAttribute('hidden'); content.focus(); }
-    else content.setAttribute('hidden', '');
+    if (!expanded) { content.setAttribute('aria-hidden', 'false'); content.focus(); }
+    else content.setAttribute('aria-hidden', 'true');
   });
 });
   </script>
