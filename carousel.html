@@ -70,16 +70,19 @@
   </div>
   <div class="carousel-slides" aria-live="off" tabindex="-1">
     <div role="tabpanel" aria-roledescription="slide" id="slide-1" aria-labelledby="tab-1" class="carousel-slide">
-      <h3>Headphones</h3>
-      <p>Noise-cancelling sound with up to 30 hours of battery life.</p>
+      <span class="carousel-badge">Sale</span>
+      <h3>Up to 30% Off Headphones</h3>
+      <p>This week only — save on our best-selling noise-cancelling headphones.</p>
     </div>
     <div role="tabpanel" aria-roledescription="slide" id="slide-2" aria-labelledby="tab-2" class="carousel-slide" inert>
-      <h3>Speaker</h3>
-      <p>Fill any room with rich, room-shaking bass wherever you go.</p>
+      <span class="carousel-badge">New</span>
+      <h3>Introducing the TechStore Smart Speaker</h3>
+      <p>Voice-controlled sound for every room, now available in three colours.</p>
     </div>
     <div role="tabpanel" aria-roledescription="slide" id="slide-3" aria-labelledby="tab-3" class="carousel-slide" inert>
-      <h3>Webcam</h3>
-      <p>Sharp, clear video that makes every call look professional.</p>
+      <span class="carousel-badge">Offer</span>
+      <h3>Free Shipping on Orders Over €50</h3>
+      <p>No code needed — the discount is applied automatically at checkout.</p>
     </div>
   </div>
 </section>
@@ -171,13 +174,13 @@
 }
 
 .carousel-prev::before {
-  content: '\f048' / '';
+  content: '\f053' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
 }
 
 .carousel-next::before {
-  content: '\f051' / '';
+  content: '\f054' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
 }
@@ -193,11 +196,40 @@
   max-width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  padding: 28px 64px;
+  padding: 28px 80px;
   min-height: 240px;
   background: whitesmoke;
   box-sizing: border-box;
+}
+
+.carousel-slide h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.carousel-badge {
+  padding: 2px 10px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: dimgray;
+  color: whitesmoke;
+}
+
+.carousel-slide:nth-child(1) .carousel-badge {
+  background: darkred;
+}
+
+.carousel-slide:nth-child(2) .carousel-badge {
+  background: darkgreen;
+}
+
+.carousel-slide:nth-child(3) .carousel-badge {
+  background: midnightblue;
 }
 
 @media (max-width: 561px) {
@@ -271,6 +303,10 @@ prevBtn.addEventListener('click', () => {
 nextBtn.addEventListener('click', () => {
   goToSlide((currentSlide + 1) % slides.length, true);
   if (isPlaying) setPlaying(true);
+});
+
+window.addEventListener('resize', () => {
+  slidesContainer.scrollTo({ left: currentSlide * slidesContainer.clientWidth, behavior: 'instant' });
 });
 
 setPlaying(true);

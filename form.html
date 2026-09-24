@@ -116,6 +116,7 @@
 .form-error {
   display: none;
   font-size: 14px;
+  color: darkred;
 }
 
 .form-error::before {
@@ -125,7 +126,8 @@
   margin-right: 4px;
 }
 
-.form-field:has(:user-invalid) {
+.form-field input:user-invalid,
+.form-field textarea:user-invalid {
   color: darkred;
 }
 
