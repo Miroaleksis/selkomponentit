@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -36,6 +36,7 @@
           <li aria-description="Required">Use <code>&lt;button&gt;</code> for the controls when the stepper navigates dynamically without a page reload. Use <code>&lt;a&gt;</code> when each step has its own URL</li>
           <li aria-description="Required">When the user navigates to a new step, the keyboard focus must be moved to the beginning of the step content. If the element that receives focus is not a focusable element by default, it must have a <code>tabindex="-1"</code></li>
           <li aria-description="Required">If the stepper is long, it must scale to mobile screens without overflowing. One way to achieve this is by stacking the steps vertically on smaller screens</li>
+          <li aria-description="Required">Completed steps must announce their state to screen readers. This can be done, for example, using a visually hidden text element</li>
           <li aria-description="Recommended">An ordered list (<code>&lt;ol&gt;</code>) should be used to identify the stepper as a list of steps and to communicate the total number of steps to screen readers</li>
           <li aria-description="Recommended">Step state (completed, current, upcoming) is conveyed through icon, font weight and disabled state, not by colour alone</li>
         </ul>
@@ -169,7 +170,18 @@
   z-index: 1;
 }
 
-.step-indicator.is-complete {
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.step-indicator.is-complete::before {
+  content: '\f00c' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
 }
@@ -199,6 +211,7 @@
 .stepper-buttons {
   display: flex;
   gap: 8px;
+  justify-content: space-between;
 }
 
 .stepper-buttons button {
@@ -209,15 +222,12 @@
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
+  min-width: 104px;
 }
 
 .stepper-buttons button:disabled {
   opacity: 0.4;
   cursor: default;
-}
-
-.stepper-buttons .step-submit {
-  background: darkgreen;
 }
 
 @media (max-width: 560px) {
@@ -261,8 +271,12 @@ document.querySelectorAll('.stepper-container').forEach(container => {
     if (i < currentStep) {
       btn.removeAttribute('aria-current');
       btn.disabled = false;
-      indicator.textContent = '';
+      indicator.textContent = '';
       indicator.classList.add('is-complete');
+      const status = document.createElement('span');
+      status.className = 'visually-hidden';
+      status.textContent = 'Completed';
+      indicator.appendChild(status);
     } else if (i === currentStep) {
       btn.setAttribute('aria-current', 'step');
       btn.disabled = false;
