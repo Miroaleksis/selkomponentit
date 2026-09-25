@@ -57,8 +57,8 @@
 
   <script type="text/plain" id="snippet-a-html">
 <div class="stepper-container">
-    <nav aria-label="Form progress">
-      <ol class="stepper">
+    <nav aria-label="Form progress" class="stepper">
+      <ol>
         <li><button aria-current="step"><span class="step-indicator">1</span> <span class="step-label">Account details</span></button></li>
         <li><button disabled><span class="step-indicator">2</span> <span class="step-label">Personal information</span></button></li>
         <li><button disabled><span class="step-indicator">3</span> <span class="step-label">Payment</span></button></li>
@@ -100,7 +100,7 @@
   color: dimgray;
 }
 
-.stepper {
+.stepper ol {
   list-style: none;
   display: flex;
   padding: 0;
@@ -216,7 +216,7 @@
 }
 
 @media (max-width: 560px) {
-  .stepper {
+  .stepper ol {
     flex-direction: column;
     gap: 32px;
   }

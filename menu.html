@@ -77,8 +77,8 @@
   </div>
 
   <script type="text/plain" id="snippet-a-html">
-<nav aria-label="Main menu">
-  <ul class="menu">
+<nav aria-label="Main menu" class="menu">
+  <ul>
     <li><a href="#" aria-current="page">Home</a></li>
     <li>
       <button aria-expanded="false">Products</button>
@@ -107,11 +107,6 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
 .menu {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
   font-family: Verdana, sans-serif;
   font-size: 16px;
   color: dimgray;
@@ -120,7 +115,15 @@
   border-radius: 4px;
 }
 
-.menu > li {
+.menu > ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+.menu > ul > li {
   position: relative;
 }
 
@@ -193,7 +196,7 @@
 }
 
 @media (max-width: 560px) {
-  .menu {
+  .menu > ul {
     flex-direction: column;
     gap: 0;
   }
@@ -215,7 +218,7 @@
 
   <script type="text/plain" id="snippet-a-js">
 document.querySelectorAll('.menu').forEach(menu => {
-  const buttons = menu.querySelectorAll(':scope > li > button');
+  const buttons = menu.querySelectorAll(':scope > ul > li > button');
 
   function closeAll() {
     buttons.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
@@ -240,8 +243,8 @@ document.querySelectorAll('.menu').forEach(menu => {
   </script>
 
   <script type="text/plain" id="snippet-b-html">
-<nav aria-label="Main menu">
-  <ul class="link-menu">
+<nav aria-label="Main menu" class="link-menu">
+  <ul>
     <li><a href="#" aria-current="page">Home</a></li>
     <li>
       <a href="#" id="products-link">Products</a>
@@ -272,11 +275,6 @@ document.querySelectorAll('.menu').forEach(menu => {
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
 .link-menu {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
   font-family: Verdana, sans-serif;
   font-size: 16px;
   color: dimgray;
@@ -285,7 +283,15 @@ document.querySelectorAll('.menu').forEach(menu => {
   border-radius: 4px;
 }
 
-.link-menu > li {
+.link-menu > ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+.link-menu > ul > li {
   position: relative;
   display: flex;
   align-items: center;
@@ -336,14 +342,14 @@ document.querySelectorAll('.menu').forEach(menu => {
   text-underline-offset: 4px;
 }
 
-.link-menu > li > button::after {
+.link-menu > ul > li > button::after {
   content: '\f078' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
   transition: transform 0.2s ease;
 }
 
-.link-menu > li > button[aria-expanded="true"]::after {
+.link-menu > ul > li > button[aria-expanded="true"]::after {
   transform: rotate(180deg);
 }
 
@@ -368,11 +374,11 @@ document.querySelectorAll('.menu').forEach(menu => {
 
 @media (min-width: 561px) {
 
-  .link-menu > li > a:hover ~ button::after {
+  .link-menu > ul > li > a:hover ~ button::after {
     transform: rotate(180deg);
   }
 
-  .link-menu > li > a:hover ~ .submenu,
+  .link-menu > ul > li > a:hover ~ .submenu,
   .submenu:hover {
     display: block;
   }
@@ -385,17 +391,17 @@ document.querySelectorAll('.menu').forEach(menu => {
 }
 
 @media (max-width: 560px) {
-  .link-menu {
+  .link-menu > ul {
     flex-direction: column;
     gap: 0;
   }
 
-  .link-menu > li {
+  .link-menu > ul > li {
     justify-content: space-between;
     flex-wrap: wrap;
   }
 
-  .link-menu > li > a {
+  .link-menu > ul > li > a {
     flex: 1;
   }
 
@@ -413,7 +419,7 @@ document.querySelectorAll('.menu').forEach(menu => {
 
   <script type="text/plain" id="snippet-b-js">
 document.querySelectorAll('.link-menu').forEach(menu => {
-  const buttons = menu.querySelectorAll(':scope > li > button');
+  const buttons = menu.querySelectorAll(':scope > ul > li > button');
 
   function closeAll() {
     buttons.forEach(btn => {
@@ -437,7 +443,7 @@ document.querySelectorAll('.link-menu').forEach(menu => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeAll();
-      menu.querySelectorAll(':scope > li:hover .submenu').forEach(s => {
+      menu.querySelectorAll(':scope > ul > li:hover .submenu').forEach(s => {
         s.style.display = 'none';
       });
     }
@@ -454,8 +460,8 @@ document.querySelectorAll('.link-menu').forEach(menu => {
   <button class="hb-open" aria-label="Open main menu" aria-haspopup="dialog"></button>
   <dialog id="hb-dialog" class="hb-dialog">
     <button class="hb-close" aria-label="Close main menu"></button>
-    <nav aria-label="Main">
-      <ul class="hb-menu">
+    <nav aria-label="Main" class="hb-menu">
+      <ul>
         <li><a href="#" aria-current="page">Home</a></li>
         <li><a href="#">Products</a></li>
         <li><a href="#">Resources</a></li>
@@ -500,27 +506,23 @@ document.querySelectorAll('.link-menu').forEach(menu => {
   color: inherit;
 }
 
-.hb-open {
+.hb-open, .hb-close {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: inherit;
 }
 
 .hb-close {
   position: absolute;
   top: 8px;
   right: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
 }
 
 .hb-open::before {
   content: '\f0c9' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
-  font-size: 24px;
 }
 
 .hb-close::before {
@@ -547,7 +549,7 @@ document.querySelectorAll('.link-menu').forEach(menu => {
   overflow-y: auto;
 }
 
-.hb-menu {
+.hb-menu > ul {
   list-style: none;
   padding: 8px 0;
   margin: 0;

@@ -56,8 +56,8 @@
   <script type="text/plain" id="snippet-a-html">
 <div class="pagination-wrapper">
   <p role="status" class="pagination-status">Page 1 of 5</p>
-  <nav aria-label="Pagination">
-    <ol class="pagination">
+  <nav aria-label="Pagination" class="pagination">
+    <ol>
       <li><button class="pagination-prev" aria-label="Previous page" disabled></button></li>
       <li><button aria-label="Page 1" aria-current="page">1</button></li>
       <li><button aria-label="Page 2">2</button></li>
@@ -79,7 +79,7 @@
   color: dimgray;
 }
 
-.pagination {
+.pagination > ol {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
