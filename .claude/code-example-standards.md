@@ -4,12 +4,26 @@ This document defines the rules for CSS/HTML/JS in the site's code examples (the
 
 ---
 
+## Why these rules exist
+
+1. The patterns are designed so that a customer can put them to use on the same page without their code conflicting with each other. In practice, it should be possible to build a rudimentary website out of nothing but these patterns without anyone needing to modify their logic. This covers different patterns coexisting on one page (e.g. a dialog and a hamburger menu on the same page) and the same component being repeated (e.g. two carousels on the same page).
+2. Examples are meant to work standalone outside this site (e.g. pasted into CodePen), without relying on this site's own CSS or infrastructure. This can't be a hard guarantee against every possible external inheritance, but the example's own styling must be self-contained rather than depending on anything specific to this documentation site.
+3. Examples are teaching material for users who read them to learn "the right way" to build these patterns. For this reason, HTML is meant above all to be understandable by reading it directly: markup should communicate its own structure and relationships without requiring the reader to trace through JavaScript to understand what an attribute refers to or why an element exists. The same reasoning extends to code as a whole: it must stay minimal, free of unnecessary complexity, and must never demonstrate misleading functionality.
+4. Consistency lets knowledge transfer from one example to another. If the same underlying problem is solved differently in two different examples (e.g. a dialog and a hamburger menu using different logic for the same mechanism), it reads to the developer as an arbitrary choice rather than a deliberate principle, and it blocks that transfer of understanding from one pattern to the next.
+
+---
+
 ## 1. CSS scoping
 
 - Never write a bare tag or attribute selector in an example's CSS (e.g. `label {}`, `button {}`, `[role="alert"] {}`). Every selector must be scoped either through an ancestor class or through a class on the element itself.
 - Never use an `id` as a CSS selector. IDs may change for functional reasons (JS references, `aria-controls`, etc.) — all visual styling goes through classes.
 - A class name describes what the element **is**, not what it does or looks like, and should make sense read in isolation.
-- Don't add a class to a child element if it can be reached through an existing ancestor class instead (e.g. `.card-body h4` instead of a dedicated `.card-title` class) — but see section 6 for when a dedicated class is actually required.
+- A class name should only be given to an element when it falls into one of these three cases; otherwise the element must be named through its parent instead (e.g. `.menu > ul > li`, `.card-body h4`):
+  1. **The example's top-level wrapper** (e.g. `.stepper-container`, a label-like container). This prevents anything inside it from accidentally inheriting styling from outside the example.
+  2. **The main element being demonstrated** (e.g. `.menu`, `.pagination`). Its own parent is often just a situational demo wrapper (e.g. `.product` on the alert page) and must not be the styling anchor for the actual pattern being taught.
+  3. **An element with a unique purpose among its siblings** that can't be targeted any other way (e.g. `.pagination-next` among a list of otherwise-identical page-number buttons).
+  - See section 6 for the related rule on decorative filler vs. the actual taught pattern.
+  - When both a top-level wrapper (case 1) and a main element (case 2) exist, descendant styling anchors to the main element, not the top-level wrapper — even if the wrapper is a valid ancestor too (e.g. with `.menu-container` and `.menu` both present, list items are `.menu ul`, not `.menu-container ul`).
 - When two closely related variants exist in the same file (e.g. two menu examples, two table examples), give each variant its own distinct class — don't share one class across structurally/visually different implementations.
 
 ## 2. Semantic element vs. its internal markup
@@ -37,7 +51,7 @@ Two categories emerged, and they're handled differently:
 - **Repeatable content components** — cards, carousel, tabs, sortable/expandable tables, tooltip, menu. These can realistically appear more than once on the same real page (e.g. two independent product carousels). Their JS must be fully scoped with the `.component` `forEach` pattern from section 3.
 - **Singular per-page components** — alert/status notifications tied to one action, a stepper/wizard, a modal dialog, a hamburger menu. A real page essentially never shows two of these at once (a user completes one wizard or one destructive-action confirmation at a time). These may reference their own elements directly with `getElementById`, without a `forEach` wrapper — building generic multi-instance scaffolding for them is premature abstraction.
 - Before deciding a component belongs in the singular category, sanity-check the *frequency* argument specifically (would a real page realistically show two of these at once?), not a *content-uniqueness* argument (different instances having different text/content is normal for repeatable components too, e.g. cards, and doesn't by itself justify treating something as singular).
-- A singular component can still open a **generic** shared mechanism for the part of its behavior that doesn't need to know which specific instance it is — see section 5.
+- A singular component can still use a **generic** shared mechanism for the part of its behavior that doesn't need to know which specific instance it is — see section 5.
 
 ## 5. Trigger → distant-target relationships
 
