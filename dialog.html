@@ -56,12 +56,12 @@
   <script type="text/plain" id="snippet-a-html">
 <button class="btn" id="open-delete-account" aria-haspopup="dialog">Delete account</button>
 <dialog id="delete-account-dialog" aria-labelledby="dialog-title" class="dialog">
-  <button class="btn close-btn" id="close-dialog" aria-label="Close"></button>
+  <button class="btn close-btn" aria-label="Close"></button>
   <h3 id="dialog-title">Delete account</h3>
   <p>This will permanently delete your account and all associated data. This action cannot be undone.</p>
   <div class="dialog-actions">
-    <button class="btn confirm-btn" id="confirm-delete">Delete account</button>
-    <button class="btn cancel-btn" id="cancel-delete">Cancel</button>
+    <button class="btn confirm-btn">Delete account</button>
+    <button class="btn cancel-btn">Cancel</button>
   </div>
 </dialog>
   </script>
@@ -147,19 +147,24 @@
   </script>
 
   <script type="text/plain" id="snippet-a-js">
+const dialogOpeners = new WeakMap();
+
 const deleteAccountDialog = document.getElementById('delete-account-dialog');
 
-document.getElementById('open-delete-account').addEventListener('click', () => {
+document.getElementById('open-delete-account').addEventListener('click', (e) => {
+  dialogOpeners.set(deleteAccountDialog, e.currentTarget);
   deleteAccountDialog.showModal();
-});
-
-document.getElementById('confirm-delete').addEventListener('click', () => {
-  deleteAccountDialog.close();
 });
 
 document.querySelectorAll('.close-btn, .cancel-btn').forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.target.closest('dialog').close();
+  });
+});
+
+document.querySelectorAll('dialog').forEach(dialog => {
+  dialog.addEventListener('close', () => {
+    dialogOpeners.get(dialog)?.focus();
   });
 });
   </script>

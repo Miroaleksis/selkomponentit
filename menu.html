@@ -457,7 +457,7 @@ document.querySelectorAll('.link-menu').forEach(menu => {
   <script type="text/plain" id="snippet-c-html">
 <header class="hb-header">
   <a href="#" class="hb-logo">TechStore</a>
-  <button class="hb-open" aria-label="Open main menu" aria-haspopup="dialog"></button>
+  <button class="hb-open" id="hb-open" aria-label="Open main menu" aria-haspopup="dialog"></button>
   <dialog id="hb-dialog" class="hb-dialog">
     <button class="hb-close" aria-label="Close main menu"></button>
     <nav aria-label="Main" class="hb-menu">
@@ -576,22 +576,30 @@ document.querySelectorAll('.link-menu').forEach(menu => {
   </script>
 
   <script type="text/plain" id="snippet-c-js">
-const openBtn = document.querySelector('.hb-open');
-const closeBtn = document.querySelector('.hb-close');
+const dialogOpeners = new WeakMap();
+
 const dialog = document.getElementById('hb-dialog');
 
-openBtn.addEventListener('click', () => {
+document.getElementById('hb-open').addEventListener('click', (e) => {
+  dialogOpeners.set(dialog, e.currentTarget);
   dialog.showModal();
-  closeBtn.focus();
 });
-
-closeBtn.addEventListener('click', () => dialog.close());
 
 dialog.addEventListener('click', (e) => {
   if (e.target === dialog) dialog.close();
 });
 
-dialog.addEventListener('close', () => openBtn.focus());
+document.querySelectorAll('.hb-close').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.target.closest('dialog').close();
+  });
+});
+
+document.querySelectorAll('dialog').forEach(d => {
+  d.addEventListener('close', () => {
+    dialogOpeners.get(d)?.focus();
+  });
+});
   </script>
 
   <site-footer></site-footer>
