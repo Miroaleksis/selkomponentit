@@ -84,6 +84,7 @@
     <div class="stepper-buttons">
       <button class="step-prev">Previous</button>
       <button class="step-next">Next</button>
+      <button type="submit" class="step-submit" hidden>Submit</button>
     </div>
 </div>
   </script>
@@ -215,6 +216,10 @@
   cursor: default;
 }
 
+.stepper-buttons .step-submit {
+  background: darkgreen;
+}
+
 @media (max-width: 560px) {
   .stepper ol {
     flex-direction: column;
@@ -246,6 +251,7 @@ document.querySelectorAll('.stepper-container').forEach(container => {
   const panels = Array.from(container.querySelectorAll('.step-panel'));
   const prevBtn = container.querySelector('.step-prev');
   const nextBtn = container.querySelector('.step-next');
+  const submitBtn = container.querySelector('.step-submit');
   let currentStep = 0;
 
   function goToStep(step) {
@@ -273,7 +279,9 @@ document.querySelectorAll('.stepper-container').forEach(container => {
     panel.hidden = i !== currentStep;
   });
   prevBtn.disabled = currentStep === 0;
-  nextBtn.disabled = currentStep === stepButtons.length - 1;
+  const isLastStep = currentStep === stepButtons.length - 1;
+  nextBtn.hidden = isLastStep;
+  submitBtn.hidden = !isLastStep;
 }
 
 stepButtons.forEach((btn, i) => {
