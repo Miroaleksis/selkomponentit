@@ -4,6 +4,8 @@ This document defines review perspectives for the Accessibly HTML pattern librar
 
 **Important: Reviews are read-only. Do not modify any files during a review. Report all findings as comments in the chat only.**
 
+**Before starting, confirm with the user exactly which review area(s) and perspective(s) to run (e.g. "Code Example Reviews > Developer Perspective"). Don't assume every perspective should be checked at once — the user usually wants one specific area reviewed at a time.**
+
 ---
 
 ## Site Reviews
@@ -27,12 +29,12 @@ Check that the page text is well-written and consistent across the site:
 - Similar descriptions across pages follow consistent sentence structures — the same concept should be expressed the same way (e.g. if one page says "X must have `aria-expanded`", another page should not say "X is implemented with `aria-expanded`")
 
 ### Developer Perspective
-Check that the code examples shown on the site are correct and idiomatic from a developer's point of view:
-- HTML is semantic and well-structured
-- JavaScript is readable, minimal, and uses modern conventions (no unnecessary abstractions, no outdated patterns)
-- CSS is clean and uses appropriate selectors
-- Attribute usage matches the HTML specification
-- No unnecessary complexity or redundancy
+Check that the site's own code (not the code examples) is correct and idiomatic from a developer's point of view:
+- The site's own JavaScript (e.g. `example-page.js`, `common.js`) is readable, minimal, and uses modern conventions (no unnecessary abstractions, no outdated patterns)
+- The site's own CSS (`styles.css`) is clean and uses appropriate selectors
+- The site's own HTML (page templates, layout markup — not the example snippets) is semantic and well-structured
+- No unnecessary complexity or redundancy in the site's own implementation
+- Search for and report dead code (unused CSS rules, unreachable JS branches, unused functions/variables, HTML elements that serve no purpose)
 
 ---
 
@@ -47,18 +49,7 @@ Check that the code examples themselves meet WCAG standards — they are the pri
 - Focus management is handled where needed
 
 ### Developer Perspective
-Check that the code examples are well-crafted from a developer's point of view:
-- HTML structure is clean and minimal
-- No dead code — unused CSS rules, unreachable JS branches, or HTML elements that serve no purpose
-- JavaScript is readable and appropriately minimal — no unnecessary abstractions or over-engineering
-- CSS selectors are appropriate and not overly specific
-- Attribute names and values are correct per the HTML/ARIA spec
-- Examples follow the patterns established in other examples on the site
-- CSS class names are unique across all examples — if all examples' CSS were combined into one stylesheet, there must be no naming conflicts. Each example should use a distinct prefix or namespace for its classes (e.g. `hb-` for hamburger menu)
-- CSS class names must be semantically appropriate for the element they describe — a class name should reflect what the element **is**, not what it looks like or what action it performs. A name should make sense in isolation, without needing to read the surrounding code
-- Avoid unnecessary class names — if a parent element already has a unique class, child elements can often be targeted with descendant or child selectors instead of adding their own class (e.g. `.hb-dialog nav` instead of `.hb-nav`)
-- Never use IDs as CSS selectors — IDs may change for functional reasons (JS references, `aria-controls`, etc.), so all visual styling must go through classes
-- Similar patterns must be implemented and named consistently — if two patterns work on the same principle (e.g. a dialog and a hamburger menu panel), their HTML structure, JavaScript logic, and class naming conventions should follow the same pattern so a developer reading both examples recognises the same approach and can transfer knowledge between them
+Check that the code examples comply with the rules in `.claude/code-example-standards.md`. Read that document and verify each example against it — do not use a separate checklist here.
 
 ### Visual Consistency Perspective
 Check that the code examples are visually consistent with each other:

@@ -43,3 +43,8 @@ This document defines the rules for CSS/HTML/JS in the site's code examples (the
 - A class name describes what the element **is**, not what it does or looks like, and should make sense read in isolation.
 - When a pattern has closely related variants (e.g. combobox-search and combobox-multiselect-search), their class names must follow the same naming scheme consistently — e.g. if combobox-search uses `cs-trigger`, the multiselect variant should use an analogous prefix like `cms-trigger`, not an unrelated name. More generally, however a pattern's classes are named, that naming style should stay consistent with how other, similar patterns on the site are named.
 
+## 4. Code quality and consistency
+
+- Every CSS rule, JS function/branch, and HTML element must serve a purpose. Remove unused selectors, unreachable code paths, and markup that nothing references.
+- When a pattern has closely related variants, or when two different patterns work on the same underlying principle, their HTML structure and JS logic must follow the same approach consistently — a developer reading two such examples should recognise the same technique and be able to transfer understanding between them.
+
