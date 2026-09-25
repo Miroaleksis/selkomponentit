@@ -34,7 +34,7 @@
           <li aria-description="Required"><code>aria-current="step"</code> identifies the current step</li>
           <li aria-description="Required">Upcoming step controls are marked <code>disabled</code>, so screen readers and keyboard users know they cannot yet be navigated to</li>
           <li aria-description="Required">Use <code>&lt;button&gt;</code> for the controls when the stepper navigates dynamically without a page reload. Use <code>&lt;a&gt;</code> when each step has its own URL</li>
-          <li aria-description="Required">A <code>role="status"</code> element must be used to announce the current step to screen readers when updated dynamically (required only when the page does not reload)</li>
+          <li aria-description="Required">When the user navigates to a new step, the keyboard focus must be moved to the beginning of the step content. If the element that receives focus is not a focusable element by default, it must have a <code>tabindex="-1"</code></li>
           <li aria-description="Required">If the stepper is long, it must scale to mobile screens without overflowing. One way to achieve this is by stacking the steps vertically on smaller screens</li>
           <li aria-description="Recommended">An ordered list (<code>&lt;ol&gt;</code>) should be used to identify the stepper as a list of steps and to communicate the total number of steps to screen readers</li>
           <li aria-description="Recommended">Step state (completed, current, upcoming) is conveyed through icon, font weight and disabled state, not by colour alone</li>
@@ -65,12 +65,25 @@
         <li><button disabled><span class="step-indicator">4</span> <span class="step-label">Confirmation</span></button></li>
       </ol>
     </nav>
-    <div class="stepper-navigation">
-      <div role="status" id="step-description">Step 1: Account details</div>
-      <div class="stepper-buttons">
-        <button id="prev-step">Previous</button>
-        <button id="next-step">Next</button>
-      </div>
+    <div class="step-panel">
+      <h3 tabindex="-1">Account details</h3>
+      <p>Enter your email address and choose a password to create your account.</p>
+    </div>
+    <div class="step-panel" hidden>
+      <h3 tabindex="-1">Personal information</h3>
+      <p>Tell us your name and shipping address so we can deliver your order.</p>
+    </div>
+    <div class="step-panel" hidden>
+      <h3 tabindex="-1">Payment</h3>
+      <p>Add a payment method to complete your purchase.</p>
+    </div>
+    <div class="step-panel" hidden>
+      <h3 tabindex="-1">Confirmation</h3>
+      <p>Review your order details before submitting.</p>
+    </div>
+    <div class="stepper-buttons">
+      <button class="step-prev">Previous</button>
+      <button class="step-next">Next</button>
     </div>
 </div>
   </script>
@@ -81,6 +94,7 @@
 .stepper-container {
   display: flex;
   flex-direction: column;
+  gap: 32px;
   font-family: Verdana, sans-serif;
   font-size: 16px;
   color: dimgray;
@@ -90,7 +104,7 @@
   list-style: none;
   display: flex;
   padding: 0;
-  margin-bottom: 24px;
+  margin: 0;
   gap: 8px;
 }
 
@@ -166,13 +180,19 @@
   border-color: dimgray;
 }
 
-.stepper-navigation {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 24px;
+.step-panel {
+  padding: 16px;
+  background: whitesmoke;
+  border: 2px solid lightgray;
+  border-radius: 4px;
+}
+
+.step-panel h3 {
+  margin-top: 0;
+}
+
+.step-panel p {
+  margin-bottom: 0;
 }
 
 .stepper-buttons {
@@ -180,7 +200,7 @@
   gap: 8px;
 }
 
-.stepper-navigation button {
+.stepper-buttons button {
   font: inherit;
   color: whitesmoke;
   background: dimgray;
@@ -190,7 +210,7 @@
   cursor: pointer;
 }
 
-.stepper-navigation button:disabled {
+.stepper-buttons button:disabled {
   opacity: 0.4;
   cursor: default;
 }
@@ -221,14 +241,15 @@
   </script>
 
   <script type="text/plain" id="snippet-a-js">
-const stepButtons = Array.from(document.querySelectorAll('.stepper button'));
-const prevBtn = document.getElementById('prev-step');
-const nextBtn = document.getElementById('next-step');
-const stepDescription = document.getElementById('step-description');
-let currentStep = 0;
+document.querySelectorAll('.stepper-container').forEach(container => {
+  const stepButtons = Array.from(container.querySelectorAll('.stepper button'));
+  const panels = Array.from(container.querySelectorAll('.step-panel'));
+  const prevBtn = container.querySelector('.step-prev');
+  const nextBtn = container.querySelector('.step-next');
+  let currentStep = 0;
 
-function goToStep(step) {
-  currentStep = step;
+  function goToStep(step) {
+    currentStep = step;
   stepButtons.forEach((btn, i) => {
     const indicator = btn.querySelector('.step-indicator');
     if (i < currentStep) {
@@ -248,19 +269,27 @@ function goToStep(step) {
       indicator.classList.remove('is-complete');
     }
   });
+  panels.forEach((panel, i) => {
+    panel.hidden = i !== currentStep;
+  });
   prevBtn.disabled = currentStep === 0;
   nextBtn.disabled = currentStep === stepButtons.length - 1;
-
-  const label = stepButtons[currentStep].querySelector('.step-label').textContent;
-  stepDescription.textContent = 'Step ' + (currentStep + 1) + ': ' + label;
 }
 
 stepButtons.forEach((btn, i) => {
   btn.addEventListener('click', () => goToStep(i));
 });
 
-prevBtn.addEventListener('click', () => goToStep(currentStep - 1));
-nextBtn.addEventListener('click', () => goToStep(currentStep + 1));
+prevBtn.addEventListener('click', () => {
+  goToStep(currentStep - 1);
+  panels[currentStep].querySelector('h3').focus();
+});
+
+nextBtn.addEventListener('click', () => {
+  goToStep(currentStep + 1);
+  panels[currentStep].querySelector('h3').focus();
+});
+});
   </script>
   <site-footer></site-footer>
 
