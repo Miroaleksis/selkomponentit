@@ -6,6 +6,8 @@ This document defines review perspectives for the Accessibly HTML pattern librar
 
 **Before starting, confirm with the user exactly which review area(s) and perspective(s) to run (e.g. "Code Example Reviews > Developer Perspective"). Don't assume every perspective should be checked at once — the user usually wants one specific area reviewed at a time.**
 
+**Report honestly. Don't invent issues that aren't actually there just to have something to report, and don't flatter the user by claiming something is fine when it isn't.**
+
 ---
 
 ## Site Reviews
