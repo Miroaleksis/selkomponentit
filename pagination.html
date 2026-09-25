@@ -126,32 +126,34 @@
   </script>
 
   <script type="text/plain" id="snippet-a-js">
-const status = document.querySelector('.pagination-status');
-const prevBtn = document.querySelector('.pagination-prev');
-const nextBtn = document.querySelector('.pagination-next');
-const pageButtons = Array.from(document.querySelectorAll('.pagination button:not(.pagination-prev):not(.pagination-next)'));
-const totalPages = pageButtons.length;
-let currentPage = 1;
+document.querySelectorAll('.pagination-wrapper').forEach(wrapper => {
+  const status = wrapper.querySelector('.pagination-status');
+  const prevBtn = wrapper.querySelector('.pagination-prev');
+  const nextBtn = wrapper.querySelector('.pagination-next');
+  const pageButtons = Array.from(wrapper.querySelectorAll('.pagination button:not(.pagination-prev):not(.pagination-next)'));
+  const totalPages = pageButtons.length;
+  let currentPage = 1;
 
-function goToPage(page) {
-  currentPage = page;
+  function goToPage(page) {
+    currentPage = page;
+    pageButtons.forEach((btn, i) => {
+      if (i + 1 === currentPage) {
+        btn.setAttribute('aria-current', 'page');
+      } else {
+        btn.removeAttribute('aria-current');
+      }
+    });
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages;
+    status.textContent = 'Page ' + currentPage + ' of ' + totalPages;
+  }
+
   pageButtons.forEach((btn, i) => {
-    if (i + 1 === currentPage) {
-      btn.setAttribute('aria-current', 'page');
-    } else {
-      btn.removeAttribute('aria-current');
-    }
+    btn.addEventListener('click', () => goToPage(i + 1));
   });
-  prevBtn.disabled = currentPage === 1;
-  nextBtn.disabled = currentPage === totalPages;
-  status.textContent = 'Page ' + currentPage + ' of ' + totalPages;
-}
-
-pageButtons.forEach((btn, i) => {
-  btn.addEventListener('click', () => goToPage(i + 1));
+  prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+  nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
 });
-prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
-nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
   </script>
   <site-footer></site-footer>
 
