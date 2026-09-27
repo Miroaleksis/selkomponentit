@@ -22,13 +22,20 @@ Check that the site itself meets WCAG 2.1 AA requirements. Use the `accessibilit
 - Form labels and error messages are properly associated
 
 ### Content Perspective
-Check that the page text is well-written and consistent across the site:
+Check that the page text is well-written and consistent across the site.
+
+#### General
 - Wording is consistent (e.g. same terms used for same concepts across pages)
-- Sentences are grammatically correct English
+- Sentences are grammatically correct English, paying particular attention to:
+  - Article usage (a/an/the)
+  - Preposition usage (in/on/at/for/by, etc.)
+  - Comma and other punctuation usage
 - Descriptions are concise and informative — not too long, not too vague
-- Accessibility feature list items follow a consistent pattern and level of detail
+- Text avoids AI-sounding or overly sophisticated sentence constructions — in particular, no em dashes unless strictly necessary, no semicolons, and no other similarly "polished" punctuation or phrasing that reads as machine-generated rather than plain human technical writing
 - Page titles, h1s, and descriptions are aligned in meaning
-- Similar descriptions across pages follow consistent sentence structures — the same concept should be expressed the same way (e.g. if one page says "X must have `aria-expanded`", another page should not say "X is implemented with `aria-expanded`")
+
+#### Accessibility Features
+- Accessibility feature list items comply with `.claude/accessibility-features-style.md` — read that document and check items against it directly, not a separate checklist here
 
 ### Developer Perspective
 Check that the site's own code (not the code examples) is correct and idiomatic from a developer's point of view:

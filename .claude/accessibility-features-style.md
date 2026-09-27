@@ -4,6 +4,14 @@ Rules for the "Accessibility Features" list items (`<li aria-description="Requir
 
 ---
 
+## Why these rules exist
+
+1. Consistent wording lets a reader build one mental model of the site's terminology instead of re-learning slightly different phrasing on every page. If the same ARIA relationship is worded differently from page to page, the reader can no longer recognise it as the same recurring pattern.
+2. This site is itself an accessibility guide, so its own language is part of what it teaches. Using precise, correct terminology (e.g. "accessible name" vs. "label") models the vocabulary developers need when they go on to read official specs or communicate with other developers.
+3. A predictable sentence structure lets a reader tell what kind of requirement they're looking at from its grammar alone — a single named mechanism, a choice between two approaches, or an open-ended requirement — before they've even finished parsing the content.
+
+---
+
 ## Sentence structure
 
 ### Three sentence patterns
