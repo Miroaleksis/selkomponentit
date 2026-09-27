@@ -38,6 +38,8 @@ Chosen by situation:
 1.2.1. **Required** items use "must" (patterns 1.1.1 and 1.1.2 above).
 1.2.2. **Recommended** items use "should" in the equivalent of patterns 1.1.1 and 1.1.2.
 1.2.3. **"can"** is reserved for genuinely optional, equally-valid alternative techniques, not as a weaker synonym for "should".
+1.2.4. Modal verbs ("must"/"should"/"can") belong to passive-voice sentences (1.1.2, in any of its forms). Active-voice sentences (1.1.1) never use them. The Required/Recommended priority is already conveyed by the `aria-description` attribute itself, so repeating it in the sentence is redundant.
+1.2.5. "may" is different from "must"/"should"/"can": it expresses genuine uncertainty about external behavior (e.g. how assistive technology might respond), not a requirement/recommendation level or a technique choice. It is not restricted to passive voice, and it can appear in active sentences even without a conditional clause.
 
 ### 1.3. Parallel lists
 
