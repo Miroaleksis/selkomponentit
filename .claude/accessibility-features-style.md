@@ -14,23 +14,27 @@ Rules for the "Accessibility Features" list items (`<li aria-description="Requir
 
 ## 1. Sentence structure
 
-### 1.1. Three sentence patterns
+### 1.1. Sentence patterns
 
 Chosen by situation:
 
 1.1.1. **Default: active voice, attribute/element as subject.** Use when the requirement ties to one specific, named mechanism.
    > `role="status"` announces non-critical updates politely.
 
-1.1.2. **Choice between two approaches: imperative, reader as subject.** Use when the developer must pick one of two valid implementations depending on context.
-   > Use `<button>` for the controls when pagination updates content dynamically without a page reload. Use `<a>` when each page has its own URL.
-
-1.1.3. **General requirement, no single named mechanism: passive voice.** Use when the requirement is high-level and deliberately leaves the implementation open.
-   > The expanded/collapsed state must be communicated programmatically to screen readers.
+1.1.2. **Exception: passive voice.** Use passive whenever 1.1.1 doesn't cleanly apply:
+   - The requirement is general/high-level and deliberately leaves the implementation open (no single named mechanism).
+     > The expanded/collapsed state must be communicated programmatically to screen readers.
+   - The requirement only applies under a certain condition. State the condition first.
+     > If the submenu obscures content, it must be dismissible with Esc.
+   - The developer must choose between two valid approaches depending on context.
+     > When pagination updates content dynamically without a page reload, `<button>` must be used for the controls. When each page has its own URL, `<a>` must be used.
+   - An attribute value reads naturally as an ordinary English word within the sentence (e.g. "disabled").
+     > Previous and next page controls are marked `disabled` to prevent interaction.
 
 ### 1.2. Modal verbs
 
-1.2.1. **Required** items use "must" (patterns 1.1.1 and 1.1.3 above).
-1.2.2. **Recommended** items use "should" in the equivalent of patterns 1.1.1 and 1.1.3.
+1.2.1. **Required** items use "must" (patterns 1.1.1 and 1.1.2 above).
+1.2.2. **Recommended** items use "should" in the equivalent of patterns 1.1.1 and 1.1.2.
 1.2.3. **"can"** is reserved for genuinely optional, equally-valid alternative techniques, not as a weaker synonym for "should".
 
 ### 1.3. Parallel lists
