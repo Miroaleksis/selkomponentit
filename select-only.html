@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -31,12 +31,12 @@
           <span class="recommended">= Recommended</span>
         </div>
         <ul class="feature-list">
-          <li aria-description="Required">The role and state of the trigger element and options must be communicated programmatically to screen readers</li>
-          <li aria-description="Required">A combobox expands and collapses with <kbd>Space</kbd> and <kbd>Enter</kbd> when the trigger element is focused</li>
-          <li aria-description="Required">Options are navigable with <kbd>↑</kbd> and <kbd>↓</kbd> arrow keys and selected with <kbd>Space</kbd> and <kbd>Enter</kbd></li>
-          <li aria-description="Required"><kbd>Esc</kbd> collapses the dropdown and returns focus to the trigger</li>
-          <li aria-description="Recommended">Moving focus away from the dropdown with <kbd>Tab</kbd> collapses the dropdown automatically</li>
-          <li aria-description="Recommended"><kbd>Home</kbd> and <kbd>End</kbd> move focus to the first and last option</li>
+          <li aria-description="Required">The role and state of the trigger element and options must be communicated programmatically to screen readers.</li>
+          <li aria-description="Required">A combobox expands and collapses with <kbd>Space</kbd> and <kbd>Enter</kbd> when the trigger element is focused.</li>
+          <li aria-description="Required">Options are navigable with <kbd>↑</kbd> and <kbd>↓</kbd> arrow keys and selected with <kbd>Space</kbd> and <kbd>Enter</kbd>.</li>
+          <li aria-description="Required"><kbd>Esc</kbd> collapses the dropdown and returns focus to the trigger.</li>
+          <li aria-description="Recommended">Moving focus away from the dropdown with <kbd>Tab</kbd> collapses the dropdown automatically.</li>
+          <li aria-description="Recommended"><kbd>Home</kbd> and <kbd>End</kbd> move focus to the first and last option.</li>
         </ul>
       </section>
 
@@ -53,10 +53,10 @@
         <h2>Custom Select-Only</h2>
         <p>A custom implementation may be necessary when the desired visual design cannot be achieved with the native <code>&lt;select&gt;</code> element. It requires explicit attributes to communicate dropdown semantics:
         <ul class="feature-list">
-          <li aria-description="Required"><code>role="combobox"</code> identifies the trigger element and <code>aria-expanded</code> communicates its expanded or collapsed state</li>
-          <li aria-description="Required">Each option has <code>role="option"</code> and <code>aria-selected</code> to communicate its selection state</li>
-          <li aria-description="Required"><code>aria-activedescendant</code> on the trigger tracks which option currently has focus</li>
-          <li aria-description="Recommended"><code>aria-controls</code> should point to the element the trigger controls</li>
+          <li aria-description="Required"><code>role="combobox"</code> identifies the trigger element and <code>aria-expanded</code> communicates its expanded or collapsed state.</li>
+          <li aria-description="Required">Each option has <code>role="option"</code> and <code>aria-selected</code> to communicate its selection state.</li>
+          <li aria-description="Required"><code>aria-activedescendant</code> on the trigger tracks which option currently has focus.</li>
+          <li aria-description="Recommended"><code>aria-controls</code> should point to the element the trigger controls.</li>
         </ul>
         <h3>Example</h3>
         <div class="example-container" data-prefix="b"></div>
