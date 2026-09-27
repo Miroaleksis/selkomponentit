@@ -46,7 +46,7 @@ Use correct, idiomatic UI and development terminology for elements and functiona
 
 ### 2.1. Keyboard keys
 
-2.1.1. Reference a key by its bare name only, never "the Escape key", just "Escape".
+2.1.1. Reference a key by its bare name only, never "the Esc key", just "Esc".
 2.1.2. Name arrow keys individually ("Left Arrow", "Right Arrow", "Up Arrow", "Down Arrow"), not collectively as "arrow keys".
 2.1.3. This follows the W3C ARIA Authoring Practices Guide convention.
 

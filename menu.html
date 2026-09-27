@@ -33,7 +33,7 @@
           <li aria-description="Required">A menu is wrapped in a <code>&lt;nav&gt;</code> landmark with a descriptive <code>aria-label</code> to identify its purpose as a specific navigation region.</li>
           <li aria-description="Required"><code>aria-current="page"</code> identifies the currently active page.</li>
           <li aria-description="Required"><code>aria-expanded</code> on the submenu trigger button communicates the expanded or collapsed state to screen readers.</li>
-          <li aria-description="Required">If the submenu obscures content, it must be dismissible with the <kbd>Esc</kbd> key.</li>
+          <li aria-description="Required">If the submenu obscures content, it must be dismissible with <kbd>Esc</kbd>.</li>
           <li aria-description="Recommended"><code>aria-controls</code> should point to the submenu the trigger controls.</li>
         </ul>
       </section>
@@ -62,8 +62,8 @@
         <ul class="feature-list">
           <li aria-description="Required">The menu toggle and close buttons do not usually have visible labels and therefore rely on <code>aria-label</code> to provide accessible names.</li>
           <li aria-description="Required">Keyboard focus must move into the menu on open and return to the toggle button on close.</li>
-          <li aria-description="Required">If the menu obscures content, it must be dismissible with the <kbd>Esc</kbd> key and/or trap keyboard focus while it is open.<br>
-          → A native <code>&lt;dialog&gt;</code> element provides the focus trap automatically. If another element is used instead, the focus trap must be implemented manually, for example, by assigning other elements on the page <code>inert</code>.</li>
+          <li aria-description="Required">If the menu obscures content, it must be dismissible with <kbd>Esc</kbd> and/or trap keyboard focus while it is open.<br>
+          → A native <code>&lt;dialog&gt;</code> element provides the focus trap automatically. If another element is used instead, the focus trap must be implemented manually, for example, by adding <code>inert</code> to other elements on the page.</li>
           <li aria-description="Recommended"><code>aria-haspopup="dialog"</code> communicates that the button opens a dialog.</li>
         </ul>
         <h3>Example</h3>
