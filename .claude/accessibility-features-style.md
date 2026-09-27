@@ -30,6 +30,8 @@ Chosen by situation:
      > When pagination updates content dynamically without a page reload, `<button>` must be used for the controls. When each page has its own URL, `<a>` must be used.
    - An attribute value reads naturally as an ordinary English word within the sentence (e.g. "disabled").
      > Previous and next page controls are marked `disabled` to prevent interaction.
+   - The named mechanism is presented merely as an illustrative example (marked "for example"/"e.g."), not as the one definitive required technique. Forcing it into the active-subject position would overstate it as the only correct solution.
+     > Feedback must be provided when the slide changes, for example using an `aria-live` region.
 
 ### 1.2. Modal verbs
 
