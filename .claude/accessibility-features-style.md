@@ -1,4 +1,4 @@
-# Accessibility Features — Writing Style
+# Accessibility Features: Writing Style
 
 Rules for the "Accessibility Features" list items (`<li aria-description="Required/Recommended">`) across all pattern pages.
 
@@ -8,7 +8,7 @@ Rules for the "Accessibility Features" list items (`<li aria-description="Requir
 
 1. Consistent wording lets a reader build one mental model of the site's terminology instead of re-learning slightly different phrasing on every page. If the same ARIA relationship is worded differently from page to page, the reader can no longer recognise it as the same recurring pattern.
 2. This site is itself an accessibility guide, so its own language is part of what it teaches. Using precise, correct terminology (e.g. "accessible name" vs. "label") models the vocabulary developers need when they go on to read official specs or communicate with other developers.
-3. A predictable sentence structure lets a reader tell what kind of requirement they're looking at from its grammar alone — a single named mechanism, a choice between two approaches, or an open-ended requirement — before they've even finished parsing the content.
+3. A predictable sentence structure lets a reader tell what kind of requirement they're looking at from its grammar alone (a single named mechanism, a choice between two approaches, or an open-ended requirement) before they've even finished parsing the content.
 
 ---
 
@@ -18,20 +18,20 @@ Rules for the "Accessibility Features" list items (`<li aria-description="Requir
 
 Chosen by situation:
 
-1. **Default — active voice, attribute/element as subject.** Use when the requirement ties to one specific, named mechanism.
+1. **Default: active voice, attribute/element as subject.** Use when the requirement ties to one specific, named mechanism.
    > `role="status"` announces non-critical updates politely.
 
-2. **Choice between two approaches — imperative, reader as subject.** Use when the developer must pick one of two valid implementations depending on context.
+2. **Choice between two approaches: imperative, reader as subject.** Use when the developer must pick one of two valid implementations depending on context.
    > Use `<button>` for the controls when pagination updates content dynamically without a page reload. Use `<a>` when each page has its own URL.
 
-3. **General requirement, no single named mechanism — passive voice.** Use when the requirement is high-level and deliberately leaves the implementation open.
+3. **General requirement, no single named mechanism: passive voice.** Use when the requirement is high-level and deliberately leaves the implementation open.
    > The expanded/collapsed state must be communicated programmatically to screen readers.
 
 ### Modal verbs
 
 - **Required** items use "must" (patterns 1 and 3 above).
 - **Recommended** items use "should" in the equivalent of patterns 1 and 3.
-- **"can"** is reserved for genuinely optional, equally-valid alternative techniques — not as a weaker synonym for "should".
+- **"can"** is reserved for genuinely optional, equally-valid alternative techniques, not as a weaker synonym for "should".
 
 ### Parallel lists
 
@@ -42,12 +42,12 @@ Chosen by situation:
 
 ## Terminology
 
-Use correct, idiomatic UI and development terminology for elements and functionality in general — not just in the specific cases called out below.
+Use correct, idiomatic UI and development terminology for elements and functionality in general, not just in the specific cases called out below.
 
 ### Keyboard keys
 
-- Reference a key by its bare name only — never "the Escape key", just "Escape".
-- Name arrow keys individually — "Left Arrow", "Right Arrow", "Up Arrow", "Down Arrow" — not collectively as "arrow keys".
+- Reference a key by its bare name only, never "the Escape key", just "Escape".
+- Name arrow keys individually ("Left Arrow", "Right Arrow", "Up Arrow", "Down Arrow"), not collectively as "arrow keys".
 - This follows the W3C ARIA Authoring Practices Guide convention.
 
 ### "Label" vs. "accessible name"
@@ -59,7 +59,7 @@ Use correct, idiomatic UI and development terminology for elements and functiona
 
 - Use **"add"** for attaching an attribute to an element in general (e.g. "add `inert` to the other elements on the page").
 - Use **"set"** specifically when emphasizing the value being assigned (e.g. "set `tabindex` to `-1`").
-- Avoid "give" and "assign" for this — they aren't the idiomatic choice (per [MDN's `tabindex` page](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex), which uses "add"/"include" for the attribute and "set" for its value).
+- Avoid "give" and "assign" for this. They aren't the idiomatic choice (per [MDN's `tabindex` page](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex), which uses "add"/"include" for the attribute and "set" for its value).
 
 ---
 
@@ -67,7 +67,7 @@ Use correct, idiomatic UI and development terminology for elements and functiona
 
 ### DOM order
 
-- Write "in DOM order", never "in the DOM order" — parallels other ordering phrases like "in tab order" or "in alphabetical order", which drop the article.
+- Write "in DOM order", never "in the DOM order". This parallels other ordering phrases like "in tab order" or "in alphabetical order", which drop the article.
 
 ### Punctuation
 
