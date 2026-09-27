@@ -18,7 +18,7 @@ Rules for the "Accessibility Features" list items (`<li aria-description="Requir
 
 Chosen by situation:
 
-1.1.1. **Default: active voice, attribute/element as subject.** Use when the requirement ties to one specific, named mechanism.
+1.1.1. **Default: active voice, attribute/element as subject.** Use when the requirement ties to one specific, named mechanism. When the sentence names a specific HTML element or attribute, that element/attribute must be the grammatical subject, not a generic descriptive noun for the component part, even if one would otherwise be available.
    > `role="status"` announces non-critical updates politely.
 
 1.1.2. **Exception: passive voice.** Use passive whenever 1.1.1 doesn't cleanly apply:
