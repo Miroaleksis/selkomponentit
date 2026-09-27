@@ -32,7 +32,7 @@
         </div>
         <ul class="feature-list">
           <li aria-description="Required">Off-screen cards in a scrollable list must scroll into view automatically when they (or the buttons and links inside them) receive screen reader or keyboard focus.</li>
-          <li aria-description="Required">The card itself must not be a button or a link. If the entire card is desired to be clickable, the call-to-action element's click area can be extended to cover the full card using a <code>::before</code> pseudo-element.</li>
+          <li aria-description="Required">The card itself must not be a button or a link. If the entire card should be clickable, the call-to-action element's click area can be extended to cover the full card using a <code>::before</code> pseudo-element.</li>
           <li aria-description="Required">The call-to-action uses <code>aria-labelledby</code> to combine its own label with the card heading. This ensures it has a unique name for screen readers in case there are multiple cards with identical call-to-actions.</li>
           <li aria-description="Required">Left and right buttons must be provided to allow pointer users to navigate between cards without path-based gestures like swiping. <code>aria-hidden="true"</code> and <code>tabindex="-1"</code> hide these buttons from screen readers and the keyboard.</li>
           <li aria-description="Recommended">The card may use <code>role="group"</code> and <code>aria-roledescription="card"</code> to identify it as a distinct unit for screen readers, with <code>aria-labelledby</code> pointing to the heading.</li>
