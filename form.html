@@ -113,6 +113,11 @@
   resize: vertical;
 }
 
+.form-field input:hover,
+.form-field textarea:hover {
+  background: color-mix(in srgb, whitesmoke 95%, black 5%);
+}
+
 .form-error {
   display: none;
   font-size: 14px;
@@ -145,6 +150,10 @@
   border-radius: 4px;
   cursor: pointer;
   margin-top: 16px;
+}
+
+.form button[type="submit"]:hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
 }
   </script>
   <site-footer></site-footer>

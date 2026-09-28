@@ -119,6 +119,11 @@
   transform: translateY(-50%) rotate(180deg);
 }
 
+.multiselect:hover:not(:has([role="listbox"]:hover)),
+.multiselect [role="option"]:hover {
+  background: color-mix(in srgb, whitesmoke 95%, black 5%);
+}
+
 .multiselect [role="combobox"] {
   position: absolute;
   inset: -2px;
@@ -167,6 +172,10 @@
   content: '\f00d' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
+}
+
+.ms-tag:hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
 }
 
 .visually-hidden {
@@ -230,6 +239,10 @@
 .multiselect [role="option"].ms-option-current {
   background: dimgray;
   color: whitesmoke;
+}
+
+.multiselect [role="option"].ms-option-current:hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
 }
 
 .multiselect [role="option"].ms-option-current::before {

@@ -146,6 +146,11 @@
   padding-right: 32px;
 }
 
+.menu a:hover,
+.menu button:hover {
+  background: color-mix(in srgb, whitesmoke 95%, black 5%);
+}
+
 .menu a[aria-current="page"] {
   font-weight: bold;
   text-decoration: underline;
@@ -166,6 +171,11 @@
 .menu li:has(button[aria-expanded="true"]) {
   background: dimgray;
   color: whitesmoke;
+}
+
+.menu button[aria-expanded="true"]:hover,
+.menu .submenu a:hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
 }
 
 .menu button[aria-expanded="true"]::after {
@@ -319,6 +329,17 @@ document.querySelectorAll('.menu').forEach(menu => {
   height: 24px;
 }
 
+.link-menu > ul > li > a:hover,
+.link-menu button:hover {
+  background: color-mix(in srgb, whitesmoke 95%, black 5%);
+}
+
+.link-menu .submenu a:hover,
+.link-menu button[aria-expanded="true"]:hover,
+.link-menu li:has(button[aria-expanded="true"]) > a:hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
+}
+
 .link-menu li:has(button[aria-expanded="true"]) {
   background: dimgray;
   color: whitesmoke;
@@ -375,6 +396,10 @@ document.querySelectorAll('.menu').forEach(menu => {
   .link-menu li:has(.submenu:hover) {
     background: dimgray;
     color: whitesmoke;
+  }
+
+  .link-menu li:has(button) > a:hover {
+    background: color-mix(in srgb, dimgray 80%, black 20%);
   }
 }
 
@@ -492,6 +517,7 @@ document.querySelectorAll('.link-menu').forEach(menu => {
   border: none;
   cursor: pointer;
   color: inherit;
+  border-radius: 4px;
 }
 
 .hb-open, .hb-close {
@@ -505,6 +531,12 @@ document.querySelectorAll('.link-menu').forEach(menu => {
   position: absolute;
   top: 8px;
   right: 8px;
+}
+
+.hb-open:hover,
+.hb-close:hover,
+.hb-menu a:hover {
+  background: color-mix(in srgb, whitesmoke 95%, black 5%);
 }
 
 .hb-open::before {

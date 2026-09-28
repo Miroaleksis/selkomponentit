@@ -117,6 +117,10 @@
   z-index: 1;
 }
 
+.carousel-controls > button:hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
+}
+
 .carousel-controls > .carousel-play {
   top: 8px;
   right: 8px;
@@ -159,6 +163,10 @@
 
 .carousel-indicators button[aria-selected="true"] {
   background: dimgray;
+}
+
+.carousel-indicators button[aria-selected="false"]:hover {
+  background: color-mix(in srgb, whitesmoke 95%, black 5%);
 }
 
 .carousel-play::before {

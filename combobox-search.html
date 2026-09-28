@@ -144,6 +144,11 @@
   cursor: pointer;
 }
 
+.combobox-search input[role="combobox"]:hover,
+.combobox-search [role="option"]:hover {
+  background: color-mix(in srgb, whitesmoke 95%, black 5%);
+}
+
 .combobox-search [role="listbox"] {
   display: none;
   position: absolute;
@@ -402,6 +407,11 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   pointer-events: none;
 }
 
+.combobox-search-multi:hover:not(:has([role="listbox"]:hover)),
+.combobox-search-multi [role="option"]:hover {
+  background: color-mix(in srgb, whitesmoke 95%, black 5%);
+}
+
 .combobox-search-multi:has([aria-expanded="true"])::after {
   transform: translateY(-50%) rotate(180deg);
 }
@@ -446,6 +456,10 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   content: '\f00d' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
+}
+
+.csm-tag:hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
 }
 
 .csm-counter {
@@ -548,6 +562,10 @@ document.querySelectorAll('.combobox-search').forEach(container => {
 .combobox-search-multi [role="option"].csm-option-current {
   background: dimgray;
   color: whitesmoke;
+}
+
+.combobox-search-multi [role="option"].csm-option-current:hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
 }
 
 .combobox-search-multi [role="option"].csm-option-current::before {
