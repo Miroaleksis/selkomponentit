@@ -78,6 +78,10 @@
   background: dimgray;
   color: whitesmoke;
 }
+
+.btn:hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
+}
   </script>
 
   <script type="text/plain" id="snippet-a-js">
@@ -132,6 +136,14 @@ document.querySelectorAll('.btn').forEach(btn => {
   background: darkgreen;
 }
 
+.toggle-btn:hover {
+  background: color-mix(in srgb, green 80%, black 20%);
+}
+
+.toggle-btn[aria-pressed="true"]:hover {
+  background: color-mix(in srgb, darkgreen 80%, black 20%);
+}
+
 .toggle-btn::before {
   content: '\f004' / '';
   font-weight: 400;
@@ -144,6 +156,10 @@ document.querySelectorAll('.btn').forEach(btn => {
 
 .play-btn {
   background: dimgray;
+}
+
+.play-btn:hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
 }
 
 .play-btn::before {

@@ -174,7 +174,8 @@
   font-weight: 900;
 }
 
-.ms-tag:hover {
+.ms-tag:hover,
+.multiselect [role="option"].ms-option-current:hover {
   background: color-mix(in srgb, dimgray 80%, black 20%);
 }
 
@@ -239,10 +240,6 @@
 .multiselect [role="option"].ms-option-current {
   background: dimgray;
   color: whitesmoke;
-}
-
-.multiselect [role="option"].ms-option-current:hover {
-  background: color-mix(in srgb, dimgray 80%, black 20%);
 }
 
 .multiselect [role="option"].ms-option-current::before {

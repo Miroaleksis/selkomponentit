@@ -91,6 +91,10 @@
   cursor: pointer;
 }
 
+.checkbox-label input:hover {
+  background: color-mix(in srgb, whitesmoke 95%, black 5%);
+}
+
 .checkbox-label input:checked::before {
   content: '\f00c' / '';
   font-family: 'Font Awesome 6 Free';
@@ -131,6 +135,14 @@
 
 .switch:has(input:checked) {
   background: green;
+}
+
+.switch:hover {
+  background: color-mix(in srgb, gray 80%, black 20%);
+}
+
+.switch:has(input:checked):hover {
+  background: color-mix(in srgb, green 80%, black 20%);
 }
 
 .switch input {

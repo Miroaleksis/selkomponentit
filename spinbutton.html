@@ -99,6 +99,10 @@
   -webkit-appearance: none;
 }
 
+.spinbutton input[type="number"]:hover {
+  background: color-mix(in srgb, whitesmoke 95%, black 5%);
+}
+
 .spinbutton button {
   display: flex;
   align-items: center;
@@ -111,6 +115,10 @@
   color: whitesmoke;
   font: inherit;
   cursor: pointer;
+}
+
+.spinbutton button:not(:disabled):hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
 }
 
 .spinbutton button:disabled {

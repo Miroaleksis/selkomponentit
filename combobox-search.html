@@ -458,7 +458,8 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   font-weight: 900;
 }
 
-.csm-tag:hover {
+.csm-tag:hover,
+.combobox-search-multi [role="option"].csm-option-current:hover {
   background: color-mix(in srgb, dimgray 80%, black 20%);
 }
 
@@ -562,10 +563,6 @@ document.querySelectorAll('.combobox-search').forEach(container => {
 .combobox-search-multi [role="option"].csm-option-current {
   background: dimgray;
   color: whitesmoke;
-}
-
-.combobox-search-multi [role="option"].csm-option-current:hover {
-  background: color-mix(in srgb, dimgray 80%, black 20%);
 }
 
 .combobox-search-multi [role="option"].csm-option-current::before {

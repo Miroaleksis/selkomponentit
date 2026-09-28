@@ -85,6 +85,10 @@
   cursor: pointer;
 }
 
+.btn:hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
+}
+
 .dialog[open] {
   display: flex;
   flex-direction: column;
@@ -94,6 +98,7 @@
   padding: 16px;
   width: 400px;
   max-width: calc(100% - 32px);
+  background: whitesmoke;
   border: 2px solid lightgray;
   border-radius: 4px;
   color: dimgray;
@@ -139,10 +144,18 @@
   border: none;
 }
 
+.confirm-btn:hover {
+  background: color-mix(in srgb, darkred 80%, black 20%);
+}
+
 .cancel-btn {
   color: inherit;
   background: none;
   border: 2px solid;
+}
+
+.cancel-btn:hover {
+  background: color-mix(in srgb, whitesmoke 95%, black 5%);
 }
   </script>
 

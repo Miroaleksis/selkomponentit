@@ -95,9 +95,14 @@
   justify-content: center;
   width: 32px;
   height: 32px;
+  background: whitesmoke;
   border: 2px solid;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.pagination button:not([aria-current="page"]):not(:disabled):hover {
+  background: color-mix(in srgb, whitesmoke 95%, black 5%);
 }
 
 .pagination-prev::before {

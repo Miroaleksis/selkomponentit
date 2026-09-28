@@ -193,6 +193,11 @@
   border-color: dimgray;
 }
 
+.stepper li button:not(:disabled):not([aria-current]):hover .step-indicator,
+.stepper-buttons button:not(:disabled):hover {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
+}
+
 .step-panel {
   padding: 16px;
   background: whitesmoke;

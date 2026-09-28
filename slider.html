@@ -117,6 +117,14 @@
   cursor: pointer;
   border: none;
 }
+
+.slider:hover::-webkit-slider-thumb {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
+}
+
+.slider:hover::-moz-range-thumb {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
+}
   </script>
 
   <script type="text/plain" id="snippet-a-js">
@@ -225,6 +233,14 @@ document.querySelectorAll('.slider-container').forEach(container => {
   background: dimgray;
   cursor: pointer;
   border: none;
+}
+
+.sliders input[type="range"]:hover::-webkit-slider-thumb {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
+}
+
+.sliders input[type="range"]:hover::-moz-range-thumb {
+  background: color-mix(in srgb, dimgray 80%, black 20%);
 }
 
 .sliders input[type="range"]:focus-visible {
