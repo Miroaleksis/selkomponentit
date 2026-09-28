@@ -286,7 +286,6 @@ document.querySelectorAll('.sortable-table').forEach(table => {
   color: inherit;
   background: none;
   font: inherit;
-  transition: transform 0.2s ease;
   border: none;
 }
 
@@ -298,6 +297,7 @@ document.querySelectorAll('.sortable-table').forEach(table => {
   content: '\f078' / '';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
+  transition: transform 0.2s ease;
 }
 
 .expandable-table th {
@@ -309,7 +309,7 @@ document.querySelectorAll('.sortable-table').forEach(table => {
   padding-left: 32px;
 }
 
-.expandable-table button[aria-expanded="true"] {
+.expandable-table button[aria-expanded="true"]::before {
   transform: rotate(180deg);
 }
   </script>

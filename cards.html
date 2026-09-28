@@ -249,6 +249,12 @@
   width: fit-content;
 }
 
+.card button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
 .skip-cards:hover,
 .cards button:hover {
   background: color-mix(in srgb, dimgray 80%, black 20%);
