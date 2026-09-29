@@ -381,28 +381,6 @@ document.querySelectorAll('.menu').forEach(menu => {
   display: block;
 }
 
-@media (min-width: 561px) {
-
-  .link-menu > ul > li > a:hover ~ button::after {
-    transform: rotate(180deg);
-  }
-
-  .link-menu > ul > li > a:hover ~ .submenu,
-  .submenu:hover {
-    display: block;
-  }
-
-  .link-menu li:has(button):has(> a:hover),
-  .link-menu li:has(.submenu:hover) {
-    background: dimgray;
-    color: whitesmoke;
-  }
-
-  .link-menu li:has(button) > a:hover {
-    background: color-mix(in srgb, dimgray 80%, black 20%);
-  }
-}
-
 @media (max-width: 560px) {
   .link-menu > ul {
     flex-direction: column;
@@ -433,12 +411,12 @@ document.querySelectorAll('.menu').forEach(menu => {
   <script type="text/plain" id="snippet-b-js">
 document.querySelectorAll('.link-menu').forEach(menu => {
   const buttons = menu.querySelectorAll(':scope > ul > li > button');
+  const desktopQuery = window.matchMedia('(min-width: 561px)');
+  let openedByHover = false;
 
   function closeAll() {
-    buttons.forEach(btn => {
-      btn.setAttribute('aria-expanded', 'false');
-      btn.nextElementSibling.style.display = '';
-    });
+    buttons.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+    openedByHover = false;
   }
 
   buttons.forEach(btn => {
@@ -448,18 +426,30 @@ document.querySelectorAll('.link-menu').forEach(menu => {
       if (!wasOpen) btn.setAttribute('aria-expanded', 'true');
     });
 
-    btn.parentElement.addEventListener('mouseleave', () => {
-      btn.nextElementSibling.style.display = '';
+    const li = btn.parentElement;
+    const link = btn.previousElementSibling;
+
+    link.addEventListener('mouseenter', () => {
+      if (!desktopQuery.matches) return;
+      if (btn.getAttribute('aria-expanded') === 'true') return;
+      closeAll();
+      btn.setAttribute('aria-expanded', 'true');
+      openedByHover = true;
     });
+
+    function closeIfHoverOpened() {
+      if (openedByHover) {
+        btn.setAttribute('aria-expanded', 'false');
+        openedByHover = false;
+      }
+    }
+
+    btn.addEventListener('mouseenter', closeIfHoverOpened);
+    li.addEventListener('mouseleave', closeIfHoverOpened);
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeAll();
-      menu.querySelectorAll(':scope > ul > li:hover .submenu').forEach(s => {
-        s.style.display = 'none';
-      });
-    }
+    if (e.key === 'Escape') closeAll();
   });
 
   document.addEventListener('click', (e) => {
