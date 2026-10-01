@@ -131,17 +131,12 @@
 
 .sortable-table th[aria-sort="ascending"] button,
 .sortable-table th[aria-sort="descending"] button {
-  background: rgb(0 0 0 / 0.2);
+  background: color-mix(in srgb, dimgray 80%, black 20%);
   text-decoration: underline;
 }
 
 .sortable-table th button:hover {
   background: color-mix(in srgb, dimgray 80%, black 20%);
-}
-
-.sortable-table th[aria-sort="ascending"] button:hover,
-.sortable-table th[aria-sort="descending"] button:hover {
-  background: color-mix(in srgb, rgb(0 0 0 / 0.2) 80%, black 20%);
 }
 
 .sortable-table th button::after {
