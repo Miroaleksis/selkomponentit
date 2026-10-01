@@ -35,6 +35,7 @@
           <li aria-description="Required"><code>aria-expanded</code> on the submenu trigger button communicates the expanded or collapsed state to screen readers.</li>
           <li aria-description="Required">If the submenu obscures content, it must be dismissible with <kbd>Esc</kbd>.</li>
           <li aria-description="Recommended"><code>aria-controls</code> points to the submenu the trigger controls.</li>
+          <li aria-description="Recommended"><code>&lt;ul&gt;</code> identifies the menu as a list of links and communicates the total number of links to screen readers.</li>
         </ul>
       </section>
 
@@ -91,10 +92,11 @@
       </ul>
     </li>
     <li>
-      <button aria-expanded="false">Resources</button>
+      <button aria-expanded="false">Services</button>
       <ul class="submenu">
-        <li><a href="#">Documentation</a></li>
-        <li><a href="#">Tutorials</a></li>
+        <li><a href="#">Repairs</a></li>
+        <li><a href="#">Installation</a></li>
+        <li><a href="#">Trade-In</a></li>
       </ul>
     </li>
     <li><a href="#">About</a></li>
@@ -263,11 +265,12 @@ document.querySelectorAll('.menu').forEach(menu => {
       </ul>
     </li>
     <li>
-      <a href="#" id="resources-link">Resources</a>
+      <a href="#" id="resources-link">Services</a>
       <button aria-expanded="false" aria-labelledby="resources-link"></button>
       <ul class="submenu">
-        <li><a href="#">Documentation</a></li>
-        <li><a href="#">Tutorials</a></li>
+        <li><a href="#">Repairs</a></li>
+        <li><a href="#">Installation</a></li>
+        <li><a href="#">Trade-In</a></li>
       </ul>
     </li>
     <li><a href="#">About</a></li>
@@ -467,7 +470,7 @@ document.querySelectorAll('.link-menu').forEach(menu => {
       <ul>
         <li><a href="#" aria-current="page">Home</a></li>
         <li><a href="#">Products</a></li>
-        <li><a href="#">Resources</a></li>
+        <li><a href="#">Services</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
       </ul>

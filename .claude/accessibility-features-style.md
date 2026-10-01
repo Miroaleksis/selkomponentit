@@ -80,3 +80,14 @@ Use correct, idiomatic UI and development terminology for elements and functiona
 ### 3.2. Punctuation
 
 3.2.1. Every list item ends with a period, regardless of how many sentences it contains.
+
+---
+
+## 4. List item order
+
+4.1. **Required** items come before **Recommended** items. Recommended items always sit at the bottom of the list.
+
+4.2. Within each priority group, order items by DOM hierarchy, top-down: the container/outer element before its children (e.g. the combobox trigger before its options).
+
+4.3. When the list mixes structural/ARIA items, keyboard-interaction items, and visual/responsive items, order by modality: structure and screen-reader communication first, then keyboard interaction, then visual/responsive edge cases last. This extends the screen-readers-before-keyboard principle (1.3.2) from word order within a sentence to item order across the whole list.
+   > `role="tablist"` → `role="tab"`/`aria-selected` → `role="tabpanel"` → `tabindex="-1"` → arrow keys → mobile scaling → (Recommended) `aria-controls`.
