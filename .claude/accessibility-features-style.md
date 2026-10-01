@@ -87,7 +87,18 @@ Use correct, idiomatic UI and development terminology for elements and functiona
 
 4.1. **Required** items come before **Recommended** items. Recommended items always sit at the bottom of the list.
 
-4.2. Within each priority group, order items by DOM hierarchy, top-down: the container/outer element before its children (e.g. the combobox trigger before its options).
+4.2. When the list mixes structural/ARIA items, keyboard-interaction items, visual/responsive items, and pointer-only items, order items by modality:
+   1. Structure and screen-reader communication
+   2. Keyboard interaction
+   3. Visual/responsive edge cases
+   4. Pointer-only requirements
 
-4.3. When the list mixes structural/ARIA items, keyboard-interaction items, and visual/responsive items, order by modality: structure and screen-reader communication first, then keyboard interaction, then visual/responsive edge cases last. This extends the screen-readers-before-keyboard principle (1.3.2) from word order within a sentence to item order across the whole list.
+   This extends the screen-readers-before-keyboard principle (1.3.2) from word order within a sentence to item order across the whole list.
    > `role="tablist"` → `role="tab"`/`aria-selected` → `role="tabpanel"` → `tabindex="-1"` → arrow keys → mobile scaling → (Recommended) `aria-controls`.
+   > cards.html: auto-scroll-into-view on focus (keyboard/screen reader) and card/CTA labelling (ARIA) come before the left/right navigation buttons item, since those buttons only serve pointer users.
+   > multiselect.html: all `<output>`-related ARIA items come before the Space/Enter keyboard item, even though `<output>` appears later in the DOM than the listbox Space/Enter acts on.
+
+4.3. Order items by DOM hierarchy, top-down: the container/outer element before its children (e.g. the combobox trigger before its options). Where this conflicts with 4.2, modality order wins.
+
+4.4. **Exception, overrides 4.1–4.3:** if one item's sentence implicitly depends on what a previous item just established, keep them adjacent in that order regardless of what DOM hierarchy or modality order would otherwise suggest.
+   > accordion.html: the keyboard item stays before the state item ("the expanded/collapsed state") because the state sentence presupposes the action just described.
