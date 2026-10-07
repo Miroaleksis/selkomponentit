@@ -34,8 +34,7 @@
         <ul class="feature-list">
           <li aria-description="Required">A multiselect combobox has a similar structure and keyboard behaviour as the <a href="select-only.html#custom-select-only">custom select-only combobox</a> with a few exceptions:</li>
           <li aria-description="Required"><code>aria-multiselectable="true"</code> on the listbox communicates that multiple options can be selected.</li>
-          <li aria-description="Required">An <code>&lt;output&gt;</code> element holds the selected options and announces changes to screen readers. <code>aria-describedby</code> associates the output with the input.</li>
-          <li aria-description="Required">A counter inside the <code>&lt;output&gt;</code> announces the number of selected options. It is only visible when 0 options are selected.</li>
+          <li aria-description="Required">An <code>&lt;output&gt;</code> element announces the number of selected options to screen readers. It is only visible when 0 options are selected. <code>aria-describedby</code> associates the output with the input.</li>
           <li aria-description="Required">Selected options are rendered as <code>&lt;button&gt;</code> elements, making them individually focusable and removable via keyboard. <code>aria-label="Remove [option]"</code> communicates the purpose and action to screen readers.</li>
           <li aria-description="Required"><kbd>Space</kbd> and <kbd>Enter</kbd> toggle selection of the focused option without closing the dropdown.</li>
           <li aria-description="Recommended">Pressing <kbd>Backspace</kbd> removes the last selected option.</li>
@@ -59,7 +58,7 @@
   <script type="text/plain" id="snippet-b-html">
 <label for="ms-trigger" class="ms-label">Language</label>
 <div class="multiselect">
-  <input id="ms-trigger" type="text" readonly role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-activedescendant="" aria-controls="ms-listbox" aria-describedby="ms-tags">
+  <input id="ms-trigger" type="text" readonly role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-activedescendant="" aria-controls="ms-listbox" aria-describedby="ms-counter">
   <ul role="listbox" id="ms-listbox" aria-multiselectable="true" aria-label="Language">
     <li role="option" id="ms-opt-1" aria-selected="false">English</li>
     <li role="option" id="ms-opt-2" aria-selected="false">Finnish</li>
@@ -67,9 +66,7 @@
     <li role="option" id="ms-opt-4" aria-selected="false">Norwegian</li>
     <li role="option" id="ms-opt-5" aria-selected="false">Danish</li>
   </ul>
-  <output class="ms-tags" id="ms-tags">
-    <span class="ms-counter">0 selected</span>
-  </output>
+  <output class="ms-counter" id="ms-counter">0 selected</output>
 </div>
   </script>
 
@@ -136,11 +133,7 @@
   cursor: pointer;
 }
 
-.ms-tags {
-  display: contents;
-}
-
-.ms-counter:not(:only-child) {
+.ms-counter:not(:last-child) {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -252,7 +245,6 @@
 document.querySelectorAll('.multiselect').forEach(container => {
   const trigger = container.querySelector('[role="combobox"]');
   const listbox = container.querySelector('[role="listbox"]');
-  const tagsContainer = container.querySelector('.ms-tags');
   const options = [...container.querySelectorAll('[role="option"]')];
   let activeIndex = 0;
   let isOpen = false;
@@ -272,10 +264,10 @@ document.querySelectorAll('.multiselect').forEach(container => {
   }
 
   function updateTags() {
-    tagsContainer.querySelectorAll('.ms-tag').forEach(tag => tag.remove());
+    container.querySelectorAll('.ms-tag').forEach(tag => tag.remove());
     const selected = options.filter(o => o.getAttribute('aria-selected') === 'true');
-    const placeholder = tagsContainer.querySelector('.ms-counter');
-    placeholder.textContent = `${selected.length} selected`;
+    const counter = container.querySelector('.ms-counter');
+    counter.textContent = `${selected.length} selected`;
     selected.forEach(option => {
       const index = options.indexOf(option);
       const tag = document.createElement('button');
@@ -293,7 +285,7 @@ document.querySelectorAll('.multiselect').forEach(container => {
         toggleSelection(parseInt(tag.dataset.index));
         trigger.focus();
       });
-      tagsContainer.appendChild(tag);
+      container.appendChild(tag);
     });
   }
 
@@ -317,7 +309,7 @@ document.querySelectorAll('.multiselect').forEach(container => {
 
   trigger.addEventListener('keydown', (e) => {
     if (e.key === 'Backspace') {
-      const tags = tagsContainer.querySelectorAll('.ms-tag');
+      const tags = container.querySelectorAll('.ms-tag');
       if (tags.length > 0) {
         e.preventDefault();
         toggleSelection(parseInt(tags[tags.length - 1].dataset.index));

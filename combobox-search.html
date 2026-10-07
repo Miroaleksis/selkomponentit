@@ -334,7 +334,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   <script type="text/plain" id="snippet-b-html">
 <label for="csm-trigger" class="csm-label">Country</label>
 <div class="combobox-search-multi">
-  <input id="csm-trigger" type="text" role="combobox" autocomplete="off" aria-expanded="false" aria-activedescendant="" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-tags">
+  <input id="csm-trigger" type="text" role="combobox" autocomplete="off" aria-expanded="false" aria-activedescendant="" aria-autocomplete="list" aria-controls="csm-listbox" aria-describedby="csm-counter">
   <ul role="listbox" id="csm-listbox" aria-multiselectable="true" tabindex="-1">
     <li role="option" id="csm-opt-1" aria-selected="false">Austria</li>
     <li role="option" id="csm-opt-2" aria-selected="false">Belgium</li>
@@ -365,7 +365,7 @@ document.querySelectorAll('.combobox-search').forEach(container => {
     <li role="option" id="csm-opt-27" aria-selected="false">Sweden</li>
   </ul>
   <div class="csm-no-results" role="status"></div>
-  <output class="csm-tags" id="csm-tags"><span class="csm-counter">0 selected</span></output>
+  <output class="csm-counter" id="csm-counter">0 selected</output>
 </div>
   </script>
 
@@ -437,10 +437,6 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   min-width: 60px;
 }
 
-.csm-tags {
-  display: contents;
-}
-
 .csm-tag {
   appearance: none;
   display: inline-flex;
@@ -471,8 +467,8 @@ document.querySelectorAll('.combobox-search').forEach(container => {
   pointer-events: none;
 }
 
-.csm-counter:not(:only-child),
-.combobox-search-multi input:focus ~ .csm-tags .csm-counter {
+.csm-counter:not(:last-child),
+.combobox-search-multi input:focus ~ .csm-counter {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -578,16 +574,15 @@ document.querySelectorAll('.combobox-search').forEach(container => {
 document.querySelectorAll('.combobox-search-multi').forEach(container => {
   const input = container.querySelector('input');
   const listbox = container.querySelector('[role="listbox"]');
-  const tagsContainer = container.querySelector('.csm-tags');
   const options = [...container.querySelectorAll('[role="option"]')];
   const noResults = container.querySelector('.csm-no-results');
   let activeIndex = -1;
 
   function updateTags() {
-    tagsContainer.querySelectorAll('.csm-tag').forEach(tag => tag.remove());
+    container.querySelectorAll('.csm-tag').forEach(tag => tag.remove());
     const selected = options.filter(o => o.getAttribute('aria-selected') === 'true');
-    const placeholder = tagsContainer.querySelector('.csm-counter');
-    placeholder.textContent = `${selected.length} selected`;
+    const counter = container.querySelector('.csm-counter');
+    counter.textContent = `${selected.length} selected`;
     selected.forEach(option => {
       const index = options.indexOf(option);
       const tag = document.createElement('button');
@@ -605,7 +600,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
         toggleSelection(options[parseInt(tag.dataset.index)]);
         input.focus();
       });
-      tagsContainer.appendChild(tag);
+      container.appendChild(tag);
     });
   }
 
@@ -685,7 +680,7 @@ document.querySelectorAll('.combobox-search-multi').forEach(container => {
 
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Backspace' && input.value === '') {
-      const tags = tagsContainer.querySelectorAll('.csm-tag');
+      const tags = container.querySelectorAll('.csm-tag');
       if (tags.length > 0) {
         e.preventDefault();
         toggleSelection(options[parseInt(tags[tags.length - 1].dataset.index)]);
