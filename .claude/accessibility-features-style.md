@@ -46,6 +46,19 @@ Chosen by situation:
 1.3.1. When a sentence names a list of targets alongside a matching list of attributes/techniques (e.g. "hide from screen readers and the keyboard with `aria-hidden="true"` and `tabindex="-1"`"), the two lists must be ordered so each item lines up positionally with its counterpart.
 1.3.2. Canonical order for this specific pair: **screen readers, then keyboard**.
 
+### 1.4. Singular and plural
+
+1.4.1. Use the plural only when the sentence refers to genuinely separate elements. Elements that repeat identically, such as options, tabs or slides, are described in the singular.
+   > Plural: Previous and next page controls are marked `disabled`.
+   > Singular: `role="option"` identifies an option.
+
+1.4.2. When describing a repeating element in the singular, use "a/an", not "the", because the sentence does not refer to one specific element. Use "the" only for a single, specific element.
+   > Specific: `aria-current="page"` identifies the currently active page.
+   > Repeating: `role="option"` identifies an option.
+
+1.4.3. Use "a/an" instead of "each" or "every", also when the statement applies to every instance.
+   > `aria-sort="ascending/descending/none"` on a column header communicates its current sort direction to screen readers.
+
 ---
 
 ## 2. Terminology
@@ -69,6 +82,26 @@ Use correct, idiomatic UI and development terminology for elements and functiona
 2.3.2. Use **"set"** specifically when emphasizing the value being assigned (e.g. "set `tabindex` to `-1`").
 2.3.3. Avoid "give" and "assign" for this. They aren't the idiomatic choice (per [MDN's `tabindex` page](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex), which uses "add"/"include" for the attribute and "set" for its value).
 
+### 2.4. Verbs for roles and attributes
+
+2.4.1. Use "identifies" for what a role, landmark or element is. Do not use "defines".
+   > `role="option"` identifies an option.
+   > `<nav>` identifies a navigation landmark.
+
+2.4.2. Use "communicates" for a state or value that is exposed to screen readers. Do not use "conveys".
+   > `aria-expanded` communicates the expanded or collapsed state to screen readers.
+
+2.4.3. Use "announces" for live regions and status messages.
+   > `role="status"` announces non-critical updates politely.
+
+2.4.4. Use fixed verbs for ARIA relationships between elements:
+   - `aria-describedby`, `aria-labelledby` and a matching `for`/`id` pair **associate** an element with its description or label.
+     > `aria-describedby` associates the tooltip with the trigger button.
+     > `aria-labelledby` associates the dialog with its heading.
+     > Matching `for` and `id` attributes associate a `<label>` with its `<input>`.
+   - `aria-controls` **points to** the element it controls.
+     > `aria-controls` points to the element the trigger controls.
+
 ---
 
 ## 3. Grammar and mechanics
@@ -83,11 +116,20 @@ Use correct, idiomatic UI and development terminology for elements and functiona
 
 ---
 
-## 4. List item order
+## 4. List items and their order
 
-4.1. **Required** items come before **Recommended** items. Recommended items always sit at the bottom of the list.
+### 4.1. Where features are listed
 
-4.2. When the list mixes structural/ARIA items, keyboard-interaction items, visual/responsive items, and pointer-only items, order items by modality:
+4.1.1. All accessibility features, including those in snippet descriptions, are listed as Required or Recommended bullets (`<li aria-description>`), not written as prose.
+4.1.2. **Exception:** alternative ways of achieving the same thing (option A vs. option B) may be written as prose or a numbered list.
+
+### 4.2. Required before Recommended
+
+4.2.1. **Required** items come before **Recommended** items. Recommended items always sit at the bottom of the list.
+
+### 4.3. Modality order
+
+4.3.1. When the list mixes structural/ARIA items, keyboard-interaction items, visual/responsive items, and pointer-only items, order items by modality:
    1. Structure and screen-reader communication
    2. Keyboard interaction
    3. Visual/responsive edge cases
@@ -98,7 +140,11 @@ Use correct, idiomatic UI and development terminology for elements and functiona
    > cards.html: auto-scroll-into-view on focus (keyboard/screen reader) and card/CTA labelling (ARIA) come before the left/right navigation buttons item, since those buttons only serve pointer users.
    > multiselect.html: all `<output>`-related ARIA items come before the Space/Enter keyboard item, even though `<output>` appears later in the DOM than the listbox Space/Enter acts on.
 
-4.3. Order items by DOM hierarchy, top-down: the container/outer element before its children (e.g. the combobox trigger before its options). Where this conflicts with 4.2, modality order wins.
+### 4.4. DOM hierarchy
 
-4.4. **Exception, overrides 4.1–4.3:** if one item's sentence implicitly depends on what a previous item just established, keep them adjacent in that order regardless of what DOM hierarchy or modality order would otherwise suggest.
+4.4.1. Order items by DOM hierarchy, top-down: the container/outer element before its children (e.g. the combobox trigger before its options). Where this conflicts with 4.3.1, modality order wins.
+
+### 4.5. Logical dependency
+
+4.5.1. **Exception, overrides 4.2.1–4.4.1:** if one item's sentence implicitly depends on what a previous item just established, keep them adjacent in that order regardless of what DOM hierarchy or modality order would otherwise suggest.
    > accordion.html: the keyboard item stays before the state item ("the expanded/collapsed state") because the state sentence presupposes the action just described.
