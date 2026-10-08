@@ -32,13 +32,17 @@
         </div>
         <ul class="feature-list">
           <li aria-description="Required">The button's label must clearly describe the action the button performs.</li>
-          <li aria-description="Required">A feedback from the action must be provided to screen readers.</li>
+          <li aria-description="Required">Feedback from the action must be provided to screen readers.</li>
         </ul>
       </section>
 
       <section class="page-section">
         <h2>Regular Button</h2>
-        <p>A regular button triggers a one-time action when activated. The feedback from the action can be communicated by changing the button's label with <code>aria-live="polite"</code> or by a separate status message (<a href="alert.html">See the Alert page for an example</a>).</p>
+        <p>A regular button triggers a one-time action when activated. Feedback from the action can be communicated, for example, in the following ways:</p>
+        <ol>
+          <li>A simple option is to change the button's label temporarily. <code>aria-live="polite"</code> announces the change to screen readers. Although marking an interactive control as a live region is generally not recommended, it is acceptable in this case, since screen readers may not announce changes to a label on their own.</li>
+          <li>A more established option is to use a separate status message (<a href="alert.html">See the Alert page for an example</a>).</li>
+        </ol>
         <h3>Example</h3>
         <div class="example-container" data-prefix="a"></div>
         <h3>Code Snippet</h3>
@@ -49,7 +53,7 @@
         <h2>Toggle Button</h2>
         <p>A toggle button allows the user to switch between two distinct states. There are two ways to communicate the state to screen readers:</p>
         <ol>
-          <li>A changing label reflects the current state or the action the button will perform next. The button must have <code>aria-live="polite"</code> to announce the change to screen readers.</li>
+          <li>A changing label reflects the current state or the action the button will perform next. <code>aria-live="polite"</code> announces the change to screen readers.</li>
           <li><code>aria-pressed</code> announces the pressed or unpressed state while keeping the button label stable.</li>
         </ol>
         <p>Note: a changing label and <code>aria-pressed</code> must not be used simultaneously as they provide conflicting information.</p>
