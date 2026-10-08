@@ -32,13 +32,13 @@
         </div>
         <ul class="feature-list">
           <li aria-description="Required"><code>role="tablist"</code> identifies a group of tabs.</li>
-          <li aria-description="Required"><code>role="tab"</code> identifies a single tab, and <code>aria-selected</code> conveys its selected state to screen readers.</li>
-          <li aria-description="Required"><code>role="tabpanel"</code> identifies a content panel, and <code>aria-labelledby</code> links it to its corresponding tab.</li>
-          <li aria-description="Required">Only the selected tab is in the tab order, all others have <code>tabindex="-1"</code>.</li>
+          <li aria-description="Required"><code>role="tab"</code> identifies a single tab, and <code>aria-selected</code> communicates its selected state to screen readers.</li>
+          <li aria-description="Required"><code>role="tabpanel"</code> identifies a content panel, and <code>aria-labelledby</code> associates it with its corresponding tab.</li>
+          <li aria-description="Required">Only the selected tab receives focus when pressing <kbd>Tab</kbd>, all others have <code>tabindex="-1"</code>.</li>
           <li aria-description="Required"><kbd>Left Arrow</kbd> and <kbd>Right Arrow</kbd> move focus between tabs. Tabs can activate immediately on focus, or require the user to confirm with <kbd>Enter</kbd> or <kbd>Space</kbd>.</li>
           <li aria-description="Required">If the tab list is long, it must scale to mobile screens without overflowing. One way to achieve this is by allowing the tabs to wrap onto multiple rows.</li>
           <li aria-description="Recommended"><code>aria-label</code> provides a unique label for the tablist.</li>
-          <li aria-description="Recommended"><code>aria-controls</code> points to the panel each tab controls.</li>
+          <li aria-description="Recommended"><code>aria-controls</code> on a tab points to the panel it controls.</li>
         </ul>
       </section>
 
