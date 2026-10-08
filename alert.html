@@ -35,8 +35,8 @@
           <li aria-description="Required"><code>role="status"</code> announces non-critical updates politely. Screen readers wait until the user is idle before reading the message.</li>
           <li aria-description="Required"><code>role="alert"</code> announces urgent messages assertively. Screen readers interrupt the current task to read the message immediately.</li>
           <li aria-description="Required">The alert container must be present in the page before the message appears. Screen readers only announce changes within the container, so it must only be hidden visually, not removed from the DOM.</li>
-          <li aria-description="Required">The alert message must convey clearly the nature of the detected issues.</li>
-          <li aria-description="Recommended">If there are multiple invalid fields, the alert message may also include a list of links to each field.</li>
+          <li aria-description="Required">The alert message must clearly describe the nature of the detected issues.</li>
+          <li aria-description="Recommended">If there are multiple invalid fields, the alert message may also include a list of links to them.</li>
           <li aria-description="Recommended">When an input error causes the alert message, the invalid field should be marked with <code>aria-invalid="true"</code> to communicate its state to screen readers. The field can also be associated with its error message using either <code>aria-errormessage</code> or <code>aria-describedby</code>.</li>
           <li aria-description="Recommended">Focus management should not be combined with live region announcements, since screen readers prioritize focus changes and may not announce the live region. Generally, only one approach should be used: either focus should be moved to the first incorrectly filled field (in this case, the field must have an associated error message), or the live region should be relied on to announce the error.</li>
         </ul>
