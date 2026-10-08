@@ -35,7 +35,7 @@ Check that the page text is well-written and consistent across the site.
 - Page titles, h1s, and descriptions are aligned in meaning
 
 #### Accessibility Features
-- Accessibility feature list items comply with `.claude/accessibility-features-style.md`. Read that document and check items against it directly, not a separate checklist here
+- Accessibility feature list items comply with `.claude/accessibility-features-guide.md`. Read that document and check items against it directly, not a separate checklist here
 
 ### Developer Perspective
 Check that the site's own code (not the code examples) is correct and idiomatic from a developer's point of view:
@@ -58,7 +58,7 @@ Check that the code examples themselves meet WCAG standards. They are the primar
 - Focus management is handled where needed
 
 ### Developer Perspective
-Check that the code examples comply with the rules in `.claude/code-example-standards.md`. Read that document and verify each example against it, not a separate checklist here.
+Check that the code examples comply with the rules in `.claude/code-example-guide.md`. Read that document and verify each example against it, not a separate checklist here.
 
 ### Visual Consistency Perspective
 Check that the code examples are visually consistent with each other:
