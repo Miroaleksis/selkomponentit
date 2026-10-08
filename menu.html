@@ -64,7 +64,7 @@
           <li aria-description="Required">The menu toggle and close buttons do not usually have visible labels and therefore rely on <code>aria-label</code> to provide accessible names.</li>
           <li aria-description="Required">Keyboard focus must move into the menu on open and return to the toggle button on close.</li>
           <li aria-description="Required">If the menu obscures content, it must be dismissible with <kbd>Esc</kbd> and/or trap keyboard focus while it is open.<br>
-          → A native <code>&lt;dialog&gt;</code> element provides the focus trap automatically. If another element is used instead, the focus trap must be implemented manually, for example, by adding <code>inert</code> to other elements on the page.</li>
+          → A native <code>&lt;dialog&gt;</code> element opened with <code>showModal()</code> provides the focus trap automatically. If another element is used, the focus trap must be implemented manually, for example, by adding <code>inert</code> to other elements on the page.</li>
           <li aria-description="Recommended"><code>aria-haspopup="dialog"</code> communicates that the button opens a dialog.</li>
         </ul>
         <h3>Example</h3>
