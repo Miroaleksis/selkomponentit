@@ -6,7 +6,6 @@ class SiteHeader extends HTMLElement {
         <a href="#main-content" class="skip-link button">Skip to main content</a>
         <a href="index.html" class="site-logo">
           <img src="images/Logo.svg" alt="Accessibly">
-          <span class="site-logo-subtitle">Accessible HTML Library</span>
         </a>
         <button class="nav-toggle" aria-label="Main menu" aria-expanded="false" aria-controls="site-nav"></button>
         <nav id="site-nav" class="site-nav" aria-label="Main menu">
@@ -117,7 +116,6 @@ class SiteFooter extends HTMLElement {
       <footer class="site-footer">
         <div class="site-logo">
           <img src="images/Logo.svg" alt="Accessibly">
-          <span class="site-logo-subtitle">Accessible HTML Library</span>
         </div>
         <p class="site-footer-copyright">© 2026</p>
       </footer>
